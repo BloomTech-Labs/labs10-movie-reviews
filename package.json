@@ -1,0 +1,22 @@
+{
+  "name": "labs10-movie-reviews",
+  "version": "1.0.0",
+  "description": "Movie Reviews will connect movies with watchers and the watchers provide reviews for said movies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lambda-School-Labs/labs10-movie-reviews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lambda-School-Labs/labs10-movie-reviews/issues"
+  },
+  "homepage": "https://github.com/Lambda-School-Labs/labs10-movie-reviews#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
