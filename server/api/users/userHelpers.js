@@ -2,7 +2,7 @@
 // ==============================================
 const db = require('../../data/dbConfig.js');
 
-// USERS HELPERS
+// USER HELPERS
 // ==============================================
 module.exports = {
   get: function(id) {
