@@ -1,19 +1,17 @@
 // ==============================================
 // SERVER ARCHITECTURE
 // ==============================================
-
 require("dotenv").config();
 const server = require('express')();
 
 const port = process.env.PORT || 5000;
 
-
-// MIDDLEWARE & ROUTES
+// GLOBAL MIDDLEWARE & ROUTE INSTANTIATION
 // ==============================================
 require('./api/middleware')(server);
 require('./api/routes')(server);
 
-// START THE SERVER
+// STARTING THE SERVER
 // ==============================================
 server.listen(port, () => {
   console.log(`\n=== Server listening on port ${port} ===\n`);

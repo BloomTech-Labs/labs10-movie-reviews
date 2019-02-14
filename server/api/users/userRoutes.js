@@ -13,7 +13,7 @@ const userDb = require('./userHelpers.js');
 
 // USER ROUTES
 // ==============================================
-router.get('./users', getUsers);
+router.get('/users', getUsers);
 
 // CALLBACK FUNCTIONS
 // ==============================================

@@ -2,7 +2,7 @@
 // ==============================================
 const express = require('express');
 
-// WEB API GLOBAL MIDDLEWARE
+// SERVER GLOBAL MIDDLEWARE
 // ==============================================
 module.exports = server => {
   server.use(express.json());
