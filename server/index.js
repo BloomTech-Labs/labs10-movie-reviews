@@ -1,12 +1,16 @@
-const express = require('express');
-const server = express();
-const port = 5000;
+// ==============================================
+// SERVER ARCHITECTURE
+// ==============================================
+const server = require('express')();
+const port = process.env.PORT || 5000;
 
-server.use(express.json());
-server.get('/', (req, res) => {
-    res.send({Success: "Sanity check is working..."});
-});
+// MIDDLEWARE & ROUTES
+// ==============================================
+require('./api/middleware')(server);
+require('./api/routes')(server);
 
+// START THE SERVER
+// ==============================================
 server.listen(port, () => {
-    console.log(`Server listening on port ${port}`)
+  console.log(`\n=== Server listening on port ${port} ===\n`);
 });
