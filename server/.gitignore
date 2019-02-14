@@ -5,3 +5,6 @@
 
 # data
 **/*.sqlite3
+
+# env vars
+.env
