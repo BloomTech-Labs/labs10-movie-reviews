@@ -1,13 +1,14 @@
-// Update with your config settings.
+const keys = require('./config/keys.js');
+
 const localPg = {
   host: 'localhost',
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  database: keys.dbName,
+  user: keys.dbUser,
+  password: keys.dbPass
 };
-const dbConnection = process.env.DATABASE_URL || localPg;
-module.exports = {
+const dbConnection = keys.dbURL || localPg;
 
+module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
@@ -15,10 +16,10 @@ module.exports = {
     },
     useNullAsDefault: true,
     migrations: {
-      directory: './data/migrations',
+      directory: './data/migrations'
     },
     seeds: {
-      directory: './data/seeds',
+      directory: './data/seeds'
     }
   },
 
@@ -31,11 +32,10 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: './data/migrations',
+      directory: './data/migrations'
     },
     seeds: {
       directory: './data/seeds'
     }
-  },
-
+  }
 };
