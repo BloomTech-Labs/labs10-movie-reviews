@@ -8,5 +8,10 @@ module.exports = {
     let query = db('users');
     if (id) query.where('id', Number(id)).first();
     return query;
+  },
+  insert: function(user) {
+    return db('users')
+      .insert(user)
+      .then(ids => ({ id: ids[0] }));
   }
 };
