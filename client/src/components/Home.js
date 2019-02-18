@@ -13,7 +13,7 @@ class Home extends Component {
       loading: true
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     this.props.gettingMovies();
     setTimeout(() => this.setState({ loading: false }), 1000);
   }
