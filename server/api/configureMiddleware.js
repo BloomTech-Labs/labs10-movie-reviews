@@ -8,14 +8,13 @@ const keys = require('../config/keys');
 // server (the same Express server from index.js)
 module.exports = server => {
   server.use(express.json());
+  server.use(
+    cookieSession({
+      name: 'movie-reviews',
+      keys: [keys.cookieKey],
+      maxAge: 24 * 60 * 60 * 1000
+    })
+  );
+  server.use(passport.initialize());
+  server.use(passport.session());
 };
-
-server.use(
-  cookieSession({
-    name: 'movie-reviews',
-    keys: [keys.cookieKey],
-    maxAge: 24 * 60 * 60 * 1000
-  })
-);
-server.use(passport.initialize());
-server.use(passport.session());
