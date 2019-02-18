@@ -4,9 +4,9 @@
   "description": "Movie Reviews will connect movies with watchers and the watchers provide reviews for said movies.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "deploy": "cd .. && git subtree push --prefix server heroku master"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/Lambda-School-Labs/labs10-movie-reviews#readme",
   "dependencies": {
-    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "knex": "^0.16.3",
     "pg": "^7.8.0",
