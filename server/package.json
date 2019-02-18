@@ -4,9 +4,9 @@
   "description": "Movie Reviews will connect movies with watchers and the watchers provide reviews for said movies.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "deploy": "git subtree push --prefix server heroku master"
   },
   "repository": {
     "type": "git",
