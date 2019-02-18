@@ -25,7 +25,8 @@ handleChange = (event)=>{
 
 
 componentDidMount() {
-    let promise = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=30caa3405525c5e5dcab3ac52eabe0ae&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+    let promise = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${
+        process.env.REACT_APP_API}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
     )
     promise
         .then(response => {
@@ -42,7 +43,8 @@ componentDidMount() {
 
 searchHandler = () => {
     console.log(this.state.searchCriteria);
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=30caa3405525c5e5dcab3ac52eabe0ae&language=en-US&query=${this.state.searchCriteria}&include_adult=false`)
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${
+        process.env.REACT_APP_API}&language=en-US&query=${this.state.searchCriteria}&include_adult=false`)
     .then(response => {
         console.log(response);
             this.setState({searchResults: response.data.results})
