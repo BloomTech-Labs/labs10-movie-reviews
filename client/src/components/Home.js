@@ -38,7 +38,7 @@ class Home extends Component {
           <div className="featured">
             <h2>Popular Movies</h2>
             <span className="imgFeat" />
-            {this.props.movies.results.map(item => {
+            {this.props.movies.moviesArr.map(item => {
               return <MappedItem key={item.id} item={item} />;
             })}
             <p>Name of the movie</p>
