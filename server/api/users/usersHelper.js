@@ -1,11 +1,10 @@
-// DATABASE ACCESS
-// ==============================================
+// used to access our 'users' database
 const db = require('../../data/dbConfig.js');
 
 // USER HELPERS
 // ==============================================
 module.exports = {
-  get: function(id) {
+  getUsers: function(id) {
     let query = db('users');
     if (id) query.where('id', Number(id)).first();
     return query;
