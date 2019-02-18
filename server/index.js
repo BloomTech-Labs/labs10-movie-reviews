@@ -1,7 +1,6 @@
 // ==============================================
 // SERVER ARCHITECTURE
 // ==============================================
-require("dotenv").config();
 const server = require('express')();
 
 const port = process.env.PORT || 5000;
