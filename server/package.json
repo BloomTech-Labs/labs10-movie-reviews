@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "deploy": "cd .. && git subtree push --prefix server heroku master"
+    "deploy": "cd .. && git subtree push --prefix server heroku master",
+    "migrate": "heroku run knex migrate:latest"
   },
   "repository": {
     "type": "git",
