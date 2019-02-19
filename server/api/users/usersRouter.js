@@ -37,7 +37,7 @@ router.put('/users/:id', async (req, res) => {
   const { id } = req.params;
 if (req.body.name && req.body.username && req.body.email) {
     try {
-      const count = await usersDb
+      await usersDb
         .where({id: id})
         .update(changes)
         //count is the number of records updated
