@@ -6,12 +6,9 @@ const keys = require('../config/keys.js');
 
 // passport-twitter strategy
 // ==============================================
-passport.serializeUser((user, done) => done(null, user.id));
+passport.serializeUser((user, done) => done(null, user));
 
-passport.deserializeUser(async (id, done) => {
-  const user = await usersDb.findUserById(id);
-  done(null, user);
-});
+passport.deserializeUser((obj, done) => done(null, obj));
 
 passport.use(
   new TwitterStrategy(
@@ -28,7 +25,10 @@ passport.use(
       if (existingUser) {
         done(null, existingUser);
       } else {
-        const user = await usersDb.createUser({ twitterId: profile.id });
+        const user = await usersDb.createUser({
+          twitterId: profile.id,
+          username: profile.username
+        });
         done(null, user);
       }
     }
