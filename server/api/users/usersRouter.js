@@ -37,16 +37,12 @@ router.put('/users/:id', async (req, res) => {
   const { id } = req.params;
 if (req.body.name && req.body.username && req.body.email) {
     try {
-      await usersDb
-        .where({id: id})
-        .update(changes)
-        //count is the number of records updated
-        .then(count => {
-          res.status(200).json({Success: `${count} record has been updated`});
-        })
-        .catch(err => {
-          res.status(400).json({Error: `${id} could not be found in database`})
-        });
+      const count = await usersDb.update(id, changes);        
+      //count is the number of records updated
+      if (count) {
+        const user = await usersDb.get(id);
+        res.status(200).json(user);
+      } else res.status(404).json({ Error: `User with ID ${id} does not exist.` });
     } catch (err) {
       res.status(500).json(err);
     }
