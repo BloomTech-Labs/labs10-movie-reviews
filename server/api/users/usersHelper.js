@@ -13,5 +13,11 @@ module.exports = {
     return db('users')
       .insert(user)
       .then(ids => ({ id: ids[0] }));
+  },
+  // Delete User
+  remove: function(id) {
+    return db('users')
+      .where('id', id)
+      .del();
   }
 };
