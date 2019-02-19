@@ -17,4 +17,18 @@ router.get('/reviews', async (req, res) => {
   }
 });
 
+router.post('/reviews', async (req, res) => {
+  if (req.body.twitterhandle && req.body.textBody && req.body.rating) {
+    try {
+      await reviewsDb.insert(req.body);
+      res.status(201).json({ message: 'Review successfully added!' });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else
+    res.status(400).json({
+      error: 'Please provide a username, rating and textBody for your review.'
+    });
+});
+
 module.exports = router;
