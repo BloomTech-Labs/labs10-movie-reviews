@@ -28,7 +28,10 @@ passport.use(
       if (existingUser) {
         done(null, existingUser);
       } else {
-        const user = await usersDb.createUser({ twitterId: profile.id });
+        const user = await usersDb.createUser({
+          username: profile.screen_name,
+          twitterId: profile.id
+        });
         done(null, user);
       }
     }
