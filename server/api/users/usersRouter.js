@@ -32,4 +32,18 @@ router.post('/users', async (req, res) => {
       .json({ error: 'Please provide a name, username & email for the user.' });
 });
 
+//A DELETE request that deletes a user
+router.delete('/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const count = await usersDb.remove(id);
+
+    count
+      ? res.status(200).json({ message: 'User was successfully deleted.' })
+      : res.status(404).json({ message: 'No records found to delete.' });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
