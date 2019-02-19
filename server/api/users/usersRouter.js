@@ -47,6 +47,8 @@ if (req.body.name && req.body.username && req.body.email) {
       res.status(500).json(err);
     }
   } else res.status(400).json({ Error: 'Please provide a name, username & email for the user profile.' });
+});
+
 //A DELETE request that deletes a user
 router.delete('/users/:id', async (req, res) => {
   try {
