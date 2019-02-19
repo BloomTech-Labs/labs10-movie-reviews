@@ -32,4 +32,25 @@ router.post('/users', async (req, res) => {
       .json({ error: 'Please provide a name, username & email for the user.' });
 });
 
+router.put('/users/:id', async (req, res) => {
+  const changes = req.body;
+  const { id } = req.params;
+if (req.body.name && req.body.username && req.body.email) {
+    try {
+      const count = await usersDb
+        .where({id: id})
+        .update(changes)
+        //count is the number of records updated
+        .then(count => {
+          res.status(200).json({Success: `${count} record has been updated`});
+        })
+        .catch(err => {
+          res.status(400).json({Error: `${id} could not be found in database`})
+        });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else res.status(400).json({ Error: 'Please provide a name, username & email for the user profile.' });
+});
+
 module.exports = router;
