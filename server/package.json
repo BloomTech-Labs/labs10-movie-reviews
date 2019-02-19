@@ -7,6 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "deploy": "cd .. && git subtree push --prefix server heroku master",
+    "rollback": "heroku run knex migrate:rollback",
     "migrate": "heroku run knex migrate:latest"
   },
   "repository": {
