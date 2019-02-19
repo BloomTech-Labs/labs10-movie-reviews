@@ -9,6 +9,13 @@ exports.up = function(knex, Promise) {
       .inTable('users') // reference users table
       .onDelete('cascade') // when you delete a row on the parent table, the related "children" rows on the other one are deleted.
       .index(); // adds an index to a table over the given columns
+    movieReviews
+      .string('twitterhandle')
+      .notNullable()
+      .references('username')
+      .inTable('users')
+      .onDelete('cascade')
+      .index();
     movieReviews.text('textBody', 5000).notNullable(); // textBody field limited to 500 chars
     movieReviews.integer('rating'); // rating field
     movieReviews.timestamp('created_at').defaultTo(knex.fn.now()); // review creation date
