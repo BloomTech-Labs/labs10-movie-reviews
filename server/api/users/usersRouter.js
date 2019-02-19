@@ -17,4 +17,19 @@ router.get('/users', async (req, res) => {
   }
 });
 
+router.post('/users', async (req, res) => {
+  console.log('req body: ', req.body);
+  if (req.body.name && req.body.username && req.body.email) {
+    try {
+      await usersDb.insert(req.body);
+      res.status(201).json({ message: 'User successfully added!' });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else
+    res
+      .status(400)
+      .json({ error: 'Please provide a name, username & email for the user.' });
+});
+
 module.exports = router;
