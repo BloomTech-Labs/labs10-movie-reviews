@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import './index.css';
-import { Button } from 'reactstrap';
-import { gettingMovies } from '../actions';
+import { gettingMovies } from '../../actions';
 import { connect } from 'react-redux';
 import MappedItem from './MappedItem';
+import './mappedItem.css';
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button
+} from 'reactstrap';
 
 class Home extends Component {
   constructor(props) {
@@ -25,24 +34,26 @@ class Home extends Component {
     }
     return (
       <div className="home-page">
-        <span>Welcome back, User!</span>
-        <div className="buttons">
-          {/* <Link to='/local'><Button className='local-button'>Local</Button></Link>
-                    <Link to='/local'><Button className='online-button'>Online</Button></Link> */}
-          <div className="featured">
-            <h2>Featured Review</h2>
-            <span className="imgFeat" />
-            <p>Name of the movie</p>
-            <p>Name of the user</p>
-          </div>
-          <div className="featured">
-            <h2>Popular Movies</h2>
-            <span className="imgFeat" />
+        <h1>Welcome back, User!</h1>
+        <div className="featured">
+          <h2>Featured Review</h2>
+          <span className="imgFeat" />
+          <p>Name of the movie</p>
+          <p>Name of the user</p>
+        </div>
+        <div className="featured">
+          <h2>Popular Movies</h2>
+          <div className="cardWrapper">
             {this.props.movies.moviesArr.map(item => {
               return <MappedItem key={item.id} item={item} />;
             })}
-            <p>Name of the movie</p>
           </div>
+        </div>
+        <div className="popularReviewers">
+          <h1>Popular Reviewers</h1>
+          <Card>
+            <div className="cardWrapper" />
+          </Card>
         </div>
       </div>
     );

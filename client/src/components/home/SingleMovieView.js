@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { gettingMovieId } from '../actions';
+import { gettingMovieId } from '../../actions';
 
 class SingleMovieView extends Component {
   constructor(props) {

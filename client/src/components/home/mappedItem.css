@@ -1,0 +1,13 @@
+.cardWrapper {
+  display: flex;
+  width: 100%;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.singleMovie {
+  /* display: inline-block; */
+  width: 25%;
+  /* margin: 30px 30px;
+  padding: 30px 30px; */
+}
