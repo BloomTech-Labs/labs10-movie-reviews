@@ -5,7 +5,16 @@ const router = require('express').Router();
 // database accordingly (for example, getReviews
 // requests all the reviews in the reviews database)
 // ==============================================
-
 const reviewsDb = require('./reviewsHelper.js');
 
-//router.get, router.delete, router.put, router.post requests will go here.
+// A GET request that returns all users from the database
+router.get('/reviews', async (req, res) => {
+  try {
+    const reviews = await reviewsDb.getReviews();
+    res.status(200).json(reviews);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;
