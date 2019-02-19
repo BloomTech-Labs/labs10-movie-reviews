@@ -17,8 +17,21 @@ router.get('/users', async (req, res) => {
   }
 });
 
+// GET request that gets a user by id
+router.get('/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await usersDb.getUsers(id);
+    user
+      ? res.status(200).json(user)
+      : res.status(404).json({ error: 'The user with the specified ID does not exist'})
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
+// POST request to add a user
 router.post('/users', async (req, res) => {
-  console.log('req body: ', req.body);
   if (req.body.name && req.body.username && req.body.email) {
     try {
       await usersDb.insert(req.body);
@@ -32,6 +45,7 @@ router.post('/users', async (req, res) => {
       .json({ error: 'Please provide a name, username & email for the user.' });
 });
 
+// PUT request to update user
 router.put('/users/:id', async (req, res) => {
   const changes = req.body;
   const { id } = req.params;
