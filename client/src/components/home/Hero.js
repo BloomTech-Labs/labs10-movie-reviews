@@ -145,12 +145,12 @@ class Hero extends React.Component {
               <div className="search-results-container">
                 {this.state.searchResults.map(result => {
                   return (
-                    <div
-                      className="result-card"
-                      key={result.id}
-                      style={{ backgroundColor: 'ivory' }}
-                    >
-                      <h1 className="search-results-header">{result.title}</h1>
+                    <div className="result-card" key={result.id}>
+                      <h1 className="search-results-header">
+                        {`${result.title} (${this.getReleaseYear(
+                          result.release_date
+                        )})`}
+                      </h1>
                       <img
                         className="poster-img"
                         src={`https://image.tmdb.org/t/p/original${
