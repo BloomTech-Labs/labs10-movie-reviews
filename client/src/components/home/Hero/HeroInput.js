@@ -1,4 +1,5 @@
 import React from 'react';
+import './Hero.css';
 
 const HeroInput = (props) => {
     return (
