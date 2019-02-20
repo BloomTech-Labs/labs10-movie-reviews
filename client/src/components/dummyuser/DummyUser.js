@@ -1,10 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   ListGroup,
   ListGroupItem
 } from 'reactstrap';
 import axios from "axios";
-axios.defaults.withCredentials = true;
 
 export default class DummyUsers extends React.Component {
   constructor(props) {
@@ -18,7 +17,6 @@ export default class DummyUsers extends React.Component {
     axios
       .get('http://localhost:5000/api/users')
       .then(response => {
-        console.log(response)
         this.setState({
           users: response.data
         })
@@ -30,11 +28,11 @@ export default class DummyUsers extends React.Component {
     return (
       <ListGroup>
         {this.state.users.map(user => 
-          <Fragment>
+          <div key={user.username}>
             <ListGroupItem>username: {user.username}</ListGroupItem>
             <ListGroupItem>name: {user.name}</ListGroupItem>
             <ListGroupItem>email: {user.email}</ListGroupItem>
-          </Fragment>
+          </div>
         )}
       </ListGroup>
     );
