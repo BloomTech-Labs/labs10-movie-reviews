@@ -1,0 +1,12 @@
+.card {
+  width: 100%;
+  height: 35vh;
+}
+
+.card-text {
+  margin: 1rem 0 4rem 0;
+}
+
+.main-title {
+  margin-bottom: 1.5rem;
+}
