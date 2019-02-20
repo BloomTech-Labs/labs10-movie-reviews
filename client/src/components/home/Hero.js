@@ -170,11 +170,17 @@ class Hero extends React.Component {
                           result.release_date
                         )})`}
                       </h1>
+                      {/* TODO: Make image a link that will pass props to singlemovie component */}
                       <img
                         className="poster-img"
-                        src={`https://image.tmdb.org/t/p/original${
+                        src={
                           result.poster_path
-                        }`}
+                            ? `https://image.tmdb.org/t/p/original${
+                                result.poster_path
+                              }`
+                            : 'https://via.placeholder.com/300x500.png?text=Photo+Not+Available'
+                          // placeholder from : C/O https://placeholder.com/#How_To_Set_Custom_Text"
+                        }
                         alt={result.title}
                       />
                     </div>
