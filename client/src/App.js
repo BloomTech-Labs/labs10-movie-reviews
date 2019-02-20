@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
-import Hero from './components/home/Hero';
-import Home from './components/home/Home';
-import Navigation from './components/navbar/Navigation';
-import SingleMovieView from './components/home/SingleMovieView';
 
 // import Landing from './components/Landing';
+import Home from './components/home/Home';
+import Hero from './components/home/Hero';
+// import SingleMovieView from './components/home/SingleMovieView';
+import Navigation from './components/navbar/Navigation';
+import './App.css';
 
 class App extends Component {
   render() {

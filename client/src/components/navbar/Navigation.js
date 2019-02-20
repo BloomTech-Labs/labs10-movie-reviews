@@ -46,10 +46,14 @@ export default class Example extends React.Component {
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
+                  <DropdownItem>Profile</DropdownItem>
+                  <DropdownItem>My Reviews</DropdownItem>
+                  <DropdownItem>Saved Reviews</DropdownItem>
+                  <DropdownItem>Option One</DropdownItem>
+                  <DropdownItem>Option Two</DropdownItem>
+                  <DropdownItem>Terms</DropdownItem>
+                  <DropdownItem>Settings</DropdownItem>
+                  <DropdownItem>Logout</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
