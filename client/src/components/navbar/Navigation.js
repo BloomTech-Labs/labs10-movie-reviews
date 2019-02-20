@@ -47,6 +47,7 @@ export default class Example extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>Profile</DropdownItem>
+                  <DropdownItem>My Reviews</DropdownItem>
 
                   <DropdownItem divider />
                   <DropdownItem>Reset</DropdownItem>
