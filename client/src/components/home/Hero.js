@@ -55,6 +55,17 @@ class Hero extends React.Component {
     return found;
   }
 
+  // getMovieDetailsHandler(id) {
+  //   /* TODO:
+  //   1. =====axios request =====
+  //       axios.get : `https://api.themoviedb.org/3/movie/${id}?api_key={api_key}&append_to_response=videos`
+  //   2. returns a promise
+  //   3. then (response => {
+  //       console.log(response) to see what it looks like coming back and figure out logic.
+  //   4. catch errors
+  //   })
+  // }*/
+
   //this handles input when user types in the search box to search for movie and places that on state
   handleChange = event => {
     this.setState({ searchCriteria: event.target.value });
