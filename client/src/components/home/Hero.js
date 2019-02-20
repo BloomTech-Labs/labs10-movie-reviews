@@ -102,11 +102,11 @@ class Hero extends React.Component {
     //TODO: loading screen
     return (
       <div
-        className="Landing"
+        className="hero"
         style={{ backgroundImage: 'url(' + this.state.random + ')' }}
       >
         {/* used inline style to create background image since it is on state */}
-        <div className="header-wrapper">
+        <div className="header-overlay">
           <h1 className="app-name">CineView</h1>
           <div className="app-subtitle">Real People. Real Reviews.</div>
           <div className="landing-page-route-wrapper">
