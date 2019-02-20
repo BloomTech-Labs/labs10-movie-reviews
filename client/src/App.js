@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 // import Landing from './components/Landing';
 import Home from './components/home/Home';
-import Hero from './components/home/Hero';
+import Hero from './components/home/Hero/Hero';
 // import SingleMovieView from './components/home/SingleMovieView';
 import Navigation from './components/navbar/Navigation';
 import './App.css';
