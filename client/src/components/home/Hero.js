@@ -152,10 +152,19 @@ class Hero extends React.Component {
                   Search Results: <span> {this.state.searchCriteria}</span>
                 </div>
               </h1>
+
               <div className="search-results-container">
                 {this.state.searchResults.map(result => {
+                  console.log(result.id);
                   return (
-                    <div className="result-card" key={result.id}>
+                    //saving index on result-card so that index is available to query movie details information
+                    //TODO: Query movie details information so that each movie can have it's own profile page.
+
+                    <div
+                      className="result-card"
+                      key={result.id}
+                      index={result.id}
+                    >
                       <h1 className="search-results-header">
                         {`${result.title} (${this.getReleaseYear(
                           result.release_date
