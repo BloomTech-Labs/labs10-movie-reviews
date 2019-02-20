@@ -138,7 +138,9 @@ class Hero extends React.Component {
                     : 'hidden'
                 }
               >
-                Search Results: {this.state.searchCriteria}
+                <div>
+                  Search Results: <span> {this.state.searchCriteria}</span>
+                </div>
               </h1>
               <div className="search-results-container">
                 {this.state.searchResults.map(result => {
