@@ -1,30 +1,38 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import './index.css';
-import { gettingMovies } from '../../actions';
-import { connect } from 'react-redux';
 import MappedItem from './MappedItem';
+
+import axios from 'axios';
 import './mappedItem.css';
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button
-} from 'reactstrap';
+import { Card } from 'reactstrap';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      movies: [],
       loading: true
     };
   }
   componentDidMount() {
-    this.props.gettingMovies();
-    setTimeout(() => this.setState({ loading: false }), 1000);
+    const promise = axios.get(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${
+        process.env.REACT_APP_API
+      }&language=en-US&page=1`
+    );
+    promise
+      .then(response => {
+        console.log('response: ', response);
+        this.setState({
+          movies: response.data.results,
+          loading: false
+        });
+        console.log('movies: ', this.state.movies);
+        //sets the information retrieved onto state
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   render() {
     console.log('props in home page: ', this.props);
@@ -44,7 +52,7 @@ class Home extends Component {
         <div className="featured">
           <h2>Popular Movies</h2>
           <div className="cardWrapper">
-            {this.props.movies.moviesArr.map(item => {
+            {this.state.movies.map(item => {
               return <MappedItem key={item.id} item={item} />;
             })}
           </div>
@@ -60,14 +68,4 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ movies }) => {
-  console.log('state in map: ', movies);
-  return {
-    movies
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { gettingMovies }
-)(Home);
+export default Home;
