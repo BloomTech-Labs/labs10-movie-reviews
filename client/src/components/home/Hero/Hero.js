@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import HeroHeader from './HeroHeader';
 import HeroInput from './HeroInput';
+import HeroButton from './HeroButton';
 
 import './Hero.css';
 
@@ -135,13 +136,10 @@ class Hero extends React.Component {
               randomTitle={this.state.randomTitle}
               label="Search for Movies:"
             />
-            <div className="call-to-action-buttons">
-              <div className="button" onClick={this.searchHandler}>
-                CineView Search
-              </div>{' '}
-              {/* button end */}
-            </div>
-            {/* call to action buttons button end*/}
+            <HeroButton 
+              buttonLabel="CineView Search"
+              searchHandler={this.searchHandler}
+            />
             <div
               className={
                 this.state.resultLength > 0
