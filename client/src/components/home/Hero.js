@@ -96,6 +96,8 @@ class Hero extends React.Component {
       });
   };
 
+//render puts it on the page! 
+
   render() {
     //TODO: loading screen
     return (
