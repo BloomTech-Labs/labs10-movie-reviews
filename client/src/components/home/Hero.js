@@ -52,8 +52,7 @@ class Hero extends React.Component {
     let regex = /(18|19|20)\d{2}/g;
 
     let found = string.match(regex);
-    // found returns an Array so we have to return the [0] index to get the actual year
-    return found[0];
+    return found;
   }
 
   //this handles input when user types in the search box to search for movie and places that on state
