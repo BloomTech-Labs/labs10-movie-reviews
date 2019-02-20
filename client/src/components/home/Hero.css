@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+:root {
+  --main-font-color: rgb(237, 237, 233);
+  --overlay-color: rgba(35, 35, 35, 0.5);
+  --button-color: darkorange;
+  --shadow: green;
+}
+
+.hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  height: 50vh;
+  background-size: cover;
+  background-position: top left;
+  filter: opacity(1);
+}
+
+.header-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-attachment: fixed;
+  border-radius: 5px;
+  background-color: var(--overlay-color);
+}
+
+.app-name {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 4.2em;
+  opacity: 1;
+  color: var(--main-font-color);
+  margin: 0px 25px;
+  text-shadow: 2px 2px 2px var(--shadow);
+}
+
+.app-subtitle {
+  color: var(--main-font-color);
+  font-size: 2.2em;
+}
+
+.landing-page-route-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  width: 80%;
+  height: auto;
+}
+
+.landing-label {
+  align-self: flex-start;
+  color: white;
+  font-weight: bold;
+}
+
+.landing-input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.button {
+  margin: 25px;
+  padding: 15px;
+  height: 5vh;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: var(--button-color);
+  color: var(--main-font-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.button:hover {
+  box-shadow: 2px 2px 2px green;
+  color: var(--shadow);
+}
+
+.button a {
+  color: var(--main-font-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.button a:hover {
+  color: var(--shadow);
+}
+
+.hidden {
+  display: none;
+}
+.search-results-query {
+  font-size: 1em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-left: 30px;
+  height: 50px;
+}
+
+.search-results-query h5 {
+  margin-right: 10px;
+}
+.search-results-header {
+  margin: 80px 0px 10px 0px;
+  color: black;
+  font-size: large;
+  height: auto;
+}
+
+.query {
+  font-size: 1em;
+  color: var(--button-color);
+  font-style: italic;
+  font-weight: bold;
+}
+
+.result-length {
+  font-style:italic;
+  font-weight: lighter;
+  margin-left: -10px;
+}
+.search-results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: black;
+  width: 100%;
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 300px;
+  margin: 0px 0px;
+  padding: 0px 30px;
+}
+
+.poster-img {
+  width: 300px;
+  height: auto;
+  align-self: center;
+}
+
+.result-overview {
+  text-align: left;
+}
+
+@media only screen and (max-width: 401px) {
+  .hero {
+    min-width: 100%;
+    height: 55vh;
+  }
+
+  .app-name {
+    margin: 20px;
+    font-size: 2.3em;
+  }
+
+  .app-subtitle {
+    display: none;
+  }
+
+  .landing-input {
+    height: 6vh;
+  }
+
+  .button {
+    height: 8vh;
+  }
+
+  .search-results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+  }
+  .search-results-query {
+    font-size: 1em;
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+  }
+
+  .search-results-query h5 {
+    font-weight: bolder;
+    margin: 0;
+    width: 100%;
+  }
+
+  .query {
+    width: 100%;
+    font-size: 1.2em;
+    color: var(--button-color);
+    font-style: italic;
+  }
+
+  .result-length {
+    width: 100%;
+  }
+
+  .result-card {
+    width: 100%;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .poster-img {
+    width: 100%;
+    border-radius: 5px;
+  }
+}
