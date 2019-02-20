@@ -62,9 +62,23 @@ class Hero extends React.Component {
     console.log(this.state.searchCriteria);
   };
 
+  /* 
+=================================================================================
+  What does the search axios get request in searchHandler mean?? Let's break it up :
+=================================================================================
+  1. searchHandler return search logic using TMDB search endpoint
+  2. https://api.themoviedb.org/3/ == base URL
+  3. search/ means we will search
+  4. movie? == queries movies table
+  5. api_key=${process.env.REACT_APP_API} == our personal API key
+  6. &language=en-US == queries English results only
+  7. &query=${this.state.searchCriteria} == grabs our searchCriteria off of state and queries the database
+  8. &include_adult=false == boolean that excludes adult films.
+=================================================================================
+  
+  */
+
   searchHandler = () => {
-    console.log(this.state.searchCriteria);
-    //axios get search logic
     axios
       .get(
         `https://api.themoviedb.org/3/search/movie?api_key=${
