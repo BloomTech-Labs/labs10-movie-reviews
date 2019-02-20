@@ -47,6 +47,15 @@ class Hero extends React.Component {
       });
   }
 
+  //this takes the release date from TMDB and finds the year using regex so we can post it along with the movie.
+  getReleaseYear(string) {
+    let regex = /(18|19|20)\d{2}/g;
+
+    let found = string.match(regex);
+    // found returns an Array so we have to return the [0] index to get the actual year
+    return found[0];
+  }
+
   //this handles input when user types in the search box to search for movie and places that on state
   handleChange = event => {
     this.setState({ searchCriteria: event.target.value });
