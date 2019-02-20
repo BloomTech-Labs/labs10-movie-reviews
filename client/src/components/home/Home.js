@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import './index.css';
-import { gettingMovies } from '../../actions';
-import { connect } from 'react-redux';
 import MappedItem from './MappedItem';
 
 import axios from 'axios';
