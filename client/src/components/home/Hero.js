@@ -16,6 +16,7 @@ class Hero extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.searchHandler = this.searchHandler.bind(this);
+    this.getReleaseYear = this.getReleaseYear.bind(this);
   }
 
   //this will get popular movies from the TMDB API
