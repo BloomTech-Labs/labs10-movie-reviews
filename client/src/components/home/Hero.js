@@ -180,7 +180,7 @@ class Hero extends React.Component {
                             ? `https://image.tmdb.org/t/p/original${
                                 result.poster_path
                               }`
-                            : 'https://via.placeholder.com/300x500.png?text=Photo+Not+Available'
+                            : 'https://via.placeholder.com/300x450.png?text=Photo+Not+Available'
                           // placeholder from : C/O https://placeholder.com/#How_To_Set_Custom_Text"
                         }
                         alt={result.title}
