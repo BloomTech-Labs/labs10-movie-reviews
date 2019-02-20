@@ -50,6 +50,7 @@ export default class Example extends React.Component {
                   <DropdownItem>My Reviews</DropdownItem>
                   <DropdownItem>Saved Reviews</DropdownItem>
                   <DropdownItem>Option One</DropdownItem>
+                  <DropdownItem>Option Two</DropdownItem>
 
                   <DropdownItem divider />
                   <DropdownItem>Reset</DropdownItem>
