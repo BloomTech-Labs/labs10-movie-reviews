@@ -10,6 +10,7 @@ class Hero extends React.Component {
       movies: [],
       random: '',
       randomTitle: '',
+      resultLength: null,
       searchCriteria: '',
       searchResults: []
     };
@@ -24,10 +25,11 @@ class Hero extends React.Component {
     let promise = axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${
         process.env.REACT_APP_API
-      }&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+      }&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`
     );
     promise
       .then(response => {
+        console.log(response, "response")
         const random = Math.floor(Math.random() * response.data.results.length); //instantiates a random number between 0 and length of response.data.results array
         const title = response.data.results[random].title;
         //grabs random movie title from response data results array
@@ -52,7 +54,11 @@ class Hero extends React.Component {
     let regex = /(18|19|20)\d{2}/g;
 
     let found = string.match(regex);
-    return found;
+
+    if (!found) {
+      return "";
+    }
+    return "(" + found + ")";
   }
 
   // getMovieDetailsHandler(id) {
@@ -97,7 +103,7 @@ class Hero extends React.Component {
       )
       .then(response => {
         console.log(response);
-        this.setState({ searchResults: response.data.results });
+        this.setState({ searchResults: response.data.results, resultLength: response.data.results.length });
         //this sets the searchResults on state
         console.log(this.state);
       })
@@ -136,14 +142,14 @@ class Hero extends React.Component {
             {/* call to action buttons button end*/}
             <div
               className={
-                this.state.searchResults.length > 0
+                this.state.resultLength > 0
                   ? 'search-results'
                   : 'hidden'
               }
             >
               <h1
                 className={
-                  this.state.searchResults.length > 0
+                  this.state.resultLength > 0
                     ? 'search-results-header'
                     : 'hidden'
                 }
@@ -151,7 +157,7 @@ class Hero extends React.Component {
                 <div className="search-results-query">
                   <h5>Search Results:</h5> 
                   <h5 className="query"> {this.state.searchCriteria}</h5>
-                  <h5 className="result-length">({this.state.searchCriteria.length} results)</h5>
+                  <h5 className="result-length">({this.state.resultLength} results)</h5>
                 </div>
               </h1>
 
@@ -168,9 +174,9 @@ class Hero extends React.Component {
                       index={result.id}
                     >
                       <h1 className="search-results-header">
-                        {`${result.title} (${this.getReleaseYear(
+                        {`${result.title} ${this.getReleaseYear(
                           result.release_date
-                        )})`}
+                        )}`}
                       </h1>
                       {/* TODO: Make image a link that will pass props to singlemovie component */}
                       <img
