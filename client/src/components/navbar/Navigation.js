@@ -54,9 +54,6 @@ export default class Example extends React.Component {
                   <DropdownItem>Terms</DropdownItem>
                   <DropdownItem>Settings</DropdownItem>
                   <DropdownItem>Logout</DropdownItem>
-
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
