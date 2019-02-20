@@ -1,6 +1,10 @@
-import React from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import React, { Fragment } from 'react';
+import {
+  ListGroup,
+  ListGroupItem
+} from 'reactstrap';
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 export default class DummyUsers extends React.Component {
   constructor(props) {
@@ -12,9 +16,12 @@ export default class DummyUsers extends React.Component {
 
   componentDidMount() {
     axios
-      .get('https://labs10-movie-reviews.herokuapp.com/api/users')
+      .get('http://localhost:5000/api/users')
       .then(response => {
         console.log(response)
+        this.setState({
+          users: response.data
+        })
       })
       .catch(err => console.log(err));
   }
@@ -23,7 +30,11 @@ export default class DummyUsers extends React.Component {
     return (
       <ListGroup>
         {this.state.users.map(user => 
-          <ListGroupItem>{user}</ListGroupItem>
+          <Fragment>
+            <ListGroupItem>username: {user.username}</ListGroupItem>
+            <ListGroupItem>name: {user.name}</ListGroupItem>
+            <ListGroupItem>email: {user.email}</ListGroupItem>
+          </Fragment>
         )}
       </ListGroup>
     );
