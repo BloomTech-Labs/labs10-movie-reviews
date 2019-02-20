@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 :root {
-    --main-font-color:rgb(237, 237, 233); 
-    --overlay-color:rgba(35, 35, 35, 0.5);
-    --button-color: darkorange;
-    --shadow: green;
-  }
+  --main-font-color: rgb(237, 237, 233);
+  --overlay-color: rgba(35, 35, 35, 0.5);
+  --button-color: darkorange;
+  --shadow: green;
+}
 
 .hero {
   text-align: center;
@@ -100,10 +100,37 @@
 .hidden {
   display: none;
 }
+.search-results-query {
+  font-size: 1em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-left: 30px;
+  height: 50px;
+}
 
+.search-results-query h5 {
+  margin-right: 10px;
+}
 .search-results-header {
-  margin-top: 100px;
+  margin: 80px 0px 10px 0px;
   color: black;
+  font-size: large;
+  height: auto;
+}
+
+.query {
+  font-size: 1em;
+  color: var(--button-color);
+  font-style: italic;
+  font-weight: bold;
+}
+
+.result-length {
+  font-style:italic;
+  font-weight: lighter;
+  margin-left: -10px;
 }
 .search-results-container {
   display: flex;
@@ -120,7 +147,7 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 300px;
-  margin: 0px 30px;
+  margin: 0px 0px;
   padding: 0px 30px;
 }
 
@@ -135,64 +162,68 @@
 }
 
 @media only screen and (max-width: 401px) {
-    .hero {
-        min-width: 100%;
-        height: 55vh;
-    }
+  .hero {
+    min-width: 100%;
+    height: 55vh;
+  }
 
-    .app-name {
-        margin: 20px;
-        font-size: 2.3em;
-    }
+  .app-name {
+    margin: 20px;
+    font-size: 2.3em;
+  }
 
-    .app-subtitle {
-        display: none;
-    }
+  .app-subtitle {
+    display: none;
+  }
 
-    .landing-input {
-        height: 6vh;
-    }
+  .landing-input {
+    height: 6vh;
+  }
 
-    .button {
-        height: 8vh;
-    }
+  .button {
+    height: 8vh;
+  }
 
-    .search-results {
-        width: 100%;
-        display:flex;
-        flex-direction: column;
-        align-items: flex-start;
+  .search-results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+  }
+  .search-results-query {
+    font-size: 1em;
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+  }
 
-    }
-    .search-results-header {
-        font-size: 1em;
-        display: flex;
-        width: 100%;
-        margin: 20px 0px;
-    }
-    
-    .search-results-header  h1{
-        font-weight: bolder;
-    }
+  .search-results-query h5 {
+    font-weight: bolder;
+    margin: 0;
+    width: 100%;
+  }
 
+  .query {
+    width: 100%;
+    font-size: 1.2em;
+    color: var(--button-color);
+    font-style: italic;
+  }
 
-    .result-card {
-        width: 100%;
-        display:flex;
-        margin: 0px;
-        padding: 0px;
-    }
+  .result-length {
+    width: 100%;
+  }
 
-    .poster-img {
-        width: 100%;
-        border-radius: 5px;
-    }
+  .result-card {
+    width: 100%;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+  }
 
-    .search-results span {
-        font-size: 1.2em;
-        color: var(--button-color);
-        font-style: italic;
-    }
-
-    
+  .poster-img {
+    width: 100%;
+    border-radius: 5px;
+  }
 }
