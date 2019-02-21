@@ -4,9 +4,6 @@ import SearchResults from './SearchResults';
 import './Hero.css';
 
 const Search = props => {
-  if ((props.resultLength === null || props.resultLength === 0) && props.) {
-    return <div className="search-results-header">"No results available. Please try another query."</div>;
-  } else {
     return (
       <div className="search-results-header">
         <SearchQueryHeader
@@ -21,7 +18,6 @@ const Search = props => {
         />
       </div>
     );
-  }
 };
 
 export default Search;
