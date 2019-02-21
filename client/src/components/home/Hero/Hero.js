@@ -132,7 +132,7 @@ class Hero extends React.Component {
         <div className="header-overlay">
           
             <HeroElement 
-              searching={this.searching}
+              className={this.state.resultLength > 0 ? "search-result-header" : "hidden"}
               searchHandler={this.searchHandler}
               getReleaseYear={this.getReleaseYear}
               handleChange={this.handleChange}

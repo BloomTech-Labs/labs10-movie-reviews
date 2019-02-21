@@ -22,6 +22,7 @@ const HeroElement = props => {
         />
 
         <Search 
+            className={props.className}
             getReleaseYear={props.getReleaseYear}
             headerLabel="Search Results:"
             resultLength={props.resultLength}
