@@ -19,7 +19,7 @@ const MappedItem = (props) => {
         <Link to={`movie/get/${props.item.id}`} className="linksMovie">
           <CardImg
             //   width="30%"
-            src={`http://image.tmdb.org/t/p/w185//${
+            src={`http://image.tmdb.org/t/p/original//${
               props.item.backdrop_path
             }`}
             alt="image"
