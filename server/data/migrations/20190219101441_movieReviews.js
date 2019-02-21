@@ -2,6 +2,9 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('movieReviews', movieReviews => {
     movieReviews.increments('id'); // primary key called id
     movieReviews
+      .integer('movieId') // movieId must be a non-negative number
+      .notNullable(); // movieId field is required
+    movieReviews
       .integer('userId')
       .unsigned() // userId must be a non-negative number
       .notNullable() // userId field is required
