@@ -18,6 +18,7 @@ const HeroElement = props => {
         />
         <HeroButton
           buttonLabel="CineView Search"
+          searchCriteria={props.searchCriteria}
           searchHandler={props.searchHandler}
         />
 
