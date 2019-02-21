@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // import Landing from './components/Landing';
 import Home from './components/home/Home';
-import Hero from './components/home/Hero';
+import Hero from './components/home/Hero/Hero';
 import MyReviews from './components/myReviews/MyReviews';
 import ReviewForm from './components/myReviews/ReviewForm';
 // import SingleMovieView from './components/home/SingleMovieView';

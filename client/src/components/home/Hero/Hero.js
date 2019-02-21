@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import HeroElement from './HeroElement';
+
 
 import './Hero.css';
 
@@ -12,7 +14,8 @@ class Hero extends React.Component {
       randomTitle: '',
       resultLength: null,
       searchCriteria: '',
-      searchResults: []
+      searchResults: [],
+      searching: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -73,9 +76,8 @@ class Hero extends React.Component {
   // }*/
 
   //this handles input when user types in the search box to search for movie and places that on state
-  handleChange = event => {
+  handleChange(event){
     this.setState({ searchCriteria: event.target.value });
-    console.log(this.state.searchCriteria);
   };
 
   /* 
@@ -94,7 +96,7 @@ class Hero extends React.Component {
   
   */
 
-  searchHandler = () => {
+  searchHandler(){
     axios
       .get(
         `https://api.themoviedb.org/3/search/movie?api_key=${
@@ -102,10 +104,15 @@ class Hero extends React.Component {
         }&language=en-US&query=${this.state.searchCriteria}&include_adult=false`
       )
       .then(response => {
-        console.log(response);
-        this.setState({ searchResults: response.data.results, resultLength: response.data.results.length });
+        this.setState({searching: true})
+        const resultLength = () => {
+          if (response.data.results.length === 0) {
+            return 0;
+          }
+          else return response.data.results.length;
+        }
+        this.setState({ searchResults: response.data.results, resultLength: resultLength() });
         //this sets the searchResults on state
-        console.log(this.state);
       })
       .catch(err => {
         console.log(err);
@@ -123,82 +130,19 @@ class Hero extends React.Component {
       >
         {/* used inline style to create background image since it is on state */}
         <div className="header-overlay">
-          <h1 className="app-name">CineView</h1>
-          <div className="app-subtitle">Real People. Real Reviews.</div>
-          <div className="landing-page-route-wrapper">
-            <label className="landing-label">Search for Movies:</label>
-            <input
-              onChange={this.handleChange}
-              className="landing-input"
-              type="text"
-              placeholder={this.state.randomTitle}
+          
+            <HeroElement 
+              className={this.state.resultLength > 0 ? "search-result-header" : "hidden"}
+              searchHandler={this.searchHandler}
+              getReleaseYear={this.getReleaseYear}
+              handleChange={this.handleChange}
+              randomTitle={this.state.randomTitle}
+              resultLength={this.state.resultLength}
+              searchCriteria={this.state.searchCriteria}
+              searchResults={this.state.searchResults}
             />
-            <div className="call-to-action-buttons">
-              <div className="button" onClick={this.searchHandler}>
-                CineView Search
-              </div>{' '}
-              {/* button end */}
-            </div>
-            {/* call to action buttons button end*/}
-            <div
-              className={
-                this.state.resultLength > 0
-                  ? 'search-results'
-                  : 'hidden'
-              }
-            >
-              <h1
-                className={
-                  this.state.resultLength > 0
-                    ? 'search-results-header'
-                    : 'hidden'
-                }
-              >
-                <div className="search-results-query">
-                  <h5>Search Results:</h5> 
-                  <h5 className="query"> {this.state.searchCriteria}</h5>
-                  <h5 className="result-length">({this.state.resultLength} results)</h5>
-                </div>
-              </h1>
-
-              <div className="search-results-container">
-                {this.state.searchResults.map(result => {
-                  console.log(result.id);
-                  return (
-                    //saving index on result-card so that index is available to query movie details information
-                    //TODO: Query movie details information so that each movie can have it's own profile page.
-
-                    <div
-                      className="result-card"
-                      key={result.id}
-                      index={result.id}
-                    >
-                      <h1 className="search-results-header">
-                        {`${result.title} ${this.getReleaseYear(
-                          result.release_date
-                        )}`}
-                      </h1>
-                      {/* TODO: Make image a link that will pass props to singlemovie component */}
-                      <img
-                        className="poster-img"
-                        src={
-                          result.poster_path
-                            ? `https://image.tmdb.org/t/p/original${
-                                result.poster_path
-                              }`
-                            : 'https://via.placeholder.com/300x450.png?text=Photo+Not+Available'
-                          // placeholder from : C/O https://placeholder.com/#How_To_Set_Custom_Text"
-                        }
-                        alt={result.title}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </div>
         </div>
-      </div>
     );
   }
 }
