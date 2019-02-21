@@ -1,67 +1,60 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
 
-export default class Example extends React.Component {
-  constructor(props) {
-    super(props);
+import RenderLogin from './RenderLogin';
+import RenderDropdown from './RenderDropdown';
+import { login, logout } from '../../services/twitterURLs';
+import { ReactComponent as TwitterLogin } from '../../assets/svg/btn_twitter_1.svg';
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+export default class Navigation extends Component {
+  state = { isOpen: false };
+
+  toggle = () => this.setState({ isOpen: !this.state.isOpen });
+
   render() {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">CineView</NavbarBrand>
+          <Link to="/">CineView</Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/">Write Review</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="">smth</NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>Profile</DropdownItem>
-                  <DropdownItem>
-                    <Link to="/myreviews/">My Review</Link>
-                  </DropdownItem>
-                  <DropdownItem>Saved Reviews</DropdownItem>
-                  <DropdownItem>Option One</DropdownItem>
-                  <DropdownItem>Option Two</DropdownItem>
-                  <DropdownItem>Terms</DropdownItem>
-                  <DropdownItem>Settings</DropdownItem>
-                  <DropdownItem>Logout</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <RenderLogin>
+                <a href={login}>
+                  <TwitterLogin />
+                </a>
+              </RenderLogin>
+              <RenderDropdown>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Options
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem>Profile</DropdownItem>
+                    <DropdownItem>
+                      <Link to="/myreviews">My Reviews</Link>
+                    </DropdownItem>
+                    <DropdownItem>Saved Reviews</DropdownItem>
+                    <DropdownItem>Option One</DropdownItem>
+                    <DropdownItem>Option Two</DropdownItem>
+                    <DropdownItem>Terms</DropdownItem>
+                    <DropdownItem>Settings</DropdownItem>
+                    <a href={logout}>
+                      <DropdownItem>Logout</DropdownItem>
+                    </a>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </RenderDropdown>
             </Nav>
           </Collapse>
         </Navbar>
