@@ -9,6 +9,8 @@ const HeroInput = (props) => {
             onChange={props.handleChange}
             className="landing-input"
             type="text"
+            name="searchCriteria"
+            value={props.searchCriteria}
             placeholder={props.randomTitle}
         />
         </>
