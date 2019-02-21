@@ -22,15 +22,15 @@ function MyReviewsList(props) {
   );
 }
 
-function ReviewDetails({ review }) {
-  const { textBody } = review;
-  return (
-    <div className="review-card">
-      <div className="text-body">
-        {textBody.length > 84 ? textBody.slice(0, 84) + '...' : textBody}
-      </div>
-    </div>
-  );
-}
+// function ReviewDetails({ review }) {
+//   const { textBody } = review;
+//   return (
+//     <div className="review-card">
+//       <div className="text-body">
+//         {textBody.length > 84 ? textBody.slice(0, 84) + '...' : textBody}
+//       </div>
+//     </div>
+//   );
+// }
 
 export default MyReviewsList;
