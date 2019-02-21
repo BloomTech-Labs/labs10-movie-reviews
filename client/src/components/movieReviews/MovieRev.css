@@ -1,0 +1,12 @@
+.ratingStar {
+  display: flex;
+}
+
+.movieRevWrapper,
+.secondCol {
+  margin-top: 30px;
+}
+
+.bodyRev {
+  text-align: left;
+}

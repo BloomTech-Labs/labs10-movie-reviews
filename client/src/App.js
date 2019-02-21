@@ -9,6 +9,7 @@ import Navigation from './components/navbar/Navigation';
 import Dummyusers from './components/dummyuser/DummyUser';
 import './App.css';
 import SearchResults from './components/home/Hero/SearchResults';
+import MovieRev from './components/movieReviews/MovieRev';
 
 //Add constructor/expanded state on App Component
 class App extends Component {
@@ -185,6 +186,7 @@ class App extends Component {
         />
         <Route path="/dummyusers" component={Dummyusers} />
         <Route path="/myreviews" component={MyReviews} />
+        <Route path="/moviereviews" component={MovieRev} />
         {/* <Route exact path="/movie/get/:id" component={SingleMovieView} /> */}
       </div>
     );
