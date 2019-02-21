@@ -107,12 +107,12 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  margin-left: 30px;
+  margin: 50px 30px 0px 0px;
   height: 50px;
 }
 
 .search-results-header {
-  margin: 80px 0px 30px 0px;
+  margin: 10px 0px 30px 0px;
   color: black;
   font-size: large;
   height: 30px;
