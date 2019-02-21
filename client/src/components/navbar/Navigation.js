@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -39,7 +40,7 @@ export default class Example extends React.Component {
                 <NavLink href="/components/">Components</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/review-form/">Write Review</NavLink>
+                <NavLink href="/">Write Review</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="">smth</NavLink>
@@ -50,7 +51,9 @@ export default class Example extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>Profile</DropdownItem>
-                  <DropdownItem>My Reviews</DropdownItem>
+                  <DropdownItem>
+                    <Link to="/myreviews/">My Review</Link>
+                  </DropdownItem>
                   <DropdownItem>Saved Reviews</DropdownItem>
                   <DropdownItem>Option One</DropdownItem>
                   <DropdownItem>Option Two</DropdownItem>
