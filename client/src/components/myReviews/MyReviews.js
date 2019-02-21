@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 // import './components/NoteForm.css';
 // import './components/Note.css';
 
-import { Route, NavLink, withRouter } from 'react-router-dom';
+// import { Route, NavLink, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import ReviewsList from './MyReviewsList';
-import ReviewForm from './ReviewForm';
-import SingleReview from './SingleReview';
+// import ReviewForm from './ReviewForm';
+// import SingleReview from './SingleReview';
 
 class MyReviews extends Component {
   state = {

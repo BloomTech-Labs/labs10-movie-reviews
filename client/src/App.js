@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import axios from 'axios';
 
 import Home from './components/home/Home';
 import MyReviews from './components/myReviews/MyReviews';
-import ReviewForm from './components/myReviews/ReviewForm';
+// import ReviewForm from './components/myReviews/ReviewForm';
 // import SingleMovieView from './components/home/SingleMovieView';
 import Navigation from './components/navbar/Navigation';
 import Dummyusers from './components/dummyuser/DummyUser';

@@ -4,11 +4,11 @@ import './mappedItem.css';
 import {
   Card,
   CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button
+  // CardText,
+  // CardBody,
+  CardTitle
+  // CardSubtitle,
+  // Button
 } from 'reactstrap';
 
 
