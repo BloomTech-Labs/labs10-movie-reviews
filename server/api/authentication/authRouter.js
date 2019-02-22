@@ -23,7 +23,7 @@ router.get(
   passport.authenticate('twitter'),
   (req, res) => {
     if (process.env.NODE_ENV === 'production') {
-      res.redirect('https://movie-reviews.netlify.com');
+      res.redirect('https://cineview.netlify.com');
     } else res.redirect('http://localhost:3000');
   }
 );
@@ -38,7 +38,7 @@ router.get(
 router.get('/logout', (req, res) => {
   req.logout();
   if (process.env.NODE_ENV === 'production') {
-    res.redirect('https://movie-reviews.netlify.com');
+    res.redirect('https://cineview.netlify.com');
   } else res.redirect('http://localhost:3000');
 });
 
