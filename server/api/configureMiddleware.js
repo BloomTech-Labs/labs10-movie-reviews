@@ -7,7 +7,7 @@ const keys = require('../config/keys');
 
 const corsOptions = {
   credentials: true,
-  origin: ['http://localhost:3000', 'https://movie-reviews.netlify.com']
+  origin: ['http://localhost:3000', 'https://cineview.netlify.com']
 };
 
 // list of middlewares configured to our Express
@@ -16,7 +16,7 @@ module.exports = server => {
   server.use(express.json());
   server.use(
     cookieSession({
-      name: 'movie-reviews',
+      name: 'cineview',
       keys: [keys.cookieKey],
       maxAge: 24 * 60 * 60 * 1000
     })
