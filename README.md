@@ -2,5 +2,5 @@
 
 ### Deployment
 
-Client: [https://movie-reviews.netlify.com/](https://movie-reviews.netlify.com/)
+Client: [https://cineview.netlify.com/](https://cineview.netlify.com/)
 Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-reviews.herokuapp.com/)
