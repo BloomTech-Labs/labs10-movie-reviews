@@ -1,9 +1,9 @@
 import React from 'react';
-import MappedItem from './MappedItem';
-
-import './mappedItem.css';
-import { Card } from 'reactstrap';
 import Hero from './Hero/Hero';
+import Jumbotron from "./Jumbotron";
+import MappedItem from './MappedItem';
+import { Card } from 'reactstrap';
+import './mappedItem.css';
 
 
 const Home = (props) => {
@@ -20,14 +20,8 @@ const Home = (props) => {
         searchCriteria={props.searchCriteria}
       
       />
+      <Jumbotron />
       <div className="home-page">
-        <h1>Welcome back, User!</h1>
-        <div className="featured">
-          <h2>Featured Review</h2>
-          <span className="imgFeat" />
-          <p>Name of the movie</p>
-          <p>Name of the user</p>
-        </div>
         <div className="featured">
           <h2>Popular Movies</h2>
           <div className="cardWrapper">

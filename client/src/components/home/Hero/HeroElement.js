@@ -17,10 +17,11 @@ const HeroElement = props => {
           label="Search for Movies:"
         />
         <HeroButton
-          buttonLabel="CineView Search"
+          buttonLabel="Search"
           searchCriteria={props.searchCriteria}
           searchHandler={props.searchHandler}
         />
+      </div>
 
         <Search 
             className={props.className}
@@ -30,7 +31,6 @@ const HeroElement = props => {
             searchCriteria={props.searchCriteria}
             searchResults={props.searchResults}
         />
-      </div>
     </>
   );
 };

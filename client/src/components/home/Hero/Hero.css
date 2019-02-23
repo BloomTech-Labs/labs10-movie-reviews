@@ -48,14 +48,20 @@
 
 .landing-page-route-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: center;
   margin-top: 100px;
-  width: 80%;
+  width: 100%;
   height: auto;
 }
 
+.hero-input {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
 .landing-label {
+  display:flex;
   align-self: flex-start;
   color: white;
   font-weight: bold;
@@ -63,20 +69,28 @@
 
 .landing-input {
   width: 100%;
-  height: 40px;
-  border-radius: 5px;
+  height: 5vh;
+  padding-left: 10px;
+  border-radius: 5px 0px 0px 5px;
+  background-color: rgba(255, 255, 255, .7)
+}
+
+.input-label-div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
 .button {
-  margin: 25px;
   padding: 15px;
   height: 5vh;
   width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 0px 5px 5px 0px;
   background-color: var(--button-color);
+  background-blend-mode: color;
   color: var(--main-font-color);
   font-weight: bold;
   text-decoration: none;
@@ -139,7 +153,7 @@
 .search-results-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   color: black;
   width: 100%;
 }
@@ -165,10 +179,10 @@
   text-align: left;
 }
 
-@media only screen and (max-width: 401px) {
+@media only screen and (max-width: 426px) {
   .hero {
     min-width: 100%;
-    height: 55vh;
+    height: 35vh;
   }
 
   .app-name {
@@ -177,16 +191,13 @@
   }
 
   .app-subtitle {
+    display: block;
+    font-size: 1.0em;
+  }
+  .landing-page-route-wrapper {
     display: none;
   }
 
-  .landing-input {
-    height: 6vh;
-  }
-
-  .button {
-    height: 8vh;
-  }
 
   .search-results-container {
     width: 100%;
