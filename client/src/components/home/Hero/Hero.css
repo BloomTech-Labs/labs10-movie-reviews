@@ -14,7 +14,6 @@
   justify-content: center;
   min-width: 100%;
   height: 50vh;
-  margin-bottom: 30px;
   background-size: cover;
   background-position: top left;
   filter: opacity(1);
@@ -56,7 +55,13 @@
   height: auto;
 }
 
+.hero-input {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
 .landing-label {
+  display:flex;
   align-self: flex-start;
   color: white;
   font-weight: bold;
@@ -174,10 +179,10 @@
   text-align: left;
 }
 
-@media only screen and (max-width: 401px) {
+@media only screen and (max-width: 426px) {
   .hero {
     min-width: 100%;
-    height: 55vh;
+    height: 35vh;
   }
 
   .app-name {
@@ -186,20 +191,13 @@
   }
 
   .app-subtitle {
+    display: block;
+    font-size: 1.0em;
+  }
+  .landing-page-route-wrapper {
     display: none;
   }
 
-  .landing-page-router-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  .landing-input {
-    height: 5vh;
-  }
-
-  .button {
-    height: 5vh;
-  }
 
   .search-results-container {
     width: 100%;
