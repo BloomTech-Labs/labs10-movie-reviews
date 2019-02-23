@@ -48,9 +48,9 @@ export default class Navigation extends React.Component {
                   handleChange={this.props.handleChange}
                 />
               <RenderLogin>
-                <Link to={login}>
+                <a href={login}>
                   <TwitterLogin />
-                </Link>
+                </a>
               </RenderLogin>
               <RenderDropdown>
               <UncontrolledDropdown nav inNavbar>
