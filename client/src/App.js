@@ -144,7 +144,15 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Navigation loading={this.state.loading} />
+        <Navigation 
+          handleChange={this.handleChange}
+          loading={this.state.loading} 
+          searchHandler={this.searchHandler}
+          searchCriteria={this.state.searchCriteria}
+          searchResults={this.state.searchResults}
+
+        
+        />
         {/* exact path limits the page from rendering to 
         anything other than the path mentioned */}
         <Route
