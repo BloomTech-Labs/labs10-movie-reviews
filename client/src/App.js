@@ -10,6 +10,7 @@ import Dummyusers from './components/dummyuser/DummyUser';
 import './App.css';
 import SearchResults from './components/home/Hero/SearchResults';
 import MovieRev from './components/movieReviews/MovieRev';
+import PremiumView from './components/premium/PremiumView';
 
 //Add constructor/expanded state on App Component
 class App extends Component {
@@ -195,6 +196,7 @@ class App extends Component {
         <Route path="/dummyusers" component={Dummyusers} />
         <Route path="/myreviews" component={MyReviews} />
         <Route path="/moviereviews" component={MovieRev} />
+        <Route path="/premium" component={PremiumView} />
         {/* <Route exact path="/movie/get/:id" component={SingleMovieView} /> */}
       </div>
     );
