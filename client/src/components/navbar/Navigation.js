@@ -66,9 +66,9 @@ export default class Navigation extends React.Component {
                   <DropdownItem>
                     Become a Premium Reviewer!
                   </DropdownItem>
-                  <Link to={logout}>
+                  <a href={logout}>
                       <DropdownItem>Logout</DropdownItem>
-                  </Link>
+                  </a>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </RenderDropdown>
