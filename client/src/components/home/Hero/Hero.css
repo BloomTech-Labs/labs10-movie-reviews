@@ -148,7 +148,7 @@
 .search-results-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   color: black;
   width: 100%;
 }
