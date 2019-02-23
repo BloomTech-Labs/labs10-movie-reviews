@@ -15,7 +15,7 @@ const NavSearch = (props) => {
             />
             <div className="call-to-action-buttons">
                 <div className="button-nav" onClick={props.searchHandler}>
-                    <Link to={`/search/?q=${props.searchCriteria}`}>{<i class="fas fa-search"></i>}</Link>
+                    <Link to={`/search/?q=${props.searchCriteria}`}>{<i className="fas fa-search"></i>}</Link>
                 </div>
             </div>
         </div>
