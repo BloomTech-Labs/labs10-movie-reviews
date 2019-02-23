@@ -1,0 +1,29 @@
+.input-and-button {
+    display: flex;
+    margin: 5px;
+}
+
+
+.button-nav {
+    padding: 15px;
+    height: 4vh;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 0px 20px 0px 0px;
+    align-items: center;
+    border-radius: 0px 5px 5px 0px;
+    background-color: royalblue;
+    background-blend-mode: color;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-input {
+  height: 4vh;
+  padding-left: 10px;
+  border-radius: 5px 0px 0px 5px;
+  width: 200px;
+  background-color: whitesmoke;
+}
