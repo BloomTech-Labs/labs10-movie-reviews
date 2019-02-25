@@ -13,7 +13,7 @@ const PayButton = props => {
   };
 
   axios
-    .post("http://localhost:8000", body)
+    .post("http://localhost:5000/api/payment", body)
     .then(response => {
       console.log("response", response);
     })
