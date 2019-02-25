@@ -150,14 +150,12 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Navigation 
+        <Navigation
           handleChange={this.handleChange}
-          loading={this.state.loading} 
+          loading={this.state.loading}
           searchHandler={this.searchHandler}
           searchCriteria={this.state.searchCriteria}
           searchResults={this.state.searchResults}
-
-        
         />
         {/* exact path limits the page from rendering to 
         anything other than the path mentioned */}
@@ -201,11 +199,11 @@ class App extends Component {
           />
           <Route path="/dummyusers" component={Dummyusers} />
           <Route path="/myreviews" component={MyReviews} />
-          <Route path="/moviereviews" component={MovieRev} />
+          <Route path="/moviereviews/:id" component={MovieRev} />
           <Route path="/premium" component={PremiumView} />
           <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact}/>
-          <Route path="/privacy" component={Privacy}/>
+          <Route path="/contact" component={Contact} />
+          <Route path="/privacy" component={Privacy} />
           <Route path="/terms" component={Terms} />
           {/* <Route exact path="/movie/get/:id" component={SingleMovieView} /> */}
         </Switch>

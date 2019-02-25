@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     users.string('username', 20).unique(); // username field
     users.string('name', 100); // name field
     users.string('email', 254); // email field
+    users.boolean('premium_user').defaultTo(false);
     users.timestamp('created_at').defaultTo(knex.fn.now()); // user creation date
     users.timestamp('updated_at').defaultTo(knex.fn.now()); // last updated
   });

@@ -1,83 +1,146 @@
 import React from 'react';
 import './MovieRev.css';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, Button, CardImg } from 'reactstrap';
+import axios from 'axios';
+import UserReview from './UserReview';
 
 export default class MovieRev extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       id: 0,
-      twitter: '',
+      title: '',
       rating: 0,
-      text: '',
-      loading: true
+      year: '',
+      overview: '',
+      img: '',
+      trailerKey: '',
+      reviews: []
+      //   loading: true
     };
   }
+  componentDidMount() {
+    const movie_id = this.props.match.params.id;
+    const promise = axios.get(
+      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${
+        process.env.REACT_APP_API
+      }&language=en-US`
+    );
+    promise
+      .then(response => {
+        // console.log('response in movie rev: ', response);
+        this.setState({
+          title: response.data.title,
+          year: response.data.release_date,
+          overview: response.data.overview,
+          img: response.data.backdrop_path,
+          id: response.data.id
+          //   loading: false
+        });
+        // console.log('movies id: ', this.state.id);
+        // //sets the information retrieved onto state
+        return axios.get(
+          `https://api.themoviedb.org/3/movie/${
+            this.props.match.params.id
+          }?api_key=${process.env.REACT_APP_API}&append_to_response=videos`
+        );
+      })
+      .then(response => {
+        // console.log('Nested response: ', response);
+        const result = response.data.videos.results.filter(
+          word => word.type === 'Trailer'
+        );
+        this.setState({
+          trailerKey: result[0].key
+        });
+        // console.log('filtered result: ', result);
+        return axios.get(`http://localhost:5000/api/reviews`);
+      })
+      .then(response => {
+        // console.log('third Nested response: ', response);
+        const result = response.data.filter(
+          item => item.movieId === this.state.id
+        );
+        this.setState({
+          reviews: result
+          //   loading: false
+        });
+        // console.log('filtered result in third nested: ', result);
+        // console.log('review state after third nested: ', this.state.reviews);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
   render() {
+    // console.log('all props movie rev has: ', this.props);
+
+    const data = this.state.reviews;
+    // const { loading } = this.state;
+    // if (loading) {
+    //   return (
+    //     <div>
+    //       <h1>Loading...</h1>
+    //     </div>
+    //   );
+    // }
+    console.log('length: ', this.state.reviews.length);
     return (
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
-        <Row> 
+        <Row>
           <Col sm="4">
-            <h4>Title of the Movie</h4>
+            <h4>{this.state.title}</h4>
+            <p />
             <div className="placeholder">
-              <a href="https://placeholder.com">
-                <img src="https://via.placeholder.com/150" />
-              </a>
+              <CardImg
+                src={`http://image.tmdb.org/t/p/original${this.state.img}`}
+                alt="image"
+              />
             </div>
             <p />
-            <Button>Watch Now</Button>
+            <Button>
+              <a
+                href={`https://www.youtube.com/embed/${
+                  this.state.trailerKey
+                }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Trailer
+              </a>
+            </Button>
             <p />
-            <Button>Write Review</Button>
-            <p>Year: </p>
-            <p>Genre: </p>
-            <p>Description: </p>
+            <Button>
+              {' '}
+              <Link
+                to={{
+                  pathname: `/reviewform/${this.state.id}`,
+                  state: { id: this.state.id }
+                }}
+              >
+                Write Review
+              </Link>
+            </Button>
+            <p />
+            <p>Release Date: {this.state.year}</p>
+            {/* <p>Genre: </p> */}
+            <p>Description: {this.state.overview} </p>
           </Col>
 
           {/* 12 grid B */}
-          <Col sm="8" className="secondCol"> 
-            <Row>
-              <Col sm="4">
-                <div className="placeholder">
-                  <a href="https://placeholder.com">
-                    <img src="https://via.placeholder.com/100" />
-                  </a>
-                </div>
-                <p>
-                  Member Status: <br />
-                  Location: <br />
-                  Name: <br />
-                  Num of Reviews:{' '}
-                </p>
-              </Col>
-
-              <Col sm="8">
-                <div className="ratingStar">
-                  <p>
-                    Rating Stars: <span>Date: </span>
-                  </p>
-                </div>
-                <div className="bodyRev">
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
-                  </p>
-                </div>
-              </Col>
-            </Row> 
-            {/* end of Grid B */}
+          <Col sm="8" className="secondCol">
+            {this.state.reviews.length > 0 ? (
+              data.map(item => {
+                return <UserReview key={item.id} item={item} />;
+              })
+            ) : (
+              <h4>Be the first to leave a review</h4>
+            )}
           </Col>
-        </Row> 
+        </Row>
         {/* end of 12 Grid A */}
-        
       </Container>
     );
   }
