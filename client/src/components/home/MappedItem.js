@@ -11,12 +11,11 @@ import {
   // Button
 } from 'reactstrap';
 
-
-const MappedItem = (props) => {
+const MappedItem = props => {
   return (
     <div className="singleMovie">
       <Card>
-        <Link to={`movie/get/${props.item.id}`} className="linksMovie">
+        <Link to={`moviereviews/${props.item.id}`} className="linksMovie">
           <CardImg
             //   width="30%"
             src={`http://image.tmdb.org/t/p/original//${
