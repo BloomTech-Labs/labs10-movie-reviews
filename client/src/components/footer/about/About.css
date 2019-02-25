@@ -1,0 +1,26 @@
+.about-wrapper {
+    width: 100%;
+    min-height: 84vh;
+    padding: 10px 0px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-wrapper h2 {
+    font-weight: bold;
+    text-align: left;
+    width: 50%;
+}
+.about-text {
+    width: 50%;
+    text-align:left;
+}
+
+.tmdb-terms-block {
+    display: block;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgb(237, 237, 237);
+    border-radius: 5px;
+}

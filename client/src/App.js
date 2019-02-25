@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Home from './components/home/Home';
 import MyReviews from './components/myReviews/MyReviews';
@@ -11,6 +11,11 @@ import './App.css';
 import SearchResults from './components/home/Hero/SearchResults';
 import MovieRev from './components/movieReviews/MovieRev';
 import PremiumView from './components/premium/PremiumView';
+import About from './components/footer/about/About';
+import Contact from './components/footer/contact/Contact';
+import Privacy from './components/footer/privacy/PrivacyPolicy';
+import Terms from './components/footer/terms/Terms';
+import Footer from './components/footer/Footer';
 
 //Add constructor/expanded state on App Component
 class App extends Component {
@@ -156,48 +161,55 @@ class App extends Component {
         />
         {/* exact path limits the page from rendering to 
         anything other than the path mentioned */}
-        <Route
-          exact
-          path="/"
-          render={props => (
-            <Home
-              {...props}
-              movies={this.state.movies}
-              loading={this.state.loading}
-              randomBackgroundImage={this.state.random}
-              randomTitle={this.state.randomTitle}
-              getReleaseYear={this.getReleaseYear}
-              handleChange={this.handleChange}
-              searchHandler={this.searchHandler}
-              searchResults={this.state.searchResults}
-              searchCriteria={this.state.searchCriteria}
-            />
-          )}
-        />
-        {/* Route goes to the search query - passed props through route
-        so that I wouldn't have to do it through Link on component file*/}
-        <Route
-          path={`/search`}
-          render={props => (
-            <SearchResults
-              {...props}
-              movies={this.state.movies}
-              loading={this.state.loading}
-              randomBackgroundImage={this.state.random}
-              randomTitle={this.state.randomTitle}
-              getReleaseYear={this.getReleaseYear}
-              handleChange={this.handleChange}
-              searchHandler={this.searchHandler}
-              searchResults={this.state.searchResults}
-              searchCriteria={this.state.searchCriteria}
-            />
-          )}
-        />
-        <Route path="/dummyusers" component={Dummyusers} />
-        <Route path="/myreviews" component={MyReviews} />
-        <Route path="/moviereviews" component={MovieRev} />
-        <Route path="/premium" component={PremiumView} />
-        {/* <Route exact path="/movie/get/:id" component={SingleMovieView} /> */}
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Home
+                {...props}
+                movies={this.state.movies}
+                loading={this.state.loading}
+                randomBackgroundImage={this.state.random}
+                randomTitle={this.state.randomTitle}
+                getReleaseYear={this.getReleaseYear}
+                handleChange={this.handleChange}
+                searchHandler={this.searchHandler}
+                searchResults={this.state.searchResults}
+                searchCriteria={this.state.searchCriteria}
+              />
+            )}
+          />
+          {/* Route goes to the search query - passed props through route
+          so that I wouldn't have to do it through Link on component file*/}
+          <Route
+            path={`/search`}
+            render={props => (
+              <SearchResults
+                {...props}
+                movies={this.state.movies}
+                loading={this.state.loading}
+                randomBackgroundImage={this.state.random}
+                randomTitle={this.state.randomTitle}
+                getReleaseYear={this.getReleaseYear}
+                handleChange={this.handleChange}
+                searchHandler={this.searchHandler}
+                searchResults={this.state.searchResults}
+                searchCriteria={this.state.searchCriteria}
+              />
+            )}
+          />
+          <Route path="/dummyusers" component={Dummyusers} />
+          <Route path="/myreviews" component={MyReviews} />
+          <Route path="/moviereviews" component={MovieRev} />
+          <Route path="/premium" component={PremiumView} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact}/>
+          <Route path="/privacy" component={Privacy}/>
+          <Route path="/terms" component={Terms} />
+          {/* <Route exact path="/movie/get/:id" component={SingleMovieView} /> */}
+        </Switch>
+        <Footer />
       </div>
     );
   }
