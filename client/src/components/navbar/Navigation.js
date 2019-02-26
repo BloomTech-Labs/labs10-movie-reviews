@@ -13,8 +13,9 @@ import {
 
 import RenderLogin from './RenderLogin';
 import RenderDropdown from './RenderDropdown';
-import { login, logout } from '../../services/twitterURLs';
-import { ReactComponent as TwitterLogin } from '../../assets/svg/btn_twitter_1.svg';
+import { googleLogin, logout } from '../../services/authURLs';
+// import { ReactComponent as TwitterLogin } from '../../assets/svg/btn_twitter_1.svg';
+import GoogleLogin from '../../assets/svg/btn_google_1.png';
 import Search from './NavSearch';
 
 export default class Navigation extends React.Component {
@@ -45,8 +46,8 @@ export default class Navigation extends React.Component {
                 handleChange={this.props.handleChange}
               />
               <RenderLogin>
-                <a href={login}>
-                  <TwitterLogin />
+                <a href={googleLogin}>
+                  <img src={GoogleLogin} alt="Google Login" />
                 </a>
               </RenderLogin>
               <RenderDropdown>
