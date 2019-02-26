@@ -9,7 +9,8 @@ class Review extends Component {
     movieId: null,
     twitterhandle: '',
     rating: null,
-    textBody: ''
+    textBody: '',
+    isEditing: false
   };
 
   // sets review id to this.id for use in deleting
@@ -74,6 +75,12 @@ class Review extends Component {
         console.error(error);
       });
     window.location.reload();
+  };
+
+  // allows us to edit the current review
+  toggleEdit = e => {
+    e.preventDefault();
+    this.setState({ isEditing: true });
   };
 
   render() {
