@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Review = props => {
-  return (
-    <div>
-      <p>rating: {props.review.rating}</p>
-      <p>textbody: {props.review.textBody}</p>
-    </div>
-  );
-};
+class Review extends Component {
+  state = {
+    review: null,
+    userId: null,
+    movieId: null,
+    twitterhandle: '',
+    rating: null,
+    textBody: ''
+  };
+
+  render() {
+    const { rating, textBody } = this.props.review;
+
+    return (
+      <div>
+        <p>rating: {rating}</p>
+        <p>textbody: {textBody}</p>
+      </div>
+    );
+  }
+}
 
 export default Review;
