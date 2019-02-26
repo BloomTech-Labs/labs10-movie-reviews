@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import ReviewsList from './MyReviewsList';
-import WriteReview from './WriteReview';
+import ReviewForm from './ReviewForm';
 
 class MyReviews extends Component {
   state = {
@@ -72,7 +72,7 @@ class MyReviews extends Component {
         </header>
         <div className="reviews-section">
           <ReviewsList reviewslist={this.state.reviews} />
-          <WriteReview
+          <ReviewForm
             userId={this.state.userId}
             movieId={this.state.movieId}
             twitterhandle={this.state.twitterhandle}
