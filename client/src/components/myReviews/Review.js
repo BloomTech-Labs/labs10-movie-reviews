@@ -102,6 +102,9 @@ class Review extends Component {
       <div>
         <p>rating: {rating}</p>
         <p>textbody: {textBody}</p>
+        <button className="delete-edit-btn" onClick={this.toggleEdit}>
+          Edit
+        </button>
         <button className="delete-edit-btn" onClick={this.handleDelete}>
           Delete
         </button>
