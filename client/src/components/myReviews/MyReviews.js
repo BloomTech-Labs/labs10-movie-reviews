@@ -7,6 +7,10 @@ import ReviewsList from './MyReviewsList';
 class MyReviews extends Component {
   state = {
     reviews: [],
+    userId: null,
+    movieId: null,
+    twitterhandle: '',
+    rating: null,
     textBody: ''
   };
 
