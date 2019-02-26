@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
+const keys = require('../../config/keys');
 
 // ==============================================
 // Step #1 of login flow ➡️
@@ -51,5 +52,16 @@ router.get('/logout', (req, res) => {
 // logged in.
 // ==============================================
 router.get('/current_user', (req, res) => res.send(req.user));
+
+// passport.authenticate middleware is used here to authenticate the request
+router.get('/google', passport.authenticate('google', {
+  scope: ['profile', 'email'] // Scope is Used to specify the required data
+})); 
+
+// The middleware receives the data from Google and runs the function on Strategy config
+router.get('/google/callback', passport.authenticate('google'), (req, res) => {
+  res.redirect(keys.redirect_uri);
+});
+
 
 module.exports = router;
