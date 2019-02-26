@@ -19,6 +19,32 @@ class MyReviews extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // allows us to create a new review and post it to the API
+  handleWriteNewReview = event => {
+    const review = {
+      userId: this.state.userId,
+      movieId: this.state.movieId,
+      twitterhandle: this.state.twitterhandle,
+      rating: this.state.rating,
+      textBody: this.state.textBody
+    };
+
+    axios
+      .post('http://localhost:5000/api/reviews', review)
+      .then(response => {
+        this.setState({
+          userid: response.data.userId,
+          movieId: response.data.movieId,
+          twitterhandle: response.data.twitterhandle,
+          rating: response.data.rating,
+          textBody: response.data.textBody
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   componentDidMount() {
     this.fetchReviews();
   }
