@@ -2,55 +2,51 @@ const stripeKey = require("../../config/keys");
 const stripe = require("stripe")(stripeKey.stripeSecretKey);
 const router = require('express').Router();
 
-// Handle Subscription and 
+// First, we create our customer. we use the stripe API will return a customer
+// object. The only thing we pass in the the create function is the email and
+// the source(the stripe token)
+
+// Second, subscribe the customer to a newly created subscription. 
+// Our subscription's settings are already set up in the Stripe dashboard.
+// All we need to provide here is the customer ID and the type of sub
+
 router.post('/payment/', function(req, res) {
-  const stripeToken = req.body.token.id;
-  console.log("req.body.token.email", req.body.token.email)
-  // const subscriptionType = subType === "yearly" ? "yearly" : "monthly"
+  // we gather information from the request from our React app.
+  const source = req.body.token.id; // stripe token created in the react app
+  const { email } = req.body.token; // the customer's email
+  let { plan } = req.body.plan; 
+  console.log("req.body", req.body);
 
-  stripe.customers.create({
-    email: req.body.token.email,
-    source: stripeToken,
-  }, function(err, customer) {
-    console.log("Error\n", err);
-    console.log("customer\n", customer);
+  // the type of plan. either one year subscription or a one month subscription
+  // This plan is a string was passed from the PremiumView component to the PayButton component. Then
+  // it was passed here in the request object. It is a string. "Yearly Subscription" or "Monthly Subscription"
 
-    // async called
-    if (err) {
-      res.send({
-        success: false,
-      });
-    } else {
-      const { id } = customer;
-      stripe.subscriptions.create({
-        customer: id,
-        items: [
-          {
-            plan: 'plan_EaodMeOqIEB5H1',
-            // plan: subscriptionType == 'yearly' ? 'plan_EaodMeOqIEB5H1' : 'prod_EaqH58DMsdeEEJ';
-          },
-        ],
-      }, function(err) {
-        // async called
-        console.log("Error\n", err);
-        
-        // if there's an error
-        if (err) {
-          res.send({
-            success: false,
+  plan = plan === "Yearly Subscription" 
+    ? 'plan_EaodMeOqIEB5H1' // id that represents 1 year subscription
+    : 'plan_EaqdBYrYWZb7IV'; // id that represents 1 month subscription
+
+  stripe
+    .customers
+    .create({ email , source }, (err, customer) => { // the first argument creates our new customer
+      console.log("customer id\n", customer);
+
+      err 
+        ? res.send({ createdCustomer: false }) // if there's an error in creating our customer
+        : stripe // Successfully created customer. Now we can create a sub for our customer
+          .subscriptions
+          .create({ 
+            customer: customer.id, 
+            items: [{ plan }] // the value of plan is the id of the plan
+          }, (err, subscription) => {
+            // console.log('subscription \n', su`bscription);
+            err
+              ? res.send({ createdSubscription: false })
+              : res.send({ createdSubscription: true })
           });
+      })
+})
 
-        // if successful
-        } else {
-          res.send({
-            success: true,
-          });
-        }
-      });
-    }
-  });
-});
-
+  // Leaving these payments for future use
   //! Payment method 2
   //   stripe.charges.create({
   //     amount: req.body.amount,
