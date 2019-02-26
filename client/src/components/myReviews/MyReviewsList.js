@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SingleReview from './SingleReview';
+import Review from './Review';
 
 function MyReviewsList(props) {
   if (props.reviewslist.length === 0) {
@@ -13,7 +13,7 @@ function MyReviewsList(props) {
         <div className="reviews-card-wrapper">
           {props.reviewslist.map(review => (
             <div className="review-card">
-              <SingleReview review={review} />
+              <Review review={review} />
             </div>
           ))}
         </div>
@@ -21,16 +21,5 @@ function MyReviewsList(props) {
     </div>
   );
 }
-
-// function ReviewDetails({ review }) {
-//   const { textBody } = review;
-//   return (
-//     <div className="review-card">
-//       <div className="text-body">
-//         {textBody.length > 84 ? textBody.slice(0, 84) + '...' : textBody}
-//       </div>
-//     </div>
-//   );
-// }
 
 export default MyReviewsList;
