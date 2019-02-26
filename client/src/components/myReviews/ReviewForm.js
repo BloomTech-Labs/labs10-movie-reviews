@@ -51,7 +51,9 @@ const ReviewForm = props => {
         />
       </div>
 
-      <button className="write-btn" onClick={props.handleWriteNewReview} />
+      <button className="write-btn" onClick={props.handleWriteNewReview}>
+        Write Review
+      </button>
     </form>
   );
 };
