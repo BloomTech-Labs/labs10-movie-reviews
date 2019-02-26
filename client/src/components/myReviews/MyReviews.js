@@ -1,20 +1,49 @@
 import React, { Component } from 'react';
-// import './App.css';
-// import './components/NotesList.css';
-// import './components/NoteForm.css';
-// import './components/Note.css';
 
-// import { Route, NavLink, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import ReviewsList from './MyReviewsList';
-// import ReviewForm from './ReviewForm';
-// import SingleReview from './SingleReview';
+import WriteReview from './WriteReview';
 
 class MyReviews extends Component {
   state = {
     reviews: [],
+    userId: null,
+    movieId: null,
+    twitterhandle: '',
+    rating: null,
     textBody: ''
+  };
+
+  // allows us to add twitterhandle, rating and textBody info for new review created on state
+  handleInputChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  // allows us to create a new review and post it to the API
+  handleWriteNewReview = event => {
+    const review = {
+      userId: this.state.userId,
+      movieId: this.state.movieId,
+      twitterhandle: this.state.twitterhandle,
+      rating: this.state.rating,
+      textBody: this.state.textBody
+    };
+
+    axios
+      .post('http://localhost:5000/api/reviews', review)
+      .then(response => {
+        this.setState({
+          userid: response.data.userId,
+          movieId: response.data.movieId,
+          twitterhandle: response.data.twitterhandle,
+          rating: response.data.rating,
+          textBody: response.data.textBody
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   componentDidMount() {
@@ -26,7 +55,6 @@ class MyReviews extends Component {
     axios
       .get('http://localhost:5000/api/reviews')
       .then(response => {
-        // console.log(response.data);
         this.setState({
           reviews: response.data
         });
@@ -37,8 +65,6 @@ class MyReviews extends Component {
   };
 
   render() {
-    // // console.log("PROCESS: ", process.env);
-    // if (this.isAuthenticated()) {
     return (
       <div className="My-Reviews">
         <header className="sidebar">
@@ -46,6 +72,15 @@ class MyReviews extends Component {
         </header>
         <div className="reviews-section">
           <ReviewsList reviewslist={this.state.reviews} />
+          <WriteReview
+            userId={this.state.userId}
+            movieId={this.state.movieId}
+            twitterhandle={this.state.twitterhandle}
+            rating={this.state.rating}
+            textBody={this.state.textBody}
+            handleWriteNewReview={this.handleWriteNewReview}
+            handleInputChange={this.handleInputChange}
+          />
         </div>
       </div>
     );
