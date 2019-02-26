@@ -1,7 +1,8 @@
 // ==============================================
 // 🎥🎥 Movie Reviews Server 🍿🍿
 // ==============================================
-const server = require('express')();
+const express = require('express');
+const server = express();
 const configureMiddleware = require('./api/configureMiddleware.js');
 require('./services/passport.js');
 
@@ -15,10 +16,23 @@ const port = process.env.PORT || 5000;
 // configure middlewares to our server
 configureMiddleware(server);
 
+// Middleware to check if the user is authenticated
+function isUserAuthenticated(req, res, next) {
+  if (req.user) {
+      next();
+  } else {
+      res.send('You must login!');
+  }
+}
+
 // configure routes to our server
 server.get('/', (req, res) =>
   res.send({ Success: 'Sanity check is working...' })
 );
+
+server.get('/sanityauth', isUserAuthenticated, (req, res) => {
+  res.send({Success: 'You have the secret!'})
+})
 
 server.use('/auth', authRouter);
 server.use('/api', userRouter);
