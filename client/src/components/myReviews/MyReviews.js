@@ -45,7 +45,7 @@ class MyReviews extends Component {
           <h1 className="App-title">My Reviews</h1>
         </header>
         <div className="reviews-section">
-          <ReviewsList ReviewsList={this.state.reviews} />
+          <ReviewsList reviewslist={this.state.reviews} />
         </div>
       </div>
     );

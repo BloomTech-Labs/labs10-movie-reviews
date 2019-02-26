@@ -1,7 +1,9 @@
 import React from 'react';
 
+import SingleReview from './SingleReview';
+
 function MyReviewsList(props) {
-  if (props.ReviewsList.length === 0) {
+  if (props.reviewslist.length === 0) {
     return <h1>No reviews found. Fetching data...</h1>;
   }
   return (
@@ -9,11 +11,9 @@ function MyReviewsList(props) {
       <div className="reviews-list-wrapper">
         <h2>Your Reviews:</h2>
         <div className="reviews-card-wrapper">
-          {props.ReviewsList.map(review => (
+          {props.reviewslist.map(review => (
             <div className="review-card">
-              {/* <p>twitterhandle: {review.twitterhandle}</p> */}
-              <p>rating: {review.rating}</p>
-              <p>textbody: {review.textBody}</p>
+              <SingleReview review={review} />
             </div>
           ))}
         </div>
