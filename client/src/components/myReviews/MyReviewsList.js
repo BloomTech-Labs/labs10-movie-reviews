@@ -1,7 +1,9 @@
 import React from 'react';
 
+import SingleReview from './SingleReview';
+
 function MyReviewsList(props) {
-  if (props.ReviewsList.length === 0) {
+  if (props.reviewslist.length === 0) {
     return <h1>No reviews found. Fetching data...</h1>;
   }
   return (
