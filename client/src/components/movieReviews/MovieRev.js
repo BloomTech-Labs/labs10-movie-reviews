@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, CardImg } from 'reactstrap';
 import axios from 'axios';
 import UserReview from './UserReview';
+import { currentReviews } from '../../services/currentUserURLs';
 
 export default class MovieRev extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ export default class MovieRev extends React.Component {
           trailerKey: result[0].key
         });
         // console.log('filtered result: ', result);
-        return axios.get(`http://localhost:5000/api/reviews`);
+        return axios.get(currentReviews);
       })
       .then(response => {
         // console.log('third Nested response: ', response);
