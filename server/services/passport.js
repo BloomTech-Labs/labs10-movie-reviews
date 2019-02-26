@@ -1,33 +1,75 @@
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
-
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const usersDb = require('../api/authentication/authHelper.js');
 const keys = require('../config/keys.js');
 
-// passport-twitter strategy
 // ==============================================
-passport.serializeUser((user, done) => done(null, user));
 
-passport.deserializeUser((obj, done) => done(null, obj));
+// Used to stuff a piece of information into a cookie
+passport.serializeUser((user, done) => {
+  console.log(user);
+  done(null, user);
+})
 
+// Used to decode the received cookie and persist session
+passport.deserializeUser((user, done) => {
+  console.log("user from deserializer", user);
+  done(null, user);
+})
+
+// passport-twitter strategy
+// passport.use(
+//   new TwitterStrategy(
+//     {
+//       consumerKey: keys.twitterConsumerKey,
+//       consumerSecret: keys.twitterConsumerSecret,
+//       callbackURL: '/auth/twitter/callback',
+//       proxy: true
+//     },
+//     async (token, tokenSecret, profile, done) => {
+//       const existingUser = await usersDb.findUserByProfileId({
+//         twitterId: profile.id
+//       });
+//       if (existingUser) {
+//         console.log(existingUser);
+//         done(null, existingUser);
+//       } else {
+//         const user = await usersDb.createUser({
+//           twitterId: profile.id,
+//           username: profile.username
+//         });
+//         console.log(user, "user from create");
+//         done(null, user);
+//       }
+//     }
+//   )
+// );
+
+// passport-google-strategy
 passport.use(
-  new TwitterStrategy(
+  new GoogleStrategy(
     {
-      consumerKey: keys.twitterConsumerKey,
-      consumerSecret: keys.twitterConsumerSecret,
-      callbackURL: '/auth/twitter/callback',
-      proxy: true
+      clientID: keys.googleClientId,
+      clientSecret: keys.googleClientSecret,
+      callbackURL: '/auth/google/callback',
     },
-    async (token, tokenSecret, profile, done) => {
-      const existingUser = await usersDb.findUserByTwitterId({
-        twitterId: profile.id
+     async (token, tokenSecret, profile, done) => {
+      const existingUser =  await usersDb.findUserByProfileId({
+        googleId: profile.id,
+        name: profile.displayName,
+        email: profile.emails[0].value,
+        photo: profile.photos[0].value
       });
       if (existingUser) {
+        console.log(existingUser);
         done(null, existingUser);
       } else {
-        const user = await usersDb.createUser({
-          twitterId: profile.id,
-          username: profile.username
+        const user =  await usersDb.createUser({
+          googleId: profile.id,
+          name: profile.displayName,
+          email: profile.emails[0].value,
+          photo: profile.photos[0].value
         });
         done(null, user);
       }

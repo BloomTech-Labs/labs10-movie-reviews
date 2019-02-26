@@ -9,7 +9,7 @@ module.exports = {
       .where('id', Number(id))
       .first();
   },
-  findUserByTwitterId: function(user) {
+  findUserByProfileId: function(user) {
     return db('users')
       .where(user)
       .first();
