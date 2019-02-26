@@ -1,36 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './mappedItem.css';
-import {
-  Card,
-  CardImg,
-  // CardText,
-  // CardBody,
-  CardTitle
-  // CardSubtitle,
-  // Button
-} from 'reactstrap';
+import { Card, CardImg, CardTitle, Col } from 'reactstrap';
 
 const MappedItem = props => {
   return (
-    <div className="singleMovie">
-      <Card>
-        <Link to={`moviereviews/${props.item.id}`} className="linksMovie">
-          <CardImg
-            //   width="30%"
-            src={`http://image.tmdb.org/t/p/original//${
-              props.item.backdrop_path
-            }`}
-            alt="image"
-          />
-          <CardTitle>
-            <h5 className="headings noteTitle">{props.item.title}</h5>
-          </CardTitle>
-          <hr />
-          {/* <p className="noteBody">{props.item.title}</p> */}
-        </Link>
-      </Card>
-    </div>
+    <Col md={3} sm={4} px-0>
+      <div className="singleMovie">
+        <Card>
+          <Link to={`moviereviews/${props.item.id}`} className="linksMovie">
+            <CardImg
+              src={`http://image.tmdb.org/t/p/original//${
+                props.item.backdrop_path
+              }`}
+              alt="image"
+            />
+            <CardTitle>{props.item.title}</CardTitle>
+            <hr />
+          </Link>
+        </Card>
+      </div>
+    </Col>
   );
 };
 
