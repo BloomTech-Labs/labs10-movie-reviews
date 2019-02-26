@@ -44,6 +44,38 @@ class Review extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  // allows us to edit and update state
+  handleEditReview = e => {
+    e.preventDefault();
+
+    const editedReview = {
+      userId: this.state.userId,
+      movieId: this.state.movieId,
+      twitterhandle: this.state.twitterhandle,
+      rating: this.state.rating,
+      textBody: this.state.textBody
+    };
+
+    axios
+      .put(`http://localhost:5000/api/reviews/${this.id}`, editedReview)
+      .then(response => {
+        this.props.fetchReviews();
+        this.setState({
+          review: response.data,
+          userid: response.data.userId,
+          movieId: response.data.movieId,
+          twitterhandle: response.data.twitterhandle,
+          rating: response.data.rating,
+          textBody: response.data.textBody,
+          isEditing: false
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    window.location.reload();
+  };
+
   render() {
     return (
       <div>
