@@ -1,17 +1,26 @@
 import React from 'react';
 
-function ReviewForm(props) {
-  const btnLabel = props.type === 'edit' ? 'Update' : 'Save';
-  const clickHandler = () => {
-    return props.type === 'edit'
-      ? props.handleEditReview
-      : props.handleAddNewReview;
-  };
+const WriteReview = props => {
   return (
     <form>
-      <h2 className="create-Review">
-        {props.type === 'edit' ? 'Edit:' : 'Write Review:'}
-      </h2>
+      <div className="form-div">
+        <p>userId</p>
+        <input
+          name="userId"
+          placeholder="1"
+          value={props.userId}
+          onChange={props.handleInputChange}
+        />
+      </div>
+      <div className="form-div">
+        <p>movieId</p>
+        <input
+          name="movieId"
+          placeholder="325470"
+          value={props.movieId}
+          onChange={props.handleInputChange}
+        />
+      </div>
       <div className="form-div">
         <p>twitterhandle</p>
         <input
@@ -34,11 +43,9 @@ function ReviewForm(props) {
         />
       </div>
 
-      <button className="save-update-btn" onClick={clickHandler()}>
-        {btnLabel}
-      </button>
+      <button className="write-btn" onClick={props.handleWriteNewReview} />
     </form>
   );
-}
+};
 
-export default ReviewForm;
+export default WriteReview;
