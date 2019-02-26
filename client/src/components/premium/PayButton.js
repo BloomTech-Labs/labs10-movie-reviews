@@ -16,21 +16,21 @@ const PayButton = props => {
     // the total amount of cents, and the props that specify 
     // the type of subscription, yearly or monthly
     const body = {
-      amount: props.totalCents,
-      token: token,
-      plan: props.header,
-  };
+        amount: props.totalCents,
+        token: token,
+        plan: props.header,
+    };
 
-  // we send the body object to our backend with an axios request.
-  // Our backend will then create a new customer and a new subscription.
-  axios
-    .post("http://localhost:5000/api/payment", body)
-    .then(response => {
-      console.log("response", response);
-    })
-    .catch(error => {
-      console.log("Payment Error: ", error);
-    });
+    // we send the body object to our backend with an axios request.
+    // Our backend will then create a new customer and a new subscription.
+    axios
+      .post("http://localhost:5000/api/payment", body)
+      .then(response => {
+        console.log("response", response);
+      })
+      .catch(error => {
+        console.log("Payment Error: ", error);
+      });
   };
 
   return (
@@ -47,7 +47,9 @@ const PayButton = props => {
       stripeKey={publishableKey}
       // image="" //Pop-in header image
       billingAddress={false}
-    />
+    >
+      <button className="btn border">Pay Now</button>
+    </StripeCheckout>
   );
 };
 
