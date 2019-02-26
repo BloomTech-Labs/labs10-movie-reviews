@@ -1,13 +1,9 @@
-.cardWrapper {
-  display: flex;
-  width: 100%;
-  /* flex-direction: row; */
-  flex-wrap: wrap;
-  justify-content: space-between;
+.col-sm-4,
+.col-md-3 {
+  padding-right: 0px;
+  padding-left: 0px;
 }
-.singleMovie {
-  /* display: inline-block; */
-  width: 25%;
-  /* margin: 30px 30px;
-  padding: 30px 30px; */
+.nopadding > div[class^='col-'] {
+  padding-right: 0;
+  padding-left: 0;
 }
