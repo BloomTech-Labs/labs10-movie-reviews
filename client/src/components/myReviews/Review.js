@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
+import ReviewForm from './ReviewForm';
+
 class Review extends Component {
   state = {
     review: null,
@@ -84,6 +86,8 @@ class Review extends Component {
   };
 
   render() {
+    const { rating, textBody, id } = this.props.review;
+
     // if edit mode is toggled, it returns the edit form
     if (this.state.isEditing) {
       return (
@@ -98,6 +102,7 @@ class Review extends Component {
         />
       );
     }
+
     return (
       <div>
         <p>rating: {rating}</p>
