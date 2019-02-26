@@ -14,6 +14,11 @@ class MyReviews extends Component {
     textBody: ''
   };
 
+  // allows us to add twitterhandle, rating and textBody info for new review created on state
+  handleInputChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   componentDidMount() {
     this.fetchReviews();
   }
