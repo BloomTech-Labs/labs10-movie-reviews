@@ -39,9 +39,12 @@ class Review extends Component {
     window.location.reload();
   };
 
-  render() {
-    const { rating, textBody } = this.props.review;
+  // changes rating and textBody on state when an edit happens
+  handleEditInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
+  render() {
     return (
       <div>
         <p>rating: {rating}</p>
