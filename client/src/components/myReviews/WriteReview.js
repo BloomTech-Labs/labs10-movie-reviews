@@ -29,6 +29,14 @@ const WriteReview = props => {
           value={props.twitterhandle}
           onChange={props.handleInputChange}
         />
+        <div className="form-div">
+          <input
+            name="rating"
+            placeholder="1-5"
+            value={props.rating}
+            onChange={props.handleInputChange}
+          />
+        </div>
       </div>
       <div className="form-div">
         <textarea
