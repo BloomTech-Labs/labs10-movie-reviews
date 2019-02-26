@@ -84,6 +84,20 @@ class Review extends Component {
   };
 
   render() {
+    // if edit mode is toggled, it returns the edit form
+    if (this.state.isEditing) {
+      return (
+        <ReviewForm
+          userId={this.state.userId}
+          movieId={this.state.movieId}
+          twitterhandle={this.state.twitterhandle}
+          rating={this.state.rating}
+          textBody={this.state.textBody}
+          handleEditReview={this.handleEditReview}
+          handleInputChange={this.handleEditInputChange}
+        />
+      );
+    }
     return (
       <div>
         <p>rating: {rating}</p>
