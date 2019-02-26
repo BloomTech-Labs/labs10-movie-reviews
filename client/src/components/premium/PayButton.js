@@ -7,9 +7,11 @@ const PayButton = props => {
 
   function onToken(token) {
     console.log("token", token)
+    console.log("props.header", props.header)
     const body = {
       amount: props.totalCents,
       token: token,
+      plan: props.header,
   };
 
   axios
@@ -24,6 +26,7 @@ const PayButton = props => {
 
   return (
     <StripeCheckout
+      yearly={props.header}
       label={props.buttonText} //Component button text
       name={props.header} //Modal Header
       description={props.priceTitle}
