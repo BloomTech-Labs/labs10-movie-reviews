@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-// import './App.css';
-// import './components/NotesList.css';
-// import './components/NoteForm.css';
-// import './components/Note.css';
 
-// import { Route, NavLink, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import ReviewsList from './MyReviewsList';
-// import ReviewForm from './ReviewForm';
-// import SingleReview from './SingleReview';
 
 class MyReviews extends Component {
   state = {
@@ -26,7 +19,6 @@ class MyReviews extends Component {
     axios
       .get('http://localhost:5000/api/reviews')
       .then(response => {
-        // console.log(response.data);
         this.setState({
           reviews: response.data
         });
@@ -37,8 +29,6 @@ class MyReviews extends Component {
   };
 
   render() {
-    // // console.log("PROCESS: ", process.env);
-    // if (this.isAuthenticated()) {
     return (
       <div className="My-Reviews">
         <header className="sidebar">
