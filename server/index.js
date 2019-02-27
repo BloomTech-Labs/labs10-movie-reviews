@@ -8,6 +8,7 @@ require('./services/passport.js');
 
 const userRouter = require('./api/users/usersRouter');
 const authRouter = require('./api/authentication/authRouter');
+const authReviewsRouter = require('./api/reviews/authReviewsRouter');
 const reviewsRouter = require('./api/reviews/reviewsRouter');
 const paymentRouter = require('./api/payments/paymentRouter');
 
