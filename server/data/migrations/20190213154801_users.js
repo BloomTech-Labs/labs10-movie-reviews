@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     users.string('name', 100); // name field
     users.string('email', 254); // email field
     users.boolean('premium_user').defaultTo(false);
-    users.string('photo',100);
+    users.string('photo',200);
     users.timestamp('created_at').defaultTo(knex.fn.now()); // user creation date
     users.timestamp('updated_at').defaultTo(knex.fn.now()); // last updated
   });
