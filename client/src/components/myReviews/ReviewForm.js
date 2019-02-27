@@ -139,7 +139,7 @@ class ReviewForm extends Component {
                 <p>name</p>
                 <input
                   name="name"
-                  placeholder="@flute19902"
+                  placeholder="Jane Smith"
                   value={this.state.name}
                   onChange={this.handleInputChange}
                 />
