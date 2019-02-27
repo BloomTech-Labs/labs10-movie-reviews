@@ -118,7 +118,13 @@ export default class MovieRev extends React.Component {
               <Link
                 to={{
                   pathname: `/reviewform/${this.state.id}`,
-                  state: { id: this.state.id }
+                  state: {
+                    id: this.state.id,
+                    title: this.state.title,
+                    year: this.state.year,
+                    overview: this.state.overview,
+                    img: this.state.img
+                  }
                 }}
               >
                 Write Review
