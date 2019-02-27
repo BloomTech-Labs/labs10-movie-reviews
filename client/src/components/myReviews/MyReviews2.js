@@ -5,7 +5,7 @@ import axios from 'axios';
 import ReviewsList from './MyReviewsList';
 import ReviewForm from './ReviewForm2';
 
-class MyReviews extends Component {
+class MyReviews2 extends Component {
   state = {
     reviews: [],
     userId: null,
@@ -87,4 +87,4 @@ class MyReviews extends Component {
   }
 }
 
-export default MyReviews;
+export default MyReviews2;
