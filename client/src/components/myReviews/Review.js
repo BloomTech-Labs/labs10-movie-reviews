@@ -57,6 +57,7 @@ class Review extends Component {
 
   render() {
     const { rating, textBody, id } = this.props.review;
+    console.log('all props in review page: ', this.props);
 
     // if edit mode is toggled, it returns the edit form
     if (this.state.isEditing) {
@@ -83,7 +84,7 @@ class Review extends Component {
             </a>
           </div>
           <p>
-            Member Status: <span>VIP</span>
+            Movie Name
             <br />
             {/* Location: <br /> */}
             Name: <br />
@@ -120,7 +121,19 @@ class Review extends Component {
           <button className="delete-edit-btn" onClick={this.handleDelete}>
             Delete
           </button>
+          <br />
         </Col>
+        <Col sm="8">
+          {/* <div className="ratingStar">
+                  <p>
+                    Rating Stars: <span>Date: </span>
+                  </p>
+                </div> */}
+
+          <p>rating: {rating}</p>
+          <p>textbody: {textBody}</p>
+        </Col>
+        <br />
       </Row>
     );
   }
