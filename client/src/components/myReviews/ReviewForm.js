@@ -54,6 +54,12 @@ const ReviewForm = props => {
       <button className="write-btn" onClick={props.handleWriteNewReview}>
         Write Review
       </button>
+      <button
+        className="material-button-raised"
+        onClick={props.handleEditReview}
+      >
+        Update Review
+      </button>
     </form>
   );
 };
