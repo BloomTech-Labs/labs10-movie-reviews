@@ -8,6 +8,7 @@ require('./services/passport.js');
 
 const userRouter = require('./api/users/usersRouter');
 const authRouter = require('./api/authentication/authRouter');
+const authReviewsRouter = require('./api/reviews/authReviewsRouter');
 const reviewsRouter = require('./api/reviews/reviewsRouter');
 const paymentRouter = require('./api/payments/paymentRouter');
 
@@ -19,9 +20,9 @@ configureMiddleware(server);
 // Middleware to check if the user is authenticated
 function isUserAuthenticated(req, res, next) {
   if (req.user) {
-      next();
+    next();
   } else {
-      res.send('You must login!');
+    res.send('You must login!');
   }
 }
 
@@ -31,12 +32,13 @@ server.get('/', (req, res) =>
 );
 
 server.get('/sanityauth', isUserAuthenticated, (req, res) => {
-  res.send({Success: 'You have the secret!'})
-})
+  res.send({ Success: 'You have the secret!' });
+});
 
 server.use('/auth', authRouter);
 server.use('/api', userRouter);
 server.use('/api', reviewsRouter);
+server.use('/api', isUserAuthenticated, authReviewsRouter);
 server.use('/api', paymentRouter);
 
 // start the server
