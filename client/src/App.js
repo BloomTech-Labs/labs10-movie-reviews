@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Home from './components/home/Home';
 import MyReviews from './components/myReviews/MyReviews';
-// import ReviewForm from './components/myReviews/ReviewForm';
+import ReviewForm from './components/myReviews/ReviewForm';
 // import SingleMovieView from './components/home/SingleMovieView';
 import Navigation from './components/navbar/Navigation';
 import Dummyusers from './components/dummyuser/DummyUser';
@@ -199,6 +199,7 @@ class App extends Component {
           />
           <Route path="/dummyusers" component={Dummyusers} />
           <Route path="/myreviews" component={MyReviews} />
+          <Route path="/reviewform/:id" component={ReviewForm} />
           <Route path="/moviereviews/:id" component={MovieRev} />
           <Route path="/premium" component={PremiumView} />
           <Route path="/about" component={About} />
