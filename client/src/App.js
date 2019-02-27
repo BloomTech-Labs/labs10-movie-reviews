@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Home from './components/home/Home';
+import Auth from './components/DummyAuth/Auth';
 import MyReviews from './components/myReviews/MyReviews';
 import ReviewForm from './components/myReviews/ReviewForm';
 // import SingleMovieView from './components/home/SingleMovieView';
@@ -206,6 +207,7 @@ class App extends Component {
           <Route path="/contact" component={Contact} />
           <Route path="/privacy" component={Privacy} />
           <Route path="/terms" component={Terms} />
+          <Route path="/auth" component={Auth} />
           {/* <Route exact path="/movie/get/:id" component={SingleMovieView} /> */}
         </Switch>
         <Footer />
