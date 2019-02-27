@@ -87,20 +87,7 @@ class Review extends Component {
             Movie Name
             <br />
             {/* Location: <br /> */}
-            Name: <br />
-            Num of Reviews:
           </p>
-        </Col>
-
-        <Col sm="8">
-          {/* <div className="ratingStar">
-                  <p>
-                    Rating Stars: <span>Date: </span>
-                  </p>
-                </div> */}
-
-          <p>rating: {rating}</p>
-          <p>textbody: {textBody}</p>
           <button className="delete-edit-btn" onClick={this.toggleEdit}>
             {' '}
             <Link
