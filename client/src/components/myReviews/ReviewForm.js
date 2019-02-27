@@ -16,12 +16,12 @@ class ReviewForm extends Component {
   state = {
     userId: 0,
     movieId: 0,
-    twitterhandle: '',
+    name: '',
     rating: 0,
     textBody: '',
     review: 0
   };
-  // allows us to add twitterhandle, rating and textBody info for new review created on state
+  // allows us to add name, rating and textBody info for new review created on state
   // sets review id to this.id for use in deleting
   get id() {
     return this.props.match.params.id;
@@ -37,7 +37,7 @@ class ReviewForm extends Component {
     const editedReview = {
       userId: this.state.userId,
       movieId: this.state.movieId,
-      twitterhandle: this.state.twitterhandle,
+      name: this.state.name,
       rating: this.state.rating,
       textBody: this.state.textBody
     };
@@ -50,7 +50,7 @@ class ReviewForm extends Component {
           review: response.data,
           userid: response.data.userId,
           movieId: response.data.movieId,
-          twitterhandle: response.data.twitterhandle,
+          name: response.data.name,
           rating: response.data.rating,
           textBody: response.data.textBody,
           isEditing: false
@@ -68,7 +68,7 @@ class ReviewForm extends Component {
     const review = {
       userId: this.state.userId,
       movieId: this.props.match.params.id,
-      twitterhandle: this.state.twitterhandle,
+      name: this.state.name,
       rating: this.state.rating,
       textBody: this.state.textBody
     };
@@ -79,7 +79,7 @@ class ReviewForm extends Component {
         this.setState({
           userid: response.data.userId,
           movieId: response.data.movieId,
-          twitterhandle: response.data.twitterhandle,
+          name: response.data.name,
           rating: response.data.rating,
           textBody: response.data.textBody
         });
@@ -136,11 +136,11 @@ class ReviewForm extends Component {
               </div>
 
               <div className="form-div">
-                <p>twitterhandle</p>
+                <p>name</p>
                 <input
-                  name="twitterhandle"
+                  name="name"
                   placeholder="@flute19902"
-                  value={this.state.twitterhandle}
+                  value={this.state.name}
                   onChange={this.handleInputChange}
                 />
                 <div className="form-div">

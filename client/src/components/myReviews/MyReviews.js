@@ -9,7 +9,7 @@ class MyReviews extends Component {
     reviews: [],
     userId: null,
     movieId: null,
-    twitterhandle: '',
+    name: '',
     rating: null,
     textBody: ''
   };

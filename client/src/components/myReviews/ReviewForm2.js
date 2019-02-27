@@ -22,11 +22,11 @@ const ReviewForm2 = props => {
         />
       </div>
       <div className="form-div">
-        <p>twitterhandle</p>
+        <p>name</p>
         <input
-          name="twitterhandle"
-          placeholder="@flute19902"
-          value={props.twitterhandle}
+          name="name"
+          placeholder="Jane Smith"
+          value={props.name}
           onChange={props.handleInputChange}
         />
         <div className="form-div">

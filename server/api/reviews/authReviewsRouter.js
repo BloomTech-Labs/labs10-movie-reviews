@@ -9,7 +9,7 @@ const reviewsDb = require('./reviewsHelper.js');
 
 //POST review
 router.post('/reviews', async (req, res) => {
-  if (req.body.twitterhandle && req.body.textBody && req.body.rating) {
+  if (req.body.name && req.body.textBody && req.body.rating) {
     try {
       await reviewsDb.insert(req.body);
       res.status(201).json({ message: 'Review successfully added!' });
@@ -26,7 +26,7 @@ router.post('/reviews', async (req, res) => {
 router.put('/reviews/:id', async (req, res) => {
   const changes = req.body;
   const { id } = req.params;
-  if (req.body.twitterhandle && req.body.textBody && req.body.rating) {
+  if (req.body.name && req.body.textBody && req.body.rating) {
     try {
       const count = await reviewsDb.update(id, changes);
       //count is the number of records updated
@@ -40,7 +40,7 @@ router.put('/reviews/:id', async (req, res) => {
     }
   } else
     res.status(400).json({
-      Error: 'Please provide a twitterhandle, textBody & rating to edit review.'
+      Error: 'Please provide a name, textBody & rating to edit review.'
     });
 });
 
