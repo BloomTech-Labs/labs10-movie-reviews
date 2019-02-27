@@ -15,8 +15,22 @@ const PayButton = props => {
 
   axios
     .post("http://localhost:5000/api/payment", body)
-    .then(response => {
-      console.log("response", response);
+    .then(stripeRes => {
+      console.log("response", stripeRes.data.stripeId);
+      axios
+        .get('http://localhost:5000/api/users/3')
+        .then(response => {
+          console.log("response", response);
+          axios
+            .put('http://localhost:5000/api/users/3', {
+              name: response.data.name,
+              email: response.data.email,
+              username: response.data.username,
+              stripeId: stripeRes.data.stripeId
+            })
+            .catch(err => console.log("err \n", err))
+        })
+        .catch(err => console.log(err));
     })
     .catch(error => {
       console.log("Payment Error: ", error);
@@ -30,7 +44,7 @@ const PayButton = props => {
         name={"Yearly Subscription"} //Modal Header
         description={"$9.99"}
         panelLabel="Submit Payment" //Submit button in modal
-        amount={999} //Amount in cents 
+        amount={999} //Amount in cents
         token={res => onToken(res)}
         stripeKey={publishableKey}
         // image="" //Pop-in header image
@@ -42,7 +56,7 @@ const PayButton = props => {
         name={"Monthly Subscription"} //Modal Header
         description={"$0.99"}
         panelLabel="Submit Payment" //Submit button in modal
-        amount={99} //Amount in cents 
+        amount={99} //Amount in cents
         token={res => onToken(res)}
         stripeKey={publishableKey}
         // image="" //Pop-in header image
