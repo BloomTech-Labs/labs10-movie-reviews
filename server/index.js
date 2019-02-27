@@ -38,7 +38,8 @@ server.get('/sanityauth', isUserAuthenticated, (req, res) => {
 server.use('/auth', authRouter);
 server.use('/api', userRouter);
 server.use('/api', reviewsRouter);
-server.use('/api', isUserAuthenticated, authReviewsRouter);
+server.use('/api', authReviewsRouter);
+//isUserAuthenticated,--took out of line 41 for debugging purposes
 server.use('/api', paymentRouter);
 
 // start the server

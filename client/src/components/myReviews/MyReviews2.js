@@ -10,12 +10,12 @@ class MyReviews2 extends Component {
     reviews: [],
     userId: null,
     movieId: null,
-    twitterhandle: '',
+    name: '',
     rating: null,
     textBody: ''
   };
 
-  // allows us to add twitterhandle, rating and textBody info for new review created on state
+  // allows us to add name, rating and textBody info for new review created on state
   handleInputChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -25,7 +25,7 @@ class MyReviews2 extends Component {
     const review = {
       userId: this.state.userId,
       movieId: this.state.movieId,
-      twitterhandle: this.state.twitterhandle,
+      name: this.state.name,
       rating: this.state.rating,
       textBody: this.state.textBody
     };
@@ -36,7 +36,7 @@ class MyReviews2 extends Component {
         this.setState({
           userid: response.data.userId,
           movieId: response.data.movieId,
-          twitterhandle: response.data.twitterhandle,
+          name: response.data.name,
           rating: response.data.rating,
           textBody: response.data.textBody
         });
@@ -75,7 +75,7 @@ class MyReviews2 extends Component {
           <ReviewForm
             userId={this.state.userId}
             movieId={this.state.movieId}
-            twitterhandle={this.state.twitterhandle}
+            name={this.state.name}
             rating={this.state.rating}
             textBody={this.state.textBody}
             handleWriteNewReview={this.handleWriteNewReview}

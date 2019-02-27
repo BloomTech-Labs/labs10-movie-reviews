@@ -22,7 +22,7 @@ export default class UserReview extends React.Component {
           <p>
             Member Status: <br />
             {/* Location: <br /> */}
-            Name: {this.props.item.twitterhandle}
+            Name: {this.props.item.name}
             <br />
             Num of Reviews:{' '}
           </p>

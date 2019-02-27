@@ -11,7 +11,7 @@ class Review extends Component {
     review: null,
     userId: null,
     movieId: null,
-    twitterhandle: '',
+    name: '',
     rating: null,
     textBody: '',
     isEditing: false
@@ -33,7 +33,7 @@ class Review extends Component {
           review: response.data,
           userid: response.data.userId,
           movieId: response.data.movieId,
-          twitterhandle: response.data.twitterhandle,
+          name: response.data.name,
           rating: response.data.rating,
           textBody: response.data.textBody
         });
@@ -65,7 +65,7 @@ class Review extends Component {
         <ReviewForm
           userId={this.state.userId}
           movieId={this.state.movieId}
-          twitterhandle={this.state.twitterhandle}
+          name={this.state.name}
           rating={this.state.rating}
           textBody={this.state.textBody}
           handleEditReview={this.handleEditReview}
