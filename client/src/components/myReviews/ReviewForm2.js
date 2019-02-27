@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReviewForm = props => {
+const ReviewForm2 = props => {
   return (
     <form>
       <div className="form-div">
@@ -64,4 +64,4 @@ const ReviewForm = props => {
   );
 };
 
-export default ReviewForm;
+export default ReviewForm2;
