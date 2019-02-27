@@ -30,6 +30,37 @@ class ReviewForm extends Component {
   handleInputChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+  // allows us to edit and update state
+  handleEditReview = e => {
+    e.preventDefault();
+
+    const editedReview = {
+      userId: this.state.userId,
+      movieId: this.state.movieId,
+      twitterhandle: this.state.twitterhandle,
+      rating: this.state.rating,
+      textBody: this.state.textBody
+    };
+
+    axios
+      .put(`http://localhost:5000/api/reviews/${this.id}`, editedReview)
+      .then(response => {
+        this.props.fetchReviews();
+        this.setState({
+          review: response.data,
+          userid: response.data.userId,
+          movieId: response.data.movieId,
+          twitterhandle: response.data.twitterhandle,
+          rating: response.data.rating,
+          textBody: response.data.textBody,
+          isEditing: false
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    window.location.reload();
+  };
 
   // allows us to create a new review and post it to the API
   handleWriteNewReview = event => {
@@ -45,13 +76,13 @@ class ReviewForm extends Component {
     axios
       .post('http://localhost:5000/api/reviews', review)
       .then(response => {
-        // this.setState({
-        //   userid: response.data.userId,
-        //   movieId: response.data.movieId,
-        //   twitterhandle: response.data.twitterhandle,
-        //   rating: response.data.rating,
-        //   textBody: response.data.textBody
-        // });
+        this.setState({
+          userid: response.data.userId,
+          movieId: response.data.movieId,
+          twitterhandle: response.data.twitterhandle,
+          rating: response.data.rating,
+          textBody: response.data.textBody
+        });
         console.log('response: ', response);
       })
       .catch(err => {
@@ -64,6 +95,7 @@ class ReviewForm extends Component {
   render() {
     console.log('id in render: ', this.props.match.params.id);
     console.log('props in review form: ', this.props.location.state);
+    console.log('all props in review form: ', this.props);
 
     return (
       <Container>
@@ -135,12 +167,12 @@ class ReviewForm extends Component {
               />
 
               <Button onClick={this.handleWriteNewReview}>Submit Review</Button>
-              {/* <button
-          className="material-button-raised"
-          onClick={props.handleEditReview}
-        >
-          Update Review
-        </button> */}
+              <button
+                className="material-button-raised"
+                onClick={this.handleEditReview}
+              >
+                Update Review
+              </button>
             </Form>
             <p />
           </Col>
