@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Row, Col } from 'reactstrap';
 
 import axios from 'axios';
 
@@ -47,38 +49,6 @@ class Review extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  // allows us to edit and update state
-  handleEditReview = e => {
-    e.preventDefault();
-
-    const editedReview = {
-      userId: this.state.userId,
-      movieId: this.state.movieId,
-      twitterhandle: this.state.twitterhandle,
-      rating: this.state.rating,
-      textBody: this.state.textBody
-    };
-
-    axios
-      .put(`http://localhost:5000/api/reviews/${this.id}`, editedReview)
-      .then(response => {
-        this.props.fetchReviews();
-        this.setState({
-          review: response.data,
-          userid: response.data.userId,
-          movieId: response.data.movieId,
-          twitterhandle: response.data.twitterhandle,
-          rating: response.data.rating,
-          textBody: response.data.textBody,
-          isEditing: false
-        });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    window.location.reload();
-  };
-
   // allows us to edit the current review
   toggleEdit = e => {
     e.preventDefault();
@@ -99,21 +69,59 @@ class Review extends Component {
           textBody={this.state.textBody}
           handleEditReview={this.handleEditReview}
           handleInputChange={this.handleEditInputChange}
+          id={this.id}
         />
       );
     }
 
     return (
-      <div>
-        <p>rating: {rating}</p>
-        <p>textbody: {textBody}</p>
-        <button className="delete-edit-btn" onClick={this.toggleEdit}>
-          Edit
-        </button>
-        <button className="delete-edit-btn" onClick={this.handleDelete}>
-          Delete
-        </button>
-      </div>
+      <Row>
+        <Col sm="4">
+          <div className="placeholder">
+            <a href="https://placeholder.com">
+              <img src="https://via.placeholder.com/100" />
+            </a>
+          </div>
+          <p>
+            Member Status: <span>VIP</span>
+            <br />
+            {/* Location: <br /> */}
+            Name: <br />
+            Num of Reviews:
+          </p>
+        </Col>
+
+        <Col sm="8">
+          {/* <div className="ratingStar">
+                  <p>
+                    Rating Stars: <span>Date: </span>
+                  </p>
+                </div> */}
+
+          <p>rating: {rating}</p>
+          <p>textbody: {textBody}</p>
+          <button className="delete-edit-btn" onClick={this.toggleEdit}>
+            {' '}
+            <Link
+              to={{
+                pathname: `/reviewform/${this.id}`,
+                state: {
+                  id: this.id
+                  // title: this.state.title,
+                  // year: this.state.year,
+                  // overview: this.state.overview,
+                  // img: this.state.img
+                }
+              }}
+            >
+              Edit
+            </Link>
+          </button>
+          <button className="delete-edit-btn" onClick={this.handleDelete}>
+            Delete
+          </button>
+        </Col>
+      </Row>
     );
   }
 }
