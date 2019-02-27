@@ -1,8 +1,9 @@
 import React from 'react';
-
+import { Row } from 'reactstrap';
 import Review from './Review';
 
 function MyReviewsList(props) {
+  console.log('props in myrev list: ', props);
   if (props.reviewslist.length === 0) {
     return <h1>No reviews found. Fetching data...</h1>;
   }
