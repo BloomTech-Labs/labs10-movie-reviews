@@ -25,6 +25,7 @@ const PayButton = props => {
             .put('http://localhost:5000/api/users/1', {
               name: response.data.name,
               email: response.data.email,
+              username: response.data.username,
               stripeId: stripeRes.data.stripeId
             })
             .catch(err => console.log("err \n", err))

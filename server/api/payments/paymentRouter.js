@@ -14,21 +14,16 @@ router.post('/payment', function(req, res) {
 // we gather information from the request body of our React app.
 const source = req.body.token.id; // stripe token created in the react app
 const { email } = req.body.token; // the customer's email
-let { subscription } = req.body;
+const { subscription } = req.body;
 let plan;
 // console.log("req.body", req.body);
 
 // the type of plan. either one year subscription or a one month subscription
 // This plan is a string was passed from the PremiumView component to the PayButton component. Then
 // it was passed here in the request object. It is a string. "Yearly Subscription" or "Monthly Subscription"
-console.log("plan before \n", req.body.plan);
 subscription == "Yearly Subscription"
   ? plan = 'plan_EaodMeOqIEB5H1' // id that represents 1 year subscription
   : plan = 'plan_EaqdBYrYWZb7IV'; // id that represents 1 month subscription
-
-console.log("plan after\n", plan)
-
-
 
 stripe
   .customers
