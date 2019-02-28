@@ -49,7 +49,7 @@ stripe
     })
 })
 
-// Sends customer's plan using using stripeId
+// Gets customer's plan using using stripeId
 router.get('/customer/plan', function(req, res) {
   console.log("customer req \n", req.headers);
   const { stripeid } = req.headers
@@ -80,7 +80,7 @@ router.get('/customer/plan', function(req, res) {
   )
 })
 
-// Sends customer's status; "premium: true" if customer has active subscription
+// Gets customer's status; "premium: true" if customer has active subscription
 router.get('/customer/premium', function(req, res) {
   console.log("customer req \n", req.headers);
   const { stripeid } = req.headers
@@ -113,7 +113,7 @@ router.get('/customer/premium', function(req, res) {
   )
 })
 
-// Deletes customer from stripe and cancled subscriptions
+// Deletes customer from stripe and cancels subscription
 router.get('/customer/delete', function(req, res) {
   console.log("customer req \n", req.headers);
   const { stripeid } = req.headers
