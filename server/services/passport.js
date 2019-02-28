@@ -67,7 +67,7 @@ passport.use(
       } else {
         const user =  await usersDb.createUser({
           googleId: profile.id,
-          reviewer: profile.displayName,
+          name: profile.displayName,
           email: profile.emails[0].value,
           photo: profile.photos[0].value
         });

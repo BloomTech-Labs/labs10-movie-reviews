@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     users.string('googleId', 50).unique();//official googleId of google user
     users.string('stripeId', 50).unique();//official stripeId of stripe user
     users.string('username', 20).unique(); // username field
-    users.string('reviewer', 100); // name field
+    users.string('name', 100); // name field
     users.string('email', 254).unique(); // email field
     users.boolean('premium_user').defaultTo(false);
     users.string('photo',200);
