@@ -46,17 +46,18 @@ class PayButton extends Component {
         // this.setState({
         //   stripeId: stripeRes.data.stripeId
         // })
+        return stripeRes.data.stripeId
+      })
+      .then(response => {
+        console.log("resonse put \n", response);
         axios
           .put(`http://localhost:5000/api/users/${this.state.id}`, {
             name: this.state.name,
             email: this.state.email,
-            // username: this.state.username,
-            stripeId: stripeRes.data.stripeId
+            // username: this.state.name,
+            stripeId: response,
           })
-          .catch(err => console.log("err \n", err))
-      })
-      .catch(error => {
-        console.log("Payment Error: ", error);
+        .catch(err => console.log("err \n", err))
       });
   };
 
