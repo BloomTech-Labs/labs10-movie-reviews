@@ -14,15 +14,15 @@ const PayButton = props => {
   };
 
   axios
-    .post("http://localhost:5000/api/payment", body)
+    .post("https://labs10-movie-reviews.herokuapp.com/api/payment", body)
     .then(stripeRes => {
       console.log("response", stripeRes.data.stripeId);
       axios
-        .get('http://localhost:5000/api/users/1')
+        .get('https://labs10-movie-reviews.herokuapp.com/api/users/1')
         .then(response => {
           console.log("response", response);
           axios
-            .put('http://localhost:5000/api/users/1', {
+            .put('https://labs10-movie-reviews.herokuapp.com/api/users/1', {
               name: response.data.name,
               email: response.data.email,
               username: response.data.username,
