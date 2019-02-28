@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
       .onDelete('cascade') // when you delete a row on the parent table, the related "children" rows on the other one are deleted.
       .index(); // adds an index to a table over the given columns
     movieReviews
-      .string('name')
+      .string('reviewer')
       .notNullable() // name field is required
       .references('name') // reference 'name' from users table
       .inTable('users') // reference users table
