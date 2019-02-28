@@ -47,7 +47,7 @@ class PayButton extends Component {
         //   stripeId: stripeRes.data.stripeId
         // })
         axios
-          .put(`http://localhost:5000/api/users/1`, {
+          .put(`http://localhost:5000/api/users/${this.state.id}`, {
             name: this.state.name,
             email: this.state.email,
             // username: this.state.username,
