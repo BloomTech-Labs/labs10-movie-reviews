@@ -8,13 +8,14 @@ export const currentReviews =
     ? 'https://labs10-movie-reviews.herokuapp.com/api/reviews'
     : 'http://localhost:5000/api/reviews';
 
-export const editDeleteReviews = 
-  process.env.NODE_ENV === 'production'
-  ? `https://labs10-movie-reviews.herokuapp.com/api/reviews/${this.id}` :
-    `http://localhost:5000/api/reviews/${this.id}`;
+export const editDeleteReviews = (id) => {
+  return process.env.NODE_ENV === 'production'
+  ? `https://labs10-movie-reviews.herokuapp.com/api/reviews/${id}` :
+    `http://localhost:5000/api/reviews/${id}`;
+}
 
 export const payment = 
   process.env.NODE_ENV === 'production'
   ? `http://labs10-movie-reviews.herokuapp.com/api/payment`
-  : `http://localhost:5000/api/api/payment`;
+  : `http://localhost:5000/api/payment`;
 
