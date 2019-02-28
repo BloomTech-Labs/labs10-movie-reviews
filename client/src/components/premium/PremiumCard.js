@@ -13,7 +13,10 @@ const premiumCard = (props) => {
       <div className="card-body">
         <h5 className="card-title text-success">{props.priceTitle}</h5>
         <p className="card-text">{props.description}</p>
-        <PayButton header={props.header} />
+        <PayButton 
+          header={props.header} 
+          totalCents={props.totalCents}  
+        />
       </div>
     </div>
   )

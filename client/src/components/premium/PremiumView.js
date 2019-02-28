@@ -13,6 +13,7 @@ const PremiumView = () => {
             header={"Yearly Subscription"}
             priceTitle={"$9.99"} 
             description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
+            totalCents={999}
           />
         </div>
 
@@ -21,6 +22,7 @@ const PremiumView = () => {
             header={"Monthly Subscription"}
             priceTitle={"$0.99"} 
             description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
+            totalCents={99}
           />
         </div>
 
