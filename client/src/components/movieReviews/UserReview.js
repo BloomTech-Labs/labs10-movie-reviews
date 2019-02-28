@@ -1,13 +1,28 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
+import axios from 'axios';
+import { currentUser } from '../../services/currentUserURLs';
+import './UserReview.css';
+
 
 export default class UserReview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      name: '',
+      photo: '',
+
+    };
   }
 
-  componentDidMount() {}
+  componentDidMount = async () => {
+    const res = await axios.get(currentUser, {
+      withCredentials: true
+    });
+    if(res.data) {
+      this.setState({name: res.data.name, photo: res.data.photo});
+    }
+  }
 
   render() {
     console.log('props in reviews: ', this.props);
@@ -16,13 +31,13 @@ export default class UserReview extends React.Component {
         <Col sm="4">
           <div className="placeholder">
             <a href="https://placeholder.com">
-              <img src="https://via.placeholder.com/100" alt="placeholder" />
+              <img className="movie-profile-avatar" src={this.state.photo} alt="placeholder" />
             </a>
           </div>
           <p>
             Member Status: <br />
             {/* Location: <br /> */}
-            Name: {this.props.item.name}
+            Name: {this.state.name}
             <br />
             Num of Reviews:{' '}
           </p>

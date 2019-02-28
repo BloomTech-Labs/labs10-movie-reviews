@@ -8,13 +8,11 @@ const keys = require('../config/keys.js');
 
 // Used to stuff a piece of information into a cookie
 passport.serializeUser((user, done) => {
-  console.log(user);
   done(null, user);
 })
 
 // Used to decode the received cookie and persist session
 passport.deserializeUser((user, done) => {
-  console.log("user from deserializer", user);
   done(null, user);
 })
 
