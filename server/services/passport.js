@@ -57,7 +57,7 @@ passport.use(
      async (token, tokenSecret, profile, done) => {
       const existingUser =  await usersDb.findUserByProfileId({
         googleId: profile.id,
-        name: profile.displayName,
+        reviewer: profile.displayName,
         email: profile.emails[0].value,
         photo: profile.photos[0].value
       });
@@ -67,7 +67,7 @@ passport.use(
       } else {
         const user =  await usersDb.createUser({
           googleId: profile.id,
-          name: profile.displayName,
+          reviewer: profile.displayName,
           email: profile.emails[0].value,
           photo: profile.photos[0].value
         });

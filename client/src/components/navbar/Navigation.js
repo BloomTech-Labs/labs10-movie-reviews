@@ -56,11 +56,6 @@ export default class Navigation extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <Search
-                searchHandler={this.props.searchHandler}
-                searchCriteria={this.props.searchCriteria}
-                handleChange={this.props.handleChange}
-              />
               <RenderLogin>
                 <a href={googleLogin}>
                   <img src={GoogleLogin} alt="Google Login" />
@@ -73,12 +68,12 @@ export default class Navigation extends React.Component {
                     Options
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem>Profile</DropdownItem>
+                    {/* <DropdownItem>Profile</DropdownItem> */}
                     <DropdownItem>
                       <Link to="/myreviews">My Reviews</Link>
                     </DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Become a Premium Reviewer!</DropdownItem>
+                    <DropdownItem><Link to="/premium">Become a Premium Reviewer!</Link></DropdownItem>
                     <a href={logout}>
                       <DropdownItem>Logout</DropdownItem>
                     </a>

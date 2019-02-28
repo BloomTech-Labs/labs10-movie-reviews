@@ -9,7 +9,7 @@ export default class UserReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      reviewer: '',
       photo: '',
 
     };
@@ -20,7 +20,7 @@ export default class UserReview extends React.Component {
       withCredentials: true
     });
     if(res.data) {
-      this.setState({name: res.data.name, photo: res.data.photo});
+      this.setState({reviewer: res.data.reviewer, photo: res.data.photo});
     }
   }
 
@@ -37,7 +37,7 @@ export default class UserReview extends React.Component {
           <p>
             Member Status: <br />
             {/* Location: <br /> */}
-            Name: {this.state.name}
+            Name: {this.state.reviewer}
             <br />
             Num of Reviews:{' '}
           </p>
