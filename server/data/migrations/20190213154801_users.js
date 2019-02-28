@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     users.string('stripeId', 50).unique();//official stripeId of stripe user
     users.string('username', 20).unique(); // username field
     users.string('name', 100); // name field
-    users.string('email', 254); // email field
+    users.string('email', 254).unique(); // email field
     users.boolean('premium_user').defaultTo(false);
     users.string('photo',200);
     users.timestamp('created_at').defaultTo(knex.fn.now()); // user creation date
