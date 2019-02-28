@@ -12,7 +12,7 @@ class MyReviews extends Component {
     reviews: [],
     userId: null,
     movieId: null,
-    name: '',
+    reviewer: '',
     photo: '',
     email: '',
     rating: null,
@@ -26,7 +26,7 @@ class MyReviews extends Component {
     });
     if (res.data) {
       this.setState({
-        name: res.data.name,
+        reviewer: res.data.reviewer,
         photo: res.data.photo,
         email: res.data.email
       });
@@ -67,7 +67,7 @@ class MyReviews extends Component {
               {/* <Link to={`/reviewform`}>Write Review</Link> */}
             </Button>
             <p>Status: </p>
-            <p>Name: {this.state.name}</p>
+            <p>Name: {this.state.reviewer}</p>
             <p>Email: {this.state.email}</p>
             <p>Number of Reviews:</p>
           </Col>

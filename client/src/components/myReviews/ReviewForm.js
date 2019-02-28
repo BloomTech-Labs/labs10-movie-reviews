@@ -18,7 +18,7 @@ class ReviewForm extends Component {
   state = {
     userId: 0,
     movieId: 0,
-    name: '',
+    reviewer: '',
     rating: 0,
     textBody: '',
     review: 0
@@ -39,7 +39,7 @@ class ReviewForm extends Component {
     const editedReview = {
       userId: this.state.userId,
       movieId: this.state.movieId,
-      name: this.state.name,
+      reviewer: this.state.reviewer,
       rating: this.state.rating,
       textBody: this.state.textBody
     };
@@ -52,7 +52,7 @@ class ReviewForm extends Component {
           review: response.data,
           userid: response.data.userId,
           movieId: response.data.movieId,
-          name: response.data.name,
+          reviewer: response.data.reviewer,
           rating: response.data.rating,
           textBody: response.data.textBody,
           isEditing: false
@@ -71,7 +71,7 @@ class ReviewForm extends Component {
     const review = {
       userId: this.state.userId,
       movieId: this.props.match.params.id,
-      name: this.state.name,
+      reviewer: this.state.reviewer,
       rating: this.state.rating,
       textBody: this.state.textBody
     };
@@ -82,7 +82,7 @@ class ReviewForm extends Component {
         this.setState({
           userid: response.data.userId,
           movieId: response.data.movieId,
-          name: response.data.name,
+          reviewer: response.data.reviewer,
           rating: response.data.rating,
           textBody: response.data.textBody
         });
@@ -141,9 +141,9 @@ class ReviewForm extends Component {
               <div className="form-div">
                 <p>name</p>
                 <input
-                  name="name"
+                  name="reviewer"
                   placeholder="Jane Smith"
-                  value={this.state.name}
+                  value={this.state.reviewer}
                   onChange={this.handleInputChange}
                 />
                 <div className="form-div">
