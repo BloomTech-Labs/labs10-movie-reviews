@@ -32,7 +32,7 @@ class Review extends Component {
         this.props.fetchReviews();
         this.setState({
           review: response.data,
-          googleId: response.data.userId,
+          googleId: response.data.googleId,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
