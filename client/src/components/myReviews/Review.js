@@ -12,7 +12,7 @@ class Review extends Component {
     review: null,
     userId: null,
     movieId: null,
-    name: '',
+    reviewer: '',
     rating: null,
     textBody: '',
     isEditing: false
@@ -34,7 +34,7 @@ class Review extends Component {
           review: response.data,
           userid: response.data.userId,
           movieId: response.data.movieId,
-          name: response.data.name,
+          reviewer: response.data.reviewer,
           rating: response.data.rating,
           textBody: response.data.textBody
         });
@@ -57,7 +57,7 @@ class Review extends Component {
   };
 
   render() {
-    const { rating, textBody, id } = this.props.review;
+    const { rating, textBody } = this.props.review;
     console.log('all props in review page: ', this.props);
 
     // if edit mode is toggled, it returns the edit form
@@ -66,7 +66,7 @@ class Review extends Component {
         <ReviewForm
           userId={this.state.userId}
           movieId={this.state.movieId}
-          name={this.state.name}
+          reviewer={this.state.reviewer}
           rating={this.state.rating}
           textBody={this.state.textBody}
           handleEditReview={this.handleEditReview}
