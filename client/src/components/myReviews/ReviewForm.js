@@ -60,6 +60,7 @@ class ReviewForm extends Component {
         console.error(error);
       });
     window.location.reload();
+    this.props.history.push('/myreviews');
   };
 
   // allows us to create a new review and post it to the API
