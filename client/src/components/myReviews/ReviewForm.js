@@ -16,7 +16,7 @@ import {
 
 class ReviewForm extends Component {
   state = {
-    userId: 0,
+    googleId: 0,
     movieId: 0,
     reviewer: '',
     rating: 0,
@@ -37,7 +37,7 @@ class ReviewForm extends Component {
     e.preventDefault();
 
     const editedReview = {
-      userId: this.state.userId,
+      googleId: this.state.googleId,
       movieId: this.state.movieId,
       reviewer: this.state.reviewer,
       rating: this.state.rating,
@@ -50,7 +50,7 @@ class ReviewForm extends Component {
         this.props.fetchReviews();
         this.setState({
           review: response.data,
-          userid: response.data.userId,
+          googleId: response.data.googleId,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
@@ -69,7 +69,7 @@ class ReviewForm extends Component {
   handleWriteNewReview = event => {
     event.preventDefault();
     const review = {
-      userId: this.state.userId,
+      googleId: this.state.googleId,
       movieId: this.props.match.params.id,
       reviewer: this.state.reviewer,
       rating: this.state.rating,
@@ -80,7 +80,7 @@ class ReviewForm extends Component {
       .post(currentReviews, review)
       .then(response => {
         this.setState({
-          userid: response.data.userId,
+          googleid: response.data.googleId,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
@@ -128,18 +128,9 @@ class ReviewForm extends Component {
         <Row>
           <Col>
             <Form>
-              <div className="form-div">
-                <p>userId</p>
-                <input
-                  name="userId"
-                  placeholder="1"
-                  value={this.state.userId}
-                  onChange={this.handleInputChange}
-                />
-              </div>
 
               <div className="form-div">
-                <p>name</p>
+                <p>Reviewer:</p>
                 <input
                   name="reviewer"
                   placeholder="Jane Smith"
@@ -147,7 +138,7 @@ class ReviewForm extends Component {
                   onChange={this.handleInputChange}
                 />
                 <div className="form-div">
-                  <p>Rating</p>
+                  <p>Rating:</p>
                   <input
                     name="rating"
                     placeholder="1-5"
@@ -157,7 +148,7 @@ class ReviewForm extends Component {
                 </div>
               </div>
 
-              <Label for="exampleText">Text Area</Label>
+              <Label for="exampleText">Text Body:</Label>
               <Input
                 type="textarea"
                 placeholder="Review Content"
