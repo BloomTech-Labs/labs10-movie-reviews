@@ -19,10 +19,10 @@ configureMiddleware(server);
 
 // Middleware to check if the user is authenticated
 function isUserAuthenticated(req, res, next) {
-  if (req.user) {
-    next();
+  if (req.isAuthenticated(), {withCredentials: true}) {
+    return next();
   } else {
-    res.send('You must login!');
+    res.redirect('/');
   }
 }
 
@@ -38,7 +38,7 @@ server.get('/sanityauth', isUserAuthenticated, (req, res) => {
 server.use('/auth', authRouter);
 server.use('/api', userRouter);
 server.use('/api', reviewsRouter);
-server.use('/api', authReviewsRouter);
+server.use('/api', isUserAuthenticated, authReviewsRouter);
 //isUserAuthenticated,--took out of line 41 for debugging purposes
 server.use('/api', paymentRouter);
 
