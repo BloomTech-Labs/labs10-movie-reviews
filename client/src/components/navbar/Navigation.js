@@ -68,7 +68,7 @@ export default class Navigation extends React.Component {
                     Options
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem>Profile</DropdownItem>
+                    {/* <DropdownItem>Profile</DropdownItem> */}
                     <DropdownItem>
                       <Link to="/myreviews">My Reviews</Link>
                     </DropdownItem>
