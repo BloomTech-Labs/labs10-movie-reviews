@@ -8,7 +8,6 @@ const SearchResults = props => {
         {props.searchResults.map(result => {
           return (
             //saving index on result-card so that index is available to query movie details information
-            //TODO: Query movie details information so that each movie can have it's own profile page.
             <Link to={`/moviereviews/${result.id}`} className="linksMovie">
               <ResultCard
                 result={result}
