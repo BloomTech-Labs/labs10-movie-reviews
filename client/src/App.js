@@ -17,6 +17,7 @@ import Contact from './components/footer/contact/Contact';
 import Privacy from './components/footer/privacy/PrivacyPolicy';
 import Terms from './components/footer/terms/Terms';
 import Footer from './components/footer/Footer';
+import ratingStars from './components/stars/ratingStars';
 
 //Add constructor/expanded state on App Component
 class App extends Component {
@@ -208,6 +209,7 @@ class App extends Component {
           <Route path="/privacy" component={Privacy} />
           <Route path="/terms" component={Terms} />
           <Route path="/auth" component={Auth} />
+          <Route path="/stars" component={ratingStars} />
           {/* <Route exact path="/movie/get/:id" component={SingleMovieView} /> */}
         </Switch>
         <Footer />
