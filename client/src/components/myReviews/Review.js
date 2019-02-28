@@ -27,7 +27,7 @@ class Review extends Component {
   handleDelete = e => {
     e.preventDefault();
     axios
-      .delete(editDeleteReviews)
+      .delete(editDeleteReviews(this.id))
       .then(response => {
         this.props.fetchReviews();
         this.setState({

@@ -45,7 +45,7 @@ class ReviewForm extends Component {
     };
 
     axios
-      .put(editDeleteReviews, editedReview)
+      .put(editDeleteReviews(this.id), editedReview)
       .then(response => {
         this.props.fetchReviews();
         this.setState({
