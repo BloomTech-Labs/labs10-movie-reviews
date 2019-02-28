@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import axios from 'axios';
 import { currentUser } from '../../services/currentUserURLs';
+import { currentReviews } from '../../services/currentUserURLs';
 
 import ReviewsList from './MyReviewsList';
 import './MyReviews.css';
@@ -18,24 +19,27 @@ class MyReviews extends Component {
     textBody: ''
   };
 
-  componentDidMount = async () =>{
+  componentDidMount = async () => {
     this.fetchReviews();
     const res = await axios.get(currentUser, {
       withCredentials: true
     });
-    if(res.data) {
-      this.setState({name: res.data.name, photo: res.data.photo, email: res.data.email});
+    if (res.data) {
+      this.setState({
+        name: res.data.name,
+        photo: res.data.photo,
+        email: res.data.email
+      });
     }
-
-  }
+  };
 
   // allows us to get all the reviews data from the API
   fetchReviews = () => {
     axios
-      .get('http://localhost:5000/api/reviews')
+      .get(currentReviews)
       .then(response => {
-        this.setState({reviews: response.data});
-        })
+        this.setState({ reviews: response.data });
+      })
       .catch(err => {
         console.log(err);
       });
@@ -49,7 +53,11 @@ class MyReviews extends Component {
           <Col sm="4">
             <div className="placeholder">
               <a href="https://placeholder.com">
-                <img className="myreviews-avatar" src={this.state.photo} alt="avatar" />
+                <img
+                  className="myreviews-avatar"
+                  src={this.state.photo}
+                  alt="avatar"
+                />
               </a>
             </div>
             <p />
