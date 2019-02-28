@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
 
 import axios from 'axios';
+import { editDeleteReviews } from '../../services/currentUserURLs';
 
 import ReviewForm from './ReviewForm';
 
@@ -26,7 +27,7 @@ class Review extends Component {
   handleDelete = e => {
     e.preventDefault();
     axios
-      .delete(`http://localhost:5000/api/reviews/${this.id}`)
+      .delete(editDeleteReviews(this.id))
       .then(response => {
         this.props.fetchReviews();
         this.setState({

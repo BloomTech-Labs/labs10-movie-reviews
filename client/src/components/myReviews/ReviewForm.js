@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { editDeleteReviews } from '../../services/currentUserURLs';
+import { currentReviews } from '../../services/currentUserURLs';
 import {
   Container,
   Row,
@@ -43,7 +45,7 @@ class ReviewForm extends Component {
     };
 
     axios
-      .put(`http://localhost:5000/api/reviews/${this.id}`, editedReview)
+      .put(editDeleteReviews(this.id), editedReview)
       .then(response => {
         this.props.fetchReviews();
         this.setState({
@@ -75,7 +77,7 @@ class ReviewForm extends Component {
     };
 
     axios
-      .post('http://localhost:5000/api/reviews', review)
+      .post(currentReviews, review)
       .then(response => {
         this.setState({
           userid: response.data.userId,
