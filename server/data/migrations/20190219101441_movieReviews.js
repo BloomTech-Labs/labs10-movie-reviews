@@ -15,6 +15,7 @@ exports.up = function(knex, Promise) {
     movieReviews
       .string('reviewer')
       .notNullable() // name field is required
+      .foreign('reviewer') // adds a foreign key constraint to movieReviews table for reviewer column
       .references('name') // reference 'name' from users table
       .inTable('users') // reference users table
       .onDelete('cascade') // when you delete a row on the parent table, the related "children" rows on the other one are deleted.
