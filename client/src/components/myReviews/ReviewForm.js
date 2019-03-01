@@ -94,7 +94,7 @@ class ReviewForm extends Component {
       rating: this.state.rating,
       textBody: this.state.textBody
     };
-    // console.log('RevForm review: ', review);
+    console.log('RevForm review: ', review);
 
     axios
       .post(currentReviews, review)
@@ -112,7 +112,7 @@ class ReviewForm extends Component {
         console.log(err);
       });
     window.location.reload();
-    this.props.history.push('/myreviews');
+    // this.props.history.push('/myreviews');
   };
 
   render() {
