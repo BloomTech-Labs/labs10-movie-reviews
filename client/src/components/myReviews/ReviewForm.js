@@ -22,7 +22,6 @@ class ReviewForm extends Component {
     reviewer: '',
     rating: 0,
     textBody: '',
-    googleId: '',
     email: '',
     review: 0
   };
