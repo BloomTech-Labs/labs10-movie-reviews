@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { editDeleteReviews } from '../../services/currentUserURLs';
+import { currentUser } from '../../services/currentUserURLs';
 import { currentReviews } from '../../services/currentUserURLs';
+import { editDeleteReviews } from '../../services/currentUserURLs';
 import {
   Container,
   Row,
@@ -21,8 +22,27 @@ class ReviewForm extends Component {
     reviewer: '',
     rating: 0,
     textBody: '',
+    googleId: '',
+    email: '',
     review: 0
   };
+
+  componentDidMount = async () => {
+    const res = await axios.get(currentUser, {
+      withCredentials: true
+    });
+    if (res.data) {
+      console.log('RevForm res.data: ', res.data);
+      this.setState({
+        name: res.data.email,
+        // photo: res.data.photo,
+        googleId: res.data.googleId,
+        reviewer: res.data.email
+      });
+    }
+    // console.log('RevForm state in reviewForm: ', this.state);
+  };
+
   // allows us to add name, rating and textBody info for new review created on state
   // sets review id to this.id for use in deleting
   get id() {
@@ -37,7 +57,7 @@ class ReviewForm extends Component {
     e.preventDefault();
 
     const editedReview = {
-      googleId: this.state.googleId,
+      userId: this.state.googleId,
       movieId: this.state.movieId,
       reviewer: this.state.reviewer,
       rating: this.state.rating,
@@ -69,24 +89,25 @@ class ReviewForm extends Component {
   handleWriteNewReview = event => {
     event.preventDefault();
     const review = {
-      googleId: this.state.googleId,
-      movieId: this.props.match.params.id,
-      reviewer: this.state.reviewer,
+      userId: this.state.googleId,
+      movieId: this.id,
+      reviewer: this.state.name,
       rating: this.state.rating,
       textBody: this.state.textBody
     };
+    // console.log('RevForm review: ', review);
 
     axios
       .post(currentReviews, review)
       .then(response => {
         this.setState({
-          googleid: response.data.googleId,
+          userId: response.data.googleId,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
           textBody: response.data.textBody
         });
-        console.log('response: ', response);
+        console.log('RevForm response: ', response);
       })
       .catch(err => {
         console.log(err);
@@ -96,9 +117,9 @@ class ReviewForm extends Component {
   };
 
   render() {
-    console.log('id in render: ', this.props.match.params.id);
-    console.log('props in review form: ', this.props.location.state);
-    console.log('all props in review form: ', this.props);
+    // console.log('RevForm: id in render: ', this.props.match.params.id);
+    // console.log('RevForm: props in review form: ', this.props.location.state);
+    // console.log('RevForm: all props in review form: ', this.props);
 
     return (
       <Container>
@@ -128,15 +149,7 @@ class ReviewForm extends Component {
         <Row>
           <Col>
             <Form>
-
               <div className="form-div">
-                <p>Reviewer:</p>
-                <input
-                  name="reviewer"
-                  placeholder="Jane Smith"
-                  value={this.state.reviewer}
-                  onChange={this.handleInputChange}
-                />
                 <div className="form-div">
                   <p>Rating:</p>
                   <input

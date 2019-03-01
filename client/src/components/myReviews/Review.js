@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, CardImg } from 'reactstrap';
 
 import axios from 'axios';
 import { editDeleteReviews } from '../../services/currentUserURLs';
@@ -15,8 +15,35 @@ class Review extends Component {
     reviewer: '',
     rating: null,
     textBody: '',
+    title: '',
+    overview: '',
+    img: '',
     isEditing: false
   };
+  componentDidMount() {
+    const movie_id = this.props.review.movieId;
+    const promise = axios.get(
+      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${
+        process.env.REACT_APP_API
+      }&language=en-US`
+    );
+    promise
+      .then(response => {
+        // console.log('response in movie rev: ', response);
+        this.setState({
+          title: response.data.title,
+          // year: response.data.release_date,
+          overview: response.data.overview,
+          img: response.data.backdrop_path,
+          id: response.data.id
+          //   loading: false
+        });
+        // console.log('movies id: ', this.state.id);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   // sets review id to this.id for use in deleting
   get id() {
@@ -81,25 +108,24 @@ class Review extends Component {
         <Col sm="4">
           <div className="placeholder">
             <a href="https://placeholder.com">
-              <img src="https://via.placeholder.com/100" />
+              <CardImg
+                src={`http://image.tmdb.org/t/p/original${this.state.img}`}
+                alt="image"
+              />
             </a>
           </div>
-          <p>
-            Movie Name
-            <br />
-            {/* Location: <br /> */}
-          </p>
+          <p>{this.state.title}</p>
           <button className="delete-edit-btn" onClick={this.toggleEdit}>
             {' '}
             <Link
               to={{
                 pathname: `/reviewform/${this.id}`,
                 state: {
-                  id: this.id
+                  id: this.id,
                   // title: this.state.title,
                   // year: this.state.year,
                   // overview: this.state.overview,
-                  // img: this.state.img
+                  img: this.state.img
                 }
               }}
             >
