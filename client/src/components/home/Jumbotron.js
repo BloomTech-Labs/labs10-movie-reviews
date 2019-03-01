@@ -26,10 +26,10 @@ const Jumbotron = (props) => {
       <p className="font-weight-normal">
       While the next outing in the Marvel Cinematic Universe has Captain America’s name on it, the movie, Civil War has pretty much every hero we’ve ever seen in the MCU in it, along with a couple that we haven’t. There are a couple of exceptions to this though. One of the characters missing in action is The Hulk.</p>
       
-      {/* <p>According to the screenwriters, a large part of the reason for this is that the Hulk really can’t be in the film. It just wouldn’t work, because once the Hulk picks a side, the fight is already over. In the MCU The Hulk has been every bit the overpowering force as his comic book counterpart. He tears through pretty much anything and everything that’s ever been thrown at him. If that included half the Avengers, is there really anything they could do? Speaking with Entertainment Weekly, the screenwriters for Captain America: Civil War Christopher Markus and Stephen McFeely see the Hulk as the game over moment. Markus is of the opinion that if the Hulk were to pick a side, everybody else might as well just go home.</p> */}
+      <p>According to the screenwriters, a large part of the reason for this is that the Hulk really can’t be in the film. It just wouldn’t work, because once the Hulk picks a side, the fight is already over. In the MCU The Hulk has been every bit the overpowering force as his comic book counterpart. He tears through pretty much anything and everything that’s ever been thrown at him. If that included half the Avengers, is there really anything they could do? </p><p>Speaking with Entertainment Weekly, the screenwriters for Captain America: Civil War Christopher Markus and Stephen McFeely see the Hulk as the game over moment. Markus is of the opinion that if the Hulk were to pick a side, everybody else might as well just go home.</p>
       <p className="font-weight-normal">by <a href="/user"><strong>Carine Fox</strong></a>, 02/08/2019</p>
 
-      <a href="/myreviews" className="btn btn-success">Read more</a>
+      {/* <a href="/myreviews" className="btn btn-success">Read more</a> */}
 
     </div>
 

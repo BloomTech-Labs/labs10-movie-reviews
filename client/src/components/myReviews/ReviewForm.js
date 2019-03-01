@@ -17,7 +17,7 @@ import {
 
 class ReviewForm extends Component {
   state = {
-    userId: 0,
+    googleId: 0,
     movieId: 0,
     reviewer: '',
     rating: 0,
@@ -70,7 +70,7 @@ class ReviewForm extends Component {
         this.props.fetchReviews();
         this.setState({
           review: response.data,
-          userid: response.data.userId,
+          googleId: response.data.googleId,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
@@ -101,11 +101,11 @@ class ReviewForm extends Component {
       .post(currentReviews, review)
       .then(response => {
         this.setState({
-          //   userid: response.data.userId,
-          //   movieId: response.data.movieId,
-          //   reviewer: response.data.reviewer,
-          //   rating: response.data.rating,
-          //   textBody: response.data.textBody
+          userId: response.data.googleId,
+          movieId: response.data.movieId,
+          reviewer: response.data.reviewer,
+          rating: response.data.rating,
+          textBody: response.data.textBody
         });
         console.log('RevForm response: ', response);
       })
@@ -151,7 +151,7 @@ class ReviewForm extends Component {
             <Form>
               <div className="form-div">
                 <div className="form-div">
-                  <p>Rating</p>
+                  <p>Rating:</p>
                   <input
                     name="rating"
                     placeholder="1-5"
@@ -161,7 +161,7 @@ class ReviewForm extends Component {
                 </div>
               </div>
 
-              <Label for="exampleText">Text Area</Label>
+              <Label for="exampleText">Text Body:</Label>
               <Input
                 type="textarea"
                 placeholder="Review Content"
