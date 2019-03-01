@@ -33,7 +33,7 @@ class ReviewForm extends Component {
     if (res.data) {
       console.log('RevForm res.data: ', res.data);
       this.setState({
-        name: res.data.email,
+        // name: res.data.email,
         // photo: res.data.photo,
         googleId: res.data.googleId,
         reviewer: res.data.email
@@ -90,7 +90,7 @@ class ReviewForm extends Component {
     const review = {
       userId: this.state.googleId,
       movieId: this.id,
-      reviewer: this.state.name,
+      reviewer: this.state.reviewer,
       rating: this.state.rating,
       textBody: this.state.textBody
     };
