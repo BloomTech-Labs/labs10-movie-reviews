@@ -9,6 +9,7 @@ class PayButton extends Component {
     super(props);
     this.state = {
       publishableKey: 'pk_test_GAKbu7bXAJ5UZjNKNbWEe0XF',
+      id: null,
       name: '',
       email: '',
       username: '',
