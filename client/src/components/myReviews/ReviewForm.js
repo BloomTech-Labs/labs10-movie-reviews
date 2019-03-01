@@ -80,8 +80,8 @@ class ReviewForm extends Component {
       .catch(error => {
         console.error(error);
       });
-    window.location.reload();
-    this.props.history.push('/myreviews');
+    // window.location.reload();
+    // this.props.history.push('/myreviews');
   };
 
   // allows us to create a new review and post it to the API
@@ -111,7 +111,7 @@ class ReviewForm extends Component {
       .catch(err => {
         console.log(err);
       });
-    window.location.reload();
+    // window.location.reload();
     // this.props.history.push('/myreviews');
   };
 
