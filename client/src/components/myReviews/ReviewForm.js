@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { editDeleteReviews } from '../../services/currentUserURLs';
+import { currentUser } from '../../services/currentUserURLs';
 import { currentReviews } from '../../services/currentUserURLs';
+import { editDeleteReviews } from '../../services/currentUserURLs';
 import {
   Container,
   Row,
@@ -16,13 +17,31 @@ import {
 
 class ReviewForm extends Component {
   state = {
-    userId: 0,
+    googleId: 0,
     movieId: 0,
     reviewer: '',
     rating: 0,
     textBody: '',
+    email: '',
     review: 0
   };
+
+  componentDidMount = async () => {
+    const res = await axios.get(currentUser, {
+      withCredentials: true
+    });
+    if (res.data) {
+      console.log('RevForm res.data: ', res.data);
+      this.setState({
+        name: res.data.email,
+        // photo: res.data.photo,
+        googleId: res.data.googleId,
+        reviewer: res.data.email
+      });
+    }
+    // console.log('RevForm state in reviewForm: ', this.state);
+  };
+
   // allows us to add name, rating and textBody info for new review created on state
   // sets review id to this.id for use in deleting
   get id() {
@@ -37,7 +56,7 @@ class ReviewForm extends Component {
     e.preventDefault();
 
     const editedReview = {
-      userId: this.state.userId,
+      userId: this.state.googleId,
       movieId: this.state.movieId,
       reviewer: this.state.reviewer,
       rating: this.state.rating,
@@ -50,7 +69,7 @@ class ReviewForm extends Component {
         this.props.fetchReviews();
         this.setState({
           review: response.data,
-          userid: response.data.userId,
+          googleId: response.data.googleId,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
@@ -69,24 +88,25 @@ class ReviewForm extends Component {
   handleWriteNewReview = event => {
     event.preventDefault();
     const review = {
-      userId: this.state.userId,
-      movieId: this.props.match.params.id,
-      reviewer: this.state.reviewer,
+      userId: this.state.googleId,
+      movieId: this.id,
+      reviewer: this.state.name,
       rating: this.state.rating,
       textBody: this.state.textBody
     };
+    // console.log('RevForm review: ', review);
 
     axios
       .post(currentReviews, review)
       .then(response => {
         this.setState({
-          userid: response.data.userId,
+          userId: response.data.googleId,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
           textBody: response.data.textBody
         });
-        console.log('response: ', response);
+        console.log('RevForm response: ', response);
       })
       .catch(err => {
         console.log(err);
@@ -96,9 +116,9 @@ class ReviewForm extends Component {
   };
 
   render() {
-    console.log('id in render: ', this.props.match.params.id);
-    console.log('props in review form: ', this.props.location.state);
-    console.log('all props in review form: ', this.props);
+    // console.log('RevForm: id in render: ', this.props.match.params.id);
+    // console.log('RevForm: props in review form: ', this.props.location.state);
+    // console.log('RevForm: all props in review form: ', this.props);
 
     return (
       <Container>
@@ -129,25 +149,8 @@ class ReviewForm extends Component {
           <Col>
             <Form>
               <div className="form-div">
-                <p>userId</p>
-                <input
-                  name="userId"
-                  placeholder="1"
-                  value={this.state.userId}
-                  onChange={this.handleInputChange}
-                />
-              </div>
-
-              <div className="form-div">
-                <p>name</p>
-                <input
-                  name="reviewer"
-                  placeholder="Jane Smith"
-                  value={this.state.reviewer}
-                  onChange={this.handleInputChange}
-                />
                 <div className="form-div">
-                  <p>Rating</p>
+                  <p>Rating:</p>
                   <input
                     name="rating"
                     placeholder="1-5"
@@ -157,7 +160,7 @@ class ReviewForm extends Component {
                 </div>
               </div>
 
-              <Label for="exampleText">Text Area</Label>
+              <Label for="exampleText">Text Body:</Label>
               <Input
                 type="textarea"
                 placeholder="Review Content"

@@ -25,8 +25,10 @@ class MyReviews extends Component {
       withCredentials: true
     });
     if (res.data) {
+      console.log('Myrev - res.data in CDM: ', res.data);
       this.setState({
-        reviewer: res.data.reviewer,
+        // reviewer: res.data.reviewer,
+        // name: re
         photo: res.data.photo,
         email: res.data.email
       });
