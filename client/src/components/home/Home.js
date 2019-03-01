@@ -30,7 +30,7 @@ const Home = props => {
         </div>
       </div>
       <div className="popularReviewers">
-        <h1>Popular Reviewers</h1>
+        {/* <h1>Popular Reviewers</h1> */}
         <Card>
           <div className="cardWrapper" />
         </Card>
