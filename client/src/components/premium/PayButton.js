@@ -1,69 +1,97 @@
-import React from "react";
+import React, { Component } from "react";
 import StripeCheckout from "react-stripe-checkout";
+import { currentUser } from '../../services/currentUserURLs';
 import axios from "axios";
 
-const PayButton = props => {
-  const publishableKey = "pk_test_GAKbu7bXAJ5UZjNKNbWEe0XF";
+class PayButton extends Component {
+  // const publishableKey = "pk_test_GAKbu7bXAJ5UZjNKNbWEe0XF";
+  constructor(props) {
+    super(props);
+    this.state = {
+      publishableKey: 'pk_test_GAKbu7bXAJ5UZjNKNbWEe0XF',
+      id: null,
+      name: '',
+      email: '',
+      username: '',
+      stripeId: '',
+    }
+  }
 
-  function onToken(token) {
+  componentDidMount = async () => {
+    const res = await axios.get(currentUser, {
+      withCredentials: true
+    });
+    if (res.data) {
+      console.log("res.data \n", res.data)
+      this.setState({
+        id: res.data.id,
+        name: res.data.name,
+        email: res.data.email,
+        username: res.data.username,
+      });
+    }
+  }
+
+  onToken = token => {
     console.log("token", token)
     const body = {
-      amount: props.totalCents,
+      amount: this.props.totalCents,
       token: token,
-      subscription: props.header,
+      subscription: this.props.header,
+    };
+
+    axios
+      .post("http://localhost:5000/api/payment", body)
+      .then(stripeRes => {
+        console.log("response", stripeRes.data.stripeId);
+        // this.setState({
+        //   stripeId: stripeRes.data.stripeId
+        // })
+        return stripeRes.data.stripeId
+      })
+      .then(response => {
+        console.log("resonse put \n", response);
+        axios
+          .put(`http://localhost:5000/api/users/${this.state.id}`, {
+            name: this.state.name,
+            email: this.state.email,
+            // username: this.state.name,
+            stripeId: response,
+          })
+        .catch(err => console.log("err \n", err))
+      });
   };
 
-  axios
-    .post("https://labs10-movie-reviews.herokuapp.com/api/payment", body)
-    .then(stripeRes => {
-      console.log("response", stripeRes.data.stripeId);
-      axios
-        .get('https://labs10-movie-reviews.herokuapp.com/api/users/1')
-        .then(response => {
-          console.log("response", response);
-          axios
-            .put('https://labs10-movie-reviews.herokuapp.com/api/users/1', {
-              name: response.data.name,
-              email: response.data.email,
-              username: response.data.username,
-              stripeId: stripeRes.data.stripeId
-            })
-            .catch(err => console.log("err \n", err))
-        })
-        .catch(err => console.log(err));
-    })
-    .catch(error => {
-      console.log("Payment Error: ", error);
-    });
+  render() {
+    console.log('this state', this.state)
+    return (
+      this.props.header === "Yearly Subscription" ? (
+        <StripeCheckout
+          label={"Pay Now"} //Component button text
+          name={"Yearly Subscription"} //Modal Header
+          description={"$9.99"}
+          panelLabel="Submit Payment" //Submit button in modal
+          amount={999} //Amount in cents
+          token={res => this.onToken(res)}
+          stripeKey={this.state.publishableKey}
+          // image="" //Pop-in header image
+          billingAddress={false}
+        />
+      ) : (
+        <StripeCheckout
+          label={"Pay Now"} //Component button text
+          name={"Monthly Subscription"} //Modal Header
+          description={"$0.99"}
+          panelLabel="Submit Payment" //Submit button in modal
+          amount={99} //Amount in cents
+          token={res => this.onToken(res)}
+          stripeKey={this.state.publishableKey}
+          // image="" //Pop-in header image
+          billingAddress={false}
+        />
+      )
+    );
   };
-
-  return (
-    props.header === "Yearly Subscription" ? (
-      <StripeCheckout
-        label={"Pay Now"} //Component button text
-        name={"Yearly Subscription"} //Modal Header
-        description={"$9.99"}
-        panelLabel="Submit Payment" //Submit button in modal
-        amount={999} //Amount in cents
-        token={res => onToken(res)}
-        stripeKey={publishableKey}
-        // image="" //Pop-in header image
-        billingAddress={false}
-      />
-    ) : (
-      <StripeCheckout
-        label={"Pay Now"} //Component button text
-        name={"Monthly Subscription"} //Modal Header
-        description={"$0.99"}
-        panelLabel="Submit Payment" //Submit button in modal
-        amount={99} //Amount in cents
-        token={res => onToken(res)}
-        stripeKey={publishableKey}
-        // image="" //Pop-in header image
-        billingAddress={false}
-      />
-    )
-  );
 };
 
 export default PayButton;

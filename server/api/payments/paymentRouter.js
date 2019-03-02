@@ -136,9 +136,6 @@ router.get('/customer/delete', function(req, res) {
 
 
 
-
-
-
 // Leaving these payments for future use
 //! Payment method 2
 //   stripe.charges.create({
