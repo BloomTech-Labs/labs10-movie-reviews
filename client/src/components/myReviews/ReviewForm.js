@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import StarRatingComponent from 'react-star-rating-component';
+import './stars.css';
 import { currentUser } from '../../services/currentUserURLs';
 import { currentReviews } from '../../services/currentUserURLs';
 import { editDeleteReviews } from '../../services/currentUserURLs';
@@ -42,6 +44,16 @@ class ReviewForm extends Component {
     // console.log('RevForm state in reviewForm: ', this.state);
   };
 
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({ rating: nextValue }, () => {
+      this.setState({ rating: this.state.rating });
+      console.log('stars num: ', this.state.rating);
+    });
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({ rating: [...this.state.rating, nextProps.addToList] }); // notice the difference this.props vs nextProps
+  }
+
   // allows us to add name, rating and textBody info for new review created on state
   // sets review id to this.id for use in deleting
   get id() {
@@ -80,8 +92,8 @@ class ReviewForm extends Component {
       .catch(error => {
         console.error(error);
       });
-    // window.location.reload();
-    // this.props.history.push('/myreviews');
+    window.location.reload();
+    this.props.history.push('/myreviews');
   };
 
   // allows us to create a new review and post it to the API
@@ -111,15 +123,15 @@ class ReviewForm extends Component {
       .catch(err => {
         console.log(err);
       });
-    // window.location.reload();
-    // this.props.history.push('/myreviews');
+    window.location.reload();
+    this.props.history.push('/myreviews');
   };
 
   render() {
     // console.log('RevForm: id in render: ', this.props.match.params.id);
     // console.log('RevForm: props in review form: ', this.props.location.state);
     // console.log('RevForm: all props in review form: ', this.props);
-
+    const { rating } = this.state;
     return (
       <Container>
         <br />
@@ -150,13 +162,19 @@ class ReviewForm extends Component {
             <Form>
               <div className="form-div">
                 <div className="form-div">
-                  <p>Rating:</p>
+                  <StarRatingComponent
+                    name="rate1"
+                    starCount={5}
+                    value={rating}
+                    onStarClick={this.onStarClick.bind(this)}
+                  />
+                  {/* <p>Rating:</p>
                   <input
                     name="rating"
                     placeholder="1-5"
                     value={this.state.rating}
                     onChange={this.handleInputChange}
-                  />
+                  /> */}
                 </div>
               </div>
 
