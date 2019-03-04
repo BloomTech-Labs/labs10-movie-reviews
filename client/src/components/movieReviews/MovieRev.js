@@ -92,7 +92,7 @@ export default class MovieRev extends React.Component {
         {/* start of Grid A */}
         <Row>
           <Col sm="4">
-            <h4>{this.state.title}</h4>
+            {/* <h4>{this.state.title}</h4>
             <p />
             <div className="placeholder">
               <CardImg
@@ -133,7 +133,50 @@ export default class MovieRev extends React.Component {
             <p />
             <p>Release Date: {this.state.year}</p>
             {/* <p>Genre: </p> */}
-            <p>Description: {this.state.overview} </p>
+            {/* <p>Description: {this.state.overview} </p> */}
+            {/* <div className="card"> */}
+            <div className="card-body text-left">
+              <div className="card" style={{ width: '18rem' }}>
+                <img
+                  className="card-img-top"
+                  src={`http://image.tmdb.org/t/p/original${this.state.img}`}
+                  alt="Poster of the movie"
+                />
+                <div className="card-body">
+                  <h5 className="card-title text-left">{this.state.title}</h5>
+                  <a
+                    href={`https://www.youtube.com/embed/${
+                      this.state.trailerKey
+                    }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn  btn-info"
+                  >
+                    Watch Trailer
+                  </a>
+                  <p />
+                  <a href="#" className="btn  btn-info">
+                    <Link
+                      to={{
+                        pathname: `/reviewform/${this.state.id}`,
+                        state: {
+                          id: this.state.id,
+                          title: this.state.title,
+                          year: this.state.year,
+                          overview: this.state.overview,
+                          img: this.state.img
+                        }
+                      }}
+                    >
+                      Write Review
+                    </Link>
+                  </a>
+                  <p />
+                  <p className="card-text">{this.state.overview}</p>
+                </div>
+              </div>
+            </div>
+            {/* </div> */}
           </Col>
 
           {/* 12 grid B */}
