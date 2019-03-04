@@ -7,7 +7,7 @@ module.exports = {
       filename: './data/moviereviews.sqlite3'
     },
     useNullAsDefault: true,
-    migrations: { directory: './data/migrations' },
+    migrations: { directory: './data/migrations/development' },
     seeds: { directory: './data/seeds' }
   },
 
@@ -21,7 +21,7 @@ module.exports = {
 		},
     migrations: {
       tableName: 'knex_migrations',
-      directory: './data/migrations'
+      directory: './data/migrations/production'
     },
     seeds: { directory: './data/seeds' }
   }
