@@ -4,14 +4,12 @@ import axios from 'axios';
 import { currentUser } from '../../services/currentUserURLs';
 import './UserReview.css';
 
-
 export default class UserReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       reviewer: '',
-      photo: '',
-
+      photo: ''
     };
   }
 
@@ -19,10 +17,10 @@ export default class UserReview extends React.Component {
     const res = await axios.get(currentUser, {
       withCredentials: true
     });
-    if(res.data) {
-      this.setState({reviewer: res.data.reviewer, photo: res.data.photo});
+    if (res.data) {
+      this.setState({ reviewer: res.data.reviewer, photo: res.data.photo });
     }
-  }
+  };
 
   render() {
     console.log('props in reviews: ', this.props);
@@ -31,7 +29,11 @@ export default class UserReview extends React.Component {
         <Col sm="4">
           <div className="placeholder">
             <a href="https://placeholder.com">
-              <img className="movie-profile-avatar" src={this.state.photo} alt="placeholder" />
+              <img
+                className="movie-profile-avatar"
+                src={this.state.photo}
+                alt="placeholder"
+              />
             </a>
           </div>
           <p>
@@ -54,6 +56,35 @@ export default class UserReview extends React.Component {
             <p>{this.props.item.textBody}</p>
           </div>
         </Col>
+        <div className="container">
+          <div className="card flex-row flex-wrap">
+            <div className="card-header border-0">
+              <div className="placeholder">
+                <a href="https://placeholder.com">
+                  <img
+                    className="movie-profile-avatar"
+                    src={this.state.photo}
+                    alt="placeholder"
+                  />
+                </a>
+              </div>
+              <p>
+                Member Status: <br />
+                {/* Location: <br /> */}
+                Name: {this.state.reviewer}
+                <br />
+                Num of Reviews:{' '}
+              </p>
+            </div>
+            <div className="card-block px-2">
+              <h4 className="card-title">Title</h4>
+              <p className="card-text">Description</p>
+              <a href="#" class="btn btn-primary">
+                BUTTON
+              </a>
+            </div>
+          </div>
+        </div>
       </Row>
     );
   }
