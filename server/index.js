@@ -1,6 +1,7 @@
 // ==============================================
 // 🎥🎥 Movie Reviews Server 🍿🍿
 // ==============================================
+require('dotenv').config()
 const express = require('express');
 const server = express();
 const configureMiddleware = require('./api/configureMiddleware.js');

@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', users => {
-    users.increments(); // primary key called id
+    users.increments('id'); // primary key called id
     users.string('twitterId', 25).unique(); // official twitterId of Twitter user
     users.string('googleId', 50).unique();//official googleId of google user
     users.string('stripeId', 50).unique();//official stripeId of stripe user

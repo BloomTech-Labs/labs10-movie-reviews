@@ -1,4 +1,4 @@
-const keys = require('./config/keys.js');
+require('dotenv').config()
 
 module.exports = {
   development: {
@@ -7,18 +7,22 @@ module.exports = {
       filename: './data/moviereviews.sqlite3'
     },
     useNullAsDefault: true,
-    migrations: { directory: './data/migrations' },
-    seeds: { directory: './data/seeds' }
+    migrations: { directory: './data/migrations/development' },
+    seeds: { directory: './data/seeds/development' }
   },
 
   production: {
-    client: 'pg', //yarn add pg
-    connection: keys.dbURL,
-    ssl: true,
+    client: 'pg', 
+    connection: process.env.DATABASE_URL + '?ssl=true',
+    useNullAsDefault: true,
+		pool: {
+			min: 2,
+			max: 10
+		},
     migrations: {
       tableName: 'knex_migrations',
-      directory: './data/migrations'
+      directory: './data/migrations/production'
     },
-    seeds: { directory: './data/seeds' }
+    seeds: { directory: './data/seeds/production' }
   }
 };

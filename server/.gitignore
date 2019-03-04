@@ -8,3 +8,4 @@
 
 # environmental variables in development
 dev.js
+.env
