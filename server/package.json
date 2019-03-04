@@ -33,6 +33,11 @@
     "stripe": "^6.25.1"
   },
   "devDependencies": {
+    "dotenv": "^6.2.0",
     "nodemon": "^1.18.10"
+  },
+  "engines": {
+    "node": ">=10.15.2",
+    "npm": ">=6.4.1"
   }
 }

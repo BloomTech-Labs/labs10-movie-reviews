@@ -3,7 +3,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const cors = require('cors');
 
-const keys = require('../config/keys');
+require('dotenv').config()
 
 const corsOptions = {
   credentials: true,
@@ -17,7 +17,7 @@ module.exports = server => {
   server.use(
     cookieSession({
       name: 'cineview',
-      keys: [keys.cookieKey],
+      keys: [process.env.COOKIE_KEY],
       maxAge: 24 * 60 * 60 * 1000
     })
   );

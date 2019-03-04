@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
-const keys = require('../../config/keys');
+require('dotenv').config();
 
 // ==============================================
 // Step #1 of login flow ➡️
@@ -60,7 +60,7 @@ router.get('/google', passport.authenticate('google', {
 
 // The middleware receives the data from Google and runs the function on Strategy config
 router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-  res.redirect(keys.redirect_uri);
+  res.redirect(process.env.REDIRECT_URI);
 });
 
 

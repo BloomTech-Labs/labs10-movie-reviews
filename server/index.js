@@ -3,6 +3,7 @@
 // ==============================================
 const express = require('express');
 const server = express();
+require('dotenv').config()
 const configureMiddleware = require('./api/configureMiddleware.js');
 require('./services/passport.js');
 

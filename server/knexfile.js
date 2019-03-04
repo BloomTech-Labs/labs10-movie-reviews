@@ -1,4 +1,4 @@
-const keys = require('./config/keys.js');
+require('dotenv').config()
 
 module.exports = {
   development: {
@@ -12,9 +12,13 @@ module.exports = {
   },
 
   production: {
-    client: 'pg', //yarn add pg
-    connection: keys.dbURL,
-    ssl: true,
+    client: 'pg', 
+    connection: process.env.DATABASE_URL + '?ssl=true',
+    useNullAsDefault: true,
+		pool: {
+			min: 2,
+			max: 10
+		},
     migrations: {
       tableName: 'knex_migrations',
       directory: './data/migrations'

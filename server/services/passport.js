@@ -2,8 +2,7 @@ const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const usersDb = require('../api/authentication/authHelper.js');
-const keys = require('../config/keys.js');
-
+require('dotenv').config()
 // ==============================================
 
 // Used to stuff a piece of information into a cookie
@@ -20,8 +19,8 @@ passport.deserializeUser((user, done) => {
 // passport.use(
 //   new TwitterStrategy(
 //     {
-//       consumerKey: keys.twitterConsumerKey,
-//       consumerSecret: keys.twitterConsumerSecret,
+//       consumerKey: process.env.TWITTER_CONSUMER_KEY,
+//       consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
 //       callbackURL: '/auth/twitter/callback',
 //       proxy: true
 //     },
@@ -48,8 +47,8 @@ passport.deserializeUser((user, done) => {
 passport.use(
   new GoogleStrategy(
     {
-      clientID: keys.googleClientId,
-      clientSecret: keys.googleClientSecret,
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: '/auth/google/callback',
       proxy: true,
       userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
