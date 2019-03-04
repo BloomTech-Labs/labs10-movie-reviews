@@ -1,6 +1,6 @@
+require('dotenv').config();
 const router = require('express').Router();
 const passport = require('passport');
-require('dotenv').config();
 
 // ==============================================
 // Step #1 of login flow ➡️

@@ -1,8 +1,8 @@
+require('dotenv').config()
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const usersDb = require('../api/authentication/authHelper.js');
-require('dotenv').config()
 // ==============================================
 
 // Used to stuff a piece of information into a cookie
