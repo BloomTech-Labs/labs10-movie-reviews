@@ -26,7 +26,7 @@ export default class UserReview extends React.Component {
     console.log('props in reviews: ', this.props);
     return (
       <Row>
-        <Col sm="4">
+        {/* <Col sm="4">
           <div className="placeholder">
             <a href="https://placeholder.com">
               <img
@@ -39,13 +39,12 @@ export default class UserReview extends React.Component {
           <p>
             Member Status: <br />
             {/* Location: <br /> */}
-            Name: {this.state.reviewer}
+        {/* Name: {this.state.reviewer}
             <br />
             Num of Reviews:{' '}
           </p>
-        </Col>
-
-        <Col sm="8">
+        </Col> */}
+        {/* <Col sm="8">
           <div className="ratingStar">
             <p>
               Rating Stars: {this.props.item.rating}{' '}
@@ -55,7 +54,8 @@ export default class UserReview extends React.Component {
           <div className="bodyRev">
             <p>{this.props.item.textBody}</p>
           </div>
-        </Col>
+        </Col>{' '}
+        */}
         <div className="container">
           <div className="card flex-row flex-wrap">
             <div className="card-header border-0">
@@ -77,11 +77,11 @@ export default class UserReview extends React.Component {
               </p>
             </div>
             <div className="card-block px-2">
-              <h4 className="card-title">Title</h4>
-              <p className="card-text">Description</p>
-              <a href="#" class="btn btn-primary">
-                BUTTON
-              </a>
+              <p>
+                {this.props.item.rating}
+                <span> Date: {this.props.item.created_at}</span>
+              </p>
+              <p className="card-text">{this.props.item.textBody}</p>
             </div>
           </div>
         </div>
