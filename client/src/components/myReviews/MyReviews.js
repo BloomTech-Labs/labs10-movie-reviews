@@ -29,14 +29,14 @@ class MyReviews extends Component {
     });
     if (userRes.data) {
       axios
-        .get(`http://localhost:5000/api/users/${userRes.data.id}`)
+        .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
         .then(getRes => {
           console.log("getRes \n", getRes.data)
           const requestOptions = {
             headers: { stripeid: getRes.data.stripeId },
           }
           axios
-            .get('http://localhost:5000/api/customer/premium', requestOptions)
+            .get('https://labs10-movie-reviews.herokuapp.com/api/customer/premium', requestOptions)
               .then(premiumRes => {
                 // console.log(premiumRes)
                 this.setState({
