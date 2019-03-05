@@ -171,8 +171,29 @@ class Review extends Component {
               <p className="mt-0">Title: {this.state.title}</p>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="btn-group">
-                  <button type="button" className="btn btn-outline-info">
-                    Edit
+                  <button
+                    type="button"
+                    className="btn btn-outline-info"
+                    onClick={this.toggleEdit}
+                  >
+                    {' '}
+                    <Link
+                      to={{
+                        pathname: `/reviewform/${this.id}`,
+                        state: {
+                          id: this.id,
+                          title: this.state.title,
+                          year: this.state.year,
+                          overview: this.state.overview,
+                          img: this.state.img,
+                          edit: true,
+                          textBody: this.props.review.textBody,
+                          rating: this.props.review.rating
+                        }
+                      }}
+                    >
+                      Edit
+                    </Link>
                   </button>
                   <button
                     type="button"
