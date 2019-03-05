@@ -9,26 +9,16 @@ const usersDb = require('./usersHelper.js');
 
 // A GET request that returns all users from the database
 router.get('/users', async (req, res) => {
-  try {
-    const users = await usersDb.getUsers();
-    res.status(200).json(users);
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  const users = await usersDb.getUsers();
+  res.json(users);
 });
 
 // GET request that gets a user by id
 router.get('/users/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const user = await usersDb.getUsers(id);
-    user
-      ? res.status(200).json(user)
-      : res.status(404).json({ error: 'The user with the specified ID does not exist'})
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
+  const { id } = req.params;
+  const user = await usersDb.getUsers(id);
+  res.json(user);
+});
 
 // POST request to add a user
 router.post('/users', async (req, res) => {
