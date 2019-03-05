@@ -1,5 +1,4 @@
-const stripeKey = require("../../config/keys");
-const stripe = require("stripe")(stripeKey.stripeSecretKey);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const router = require('express').Router();
 
 // First, we create our customer. we use the stripe API will return a customer
