@@ -55,7 +55,7 @@ stripe
 
 // Gets customer's plan using using stripeId
 router.get('/customer/plan', function(req, res) {
-  if (debugging === true) console.log('Stripe GET customer plan\n:', req.headers);
+  if (debugging === true) console.log('Stripe GET customer plan:\n', req.headers);
   const { stripeid } = req.headers
   stripe.customers.retrieve(
     stripeid,
@@ -70,7 +70,7 @@ router.get('/customer/plan', function(req, res) {
       if (err) {
         res.send({ error: "Unable to get customer"})
       } else {
-        if (debugging === true) console.log('Customer\n:', customer);
+        if (debugging === true) console.log('Customer:\n', customer);
         res.send({
           customer: customer
             .subscriptions
@@ -86,7 +86,7 @@ router.get('/customer/plan', function(req, res) {
 
 // Gets customer's status; "premium: true" if customer has active subscription
 router.get('/customer/premium', function(req, res) {
-  if (debugging === true) console.log('Customer GET premium\n:', req.headers);
+  if (debugging === true) console.log('Customer GET premium:\n', req.headers);
   const { stripeid } = req.headers
   stripe.customers.retrieve(
     stripeid,
@@ -102,7 +102,7 @@ router.get('/customer/premium', function(req, res) {
           error: "Unable to get customer"
         })
       } else {
-        if (debugging === true) console.log('Customer\n:', customer);
+        if (debugging === true) console.log('Customer:\n', customer);
         res.send({
           premium: customer
             .subscriptions
@@ -119,7 +119,7 @@ router.get('/customer/premium', function(req, res) {
 
 // Deletes customer from stripe and cancels subscription
 router.get('/customer/delete', function(req, res) {
-  if (debugging === true) console.log('Customer GET delete\n:', req.headers);
+  if (debugging === true) console.log('Customer GET delete:\n', req.headers);
   const { stripeid } = req.headers
   stripe.customers.del(
     stripeid,
@@ -127,7 +127,7 @@ router.get('/customer/delete', function(req, res) {
       if (err) {
         res.send({ error: "Unable to delete customer"})
       } else {
-        if (debugging === true) console.log('Confirmation\n:', confirmation);
+        if (debugging === true) console.log('Confirmation:\n', confirmation);
         res.send({
           message: "successsfully deleted customer"
         })
