@@ -1,0 +1,43 @@
+{
+  "name": "labs10-movie-reviews",
+  "version": "1.0.0",
+  "description": "Movie Reviews will connect movies with watchers and the watchers provide reviews for said movies.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "deploy": "cd .. && git subtree push --prefix server heroku master",
+    "rollback": "heroku run knex migrate:rollback",
+    "migrate": "heroku run knex migrate:latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lambda-School-Labs/labs10-movie-reviews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lambda-School-Labs/labs10-movie-reviews/issues"
+  },
+  "homepage": "https://github.com/Lambda-School-Labs/labs10-movie-reviews#readme",
+  "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "pg": "^7.8.0",
+    "sqlite3": "^4.0.6",
+    "stripe": "^6.25.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "engines": {
+    "node": ">=10.15.1",
+    "npm": ">=6.4.1"
+  }
+}
