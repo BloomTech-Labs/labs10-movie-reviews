@@ -18,12 +18,12 @@ class Review extends Component {
     title: '',
     overview: '',
     img: '',
-    isEditing: false,
+    isEditing: false
   };
   componentDidMount() {
     const movie_id = this.props.review.movieId;
 
-    console.log("movieId", movie_id);
+    console.log('movieId', movie_id);
     const promise = axios.get(
       `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${
         process.env.REACT_APP_API
@@ -37,7 +37,7 @@ class Review extends Component {
           // year: response.data.release_date,
           overview: response.data.overview,
           img: response.data.backdrop_path,
-          id: response.data.id,
+          id: response.data.id
 
           //   loading: false
         });
@@ -148,26 +148,39 @@ class Review extends Component {
       //             <p>
       //               Rating Stars: <span>Date: </span>
       //             </p>
-      //           </div> 
+      //           </div>
 
       //     <p>rating: {rating}</p>
       //     <p>textbody: {textBody}</p>
       //   </Col>
       //   <br />
-      // </Row> 
+      // </Row>
 
       <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
         <Row>
           <Col sm="4">
-            <img className="card-img-top img-responsive img-thumbnail" src={`http://image.tmdb.org/t/p/original${this.state.img}`} style={{ height: 170, width: "100%" }} alt="Card image cap" />
+            <img
+              className="card-img-top img-responsive img-thumbnail"
+              src={`http://image.tmdb.org/t/p/original${this.state.img}`}
+              style={{ height: 170, width: '100%' }}
+              alt="Card image cap"
+            />
             <div className="card-body pt-0">
-              <p className="card-text"></p>
+              <p className="card-text" />
               <p className="mt-0">STARS: {rating}</p>
               <p className="mt-0">Title: {this.state.title}</p>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="btn-group">
-                  <button type="button" className="btn btn-outline-info">Edit</button>
-                  <button type="button" className="btn btn-outline-danger">Delete</button>
+                  <button type="button" className="btn btn-outline-info">
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger"
+                    onClick={this.handleDelete}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
