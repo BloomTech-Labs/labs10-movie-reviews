@@ -1,4 +1,6 @@
+require('dotenv').config();
 const router = require('express').Router();
+const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 
 // ==============================================
 // this JS file includes helpers that access our
@@ -11,6 +13,8 @@ const reviewsDb = require('./reviewsHelper.js');
 router.get('/reviews', async (req, res) => {
   try {
     const reviews = await reviewsDb.getReviews();
+    if (debugging === true) console.log('GET Reviews Router:', reviews);
+
     res.status(200).json(reviews);
   } catch (err) {
     res.status(500).json(err);
@@ -19,9 +23,12 @@ router.get('/reviews', async (req, res) => {
 
 // GET request that gets a review by id
 router.get('/reviews/:id', async (req, res) => {
+
   try {
     const { id } = req.params;
     const review = await reviewsDb.getReviews(id);
+    if (debugging === true) console.log('GET Review Router:', review);
+
     review
       ? res.status(200).json(review)
       : res

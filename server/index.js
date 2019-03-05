@@ -2,6 +2,7 @@
 // 🎥🎥 Movie Reviews Server 🍿🍿
 // ==============================================
 require('dotenv').config()
+const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 const express = require('express');
 const server = express();
 const configureMiddleware = require('./api/configureMiddleware.js');
@@ -20,6 +21,7 @@ configureMiddleware(server);
 
 // Middleware to check if the user is authenticated
 function isUserAuthenticated(req, res, next) {
+  if (debugging === true) console.log('isAuthenticated:', req.isAuthenticated(), {withCredentials: true});
   if (req.isAuthenticated(), {withCredentials: true}) {
     return next();
   } else {
@@ -40,7 +42,6 @@ server.use('/auth', authRouter);
 server.use('/api', userRouter);
 server.use('/api', reviewsRouter);
 server.use('/api', isUserAuthenticated, authReviewsRouter);
-//isUserAuthenticated,--took out of line 41 for debugging purposes
 server.use('/api', paymentRouter);
 
 // start the server
