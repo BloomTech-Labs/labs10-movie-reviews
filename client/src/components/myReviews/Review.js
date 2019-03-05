@@ -167,8 +167,8 @@ class Review extends Component {
             />
             <div className="card-body pt-0">
               <p className="card-text" />
-              <p className="mt-0">STARS: {rating}</p>
-              <p className="mt-0">Title: {this.state.title}</p>
+              <p className="mt-0">{rating}</p>
+              <p className="mt-0">{this.state.title}</p>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="btn-group">
                   <button
@@ -208,7 +208,7 @@ class Review extends Component {
           </Col>
           <Col sm="8">
             <h4 className="pb-2">Review</h4>
-            <p> text body {textBody}</p>
+            <p>{textBody}</p>
           </Col>
         </Row>
       </div>
