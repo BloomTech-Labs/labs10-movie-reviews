@@ -1,5 +1,3 @@
-require('dotenv').config()
-const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const router = require('express').Router();
 
@@ -16,8 +14,6 @@ router.post('/payment', function(req, res) {
 const source = req.body.token.id; // stripe token created in the react app
 const { email } = req.body.token; // the customer's email
 const { subscription } = req.body;
-if (debugging === true) console.log('\n\nStripe POST payment\n','source:', source, '\nemail:', email, '\nsubscription:', subscription, "\n\n");
-
 let plan;
 // console.log("req.body", req.body);
 
@@ -31,7 +27,8 @@ subscription == "Yearly Subscription"
 stripe
   .customers
   .create({ email , source }, (err, customer) => { // the first argument creates our new customer
-    if (debugging === true) console.log('Customer id:\n', customer, "\n\n");
+    console.log("customer id\n", customer);
+
     err
       ? res.send({ createdCustomer: false }) // if there's an error in creating our customer
       : stripe // Successfully created customer. Now we can create a sub for our customer
@@ -40,8 +37,6 @@ stripe
           customer: customer.id,
           items: [{ plan }] // the value of plan is the id of the plan
         }, (err, subscription) => {
-          if (debugging === true) console.log('subscription after create:\n', subscription, "\n\n");
-
           // console.log('subscription \n', su`bscription);
           err
             ? res.send({ createdSubscription: false })
@@ -55,8 +50,13 @@ stripe
 
 // Gets customer's plan using using stripeId
 router.get('/customer/plan', function(req, res) {
-  if (debugging === true) console.log('Stripe GET customer plan:\n', req.headers);
+  // console.log("customer req \n", req.headers);
   const { stripeid } = req.headers
+  if (!stripeid) {
+    res.send({
+      premium: false
+    })
+  }
   stripe.customers.retrieve(
     stripeid,
     function(err, customer) {
@@ -66,18 +66,18 @@ router.get('/customer/plan', function(req, res) {
           premium: false
         })
         return;
-      }
-      if (err) {
-        res.send({ error: "Unable to get customer"})
+      } else if (err) {
+        res.send({ error: "Unable to get customer's plan"})
       } else {
-        if (debugging === true) console.log('Customer:\n', customer);
+        // console.log("customer plan \n", customer)
         res.send({
           customer: customer
             .subscriptions
             .data[0]
             .items
             .data[0]
-            .plan    
+            .plan, 
+          premium: true  
         })
       }
     }
@@ -86,23 +86,24 @@ router.get('/customer/plan', function(req, res) {
 
 // Gets customer's status; "premium: true" if customer has active subscription
 router.get('/customer/premium', function(req, res) {
-  if (debugging === true) console.log('Customer GET premium:\n', req.headers);
+  // console.log("customer req \n", req.headers);
   const { stripeid } = req.headers
+  if (!stripeid) {
+    res.send({
+      premium: false
+    })
+  }
   stripe.customers.retrieve(
-    stripeid,
-    function(err, customer) {
+    stripeid, function(err, customer) {
       if (customer.deleted) {
-        res.send({
-          premium: false
-        })
+        res.send({ premium: false })
         return;
-      }
-      if (err) {
+      } else if (err) {
         res.send({
           error: "Unable to get customer"
         })
       } else {
-        if (debugging === true) console.log('Customer:\n', customer);
+        // console.log("customer plan/n", customer)
         res.send({
           premium: customer
             .subscriptions
@@ -119,7 +120,7 @@ router.get('/customer/premium', function(req, res) {
 
 // Deletes customer from stripe and cancels subscription
 router.get('/customer/delete', function(req, res) {
-  if (debugging === true) console.log('Customer GET delete:\n', req.headers);
+  // console.log("customer req \n", req.headers);
   const { stripeid } = req.headers
   stripe.customers.del(
     stripeid,
@@ -127,7 +128,7 @@ router.get('/customer/delete', function(req, res) {
       if (err) {
         res.send({ error: "Unable to delete customer"})
       } else {
-        if (debugging === true) console.log('Confirmation:\n', confirmation);
+        console.log("confirmation /n", confirmation)
         res.send({
           message: "successsfully deleted customer"
         })
@@ -135,57 +136,5 @@ router.get('/customer/delete', function(req, res) {
     }
   )
 })
-
-
-
-
-
-// Leaving these payments for future use
-//! Payment method 2
-//   stripe.charges.create({
-//     amount: req.body.amount,
-//     currency: "usd",
-//     description: "Example charge",
-//     source: stripeToken,
-//   }, function(err, charge) {
-//     console.log('charge')
-//     console.log(charge);
-//     if (err) {
-//       res.send({
-//         success: false,
-//         message: 'Error'
-//       });
-//     } else {
-//       res.send({
-//         success: true,
-//         message: 'Success'
-//       });
-//     }
-//   })
-// })
-
-//! Payment method 1
-// const stripeChargeCallback = res => (stripeErr, stripeRes) => {
-//   if (stripeErr) {
-//     res.status(500).send({ error: stripeErr });
-//   } else {
-//     res.status(200).send({ success: stripeRes });
-//   }
-// };
-// const paymentApi = app => { 
-//   router.post("/payment", (req, res) => {
-//     const body = {
-//       source: req.body.token.id,
-//       amount: req.body.amount,
-//       currency: "usd"
-//     };
-//     stripe
-//       .charges
-//       .create(body, stripeChargeCallback(res))
-//       .then(response => console.log("response", response))
-//       .catch(err => console.log(err));
-//   });
-//     return app;
-// };
 
 module.exports = router;
