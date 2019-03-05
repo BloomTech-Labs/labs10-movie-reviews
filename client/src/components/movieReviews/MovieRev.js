@@ -78,63 +78,12 @@ export default class MovieRev extends React.Component {
     // console.log('all props movie rev has: ', this.props);
 
     const data = this.state.reviews;
-    // const { loading } = this.state;
-    // if (loading) {
-    //   return (
-    //     <div>
-    //       <h1>Loading...</h1>
-    //     </div>
-    //   );
-    // }
     console.log('length: ', this.state.reviews.length);
     return (
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
         <Row>
           <Col sm="4">
-            {/* <h4>{this.state.title}</h4>
-            <p />
-            <div className="placeholder">
-              <CardImg
-                src={`http://image.tmdb.org/t/p/original${this.state.img}`}
-                alt="image"
-              />
-            </div>
-            <p />
-            <Button>
-              <a
-                href={`https://www.youtube.com/embed/${
-                  this.state.trailerKey
-                }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Trailer
-              </a>
-            </Button>
-            <p />
-            <Button>
-              {' '}
-              <Link
-                to={{
-                  pathname: `/reviewform/${this.state.id}`,
-                  state: {
-                    id: this.state.id,
-                    title: this.state.title,
-                    year: this.state.year,
-                    overview: this.state.overview,
-                    img: this.state.img
-                  }
-                }}
-              >
-                Write Review
-              </Link>
-            </Button>
-            <p />
-            <p>Release Date: {this.state.year}</p>
-            {/* <p>Genre: </p> */}
-            {/* <p>Description: {this.state.overview} </p> */}
-            {/* <div className="card"> */}
             <div className="card-body text-left">
               <div className="card" style={{ width: '18rem' }}>
                 <img
