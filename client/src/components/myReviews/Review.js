@@ -107,79 +107,77 @@ class Review extends Component {
     }
 
     return (
-      <>
-      <Row>
-        <Col sm="4">
-          <div className="placeholder">
-            <a href="https://placeholder.com">
-              <CardImg
-                src={`http://image.tmdb.org/t/p/original${this.state.img}`}
-                alt="image"
-              />
-            </a>
-          </div>
-          <p>{this.state.title}</p>
-          <button className="delete-edit-btn" onClick={this.toggleEdit}>
-            {' '}
-            <Link
-              to={{
-                pathname: `/reviewform/${this.id}`,
-                state: {
-                  id: this.id,
-                  title: this.state.title,
-                  year: this.state.year,
-                  overview: this.state.overview,
-                  img: this.state.img,
-                  edit: true,
-                  textBody: this.props.review.textBody,
-                  rating: this.props.review.rating
-                }
-              }}
-            >
-              Edit
-            </Link>
-          </button>
-          <button className="delete-edit-btn" onClick={this.handleDelete}>
-            Delete
-          </button>
-          <br />
-        </Col>
-        <Col sm="8">
-          {/* <div className="ratingStar">
-                  <p>
-                    Rating Stars: <span>Date: </span>
-                  </p>
-                </div> */}
+      // {/* <Row>
+      //   <Col sm="4">
+      //     <div className="placeholder">
+      //       <a href="https://placeholder.com">
+      //         <CardImg
+      //           src={`http://image.tmdb.org/t/p/original${this.state.img}`}
+      //           alt="image"
+      //         />
+      //       </a>
+      //     </div>
+      //     <p>{this.state.title}</p>
+      //     <button className="delete-edit-btn" onClick={this.toggleEdit}>
+      //       {' '}
+      //       <Link
+      //         to={{
+      //           pathname: `/reviewform/${this.id}`,
+      //           state: {
+      //             id: this.id,
+      //             title: this.state.title,
+      //             year: this.state.year,
+      //             overview: this.state.overview,
+      //             img: this.state.img,
+      //             edit: true,
+      //             textBody: this.props.review.textBody,
+      //             rating: this.props.review.rating
+      //           }
+      //         }}
+      //       >
+      //         Edit
+      //       </Link>
+      //     </button>
+      //     <button className="delete-edit-btn" onClick={this.handleDelete}>
+      //       Delete
+      //     </button>
+      //     <br />
+      //   </Col>
+      //   <Col sm="8">
+      //     <div className="ratingStar">
+      //             <p>
+      //               Rating Stars: <span>Date: </span>
+      //             </p>
+      //           </div> 
 
-          <p>rating: {rating}</p>
-          <p>textbody: {textBody}</p>
-        </Col>
-        <br />
-      </Row>
+      //     <p>rating: {rating}</p>
+      //     <p>textbody: {textBody}</p>
+      //   </Col>
+      //   <br />
+      // </Row> 
 
-      <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-light">
-      <Row>
-        <Col sm="4">
-          <img className="card-img-top img-responsive img-thumbnail" src={`http://image.tmdb.org/t/p/original${this.state.img}`} style={{ height: 170, width: "100%" }} alt="Card image cap" />
-          <div className="card-body pt-0">
-            <p className="card-text"></p>
-            <p className="mt-0">STARS: {rating}</p>
-            <p className="mt-0">Title: {this.state.title}</p>
-            <div className="d-flex justify-content-between align-items-center">
-              <div className="btn-group">
-                <button type="button" className="btn btn-outline-info">Edit</button>
-                <button type="button" className="btn btn-outline-danger">Delete</button>
+      <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
+        <Row>
+          <Col sm="4">
+            <img className="card-img-top img-responsive img-thumbnail" src={`http://image.tmdb.org/t/p/original${this.state.img}`} style={{ height: 170, width: "100%" }} alt="Card image cap" />
+            <div className="card-body pt-0">
+              <p className="card-text"></p>
+              <p className="mt-0">STARS: {rating}</p>
+              <p className="mt-0">Title: {this.state.title}</p>
+              <div className="d-flex justify-content-between align-items-center">
+                <div className="btn-group">
+                  <button type="button" className="btn btn-outline-info">Edit</button>
+                  <button type="button" className="btn btn-outline-danger">Delete</button>
+                </div>
               </div>
             </div>
-          </div>
-        </Col>
-        <Col sm="8">
-          <h4 className="pb-2">Review</h4>
-          <p> text body {textBody}</p>
-        </Col>
-      </Row>
-    </div>
-    </>
+          </Col>
+          <Col sm="8">
+            <h4 className="pb-2">Review</h4>
+            <p> text body {textBody}</p>
+          </Col>
+        </Row>
+      </div>
     );
   }
 }

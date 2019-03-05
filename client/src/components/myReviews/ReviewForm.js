@@ -18,7 +18,7 @@ import {
   CardImg
 } from 'reactstrap';
 
-class ReviewForm2 extends Component {
+class ReviewForm extends Component {
   state = {
     googleId: 0,
     movieId: 0,
@@ -223,4 +223,4 @@ class ReviewForm2 extends Component {
   }
 }
 
-export default ReviewForm2;
+export default ReviewForm;
