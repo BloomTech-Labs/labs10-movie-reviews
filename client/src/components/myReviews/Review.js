@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, CardImg } from 'reactstrap';
+import { Row, Col, Container, CardImg } from 'reactstrap';
 
 import axios from 'axios';
 import { editDeleteReviews } from '../../services/currentUserURLs';
@@ -18,10 +18,12 @@ class Review extends Component {
     title: '',
     overview: '',
     img: '',
-    isEditing: false
+    isEditing: false,
   };
   componentDidMount() {
     const movie_id = this.props.review.movieId;
+
+    console.log("movieId", movie_id);
     const promise = axios.get(
       `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${
         process.env.REACT_APP_API
@@ -35,7 +37,8 @@ class Review extends Component {
           // year: response.data.release_date,
           overview: response.data.overview,
           img: response.data.backdrop_path,
-          id: response.data.id
+          id: response.data.id,
+
           //   loading: false
         });
         // console.log('movies id: ', this.state.id);
@@ -104,6 +107,7 @@ class Review extends Component {
     }
 
     return (
+      <>
       <Row>
         <Col sm="4">
           <div className="placeholder">
@@ -122,10 +126,13 @@ class Review extends Component {
                 pathname: `/reviewform/${this.id}`,
                 state: {
                   id: this.id,
-                  // title: this.state.title,
-                  // year: this.state.year,
-                  // overview: this.state.overview,
-                  img: this.state.img
+                  title: this.state.title,
+                  year: this.state.year,
+                  overview: this.state.overview,
+                  img: this.state.img,
+                  edit: true,
+                  textBody: this.props.review.textBody,
+                  rating: this.props.review.rating
                 }
               }}
             >
@@ -149,6 +156,30 @@ class Review extends Component {
         </Col>
         <br />
       </Row>
+
+      <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-light">
+      <Row>
+        <Col sm="4">
+          <img className="card-img-top img-responsive img-thumbnail" src={`http://image.tmdb.org/t/p/original${this.state.img}`} style={{ height: 170, width: "100%" }} alt="Card image cap" />
+          <div className="card-body pt-0">
+            <p className="card-text"></p>
+            <p className="mt-0">STARS: {rating}</p>
+            <p className="mt-0">Title: {this.state.title}</p>
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="btn-group">
+                <button type="button" className="btn btn-outline-info">Edit</button>
+                <button type="button" className="btn btn-outline-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </Col>
+        <Col sm="8">
+          <h4 className="pb-2">Review</h4>
+          <p> text body {textBody}</p>
+        </Col>
+      </Row>
+    </div>
+    </>
     );
   }
 }

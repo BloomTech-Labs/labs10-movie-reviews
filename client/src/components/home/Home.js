@@ -6,6 +6,8 @@ import { Row, Card } from 'reactstrap';
 import './mappedItem.css';
 
 const Home = props => {
+  const movies = props.movies.slice(0,8);
+
   return (
     <>
       <Hero
@@ -18,12 +20,12 @@ const Home = props => {
         searchResults={props.searchResults}
         searchCriteria={props.searchCriteria}
       />
-      <Jumbotron />
       <div className="featured">
-        <h2>Popular Movies</h2>
+        <h2 className="my-4">Popular Movies</h2>
         <div className="cardWrapper">
           <Row className="nopadding">
-            {props.movies.map(item => {
+            {movies.map(item => {
+              console.log("results", item)
               return <MappedItem key={item.id} item={item} />;
             })}
           </Row>
@@ -40,3 +42,4 @@ const Home = props => {
 };
 
 export default Home;
+
