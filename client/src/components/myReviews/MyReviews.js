@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import axios from 'axios';
 import { currentUser } from '../../services/currentUserURLs';
 import { currentReviews } from '../../services/currentUserURLs';
+import { Link } from 'react-router-dom';
 
 import ReviewsList from './MyReviewsList';
 import './MyReviews.css';
@@ -54,13 +55,13 @@ class MyReviews extends Component {
         <Row>
           <Col sm="4">
             <div className="placeholder">
-              <a href="https://placeholder.com">
+              <Link to="/myreviews">
                 <img
                   className="myreviews-avatar"
                   src={this.state.photo}
                   alt="avatar"
                 />
-              </a>
+              </Link>
             </div>
             <p />
             <Button>Update User</Button>
