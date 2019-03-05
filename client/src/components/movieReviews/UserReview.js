@@ -56,7 +56,7 @@ export default class UserReview extends React.Component {
           </div>
         </Col>{' '}
         */}
-        <div className="container">
+        <div className="container mb-3">
           <div className="card flex-row flex-wrap">
             <div className="card-header border-0">
               <div className="placeholder">
