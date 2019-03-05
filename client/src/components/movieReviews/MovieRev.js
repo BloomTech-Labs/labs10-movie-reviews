@@ -83,9 +83,9 @@ export default class MovieRev extends React.Component {
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
         <Row>
-          <Col sm="4">
+          <Col sm="5">
             <div className="card-body text-left">
-              <div className="card" style={{ width: '18rem' }}>
+              <div className="card">
                 <img
                   className="card-img-top"
                   src={`http://image.tmdb.org/t/p/original${this.state.img}`}
@@ -99,12 +99,12 @@ export default class MovieRev extends React.Component {
                     }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn  btn-info"
+                    className="btn btn-info mr-3"
                   >
                     Watch Trailer
                   </a>
-                  <p />
-                  <a href="#" className="btn  btn-info">
+                  {/* <p /> */}
+                  <a href="#" className="btn btn-info">
                     <Link
                       to={{
                         pathname: `/reviewform/${this.state.id}`,
@@ -129,7 +129,7 @@ export default class MovieRev extends React.Component {
           </Col>
 
           {/* 12 grid B */}
-          <Col sm="8" className="secondCol">
+          <Col sm="7" className="secondCol">
             {this.state.reviews.length > 0 ? (
               data.map(item => {
                 return <UserReview key={item.id} item={item} />;

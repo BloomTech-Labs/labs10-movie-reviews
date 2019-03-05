@@ -10,7 +10,6 @@ function MyReviewsList(props) {
   return (
     <div className="review-section">
       <div className="reviews-list-wrapper">
-        <h2>Your Reviews:</h2>
         <div className="reviews-card-wrapper">
           {props.reviewslist.map(review => (
             <div className="review-card">

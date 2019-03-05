@@ -17,24 +17,40 @@ class MyReviews extends Component {
     photo: '',
     email: '',
     rating: null,
-    textBody: ''
+    textBody: '',
+    name: '',
+    premium: ''
   };
 
   componentDidMount = async () => {
     this.fetchReviews();
-    const res = await axios.get(currentUser, {
+    const userRes = await axios.get(currentUser, {
       withCredentials: true
     });
-    if (res.data) {
-      console.log('Myrev - res.data in CDM: ', res.data);
-      this.setState({
-        // reviewer: res.data.reviewer,
-        // name: re
-        photo: res.data.photo,
-        email: res.data.email
-      });
+    if (userRes.data) {
+      axios
+        .get(`http://localhost:5000/api/users/${userRes.data.id}`)
+        .then(getRes => {
+          console.log("getRes \n", getRes.data)
+          const requestOptions = {
+            headers: { stripeid: getRes.data.stripeId },
+          }
+          axios
+            .get('http://localhost:5000/api/customer/premium', requestOptions)
+              .then(premiumRes => {
+                // console.log(premiumRes)
+                this.setState({
+                  id: getRes.data.id,
+                  photo: getRes.data.photo,
+                  email: getRes.data.email,
+                  name: getRes.data.name,
+                  stripeId: getRes.data.stripeId,
+                  premium: premiumRes.data.premium,
+                })
+              })
+        })    
     }
-  };
+  }
 
   // allows us to get all the reviews data from the API
   fetchReviews = () => {
@@ -53,29 +69,44 @@ class MyReviews extends Component {
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
         <Row>
-          <Col sm="4">
+          <Col md="3">
             <div className="placeholder">
-              <Link to="/myreviews">
-                <img
-                  className="myreviews-avatar"
-                  src={this.state.photo}
-                  alt="avatar"
-                />
-              </Link>
-            </div>
-            <p />
-            <Button>Update User</Button>
-            <p />
-            <Button>
-              {/* <Link to={`/reviewform`}>Write Review</Link> */}
-            </Button>
-            <p>Status: </p>
-            <p>Name: {this.state.reviewer}</p>
-            <p>Email: {this.state.email}</p>
-            <p>Number of Reviews:</p>
+                <a href="https://placeholder.com">
+                  <img
+                    className="myreviews-avatar img-responsive mb-3 "
+                    src={this.state.photo}
+                    alt="avatar"
+                    style={{ 'height': 150, 'width': 150}}
+                  />
+                </a>
+
+                <ul className="list-group list-group-flush text-left">
+                  <li className="list-group-item pl-3 bg-white border-info"><span className="small badge badge-light mr-2">Status: </span>
+                    <span>
+                      {this.state.premium 
+                        ? <h3 className="badge badge-info">Premium</h3>
+                        : <h3 className="badge badge-info">Standard</h3>
+                      }
+                    </span>
+                  </li>
+
+                  <li className="list-group-item pl-3 bg-white"><span className="small badge badge-light mr-1">Name: </span>
+                      <span className="badge badge-light">{this.state.name}</span>
+                  </li>
+
+                  <li className="list-group-item pl-3 bg-white"><span className="small badge badge-light mr-1"> Email: </span>
+                    <span className="badge badge-light">{this.state.email}</span>
+                  </li>
+
+                  <li className="list-group-item pl-3 bg-white"><span className="small badge badge-light mr-1"> Number of Reviews:</span>
+                    <span className="badge badge-light">27</span>
+                  </li>
+                </ul>
+                
+              </div>
           </Col>
           {/* 12 grid B */}
-          <Col sm="8" className="secondCol">
+          <Col md="9" className="secondCol">
             <div className="bodyRev">
               <div className="My-Reviews">
                 <header className="sidebar" />

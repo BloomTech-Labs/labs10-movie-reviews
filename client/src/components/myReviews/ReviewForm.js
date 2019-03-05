@@ -29,6 +29,14 @@ class ReviewForm2 extends Component {
     review: 0
   };
 
+  componentWillMount = () => {
+    console.log("this token", this.props.location.state)
+    this.setState({
+      textBody: this.props.location.state.textBody,
+      rating: this.props.location.state.rating
+    })
+  }
+
   componentDidMount = async () => {
     const res = await axios.get(currentUser, {
       withCredentials: true
@@ -42,7 +50,7 @@ class ReviewForm2 extends Component {
         reviewer: res.data.email
       });
     }
-    // console.log('RevForm state in reviewForm: ', this.state);
+    console.log('RevForm state in reviewForm: ', this.state);
   };
 
   onStarClick(nextValue, prevValue, name) {
@@ -89,6 +97,7 @@ class ReviewForm2 extends Component {
           textBody: response.data.textBody,
           isEditing: false
         });
+        this.props.history.push('/myreviews');
       })
       .catch(error => {
         console.error(error);
@@ -133,6 +142,7 @@ class ReviewForm2 extends Component {
     // console.log('RevForm: props in review form: ', this.props.location.state);
     // console.log('RevForm: all props in review form: ', this.props);
     const { rating } = this.state;
+    
     return (
       <Container>
         <br />
@@ -187,18 +197,22 @@ class ReviewForm2 extends Component {
                   onChange={this.handleInputChange}
                 />
                 <p />
-                <button
-                  onClick={this.handleWriteNewReview}
-                  className="btn-info"
-                >
-                  Submit Review
-                </button>
-                <button
-                  className="material-button-raised"
-                  onClick={this.handleEditReview}
-                >
-                  Update Review
-                </button>
+                {this.props.location.state.edit ? (
+                  <button
+                    className="material-button-raised btn btn-outline-info"
+                    onClick={this.handleEditReview}
+                  >
+                    Update Review
+                  </button>
+                ) : (
+                  <button
+                    onClick={this.handleWriteNewReview}
+                    className="btn btn-outline-info"
+                  >
+                   Submit Review
+                  </button>
+                )}
+
               </Form>
               <p />
             </div>
