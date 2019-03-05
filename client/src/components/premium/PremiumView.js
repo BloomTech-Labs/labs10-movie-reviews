@@ -25,16 +25,16 @@ class PremiumView extends Component {
     if (userRes.data) {
       console.log("userRes \n", userRes.data)
       axios
-        // .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
-        .get(`http://localhost:5000/api/users/${userRes.data.id}`)
+        .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
+        // .get(`http://localhost:5000/api/users/${userRes.data.id}`)
         .then(getRes => {
           console.log("getRes \n", getRes.data)
           const requestOptions = {
             headers: { stripeid: getRes.data.stripeId },
           }
           axios
-            // .get('https://labs10-movie-reviews.herokuapp.com/api/customer/plan', requestOptions)
-            .get('http://localhost:5000/api/customer/plan', requestOptions)
+            .get('https://labs10-movie-reviews.herokuapp.com/api/customer/plan', requestOptions)
+            // .get('http://localhost:5000/api/customer/plan', requestOptions)
             .then(planRes => {
               console.log("planRes \n", planRes.data)
               if (planRes.data.premium === false) {
@@ -67,8 +67,8 @@ class PremiumView extends Component {
       headers: { stripeid: this.state.stripeId }
     }
     axios
-      // .get('https://labs10-movie-reviews.herokuapp.com/api/customer/delete', requestOptions)
-      .get('http://localhost:5000/api/customer/delete', requestOptions)
+      .get('https://labs10-movie-reviews.herokuapp.com/api/customer/delete', requestOptions)
+      // .get('http://localhost:5000/api/customer/delete', requestOptions)
       .then(delRes => {
         console.log(delRes);
         window.location.reload();
