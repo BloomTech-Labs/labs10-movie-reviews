@@ -5,6 +5,7 @@ import './stars.css';
 import { currentUser } from '../../services/currentUserURLs';
 import { currentReviews } from '../../services/currentUserURLs';
 import { editDeleteReviews } from '../../services/currentUserURLs';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -17,7 +18,7 @@ import {
   CardImg
 } from 'reactstrap';
 
-class ReviewForm extends Component {
+class ReviewForm2 extends Component {
   state = {
     googleId: 0,
     movieId: 0,
@@ -138,29 +139,33 @@ class ReviewForm extends Component {
         <br />
         <br />
         <Row>
-          <Col>
-            <Media>
-              <Media body>
-                <Media heading>{this.props.location.state.title}</Media>
-                {this.props.location.state.overview}
-              </Media>
-            </Media>
+          <Col md="6">
+            <div className="card-body text-left">
+              <div className="card">
+                {/* <div className="card" style={{ width: '18rem' }}> */}
+                <img
+                  className="card-img-top"
+                  src={`http://image.tmdb.org/t/p/original//${
+                    this.props.location.state.img
+                  }`}
+                  alt="Poster of the movie"
+                />
+                <div className="card-body">
+                  <h5 className="card-title text-left">
+                    {this.props.location.state.title}
+                  </h5>
+                  <p />
+                  <p />
+                  <p className="card-text">
+                    {this.props.location.state.overview}
+                  </p>
+                </div>
+              </div>
+            </div>
           </Col>
-          <Col>
-            <CardImg
-              src={`http://image.tmdb.org/t/p/original//${
-                this.props.location.state.img
-              }`}
-              alt="image"
-            />
-          </Col>
-        </Row>
-        <br />
-        <br />
-        <Row>
-          <Col>
-            <Form>
-              <div className="form-div">
+          <Col md="6">
+            <div className="card-body text-left">
+              <Form>
                 <div className="form-div">
                   <StarRatingComponent
                     name="rate1"
@@ -168,37 +173,35 @@ class ReviewForm extends Component {
                     value={rating}
                     onStarClick={this.onStarClick.bind(this)}
                   />
-                  {/* <p>Rating:</p>
-                  <input
-                    name="rating"
-                    placeholder="1-5"
-                    value={this.state.rating}
-                    onChange={this.handleInputChange}
-                  /> */}
                 </div>
-              </div>
 
-              <Label for="exampleText">Text Body:</Label>
-              <Input
-                type="textarea"
-                placeholder="Review Content"
-                //   name="text"
-                id="exampleText"
-                rows={8}
-                value={this.state.textBody}
-                name="textBody"
-                onChange={this.handleInputChange}
-              />
-
-              <Button onClick={this.handleWriteNewReview}>Submit Review</Button>
-              <button
-                className="material-button-raised"
-                onClick={this.handleEditReview}
-              >
-                Update Review
-              </button>
-            </Form>
-            <p />
+                <Label for="exampleText">Write Review:</Label>
+                <Input
+                  type="textarea"
+                  placeholder="Review Content"
+                  //   name="text"
+                  id="exampleText"
+                  rows={8}
+                  value={this.state.textBody}
+                  name="textBody"
+                  onChange={this.handleInputChange}
+                />
+                <p />
+                <button
+                  onClick={this.handleWriteNewReview}
+                  className="btn-info"
+                >
+                  Submit Review
+                </button>
+                <button
+                  className="material-button-raised"
+                  onClick={this.handleEditReview}
+                >
+                  Update Review
+                </button>
+              </Form>
+              <p />
+            </div>
           </Col>
         </Row>
       </Container>
@@ -206,4 +209,4 @@ class ReviewForm extends Component {
   }
 }
 
-export default ReviewForm;
+export default ReviewForm2;
