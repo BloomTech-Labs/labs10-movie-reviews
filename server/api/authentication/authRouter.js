@@ -1,6 +1,8 @@
 require('dotenv').config();
 const router = require('express').Router();
 const passport = require('passport');
+const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
+
 
 // ==============================================
 // Step #1 of login flow ➡️
@@ -60,7 +62,10 @@ router.get('/google', passport.authenticate('google', {
 
 // The middleware receives the data from Google and runs the function on Strategy config
 router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-  res.redirect(process.env.REDIRECT_URI);
+  if (process.env.NODE_ENV === 'production') {
+    res.redirect(process.env.REDIRECT_URI_PROD);
+  } else res.redirect(process.env.REDIRECT_URI_DEV);
+  
 });
 
 

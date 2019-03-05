@@ -1,4 +1,5 @@
 require('dotenv').config()
+const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -61,7 +62,7 @@ passport.use(
         photo: profile.photos[0].value
       });
       if (existingUser) {
-        console.log(existingUser);
+        if (debugging === true) console.log('existingUser-passportjs:', existingUser);
         done(null, existingUser);
       } else {
         const user =  await usersDb.createUser({
@@ -70,6 +71,7 @@ passport.use(
           email: profile.emails[0].value,
           photo: profile.photos[0].value
         });
+        if (debugging === true) console.log('user-passportjs:', user);
         done(null, user);
       }
     }
