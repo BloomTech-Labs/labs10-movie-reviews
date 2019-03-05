@@ -22,7 +22,7 @@ class PayButton extends Component {
       withCredentials: true
     });
     if (res.data) {
-      console.log("res.data \n", res.data)
+      // console.log("res.data \n", res.data)
       this.setState({
         id: res.data.id,
         name: res.data.name,
@@ -50,7 +50,7 @@ class PayButton extends Component {
         return stripeRes.data.stripeId
       })
       .then(response => {
-        console.log("resonse put \n", response);
+        // console.log("resonse put \n", response);
         axios
           .put(`http://localhost:5000/api/users/${this.state.id}`, {
             name: this.state.name,
@@ -58,12 +58,13 @@ class PayButton extends Component {
             // username: this.state.name,
             stripeId: response,
           })
-        .catch(err => console.log("err \n", err))
+          .then(response => console.log("put response", response))
+          .catch(err => console.log("err \n", err))
       });
   };
 
   render() {
-    console.log('this state', this.state)
+    // console.log('this state', this.state)
     return (
       this.props.header === "Yearly Subscription" ? (
         <StripeCheckout
@@ -76,7 +77,14 @@ class PayButton extends Component {
           stripeKey={this.state.publishableKey}
           // image="" //Pop-in header image
           billingAddress={false}
-        />
+        >
+          <button 
+            type="button" 
+            className="btn btn-outline-dark my-2"
+          >
+            <span className="">{this.state.subType} Subscribe Yearly</span>
+          </button>
+        </StripeCheckout>
       ) : (
         <StripeCheckout
           label={"Pay Now"} //Component button text
@@ -88,7 +96,14 @@ class PayButton extends Component {
           stripeKey={this.state.publishableKey}
           // image="" //Pop-in header image
           billingAddress={false}
-        />
+        >
+          <button 
+            type="button" 
+            className="btn btn-outline-dark my-2"
+          >
+            <span className="">{this.state.subType} Subscribe Monthly</span>
+          </button>
+        </StripeCheckout>
       )
     );
   };
