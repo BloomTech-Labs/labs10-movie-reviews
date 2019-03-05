@@ -11,7 +11,6 @@ const usersDb = require('./usersHelper.js');
 router.get('/users', async (req, res) => {
   try {
     const users = await usersDb.getUsers();
-    if (debugging === true) console.log('GET Users Router:', users);
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json(err);
@@ -23,7 +22,6 @@ router.get('/users/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const user = await usersDb.getUsers(id);
-    if (debugging === true) console.log('GET User By ID Router:', user);
     user
       ? res.status(200).json(user)
       : res.status(404).json({ error: 'The user with the specified ID does not exist'})
@@ -35,7 +33,6 @@ router.get('/users/:id', async (req, res) => {
 // POST request to add a user
 router.post('/users', async (req, res) => {
   if (req.body.name && req.body.username && req.body.email) {
-    if (debugging === true) console.log('POST User Router', '\nname:', req.body.name, 'username:', req.body.username, 'email:', req.body.email);
     try {
       await usersDb.insert(req.body);
       res.status(201).json({ message: 'User successfully added!' });
