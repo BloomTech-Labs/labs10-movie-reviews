@@ -16,7 +16,7 @@ router.get('/users', async (req, res) => {
 // GET request that gets a user by id
 router.get('/users/:id', async (req, res) => {
   const { id } = req.params;
-  const user = await usersDb.getUsers(id);
+  const user = await usersDb.getUsersById(id);
   res.json(user);
 });
 
