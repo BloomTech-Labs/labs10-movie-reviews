@@ -107,55 +107,6 @@ class Review extends Component {
     }
 
     return (
-      // {/* <Row>
-      //   <Col sm="4">
-      //     <div className="placeholder">
-      //       <a href="https://placeholder.com">
-      //         <CardImg
-      //           src={`http://image.tmdb.org/t/p/original${this.state.img}`}
-      //           alt="image"
-      //         />
-      //       </a>
-      //     </div>
-      //     <p>{this.state.title}</p>
-      //     <button className="delete-edit-btn" onClick={this.toggleEdit}>
-      //       {' '}
-      //       <Link
-      //         to={{
-      //           pathname: `/reviewform/${this.id}`,
-      //           state: {
-      //             id: this.id,
-      //             title: this.state.title,
-      //             year: this.state.year,
-      //             overview: this.state.overview,
-      //             img: this.state.img,
-      //             edit: true,
-      //             textBody: this.props.review.textBody,
-      //             rating: this.props.review.rating
-      //           }
-      //         }}
-      //       >
-      //         Edit
-      //       </Link>
-      //     </button>
-      //     <button className="delete-edit-btn" onClick={this.handleDelete}>
-      //       Delete
-      //     </button>
-      //     <br />
-      //   </Col>
-      //   <Col sm="8">
-      //     <div className="ratingStar">
-      //             <p>
-      //               Rating Stars: <span>Date: </span>
-      //             </p>
-      //           </div>
-
-      //     <p>rating: {rating}</p>
-      //     <p>textbody: {textBody}</p>
-      //   </Col>
-      //   <br />
-      // </Row>
-
       <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
         <Row>
           <Col sm="4">
