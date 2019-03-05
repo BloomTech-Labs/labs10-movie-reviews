@@ -8,7 +8,7 @@
   padding-left: 0;
 }
 
-img {
+.card-img {
   height: 25vh;
   width: 90%;
   margin-bottom: 1rem;
@@ -20,7 +20,7 @@ img {
   left: 0px;
   color: white;
   size: 10px;
-  background-color: rgba(0,0,0,.6);
+  background-color: rgba(0, 0, 0, 0.6);
   font-weight: 400;
   width: 100%;
 }
