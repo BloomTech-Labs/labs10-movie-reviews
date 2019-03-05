@@ -7,6 +7,8 @@ import * as serviceWorker from './services/serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
+require('dotenv').config();
+
 ReactDOM.render(
   <Router>
     <App />
