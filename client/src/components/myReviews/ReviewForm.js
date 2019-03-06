@@ -130,11 +130,13 @@ class ReviewForm extends Component {
         });
         console.log('RevForm response: ', response);
       })
+      .then(response => {
+        this.props.history.push('/myreviews');
+      })
       .catch(err => {
         console.log(err);
       });
     //window.location.reload();
-    this.props.history.push('/myreviews');
   };
 
   render() {
