@@ -39,8 +39,6 @@ class Review extends Component {
           overview: response.data.overview,
           img: response.data.backdrop_path,
           id: response.data.id
-
-          //   loading: false
         });
         // console.log('movies id: ', this.state.id);
       })
@@ -62,14 +60,6 @@ class Review extends Component {
       .delete(editDeleteReviews(this.id))
       .then(response => {
         this.props.fetchReviews();
-        this.setState({
-          review: response.data,
-          id: response.data.id,
-          movieId: response.data.movieId,
-          reviewer: response.data.reviewer,
-          rating: response.data.rating,
-          textBody: response.data.textBody
-        });
       })
       .catch(error => {
         console.error(error);
