@@ -3,11 +3,6 @@ import React from 'react';
 const ResultCard = props => {
   return (
     <div className="result-card" key={props.result.id} index={props.result.id}>
-      <h1 className="search-results-header">
-        {`${props.result.title} ${props.releaseYear(
-          props.result.release_date
-        )}`}
-      </h1>
       {/* TODO: Make image a link that will pass props to singlemovie component */}
       <img
         className="poster-img"
@@ -19,6 +14,12 @@ const ResultCard = props => {
         }
         alt={props.result.title}
       />
+      <h1 className="search-results-header">
+        {`${props.result.title}`}
+      </h1>
+      <p>{props.releaseYear(
+          props.result.release_date)}
+      </p>
     </div>
   );
 };
