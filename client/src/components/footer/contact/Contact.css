@@ -10,12 +10,20 @@
 
 .contact-form {
     background-color: rgb(214, 214, 214);
-    width: 700px;
+    width: 39%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 30px 5%;
+    border-radius: 5px;
     
+}
+
+.contact-header {
+    width: 100%;
+    margin-bottom: 0;
+    padding-top: 50px;
+    font-family: 'Roboto';
 }
 
 .input-wrapper {
@@ -45,11 +53,17 @@
 }
 
 .submit-button {
-    color: #18A2B8;
+    color: #18A2B8 !important;
     background-color:white !important;
     border-radius: 3px;
 }
 
-.contact-form-radio {
-    display:flex;
+.submit-button:hover {
+    color: white !important;
+    background-color: #18A2B8 !important;
+
+}
+
+.message {
+    height: 300px !important;
 }

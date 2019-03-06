@@ -1,43 +1,45 @@
 import React from 'react';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import './Contact.css';
 
 const Contact = (props) => {
     return (        
         <div className="contact-wrapper">
-                <form 
+                <Form
                     className='contact-form'
                     action={`https://formspree.io/kopecky12112@gmail.com`} method="POST">
-                    <h1 className='contact-header'>Let's talk. </h1>
+                    <h1 className='contact-header'>Feedback? Suggestions?</h1>
                     <div className="input-wrapper">
-                        <div className="contact-form-input">
-                            <label for="name">Name:</label>
-                            <input type="text" name="name"
+                        <FormGroup
+                            className="contact-form-input">
+                            <Label>Name:</Label>
+                            <Input type="text" name="name"
                                 className='form-blank-name-email'
                                 placeholder="Enter your name - required"
                                 required/>
-                        </div>
-                        <div className="contact-form-input">
-                            <label for="email">Email:</label>
-                            <input type="email" name="_replyto"
+                        </FormGroup>
+                        <FormGroup className="contact-form-input">
+                            <Label for="email">Email:</Label>
+                            <Input type="email" name="_replyto"
                                 className='form-blank-name-email'
                                 placeholder="Enter your email - required"
                                 required/>
-                        </div>
+                        </FormGroup>
                         
-                        <div className="contact-form-input">
-                                <label for="message">Message:</label>
-                                <textarea type="textarea" 
+                        <FormGroup className="contact-form-input">
+                                <Label for="message">Message:</Label>
+                                <Input type="textarea" 
                                     name="message"
                                     className='message' required
                                     placeholder="required"
 
                                 />
                                     
-                        </div>
+                        </FormGroup>
 
-                        <input className="submit-button" type="submit" value="Send Message"/>
+                        <Button className="submit-button" type="submit" value="Send Message">"Contact" Us</Button>
                     </div>
-                </form>
+                </Form>
         </div>
     );
 };
