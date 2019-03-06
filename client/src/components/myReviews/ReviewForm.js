@@ -20,6 +20,7 @@ import {
 
 class ReviewForm extends Component {
   state = {
+    id: 0,
     googleId: 0,
     movieId: 0,
     reviewer: '',
@@ -47,7 +48,8 @@ class ReviewForm extends Component {
         // name: res.data.email,
         // photo: res.data.photo,
         googleId: res.data.googleId,
-        reviewer: res.data.email
+        reviewer: res.data.email,
+        id: res.data.id
       });
     }
     console.log('RevForm state in reviewForm: ', this.state);
