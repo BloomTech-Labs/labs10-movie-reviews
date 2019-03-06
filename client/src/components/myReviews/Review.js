@@ -57,6 +57,7 @@ class Review extends Component {
   // allows us to delete and update state
   handleDelete = e => {
     e.preventDefault();
+    console.log('RevId:', this.id);
     axios
       .delete(editDeleteReviews(this.id))
       .then(response => {

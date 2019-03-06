@@ -30,15 +30,13 @@ class ReviewForm extends Component {
     review: 0
   };
 
-  componentWillMount = () => {
-    console.log('this token', this.props.location.state);
-    this.setState({
-      textBody: this.props.location.state.textBody,
-      rating: this.props.location.state.rating
-    });
-  };
+  // componentWillMount = () => {
+  //   this.setState({
+  //   });
+  // };
 
   componentDidMount = async () => {
+    console.log('this token', this.props.location.state);
     const res = await axios.get(currentUser, {
       withCredentials: true
     });
@@ -47,6 +45,8 @@ class ReviewForm extends Component {
       this.setState({
         // name: res.data.email,
         // photo: res.data.photo,
+        textBody: this.props.location.state.textBody,
+        rating: this.props.location.state.rating,
         googleId: res.data.googleId,
         reviewer: res.data.email,
         id: res.data.id
