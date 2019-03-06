@@ -1,13 +1,16 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const cors = require('cors');
 
-
 const corsOptions = {
   credentials: true,
-  origin: ['http://localhost:3000', 'https://cineview.netlify.com']
+  origin: [
+    'http://localhost:3000',
+    'https://cineview.netlify.com',
+    'https://stupefied-northcutt-418a4d.netlify.com'
+  ]
 };
 
 // list of middlewares configured to our Express
