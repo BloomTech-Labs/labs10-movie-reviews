@@ -11,6 +11,7 @@ class Review extends Component {
   state = {
     review: null,
     id: null,
+    googleId: null,
     movieId: null,
     reviewer: '',
     rating: null,
@@ -94,7 +95,7 @@ class Review extends Component {
     if (this.state.isEditing) {
       return (
         <ReviewForm
-          // googleId={this.state.googleId}
+          googleId={this.state.googleId}
           movieId={this.state.movieId}
           reviewer={this.state.reviewer}
           rating={this.state.rating}
