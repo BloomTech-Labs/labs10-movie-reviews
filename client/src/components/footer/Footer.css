@@ -1,13 +1,4 @@
-.footer  {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 80px;
-    background-color: rgb(237, 237, 237);
 
-}
 
 .footer-text {
     margin: 10px 0px 0px 0px;
