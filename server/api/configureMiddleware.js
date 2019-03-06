@@ -7,8 +7,8 @@ const cors = require('cors');
 const corsOptions = {
   credentials: true,
   origin: [
-    'http://localhost:3000',
-    'https://cineview.netlify.com',
+    // 'http://localhost:3000',
+    // 'https://cineview.netlify.com',
     'https://stupefied-northcutt-418a4d.netlify.com'
   ]
 };
