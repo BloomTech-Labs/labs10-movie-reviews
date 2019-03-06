@@ -129,7 +129,7 @@ export default class MovieRev extends React.Component {
           </Col>
 
           {/* 12 grid B */}
-          <Col sm="7" className="secondCol">
+          <Col sm="7" className="secondCol text-left">
             {this.state.reviews.length > 0 ? (
               data.map(item => {
                 return <UserReview key={item.id} item={item} />;
