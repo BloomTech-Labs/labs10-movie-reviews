@@ -20,6 +20,7 @@ import {
 
 class ReviewForm extends Component {
   state = {
+    id: 0,
     googleId: 0,
     movieId: 0,
     reviewer: '',
@@ -29,25 +30,19 @@ class ReviewForm extends Component {
     review: 0
   };
 
-  componentWillMount = () => {
-    console.log('this token', this.props.location.state);
-    this.setState({
-      textBody: this.props.location.state.textBody,
-      rating: this.props.location.state.rating
-    });
-  };
-
   componentDidMount = async () => {
+    console.log('this token', this.props.location.state);
     const res = await axios.get(currentUser, {
       withCredentials: true
     });
     if (res.data) {
       console.log('RevForm res.data: ', res.data);
       this.setState({
-        // name: res.data.email,
-        // photo: res.data.photo,
+        textBody: this.props.location.state.textBody,
+        rating: this.props.location.state.rating,
         googleId: res.data.googleId,
-        reviewer: res.data.email
+        reviewer: res.data.email,
+        id: res.data.id
       });
     }
     console.log('RevForm state in reviewForm: ', this.state);
@@ -77,7 +72,7 @@ class ReviewForm extends Component {
     e.preventDefault();
 
     const editedReview = {
-      userId: this.state.googleId,
+      userId: this.state.id,
       movieId: this.state.movieId,
       reviewer: this.state.reviewer,
       rating: this.state.rating,
@@ -87,30 +82,21 @@ class ReviewForm extends Component {
     axios
       .put(editDeleteReviews(this.id), editedReview)
       .then(response => {
-        this.props.fetchReviews();
-        this.setState({
-          review: response.data,
-          googleId: response.data.googleId,
-          movieId: response.data.movieId,
-          reviewer: response.data.reviewer,
-          rating: response.data.rating,
-          textBody: response.data.textBody,
-          isEditing: false
-        });
+        // this.props.fetchReviews();
         this.props.history.push('/myreviews');
       })
       .catch(error => {
         console.error(error);
       });
-    window.location.reload();
-    this.props.history.push('/myreviews');
+    // window.location.reload();
+    // this.props.history.push('/myreviews');
   };
 
   // allows us to create a new review and post it to the API
   handleWriteNewReview = event => {
     event.preventDefault();
     const review = {
-      userId: this.state.googleId,
+      userId: this.state.id,
       movieId: this.id,
       reviewer: this.state.reviewer,
       rating: this.state.rating,
@@ -121,29 +107,17 @@ class ReviewForm extends Component {
     axios
       .post(currentReviews, review)
       .then(response => {
-        this.setState({
-          userId: response.data.googleId,
-          movieId: response.data.movieId,
-          reviewer: response.data.reviewer,
-          rating: response.data.rating,
-          textBody: response.data.textBody
-        });
         console.log('RevForm response: ', response);
       })
-      // .then(response => {
-      //   this.props.history.push('/myreviews');
-      // })
+      .then(response => {
+        this.props.history.push('/myreviews');
+      })
       .catch(err => {
         console.log(err);
       });
-    // window.location.reload();
-    // this.props.history.push('/myreviews');
   };
 
   render() {
-    // console.log('RevForm: id in render: ', this.props.match.params.id);
-    // console.log('RevForm: props in review form: ', this.props.location.state);
-    // console.log('RevForm: all props in review form: ', this.props);
     const { rating } = this.state;
 
     return (

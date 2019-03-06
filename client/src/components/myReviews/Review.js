@@ -10,6 +10,7 @@ import ReviewForm from './ReviewForm';
 class Review extends Component {
   state = {
     review: null,
+    id: null,
     googleId: null,
     movieId: null,
     reviewer: '',
@@ -38,8 +39,6 @@ class Review extends Component {
           overview: response.data.overview,
           img: response.data.backdrop_path,
           id: response.data.id
-
-          //   loading: false
         });
         // console.log('movies id: ', this.state.id);
       })
@@ -56,18 +55,11 @@ class Review extends Component {
   // allows us to delete and update state
   handleDelete = e => {
     e.preventDefault();
+    console.log('RevId:', this.id);
     axios
       .delete(editDeleteReviews(this.id))
       .then(response => {
         this.props.fetchReviews();
-        this.setState({
-          review: response.data,
-          googleId: response.data.googleId,
-          movieId: response.data.movieId,
-          reviewer: response.data.reviewer,
-          rating: response.data.rating,
-          textBody: response.data.textBody
-        });
       })
       .catch(error => {
         console.error(error);
