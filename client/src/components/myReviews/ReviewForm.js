@@ -82,13 +82,14 @@ class ReviewForm extends Component {
     axios
       .put(editDeleteReviews(this.id), editedReview)
       .then(response => {
-        this.props.fetchReviews();
+        // this.props.fetchReviews();
+        this.props.history.push('/myreviews');
       })
       .catch(error => {
         console.error(error);
       });
-    window.location.reload();
-    this.props.history.push('/myreviews');
+    // window.location.reload();
+    // this.props.history.push('/myreviews');
   };
 
   // allows us to create a new review and post it to the API
