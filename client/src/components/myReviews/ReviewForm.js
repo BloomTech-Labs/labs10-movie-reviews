@@ -30,12 +30,12 @@ class ReviewForm extends Component {
   };
 
   componentWillMount = () => {
-    console.log("this token", this.props.location.state)
+    console.log('this token', this.props.location.state);
     this.setState({
       textBody: this.props.location.state.textBody,
       rating: this.props.location.state.rating
-    })
-  }
+    });
+  };
 
   componentDidMount = async () => {
     const res = await axios.get(currentUser, {
@@ -133,7 +133,7 @@ class ReviewForm extends Component {
       .catch(err => {
         console.log(err);
       });
-    window.location.reload();
+    //window.location.reload();
     this.props.history.push('/myreviews');
   };
 
@@ -142,7 +142,7 @@ class ReviewForm extends Component {
     // console.log('RevForm: props in review form: ', this.props.location.state);
     // console.log('RevForm: all props in review form: ', this.props);
     const { rating } = this.state;
-    
+
     return (
       <Container>
         <br />
@@ -209,10 +209,9 @@ class ReviewForm extends Component {
                     onClick={this.handleWriteNewReview}
                     className="btn btn-outline-info"
                   >
-                   Submit Review
+                    Submit Review
                   </button>
                 )}
-
               </Form>
               <p />
             </div>
