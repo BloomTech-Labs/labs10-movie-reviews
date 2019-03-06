@@ -41,22 +41,20 @@ class PayButton extends Component {
     };
 
     axios
-      .post("http://localhost:5000/api/payment", body)
+      .post('https://labs10-movie-reviews.herokuapp.com/api/payment', body)
+      // .post("http://localhost:5000/api/payment", body)
       .then(stripeRes => {
         console.log("response", stripeRes.data.stripeId);
-        // this.setState({
-        //   stripeId: stripeRes.data.stripeId
-        // })
         return stripeRes.data.stripeId
       })
       .then(response => {
         // console.log("resonse put \n", response);
         axios
-          .put(`http://localhost:5000/api/users/${this.state.id}`, {
+          .put(`https://labs10-movie-reviews.herokuapp.com/api/users/${this.state.id}`, {
             name: this.state.name,
             email: this.state.email,
             // username: this.state.name,
-            stripeId: response,
+            stripeId: response
           })
           .then(response => console.log("put response", response))
           .catch(err => console.log("err \n", err))
