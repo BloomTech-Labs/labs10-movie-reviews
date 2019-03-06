@@ -20,6 +20,7 @@ import {
 
 class ReviewForm extends Component {
   state = {
+    id: 0,
     googleId: 0,
     movieId: 0,
     reviewer: '',
@@ -47,7 +48,8 @@ class ReviewForm extends Component {
         // name: res.data.email,
         // photo: res.data.photo,
         googleId: res.data.googleId,
-        reviewer: res.data.email
+        reviewer: res.data.email,
+        id: res.data.id
       });
     }
     console.log('RevForm state in reviewForm: ', this.state);
@@ -77,7 +79,7 @@ class ReviewForm extends Component {
     e.preventDefault();
 
     const editedReview = {
-      userId: this.state.googleId,
+      userId: this.state.id,
       movieId: this.state.movieId,
       reviewer: this.state.reviewer,
       rating: this.state.rating,
@@ -90,7 +92,7 @@ class ReviewForm extends Component {
         this.props.fetchReviews();
         this.setState({
           review: response.data,
-          googleId: response.data.googleId,
+          userId: response.data.id,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
@@ -110,7 +112,7 @@ class ReviewForm extends Component {
   handleWriteNewReview = event => {
     event.preventDefault();
     const review = {
-      userId: this.state.googleId,
+      userId: this.state.id,
       movieId: this.id,
       reviewer: this.state.reviewer,
       rating: this.state.rating,
@@ -122,7 +124,7 @@ class ReviewForm extends Component {
       .post(currentReviews, review)
       .then(response => {
         this.setState({
-          userId: response.data.googleId,
+          userId: response.data.id,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
