@@ -10,7 +10,7 @@ import ReviewForm from './ReviewForm';
 class Review extends Component {
   state = {
     review: null,
-    googleId: null,
+    id: null,
     movieId: null,
     reviewer: '',
     rating: null,
@@ -62,7 +62,7 @@ class Review extends Component {
         this.props.fetchReviews();
         this.setState({
           review: response.data,
-          googleId: response.data.googleId,
+          id: response.data.id,
           movieId: response.data.movieId,
           reviewer: response.data.reviewer,
           rating: response.data.rating,
@@ -94,7 +94,7 @@ class Review extends Component {
     if (this.state.isEditing) {
       return (
         <ReviewForm
-          googleId={this.state.googleId}
+          // googleId={this.state.googleId}
           movieId={this.state.movieId}
           reviewer={this.state.reviewer}
           rating={this.state.rating}
