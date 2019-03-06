@@ -28,27 +28,43 @@ class MyReviews extends Component {
       withCredentials: true
     });
     if (userRes.data) {
-      axios
-        .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
-        .then(getRes => {
-          console.log("getRes \n", getRes.data)
-          const requestOptions = {
-            headers: { stripeid: getRes.data.stripeId },
-          }
-          axios
-            .get('https://labs10-movie-reviews.herokuapp.com/api/customer/premium', requestOptions)
-              .then(premiumRes => {
-                // console.log(premiumRes)
-                this.setState({
-                  id: getRes.data.id,
-                  photo: getRes.data.photo,
-                  email: getRes.data.email,
-                  name: getRes.data.name,
-                  stripeId: getRes.data.stripeId,
-                  premium: premiumRes.data.premium,
-                })
-              })
-        })    
+      this.setState({
+        photo: userRes.data.photo,
+        name: userRes.data.name,
+        email: userRes.data.email,
+      })
+      console.log("userData", userRes.data)
+      // axios
+        // .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
+        // .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
+        // .then(getRes => {
+        //   console.log("getRes \n", getRes.data)
+        //   this.setState({
+        //     id: getRes.data[0].id,
+        //     photo: getRes.data[0].photo,
+        //     email: getRes.data[0].email,
+        //     name: getRes.data[0].name,
+        //   })
+        // })
+          // const requestOptions = {
+          //   headers: { stripeid: getRes.data.stripeId },
+
+          // }
+          // axios
+          //   .get('https://labs10-movie-reviews.herokuapp.com/api/customer/premium', requestOptions)
+          //     .then(premiumRes => {
+          //       // console.log(premiumRes)
+          //       this.setState({
+                  // id: getRes.data.id,
+                  // photo: getRes.data.photo,
+                  // email: getRes.data.email,
+                  // name: getRes.data.name,
+                  // stripeId: getRes.data.stripeId,
+                  // premium: premiumRes.data.premium,
+          //       })
+          //     }) 
+    } else {
+      console.log('Unable to get current user information')
     }
   }
 
@@ -81,17 +97,17 @@ class MyReviews extends Component {
                 </a>
 
                 <ul className="list-group list-group-flush text-left">
-                  <li className="list-group-item pl-3 bg-white border-info"><span className="small badge badge-light mr-2">Status: </span>
+                  {/* <li className="list-group-item pl-3 bg-white border-info"><span className="small badge badge-light mr-2">Status: </span>
                     <span>
                       {this.state.premium 
                         ? <h3 className="badge badge-info">Premium</h3>
                         : <h3 className="badge badge-info">Standard</h3>
                       }
                     </span>
-                  </li>
+                  </li> */}
 
                   <li className="list-group-item pl-3 bg-white"><span className="small badge badge-light mr-1">Name: </span>
-                      <span className="badge badge-light">{this.state.name}</span>
+                    <span className="badge badge-light">{this.state.name}</span>
                   </li>
 
                   <li className="list-group-item pl-3 bg-white"><span className="small badge badge-light mr-1"> Email: </span>
