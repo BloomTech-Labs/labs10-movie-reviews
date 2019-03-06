@@ -59,7 +59,8 @@ class Review extends Component {
     axios
       .delete(editDeleteReviews(this.id))
       .then(response => {
-        this.props.fetchReviews();
+        // this.props.fetchReviews();
+        this.props.history.push('/myreviews');
       })
       .catch(error => {
         console.error(error);
