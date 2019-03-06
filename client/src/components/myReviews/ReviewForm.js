@@ -30,11 +30,6 @@ class ReviewForm extends Component {
     review: 0
   };
 
-  // componentWillMount = () => {
-  //   this.setState({
-  //   });
-  // };
-
   componentDidMount = async () => {
     console.log('this token', this.props.location.state);
     const res = await axios.get(currentUser, {
@@ -43,8 +38,6 @@ class ReviewForm extends Component {
     if (res.data) {
       console.log('RevForm res.data: ', res.data);
       this.setState({
-        // name: res.data.email,
-        // photo: res.data.photo,
         textBody: this.props.location.state.textBody,
         rating: this.props.location.state.rating,
         googleId: res.data.googleId,
@@ -90,16 +83,6 @@ class ReviewForm extends Component {
       .put(editDeleteReviews(this.id), editedReview)
       .then(response => {
         this.props.fetchReviews();
-        this.setState({
-          review: response.data,
-          userId: response.data.id,
-          movieId: response.data.movieId,
-          reviewer: response.data.reviewer,
-          rating: response.data.rating,
-          textBody: response.data.textBody,
-          isEditing: false
-        });
-        this.props.history.push('/myreviews');
       })
       .catch(error => {
         console.error(error);
@@ -123,29 +106,17 @@ class ReviewForm extends Component {
     axios
       .post(currentReviews, review)
       .then(response => {
-        this.setState({
-          userId: response.data.id,
-          movieId: response.data.movieId,
-          reviewer: response.data.reviewer,
-          rating: response.data.rating,
-          textBody: response.data.textBody
-        });
         console.log('RevForm response: ', response);
       })
-      // .then(response => {
-      //   this.props.history.push('/myreviews');
-      // })
+      .then(response => {
+        this.props.history.push('/myreviews');
+      })
       .catch(err => {
         console.log(err);
       });
-    // window.location.reload();
-    // this.props.history.push('/myreviews');
   };
 
   render() {
-    // console.log('RevForm: id in render: ', this.props.match.params.id);
-    // console.log('RevForm: props in review form: ', this.props.location.state);
-    // console.log('RevForm: all props in review form: ', this.props);
     const { rating } = this.state;
 
     return (
