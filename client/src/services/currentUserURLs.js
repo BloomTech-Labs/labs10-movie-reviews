@@ -13,7 +13,6 @@ export const editDeleteReviews = id => {
     debugger;
     return `https://labs10-movie-reviews.herokuapp.com/api/reviews/${id}`;
   } else {
-    debugger;
     return `http://localhost:5000/api/reviews/${id}`;
   }
   // return process.env.NODE_ENV === 'production'
