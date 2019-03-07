@@ -103,12 +103,14 @@ class Review extends Component {
       <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
         <Row>
           <Col sm="4">
-            <img
-              className="card-img-top img-responsive img-thumbnail"
-              src={`http://image.tmdb.org/t/p/original${this.state.img}`}
-              style={{ height: 170, width: '100%' }}
-              alt="Card image cap"
-            />
+            <Link to={`/moviereviews/${this.props.review.movieId}`}>
+              <img
+                className="card-img-top img-responsive img-thumbnail"
+                src={`http://image.tmdb.org/t/p/original${this.state.img}`}
+                style={{ height: 170, width: '100%' }}
+                alt="Card image cap"
+              />
+            </Link>
             <div className="card-body pt-0">
               <p className="card-text" />
               <StarRatingComponent
