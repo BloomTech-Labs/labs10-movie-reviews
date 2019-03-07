@@ -3,6 +3,7 @@ import { Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { currentUser } from '../../services/currentUserURLs';
 import './UserReview.css';
+import StarRatingComponent from 'react-star-rating-component';
 
 export default class UserReview extends React.Component {
   constructor(props) {
@@ -26,36 +27,6 @@ export default class UserReview extends React.Component {
     console.log('props in reviews: ', this.props);
     return (
       <Row>
-        {/* <Col sm="4">
-          <div className="placeholder">
-            <a href="https://placeholder.com">
-              <img
-                className="movie-profile-avatar"
-                src={this.state.photo}
-                alt="placeholder"
-              />
-            </a>
-          </div>
-          <p>
-            Member Status: <br />
-            {/* Location: <br /> */}
-        {/* Name: {this.state.reviewer}
-            <br />
-            Num of Reviews:{' '}
-          </p>
-        </Col> */}
-        {/* <Col sm="8">
-          <div className="ratingStar">
-            <p>
-              Rating Stars: {this.props.item.rating}{' '}
-              <span> Date: {this.props.item.created_at}</span>
-            </p>
-          </div>
-          <div className="bodyRev">
-            <p>{this.props.item.textBody}</p>
-          </div>
-        </Col>{' '}
-        */}
         <div className="container mb-3">
           <div className="card flex-row flex-wrap">
             <div className="card-header border-0">
@@ -77,10 +48,16 @@ export default class UserReview extends React.Component {
               </p>
             </div>
             <div className="card-block px-2">
-              <p>
-                {this.props.item.rating}
-                <span> Date: {this.props.item.created_at}</span>
-              </p>
+              <div className="goFlex">
+                <StarRatingComponent
+                  name="rate2"
+                  editing={false}
+                  renderStarIcon={() => <span>★</span>}
+                  starCount={5}
+                  value={this.props.item.rating}
+                />
+                <p className="space"> Date: {this.props.item.created_at}</p>
+              </div>
               <p className="card-text">{this.props.item.textBody}</p>
             </div>
           </div>

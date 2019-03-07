@@ -1,4 +1,18 @@
 .movie-profile-avatar {
-    border-radius: 50%;
-    height: 70px;
+  border-radius: 50%;
+  height: 70px;
+}
+.dv-star-rating-non-editable .dv-star-rating-full-star,
+.dv-star-rating-empty-star {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.goFlex {
+  display: flex;
+}
+
+.space {
+  margin-top: 8px;
+  margin-left: 20px;
 }
