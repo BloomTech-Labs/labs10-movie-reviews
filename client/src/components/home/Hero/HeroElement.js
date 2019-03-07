@@ -18,11 +18,11 @@ const HeroElement = props => {
           handleChange={props.handleChange}
           randomTitle={props.randomTitle}
           label="Search for Movies:"
-          buttonLabel={<i class="fas fa-search"></i>}
+          buttonLabel={<i className="fas fa-search"></i>}
         />
         {/* <HeroButton
           id="hero-button"
-          buttonLabel={<i class="fas fa-search"></i>}
+          buttonLabel={<i className="fas fa-search"></i>}
           searchCriteria={props.searchCriteria}
           searchHandler={props.searchHandler}
         /> */}
