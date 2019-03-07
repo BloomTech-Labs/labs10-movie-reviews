@@ -18,11 +18,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: sticky;
   bottom: 0;
   width: 100%;
-  height: 120px;
-  padding-bottom: 30px;
+  height: 90px;
+  margin-bottom: 0px;
   background-color: rgb(237, 237, 237);
 
 }
