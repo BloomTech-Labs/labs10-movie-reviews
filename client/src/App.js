@@ -9,7 +9,7 @@ import Footer from './components/footer/Footer';
 import Home from './components/home/Home';
 import MovieRev from './components/movieReviews/MovieRev';
 import MyReviews from './components/myReviews/MyReviews';
-import Navigation from './components/navbar/Navigation';
+import Navigation from './components/navbar/TestNavigation';
 import PremiumView from './components/premium/PremiumView';
 import Privacy from './components/footer/privacy/PrivacyPolicy';
 import ratingStars from './components/stars/ratingStars';
@@ -28,6 +28,7 @@ class App extends Component {
       random: '',
       randomTitle: '',
       resultLength: null,
+      inputCriteria: '',
       searchCriteria: '',
       searchResults: [],
       loading: true
@@ -102,12 +103,16 @@ class App extends Component {
   */
 
   searchHandler() {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${
-          process.env.REACT_APP_API
-        }&language=en-US&query=${this.state.searchCriteria}&include_adult=false`
-      )
+    console.log("this.state", this.state);
+    let promise =
+
+    axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${
+        process.env.REACT_APP_API
+      }&language=en-US&query=${this.state.searchCriteria || this.state.inputCriteria}&include_adult=false`
+    )
+    
+    promise
       .then(response => {
         this.setState({ loading: true });
         const resultLength = () => {
@@ -118,7 +123,9 @@ class App extends Component {
         this.setState({
           searchResults: response.data.results,
           resultLength: resultLength(),
-          loading: false
+          loading: false,
+          searchCriteria: '',
+          inputCriteria: ''
         });
         //this sets the searchResults on state
         console.log(this.props, 'props from search');
@@ -146,7 +153,7 @@ class App extends Component {
             handleChange={this.handleChange}
             loading={this.state.loading}
             searchHandler={this.searchHandler}
-            searchCriteria={this.state.searchCriteria}
+            inputCriteria={this.state.inputCriteria}
             searchResults={this.state.searchResults}
           />
           {/* exact path limits the page from rendering to 
