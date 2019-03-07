@@ -8,7 +8,7 @@ const Contact = (props) => {
                 <Form
                     className='contact-form'
                     action={`https://formspree.io/kopecky12112@gmail.com`} method="POST">
-                    <h1 className='contact-header'>Feedback? Suggestions?</h1>
+                    <p className='contact-header'>Feedback? Suggestions?</p>
                     <div className="input-wrapper">
                         <FormGroup
                             className="contact-form-input">

@@ -21,6 +21,7 @@
 
 .contact-header {
     width: 100%;
+    font-size: 1.6em;
     margin-bottom: 0;
     padding-top: 50px;
     font-family: 'Roboto';
@@ -28,6 +29,7 @@
 
 .input-wrapper {
     margin: 50px auto;
+    width: 80%;
 }
 .contact-form-input {
     display:flex;
@@ -41,14 +43,12 @@
 }
 
 .contact-form-input input {
-    width: 500px;
+    width: 100%;
     border-radius: 3px;
 }
 
 .contact-form-input textarea {
-    width: 500px;
-    height: 300px;
-    margin-bottom: 20px;
+    width: 100%;
     border-radius: 3px;
 }
 
