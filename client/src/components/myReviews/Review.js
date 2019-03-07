@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Container, CardImg } from 'reactstrap';
-
+import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import { editDeleteReviews } from '../../services/currentUserURLs';
 
@@ -103,15 +103,23 @@ class Review extends Component {
       <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
         <Row>
           <Col sm="4">
-            <img
-              className="card-img-top img-responsive img-thumbnail"
-              src={`http://image.tmdb.org/t/p/original${this.state.img}`}
-              style={{ height: 170, width: '100%' }}
-              alt="Card image cap"
-            />
+            <Link to={`/moviereviews/${this.props.review.movieId}`}>
+              <img
+                className="card-img-top img-responsive img-thumbnail"
+                src={`http://image.tmdb.org/t/p/original${this.state.img}`}
+                style={{ height: 170, width: '100%' }}
+                alt="Card image cap"
+              />
+            </Link>
             <div className="card-body pt-0">
               <p className="card-text" />
-              <p className="mt-0">{rating}</p>
+              <StarRatingComponent
+                name="rate2"
+                editing={false}
+                renderStarIcon={() => <span>★</span>}
+                starCount={5}
+                value={rating}
+              />
               <p className="mt-0">{this.state.title}</p>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="btn-group">
