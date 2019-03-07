@@ -65,6 +65,13 @@
 }
 
 .message {
-    height: 300px !important;
-    min-height: 85vh;
+    height: 200px !important;
+}
+
+@media only screen and (max-width: 1200px) {
+    .contact-form {
+        width: 80%;
+    }
+
+
 }
