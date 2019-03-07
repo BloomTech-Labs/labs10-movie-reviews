@@ -1,7 +1,9 @@
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { Button } from 'reactstrap';
 import { logout } from '../../services/authURLs';
+import { currentUser } from '../../services/currentUserURLs';
 
 import Modal from './Modal';
 
@@ -14,13 +16,26 @@ class TestNavigation  extends React.Component {
         this.state = {
             modal: false,
             nestedModal: false,
-            closeAll: false
+            closeAll: false,
+            photo: '',
+            name: ''
+
         }
 
         this.toggle = this.toggle.bind(this);
         this.toggleNested = this.toggleNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
     }
+
+    componentDidMount = async () => {
+        const res = await axios.get(currentUser, {
+          withCredentials: true
+        });
+        console.log(res.data.photo, 'photo');
+        if(res.data) {
+          this.setState({name: res.data.name, photo: res.data.photo});
+        }
+      }
 
     toggle() {
         this.setState(prevState => ({
@@ -79,6 +94,9 @@ class TestNavigation  extends React.Component {
                                 <a href={logout}>
                                     <Button color="light">Logout</Button>
                                 </a>
+                                <Link to="/myreviews">
+                                    <img className="avatar" src={this.state.photo} alt="avatar"/>
+                                </Link>
                         </RenderDropdown>
                     </ul>
         
