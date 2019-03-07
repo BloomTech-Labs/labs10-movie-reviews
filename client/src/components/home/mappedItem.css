@@ -9,18 +9,33 @@
 }
 
 .card-img {
-  height: 25vh;
-  width: 90%;
+  height: 38vh;
+  width: auto;
   margin-bottom: 1rem;
 }
 
-.title {
+.movie-title {
   position: absolute;
   bottom: 1px;
   left: 0px;
   color: white;
   size: 10px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(50, 50, 50, 0.3);
   font-weight: 400;
   width: 100%;
+  height: 2rem;
+  padding-top: 0.2rem
 }
+
+.popular-title {
+  font-weight: bold;
+  margin-bottom: 40px;
+  padding-top: 40px;
+  color: inherit;
+}
+
+.title-text {
+  background-color: rgba(0,0,0,0.4);
+  padding: 0.2rem .3rem;
+}
+

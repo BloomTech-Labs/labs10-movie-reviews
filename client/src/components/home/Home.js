@@ -26,7 +26,7 @@ const Home = props => {
       <FeatureList />
 
       <div className="featured">
-        <h2 className="my-4">Popular Movies</h2>
+        <h2 className="popular-title">Popular Movies</h2>
         <div className="cardWrapper">
           <Row className="nopadding">
             {movies.map(item => {
