@@ -14,7 +14,7 @@ const ModalExample = props => {
       <div>
         <Button color="light" onClick={props.toggle}>{props.buttonLabel}</Button>
         <Modal isOpen={props.modal} toggle={props.toggle} className={props.className}>
-          <ModalHeader toggle={props.toggle}>Modal title</ModalHeader>
+          <ModalHeader toggle={props.toggle}>Log In To Start Writing Reviews!</ModalHeader>
           <ModalBody>
               <RenderLogin>
                 <a href={googleLogin}><img src={GoogleLogin} alt="Log In to Google"/></a>
