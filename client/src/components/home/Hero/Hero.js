@@ -12,6 +12,7 @@ const Hero = props => {
       {/* used inline style to create background image since it is on state */}
       <div className="header-overlay">
         <HeroElement
+          {...props}
           className={props.resultLength > 0 ? 'search-result-header' : 'hidden'}
           searchHandler={props.searchHandler}
           getReleaseYear={props.getReleaseYear}
