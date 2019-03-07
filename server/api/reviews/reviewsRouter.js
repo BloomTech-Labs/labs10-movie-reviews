@@ -27,18 +27,25 @@ router.get('/reviews', async (req, res) => {
 
 // GET request that gets a review by id
 router.get('/reviews/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const review = await reviewsDb.getReviews(id);
-    if (debugging === true) console.log('GET Review Router:', review);
+  const { id } = req.params;
 
-    review
-      ? res.status(200).json(review)
-      : res
-          .status(404)
-          .json({ error: 'The review with the specified ID does not exist' });
-  } catch (err) {
-    res.status(500).json(err);
+  // get the review at the id provided in the params
+  const review = await reviewsDb.getReviews(id);
+  try {
+    // test that it returns a review at that id and if not return a 404
+    if (!review) {
+      return res
+        .status(404)
+        .json({ message: `the review does not exist at id of ${id}` });
+    }
+    // otherwise return the 200 success
+    return res.status(200).json(review);
+  } catch (error) {
+    // catch any other error and return a 500
+    return res.status(500).json({
+      message: 'the review could not be retrieved',
+      error: error.message
+    });
   }
 });
 
