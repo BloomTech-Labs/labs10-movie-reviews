@@ -113,7 +113,7 @@ class Review extends Component {
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                  Modal title
+                  Are you sure?
                 </h5>
                 <button
                   type="button"
@@ -124,21 +124,23 @@ class Review extends Component {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">...</div>
+              <div class="modal-body">
+                Do you really want to delete your review?
+              </div>
               <div class="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  class="btn btn-outline-success"
                   data-dismiss="modal"
                 >
-                  Close
+                  Cancel
                 </button>
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  class="btn btn-outline-danger"
                   onClick={this.handleDelete}
                 >
-                  Save changes
+                  Delete
                 </button>
               </div>
             </div>
@@ -193,7 +195,7 @@ class Review extends Component {
                   </button>
                   <button
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn-outline-danger"
                     data-toggle="modal"
                     data-target="#exampleModal"
                   >
