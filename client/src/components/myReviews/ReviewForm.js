@@ -42,7 +42,9 @@ class ReviewForm extends Component {
         rating: this.props.location.state.rating,
         googleId: res.data.googleId,
         reviewer: res.data.email,
-        id: res.data.id
+        id: res.data.id,
+        movieId: this.props.location.state.movieId,
+        img: this.props.location.state.img
       });
     }
     console.log('RevForm state in reviewForm: ', this.state);
