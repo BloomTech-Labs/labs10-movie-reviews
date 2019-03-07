@@ -12,6 +12,7 @@ const Home = props => {
   return (
     <>
       <Hero
+        {...props}
         loading={props.loading}
         random={props.randomBackgroundImage}
         randomTitle={props.randomTitle}

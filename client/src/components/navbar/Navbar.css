@@ -1,4 +1,4 @@
-.input-and-button {
+/* .input-and-button {
     display: flex;
     margin: 5px;
 }
@@ -32,4 +32,35 @@
   height: 40px;
   border-radius: 50%;
   margin: 5px 30px 0px 30px;
+} */
+
+@media only screen and (min-width: 576px) {
+  nav div {
+    position: absolute;
+    right: 0;
+    width: 40%;
+  }
+
+  nav div form {
+    margin-right: 30px;
+    width: 70% !important;
+  }
+
+  nav div form .form-control {
+    margin-right: 0 !important;
+    padding: 10px;
+    width: 75% !important;
+    border-radius: 20px 0px 0px 20px !important;
+  }
+  nav div form button {
+    margin: 0;
+    padding: 20px;
+    width: 25%;
+    border-radius: 0px 20px 20px 0px !important;
+  }
+
+  nav div ul {
+
+    width: 100%;
+  }
 }
