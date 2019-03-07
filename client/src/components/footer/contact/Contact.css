@@ -1,6 +1,6 @@
 .contact-wrapper {
     background-image: url(https://image.tmdb.org/t/p/original//dBK75oCKuHVuJ9rSUnusIFbhocH.jpg);
-    min-height: 84vh;
+    min-height: 85vh;
     max-width: 1800px;
     width: 100%;
     display: flex;
@@ -66,4 +66,5 @@
 
 .message {
     height: 300px !important;
+    min-height: 85vh;
 }
