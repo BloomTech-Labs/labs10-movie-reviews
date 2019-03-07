@@ -186,7 +186,8 @@ class Review extends Component {
                           img: this.state.img,
                           edit: true,
                           textBody: this.props.review.textBody,
-                          rating: this.props.review.rating
+                          rating: this.props.review.rating,
+                          movieId: this.props.review.movieId
                         }
                       }}
                     >
