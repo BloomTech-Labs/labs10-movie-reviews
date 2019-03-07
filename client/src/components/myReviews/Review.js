@@ -101,6 +101,52 @@ class Review extends Component {
 
     return (
       <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Are you sure?
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Do you really want to delete your review?
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-outline-success"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger"
+                  onClick={this.handleDelete}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <Row>
           <Col sm="4">
             <Link to={`/moviereviews/${this.props.review.movieId}`}>
@@ -149,8 +195,9 @@ class Review extends Component {
                   </button>
                   <button
                     type="button"
-                    className="btn btn-outline-danger"
-                    onClick={this.handleDelete}
+                    class="btn btn-outline-danger"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
                   >
                     Delete
                   </button>
