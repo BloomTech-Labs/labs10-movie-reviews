@@ -17,32 +17,32 @@ passport.deserializeUser((user, done) => {
 })
 
 // passport-twitter strategy
-// passport.use(
-//   new TwitterStrategy(
-//     {
-//       consumerKey: process.env.TWITTER_CONSUMER_KEY,
-//       consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-//       callbackURL: '/auth/twitter/callback',
-//       proxy: true
-//     },
-//     async (token, tokenSecret, profile, done) => {
-//       const existingUser = await usersDb.findUserByProfileId({
-//         twitterId: profile.id
-//       });
-//       if (existingUser) {
-//         console.log(existingUser);
-//         done(null, existingUser);
-//       } else {
-//         const user = await usersDb.createUser({
-//           twitterId: profile.id,
-//           username: profile.username
-//         });
-//         console.log(user, "user from create");
-//         done(null, user);
-//       }
-//     }
-//   )
-// );
+passport.use(
+  new TwitterStrategy(
+    {
+      consumerKey: process.env.TWITTER_CONSUMER_KEY,
+      consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+      callbackURL: '/auth/twitter/callback',
+      proxy: true
+    },
+    async (token, tokenSecret, profile, done) => {
+      const existingUser = await usersDb.findUserByProfileId({
+        twitterId: profile.id
+      });
+      if (existingUser) {
+        console.log(existingUser);
+        done(null, existingUser);
+      } else {
+        const user = await usersDb.createUser({
+          twitterId: profile.id,
+          username: profile.username
+        });
+        console.log(user, "user from create");
+        done(null, user);
+      }
+    }
+  )
+);
 
 // passport-google-strategy
 passport.use(
