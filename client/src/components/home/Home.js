@@ -7,7 +7,11 @@ import './mappedItem.css';
 import FeatureList from './FeatureList';
 
 const Home = props => {
-  const movies = props.movies.slice(0, 8);
+  const start = Math.floor(Math.random() * 12);
+  const end = start + 8;
+  console.log("start",start);
+  console.log("start",end);
+  const movies = props.movies.slice(start, end);
 
   return (
     <>
