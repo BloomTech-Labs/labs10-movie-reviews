@@ -12,25 +12,19 @@ const reviewsDb = require('./reviewsHelper.js');
 //POST review
 router.post('/reviews', async (req, res) => {
   if (req.body.textBody && req.body.rating) {
-    if (debugging === true)
-      console.log(
-        'POST Router',
-        '\ntextBody:',
-        req.body.textBody,
-        'rating:',
-        req.body.rating
-      );
-
+    // create a new review based on the caller body
+    const newReview = await reviewsDb.insert(req.body);
     try {
-      await reviewsDb.insert(req.body);
-      res.status(201).json({ message: 'Review successfully added!' });
-    } catch (err) {
-      res.status(500).json(err);
+      // respond with a 201 on success
+      res.status(201).json(newReview);
+    } catch (error) {
+      // catch any error and return a 500
+      return res.status(500).json({
+        message: 'the review could not be added',
+        error: error.message
+      });
     }
-  } else
-    res.status(400).json({
-      error: 'Please provide a rating and textBody for your review.'
-    });
+  }
 });
 
 //PUT review
