@@ -7,7 +7,7 @@ const HeroButton = (props) => {
   console.log(props)
     return (
         <div className="call-to-action-buttons">
-              <Button className="button" onClick={props.searchHandler}>
+              <Button className="button" id="hero-button" onClick={props.searchHandler}>
                 <Link to={`/search/?q=${props.searchCriteria}`}>{props.buttonLabel}</Link>
               </Button>
               {/* button end */}
