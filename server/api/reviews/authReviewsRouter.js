@@ -32,7 +32,6 @@ router.put('/reviews/:id', async (req, res) => {
   const { id } = req.params;
 
   const editedReview = await reviewsDb.update(req.params.id, req.body);
-  const review = await reviewsDb.get(id);
 
   if (req.body.textBody && req.body.rating) {
     try {
@@ -44,7 +43,7 @@ router.put('/reviews/:id', async (req, res) => {
           .json({ Error: `Review with ID ${id} does not exist.` });
       } else {
         // otherwise send a 200 on success
-        return res.status(200).json(review);
+        return res.status(200).json(editedReview);
       }
     } catch (error) {
       // catch any other error and send a 500
