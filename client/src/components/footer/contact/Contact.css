@@ -1,4 +1,77 @@
 .contact-wrapper {
     background-image: url(https://image.tmdb.org/t/p/original//dBK75oCKuHVuJ9rSUnusIFbhocH.jpg);
     min-height: 85vh;
+    max-width: 1800px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.contact-form {
+    background-color: rgb(214, 214, 214);
+    width: 39%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 30px 5%;
+    border-radius: 5px;
+    
+}
+
+.contact-header {
+    width: 100%;
+    font-size: 1.6em;
+    margin-bottom: 0;
+    padding-top: 50px;
+    font-family: 'Roboto';
+}
+
+.input-wrapper {
+    margin: 50px auto;
+    width: 80%;
+}
+.contact-form-input {
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.contact-form-input label {
+    width: 50px;
+}
+
+.contact-form-input input {
+    width: 100%;
+    border-radius: 3px;
+}
+
+.contact-form-input textarea {
+    width: 100%;
+    border-radius: 3px;
+}
+
+.submit-button {
+    color: #18A2B8 !important;
+    background-color:white !important;
+    border-radius: 3px;
+}
+
+.submit-button:hover {
+    color: white !important;
+    background-color: #18A2B8 !important;
+
+}
+
+.message {
+    height: 200px !important;
+}
+
+@media only screen and (max-width: 1200px) {
+    .contact-form {
+        width: 80%;
+    }
+
+
 }
