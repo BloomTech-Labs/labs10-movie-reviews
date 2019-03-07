@@ -1,11 +1,10 @@
 import React from 'react';
+import { FormGroup, Label, Input} from 'reactstrap';
 import './Hero.css';
 
 const HeroInput = (props) => {
     return (
-        <div className="hero-input">
-            <label className="landing-label">{props.label}</label>
-            <input
+            <Input
                 onChange={props.handleChange}
                 className="landing-input"
                 type="text"
@@ -13,7 +12,6 @@ const HeroInput = (props) => {
                 value={props.searchCriteria}
                 placeholder={props.randomTitle}
             />
-        </div>
     );
 };
 

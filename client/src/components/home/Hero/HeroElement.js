@@ -17,7 +17,7 @@ const HeroElement = props => {
           label="Search for Movies:"
         />
         <HeroButton
-          buttonLabel="Search"
+          buttonLabel={<i class="fas fa-search"></i>}
           searchCriteria={props.searchCriteria}
           searchHandler={props.searchHandler}
         />
