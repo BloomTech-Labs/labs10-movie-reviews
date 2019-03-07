@@ -27,17 +27,23 @@ passport.use(
     },
     async (token, tokenSecret, profile, done) => {
       const existingUser = await usersDb.findUserByProfileId({
-        twitterId: profile.id
+        twitterId: profile.id,
+        username: profile.username,
+        name: profile.displayName,
+        photo: profile.photos[0].value
       });
       if (existingUser) {
-        console.log(existingUser);
+        if (debugging === true) console.log('existingUser-twitter-passportjs:', existingUser);
         done(null, existingUser);
       } else {
         const user = await usersDb.createUser({
           twitterId: profile.id,
-          username: profile.username
+          name: profile.displayName,
+          username: profile.username,
+          photo: profile.photos[0].value
+
         });
-        console.log(user, "user from create");
+        if (debugging === true) console.log('newUser-twitter-passportjs:', user);
         done(null, user);
       }
     }
