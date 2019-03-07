@@ -28,8 +28,16 @@ class MyReviews extends Component {
       withCredentials: true
     });
     if (userRes.data) {
+      let newPhoto;
+      if (userRes.data.twitterId) {
+        //this code takes the photo URL from twitter - which is low resolution and takes a substring of it and concats it with the jpg to give us a higher resolution photo for myReviews dashboard. 
+        newPhoto = userRes.data.photo.substr(0, (userRes.data.photo.length - 11)) + ".jpg";
+      }
+      else {
+        newPhoto = userRes.data.photo;
+      }
       this.setState({
-        photo: userRes.data.photo,
+        photo: newPhoto,
         name: userRes.data.name,
         email: userRes.data.email
       });
@@ -121,7 +129,7 @@ class MyReviews extends Component {
                     {' '}
                     Number of Reviews:
                   </span>
-                  <span className="badge badge-light">27</span>
+                  <span className="badge badge-light">TBD</span>
                 </li>
               </ul>
             </div>
