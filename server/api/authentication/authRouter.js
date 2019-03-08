@@ -53,20 +53,26 @@ router.get('/logout', (req, res) => {
 // checking in order to see if the user is
 // logged in.
 // ==============================================
-router.get('/current_user', (req, res) => res.send(req.user));
+router.get('/current_user', (req, res) => {
+  if (req.user) {
+    res.status(200).send({ data: req.user });
+  }
+  res.status(500).send({ error: 'Cannot get current user' });
+});
 
 // passport.authenticate middleware is used here to authenticate the request
-router.get('/google', passport.authenticate('google', {
-  scope: ['profile', 'email'] // Scope is Used to specify the required data
-})); 
+router.get(
+  '/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email'] // Scope is Used to specify the required data
+  })
+);
 
 // The middleware receives the data from Google and runs the function on Strategy config
 router.get('/google/callback', passport.authenticate('google'), (req, res) => {
   if (process.env.NODE_ENV === 'production') {
     res.redirect(process.env.REDIRECT_URI_PROD);
   } else res.redirect(process.env.REDIRECT_URI_DEV);
-  
 });
-
 
 module.exports = router;

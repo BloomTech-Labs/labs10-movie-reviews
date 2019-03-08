@@ -4,7 +4,7 @@ import PremiumCard from './PremiumCard';
 import axios from 'axios';
 import { currentUser } from '../../services/currentUserURLs';
 
-class PremiumView extends Component { 
+class PremiumView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,74 +13,74 @@ class PremiumView extends Component {
       name: '',
       photo: '',
       stripeId: '',
-      premium: false, 
-      subType: '',
-    }
+      premium: false,
+      subType: ''
+    };
   }
 
-  componentWillMount = async () => {
+  componentDidMount = async () => {
+    // check if user already logging in or not
     const userRes = await axios.get(currentUser, {
       withCredentials: true
     });
-    if (userRes.data) {
-      console.log("userRes \n", userRes.data)
-      axios
-        .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
-        // .get(`http://localhost:5000/api/users/${userRes.data.id}`)
-        .then(getRes => {
-          console.log("getRes \n", getRes.data)
-          const requestOptions = {
-            headers: { stripeid: getRes.data.stripeId },
-          }
-          axios
-            .get('https://labs10-movie-reviews.herokuapp.com/api/customer/plan', requestOptions)
-            // .get('http://localhost:5000/api/customer/plan', requestOptions)
-            .then(planRes => {
-              console.log("planRes \n", planRes.data)
-              if (planRes.data.premium === false) {
-                this.setState({
-                  id: getRes.data.id,
-                  photo: getRes.data.photo,
-                  email: getRes.data.email,
-                  name: getRes.data.name,
-                  stripeId: getRes.data.stripeId,
-                  premium: false,
-                })
-              } else {
-                this.setState({
-                  id: getRes.data.id,
-                  photo: getRes.data.photo,
-                  email: getRes.data.email,
-                  name: getRes.data.name,
-                  stripeId: getRes.data.stripeId,
-                  premium: planRes.data.customer.active,
-                  subType: planRes.data.customer.nickname,
-                })
-              }
-            })        
-        })
+
+    if (!userRes.data) {
+      console.log(userRes.error);
+      return;
     }
-  }
+
+    const { id, photo, email, name, stripeId } = userRes.data;
+
+    if (!stripeId) {
+      console.log('I have not subscribed yet');
+      this.setState({ id, photo, email, name });
+    } else {
+      axios
+        // .post('https://labs10-movie-reviews.herokuapp.com/api/customer/plan',
+        .post('http://localhost:5000/api/customer/plan', {
+          stripeId
+        })
+        .then(planRes => {
+          console.log('planRes \n', planRes.data);
+          if (planRes.data.premium) {
+            this.setState({
+              id,
+              photo,
+              email,
+              name,
+              stripeId,
+              premium: planRes.data.customer.active,
+              subType: planRes.data.customer.nickname
+            });
+          } else {
+            console.log('My premium is false. Line 63');
+          }
+        })
+        .catch(error => console.log(error));
+    }
+  };
 
   handleCancel = id => {
     const requestOptions = {
       headers: { stripeid: this.state.stripeId }
-    }
+    };
     axios
-      .get('https://labs10-movie-reviews.herokuapp.com/api/customer/delete', requestOptions)
+      .get(
+        'https://labs10-movie-reviews.herokuapp.com/api/customer/delete',
+        requestOptions
+      )
       // .get('http://localhost:5000/api/customer/delete', requestOptions)
       .then(delRes => {
         console.log(delRes);
         window.location.reload();
-      })
-  }
-  
+      });
+  };
+
   render() {
     console.log('this state', this.state);
     return (
       <div className="container pt-5 bg-white">
         <div className="row">
-
           <div className="col-md-4">
             <div className="placeholder">
               <a href="https://placeholder.com">
