@@ -1,8 +1,9 @@
+const clientURL = require('../../services/config');
+
 require('dotenv').config();
 const router = require('express').Router();
 const passport = require('passport');
 const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
-
 
 // ==============================================
 // Step #1 of login flow ➡️
@@ -21,14 +22,8 @@ router.get('/twitter', passport.authenticate('twitter'));
 // accepted the Twitter prompt), the user will be
 // redirected back to the React client.
 // ==============================================
-router.get(
-  '/twitter/callback',
-  passport.authenticate('twitter'),
-  (req, res) => {
-    if (process.env.NODE_ENV === 'production') {
-      res.redirect('https://cineview.netlify.com');
-    } else res.redirect('http://localhost:3000');
-  }
+router.get('/twitter/callback', passport.authenticate('twitter'), (req, res) =>
+  res.redirect(clientURL)
 );
 
 // ==============================================
@@ -40,9 +35,7 @@ router.get(
 // ==============================================
 router.get('/logout', (req, res) => {
   req.logout();
-  if (process.env.NODE_ENV === 'production') {
-    res.redirect('https://cineview.netlify.com');
-  } else res.redirect('http://localhost:3000');
+  res.redirect(clientURL);
 });
 
 // ==============================================
@@ -56,17 +49,16 @@ router.get('/logout', (req, res) => {
 router.get('/current_user', (req, res) => res.send(req.user));
 
 // passport.authenticate middleware is used here to authenticate the request
-router.get('/google', passport.authenticate('google', {
-  scope: ['profile', 'email'] // Scope is Used to specify the required data
-})); 
+router.get(
+  '/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email'] // Scope is Used to specify the required data
+  })
+);
 
 // The middleware receives the data from Google and runs the function on Strategy config
-router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-  if (process.env.NODE_ENV === 'production') {
-    res.redirect(process.env.REDIRECT_URI_PROD);
-  } else res.redirect(process.env.REDIRECT_URI_DEV);
-  
-});
-
+router.get('/google/callback', passport.authenticate('google'), (req, res) =>
+  res.redirect(clientURL)
+);
 
 module.exports = router;

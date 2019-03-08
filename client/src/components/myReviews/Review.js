@@ -4,6 +4,7 @@ import { Row, Col, Container, CardImg } from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import { editDeleteReviews } from '../../services/currentUserURLs';
+import { tmdbUrl, theMovieDbUrl } from '../../services/resourceURLs';
 
 import ReviewForm from './ReviewForm';
 
@@ -26,7 +27,7 @@ class Review extends Component {
 
     console.log('movieId', movie_id);
     const promise = axios.get(
-      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${
+      `${theMovieDbUrl}/3/movie/${movie_id}?api_key=${
         process.env.REACT_APP_API
       }&language=en-US`
     );
@@ -153,7 +154,7 @@ class Review extends Component {
             <Link to={`/moviereviews/${this.props.review.movieId}`}>
               <img
                 className="card-img-top img-responsive img-thumbnail"
-                src={`http://image.tmdb.org/t/p/original${this.state.img}`}
+                src={`${tmdbUrl}${this.state.img}`}
                 style={{ height: 170, width: '100%' }}
                 alt="Card image cap"
               />

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
+import { theMovieDbUrl } from './services/resourceURLs';
+import { tmdbUrl } from './services/resourceURLs';
 import About from './components/footer/about/About';
 import Auth from './components/DummyAuth/Auth';
 import Contact from './components/footer/contact/Contact';
@@ -41,7 +43,7 @@ class App extends Component {
 
   componentDidMount() {
     const promise = axios.get(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${
+      `${theMovieDbUrl}/3/movie/popular?api_key=${
         process.env.REACT_APP_API
       }&language=en-US&page=1`
     );
@@ -52,8 +54,7 @@ class App extends Component {
         const title = response.data.results[random].title;
         //grabs random movie title from response data results array
         const backdropURL =
-          'https://image.tmdb.org/t/p/original' +
-          response.data.results[random].backdrop_path;
+          tmdbUrl + response.data.results[random].backdrop_path;
         //grabs random movie backdrop_path (background image) from response data results array
         this.setState({
           movies: response.data.results,
@@ -103,15 +104,14 @@ class App extends Component {
   */
 
   searchHandler() {
-    console.log("this.state", this.state);
-    let promise =
-
-    axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${
+    console.log('this.state', this.state);
+    let promise = axios.get(
+      `${theMovieDbUrl}/3/search/movie?api_key=${
         process.env.REACT_APP_API
-      }&language=en-US&query=${this.state.searchCriteria || this.state.inputCriteria}&include_adult=false`
-    )
-    
+      }&language=en-US&query=${this.state.searchCriteria ||
+        this.state.inputCriteria}&include_adult=false`
+    );
+
     promise
       .then(response => {
         this.setState({ loading: true });

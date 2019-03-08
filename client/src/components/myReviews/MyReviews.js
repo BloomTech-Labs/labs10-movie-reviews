@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import axios from 'axios';
 import { currentUser } from '../../services/currentUserURLs';
 import { currentReviews } from '../../services/currentUserURLs';
+import { placeholderUrl } from '../../services/resourceURLs';
 import { Link } from 'react-router-dom';
 
 import ReviewsList from './MyReviewsList';
@@ -95,7 +96,7 @@ class MyReviews extends Component {
         <Row>
           <Col md="3">
             <div className="placeholder">
-              <a href="https://placeholder.com">
+              <a href={`${placeholderUrl}`}>
                 <img
                   className="myreviews-avatar img-responsive mb-3 "
                   src={this.state.photo}

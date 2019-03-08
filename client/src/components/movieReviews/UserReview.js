@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { currentUser } from '../../services/currentUserURLs';
+import { placeholderUrl } from '../../services/resourceURLs';
 import './UserReview.css';
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -31,7 +32,7 @@ export default class UserReview extends React.Component {
           <div className="card flex-row flex-wrap">
             <div className="card-header border-0">
               <div className="placeholder">
-                <a href="https://placeholder.com">
+                <a href={`${placeholderUrl}`}>
                   <img
                     className="movie-profile-avatar"
                     src={this.state.photo}

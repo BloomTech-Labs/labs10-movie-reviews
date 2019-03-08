@@ -5,6 +5,7 @@ import { Container, Row, Col, Button, CardImg } from 'reactstrap';
 import axios from 'axios';
 import UserReview from './UserReview';
 import { currentReviews } from '../../services/currentUserURLs';
+import { tmdbUrl, theMovieDbUrl } from '../../services/resourceURLs';
 
 export default class MovieRev extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class MovieRev extends React.Component {
   componentDidMount() {
     const movie_id = this.props.match.params.id;
     const promise = axios.get(
-      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${
+      `${theMovieDbUrl}/3/movie/${movie_id}?api_key=${
         process.env.REACT_APP_API
       }&language=en-US`
     );
@@ -42,9 +43,9 @@ export default class MovieRev extends React.Component {
         // console.log('movies id: ', this.state.id);
         // //sets the information retrieved onto state
         return axios.get(
-          `https://api.themoviedb.org/3/movie/${
-            this.props.match.params.id
-          }?api_key=${process.env.REACT_APP_API}&append_to_response=videos`
+          `${theMovieDbUrl}/3/movie/${this.props.match.params.id}?api_key=${
+            process.env.REACT_APP_API
+          }&append_to_response=videos`
         );
       })
       .then(response => {
@@ -88,7 +89,7 @@ export default class MovieRev extends React.Component {
               <div className="card">
                 <img
                   className="card-img-top"
-                  src={`http://image.tmdb.org/t/p/original${this.state.img}`}
+                  src={`${tmdbUrl}${this.state.img}`}
                   alt="Poster of the movie"
                 />
                 <div className="card-body">

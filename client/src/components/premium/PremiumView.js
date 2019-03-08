@@ -3,8 +3,10 @@ import './premium.css';
 import PremiumCard from './PremiumCard';
 import axios from 'axios';
 import { currentUser } from '../../services/currentUserURLs';
+import { placeholderUrl } from '../../services/resourceURLs';
+import { customerDelete, customerPlan } from '../../services/paymentURLs';
 
-class PremiumView extends Component { 
+class PremiumView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,67 +25,64 @@ class PremiumView extends Component {
       withCredentials: true
     });
     if (userRes.data) {
-      console.log("userRes \n", userRes.data)
+      console.log('userRes \n', userRes.data);
       axios
-        .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
+        .get(
+          `https://labs10-movie-reviews.herokuapp.com/api/users/${
+            userRes.data.id
+          }`
+        )
         // .get(`http://localhost:5000/api/users/${userRes.data.id}`)
         .then(getRes => {
-          console.log("getRes \n", getRes.data)
+          console.log('getRes \n', getRes.data);
           const requestOptions = {
-            headers: { stripeid: getRes.data.stripeId },
-          }
-          axios
-            .get('https://labs10-movie-reviews.herokuapp.com/api/customer/plan', requestOptions)
-            // .get('http://localhost:5000/api/customer/plan', requestOptions)
-            .then(planRes => {
-              console.log("planRes \n", planRes.data)
-              if (planRes.data.premium === false) {
-                this.setState({
-                  id: getRes.data.id,
-                  photo: getRes.data.photo,
-                  email: getRes.data.email,
-                  name: getRes.data.name,
-                  stripeId: getRes.data.stripeId,
-                  premium: false,
-                })
-              } else {
-                this.setState({
-                  id: getRes.data.id,
-                  photo: getRes.data.photo,
-                  email: getRes.data.email,
-                  name: getRes.data.name,
-                  stripeId: getRes.data.stripeId,
-                  premium: planRes.data.customer.active,
-                  subType: planRes.data.customer.nickname,
-                })
-              }
-            })        
-        })
+            headers: { stripeid: getRes.data.stripeId }
+          };
+          axios.get(customerPlan, requestOptions).then(planRes => {
+            console.log('planRes \n', planRes.data);
+            if (planRes.data.premium === false) {
+              this.setState({
+                id: getRes.data.id,
+                photo: getRes.data.photo,
+                email: getRes.data.email,
+                name: getRes.data.name,
+                stripeId: getRes.data.stripeId,
+                premium: false
+              });
+            } else {
+              this.setState({
+                id: getRes.data.id,
+                photo: getRes.data.photo,
+                email: getRes.data.email,
+                name: getRes.data.name,
+                stripeId: getRes.data.stripeId,
+                premium: planRes.data.customer.active,
+                subType: planRes.data.customer.nickname
+              });
+            }
+          });
+        });
     }
-  }
+  };
 
   handleCancel = id => {
     const requestOptions = {
       headers: { stripeid: this.state.stripeId }
-    }
-    axios
-      .get('https://labs10-movie-reviews.herokuapp.com/api/customer/delete', requestOptions)
-      // .get('http://localhost:5000/api/customer/delete', requestOptions)
-      .then(delRes => {
-        console.log(delRes);
-        window.location.reload();
-      })
-  }
-  
+    };
+    axios.get(customerDelete, requestOptions).then(delRes => {
+      console.log(delRes);
+      window.location.reload();
+    });
+  };
+
   render() {
     console.log('this state', this.state);
     return (
       <div className="container pt-5 bg-white">
         <div className="row">
-
           <div className="col-md-4">
             <div className="placeholder">
-              <a href="https://placeholder.com">
+              <a href={`${placeholderUrl}`}>
                 <img
                   className="myreviews-avatar img-responsive mb-3"
                   src={this.state.photo}
