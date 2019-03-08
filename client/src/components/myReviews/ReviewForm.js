@@ -5,18 +5,7 @@ import './stars.css';
 import { currentUser } from '../../services/currentUserURLs';
 import { currentReviews } from '../../services/currentUserURLs';
 import { editDeleteReviews } from '../../services/currentUserURLs';
-import { Link } from 'react-router-dom';
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Label,
-  Input,
-  Button,
-  Media,
-  CardImg
-} from 'reactstrap';
+import { Container, Row, Col, Form, Label, Input } from 'reactstrap';
 
 class ReviewForm extends Component {
   state = {
@@ -155,7 +144,7 @@ class ReviewForm extends Component {
           <Col md="6">
             <div className="card-body text-left">
               <Form>
-                <div className="form-div">
+                <div className="form-div starS">
                   <StarRatingComponent
                     name="rate1"
                     starCount={5}
