@@ -60,12 +60,12 @@ class Review extends Component {
       .delete(editDeleteReviews(this.id))
       .then(response => {
         // this.props.fetchReviews();
-        this.props.history.push('/myreviews');
+        //this.props.history.push('/myreviews');
       })
       .catch(error => {
         console.error(error);
       });
-    window.location.reload();
+    //window.location.reload();
   };
 
   // changes rating and textBody on state when an edit happens
