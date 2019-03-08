@@ -55,7 +55,7 @@ router.get('/logout', (req, res) => {
 // ==============================================
 router.get('/current_user', (req, res) => {
   if (req.user) {
-    res.status(200).send({ data: req.user });
+    res.status(200).send(req.user);
   }
   res.status(500).send({ error: 'Cannot get current user' });
 });

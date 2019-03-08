@@ -27,84 +27,96 @@ class PayButton extends Component {
         id: res.data.id,
         name: res.data.name,
         email: res.data.email,
-        username: res.data.username,
+        username: res.data.username
       });
     }
-  }
+  };
 
-  onToken = token => {
-    console.log("token", token)
+  onToken = async token => {
+    const { id, name, email } = this.props.currentUser;
+
+    console.log('token', token);
     const body = {
       amount: this.props.totalCents,
       token: token,
-      subscription: this.props.header,
+      subscription: this.props.header
     };
 
+    const paymentRes = await axios.post(
+      'https://labs10-movie-reviews.herokuapp.com/api/payment',
+      // 'http://localhost:5000/api/payment',
+      body
+    );
+
+    if (!paymentRes.data) {
+      console.log('No payment response data');
+      return;
+    }
+
+    if (!paymentRes.data.createdCustomer) {
+      console.log(' Cannot create customer');
+      return;
+    }
+
+    if (!paymentRes.data.createdSubscription) {
+      console.log(' Cannot create subscription');
+      return;
+    }
+    // update the user stripeId
+
     axios
-      .post('https://labs10-movie-reviews.herokuapp.com/api/payment', body)
-      // .post("http://localhost:5000/api/payment", body)
-      .then(stripeRes => {
-        console.log("response", stripeRes.data.stripeId);
-        return stripeRes.data.stripeId
-      })
-      .then(response => {
-        // console.log("resonse put \n", response);
-        axios
-          .put(`https://labs10-movie-reviews.herokuapp.com/api/users/${this.state.id}`, {
-            name: this.state.name,
-            email: this.state.email,
-            // username: this.state.name,
-            stripeId: response
-          })
-          .then(response => console.log("put response", response))
-          .catch(err => console.log("err \n", err))
-      });
+      .put(
+        `https://labs10-movie-reviews.herokuapp.com/api/users/${id}`,
+        // .put(`http://localhost:5000/api/users/${id}`,
+        {
+          name,
+          email,
+          stripeId: paymentRes.data.stripeId
+        }
+      )
+      .then(response => console.log('put response', response))
+      .catch(err => console.log('err \n', err));
+
+    // call PaymentView to re-render
+    // redirect user /invoice
   };
 
   render() {
     // console.log('this state', this.state)
-    return (
-      this.props.header === "Yearly Subscription" ? (
-        <StripeCheckout
-          label={"Pay Now"} //Component button text
-          name={"Yearly Subscription"} //Modal Header
-          description={"$9.99"}
-          panelLabel="Submit Payment" //Submit button in modal
-          amount={999} //Amount in cents
-          token={res => this.onToken(res)}
-          stripeKey={this.state.publishableKey}
-          // image="" //Pop-in header image
-          billingAddress={false}
-        >
-          <button 
-            type="button" 
-            className="btn btn-outline-dark my-2"
-          >
-            <span className="">{this.state.subType} Subscribe Yearly</span>
-          </button>
-        </StripeCheckout>
-      ) : (
-        <StripeCheckout
-          label={"Pay Now"} //Component button text
-          name={"Monthly Subscription"} //Modal Header
-          description={"$0.99"}
-          panelLabel="Submit Payment" //Submit button in modal
-          amount={99} //Amount in cents
-          token={res => this.onToken(res)}
-          stripeKey={this.state.publishableKey}
-          // image="" //Pop-in header image
-          billingAddress={false}
-        >
-          <button 
-            type="button" 
-            className="btn btn-outline-dark my-2"
-          >
-            <span className="">{this.state.subType} Subscribe Monthly</span>
-          </button>
-        </StripeCheckout>
-      )
+    return this.props.header === 'Yearly Subscription' ? (
+      <StripeCheckout
+        label={'Pay Now'} //Component button text
+        name={'Yearly Subscription'} //Modal Header
+        description={'$9.99'}
+        panelLabel="Submit Payment" //Submit button in modal
+        amount={999} //Amount in cents
+        token={res => this.onToken(res)}
+        stripeKey={this.state.publishableKey}
+        // image="" //Pop-in header image
+        billingAddress={false}
+      >
+        <button type="button" className="btn btn-outline-dark my-2">
+          <span className="">{this.state.subType} Subscribe Yearly</span>
+        </button>
+      </StripeCheckout>
+    ) : (
+      <StripeCheckout
+        label={'Pay Now'} //Component button text
+        name={'Monthly Subscription'} //Modal Header
+        description={'$0.99'}
+        panelLabel="Submit Payment" //Submit button in modal
+        amount={99} //Amount in cents
+        token={res => this.onToken(res)}
+        stripeKey={this.state.publishableKey}
+        // image="" //Pop-in header image
+        billingAddress={false}
+      >
+        <button type="button" className="btn btn-outline-dark my-2">
+          <span className="">{this.state.subType} Subscribe Monthly</span>
+        </button>
+      </StripeCheckout>
     );
-  };
-};
+  }
+}
 
 export default PayButton;

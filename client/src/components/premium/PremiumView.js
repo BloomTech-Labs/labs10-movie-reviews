@@ -36,10 +36,13 @@ class PremiumView extends Component {
       this.setState({ id, photo, email, name });
     } else {
       axios
-        // .post('https://labs10-movie-reviews.herokuapp.com/api/customer/plan',
-        .post('http://localhost:5000/api/customer/plan', {
-          stripeId
-        })
+        .post(
+          'https://labs10-movie-reviews.herokuapp.com/api/customer/plan',
+          // .post('http://localhost:5000/api/customer/plan',
+          {
+            stripeId
+          }
+        )
         .then(planRes => {
           console.log('planRes \n', planRes.data);
           if (planRes.data.premium) {

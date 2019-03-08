@@ -41,6 +41,7 @@ router.post('/payment', function(req, res) {
               err
                 ? res.send({ createdSubscription: false })
                 : res.send({
+                    createdCustomer: true,
                     createdSubscription: true,
                     stripeId: customer.id
                   });
@@ -50,7 +51,7 @@ router.post('/payment', function(req, res) {
 });
 
 // Gets customer's plan using using stripeId
-router.get('/customer/plan', function(req, res) {
+router.post('/customer/plan', function(req, res) {
   // console.log("customer req \n", req.headers);
   const { stripeId } = req.body;
 
