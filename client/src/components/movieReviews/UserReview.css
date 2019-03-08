@@ -2,10 +2,9 @@
   border-radius: 50%;
   height: 70px;
 }
-.dv-star-rating-non-editable .dv-star-rating-full-star,
-.dv-star-rating-empty-star {
+
+.dv-star-rating-non-editable {
   font-size: 1.5rem;
-  cursor: pointer;
 }
 
 .goFlex {
