@@ -8,16 +8,24 @@ const router = require('express').Router();
 const usersDb = require('./usersHelper.js');
 
 // A GET request that returns all users from the database
-router.get('/users', async (req, res) => {
-  const users = await usersDb.getUsers();
-  res.json(users);
+router.get('/users', (req, res) => {
+  usersDb.getUsers().then(users =>
+    res
+      .status(200)
+      .send(users)
+      .catch(error => res.status(500).send(error))
+  );
 });
 
 // GET request that gets a user by id
 router.get('/users/:id', async (req, res) => {
   const { id } = req.params;
-  const user = await usersDb.getUsersById(id);
-  res.json(user);
+  getUsersById(id).then(user =>
+    res
+      .status(200)
+      .send(user)
+      .catch(error => res.status(500).send(error))
+  );
 });
 
 // POST request to add a user

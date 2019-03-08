@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Container, CardImg } from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
-import { editDeleteReviews } from '../../services/currentUserURLs';
+import { reviewById } from '../../services/reviewURLs';
 import { tmdbUrl, theMovieDbUrl } from '../../services/resourceURLs';
 
 import ReviewForm from './ReviewForm';
@@ -58,7 +58,7 @@ class Review extends Component {
     e.preventDefault();
     console.log('RevId:', this.id);
     axios
-      .delete(editDeleteReviews(this.id))
+      .delete(reviewById(this.id))
       .then(response => {
         console.log('response in delete rev: ', response);
         // this.props.fetchReviews();

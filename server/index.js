@@ -31,11 +31,11 @@ function isUserAuthenticated(req, res, next) {
 
 // configure routes to our server
 server.get('/', (req, res) =>
-  res.send({ Success: 'Sanity check is working...' })
+  res.status(200).send({ Success: 'Sanity check is working...' })
 );
 
 server.get('/sanityauth', isUserAuthenticated, (req, res) => {
-  res.send({ Success: 'You have the secret!' });
+  res.status(200).send({ Success: 'You have the secret!' });
 });
 
 server.use('/auth', authRouter);

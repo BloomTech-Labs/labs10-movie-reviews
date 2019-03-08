@@ -10,7 +10,7 @@ const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 // this route ('/auth/twitter') initiates the
 // passport-twitter oauth flow. On the client-
 // side, an <a> tag with an href that equals:
-// href="http://localhost:5000/auth/twitter"
+// href={`${twitterLogin}`}
 // (with our production origin as well) will
 // initiate the passport-twitter OAuth flow.
 // ==============================================
@@ -46,7 +46,11 @@ router.get('/logout', (req, res) => {
 // checking in order to see if the user is
 // logged in.
 // ==============================================
-router.get('/current_user', (req, res) => res.send(req.user));
+router.get('/current_user', (req, res) => {
+  if (req.user) {
+    res.status(200).send(req.user);
+  }
+});
 
 // passport.authenticate middleware is used here to authenticate the request
 router.get(

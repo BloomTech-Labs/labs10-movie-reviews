@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import axios from 'axios';
-import { currentUser } from '../../services/currentUserURLs';
+import { currentUser } from '../../services/userURLs';
 import { placeholderUrl } from '../../services/resourceURLs';
 import './UserReview.css';
 import StarRatingComponent from 'react-star-rating-component';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { currentUser } from '../../services/currentUserURLs';
+import { currentUser } from '../../services/userURLs';
 import { makePayment } from '../../services/paymentURLs';
 import axios from 'axios';
 
@@ -33,7 +33,9 @@ class PayButton extends Component {
     }
   };
 
-  onToken = token => {
+  onToken = async token => {
+    const { id, name, email } = this.props.currentUser;
+
     console.log('token', token);
     const body = {
       amount: this.props.totalCents,
@@ -41,30 +43,35 @@ class PayButton extends Component {
       subscription: this.props.header
     };
 
+    const paymentRes = await axios.post(makePayment, body);
+
+    if (!paymentRes.data) {
+      console.log('No payment response data');
+      return;
+    }
+
+    if (!paymentRes.data.createdCustomer) {
+      console.log(' Cannot create customer');
+      return;
+    }
+
+    if (!paymentRes.data.createdSubscription) {
+      console.log(' Cannot create subscription');
+      return;
+    }
+    // update the user stripeId
+
     axios
-      .post(makePayment, body)
-      // .post("http://localhost:5000/api/payment", body)
-      .then(stripeRes => {
-        console.log('response', stripeRes.data.stripeId);
-        return stripeRes.data.stripeId;
+      .put(currentUser, {
+        name,
+        email,
+        stripeId: paymentRes.data.stripeId
       })
-      .then(response => {
-        // console.log("resonse put \n", response);
-        axios
-          .put(
-            `https://labs10-movie-reviews.herokuapp.com/api/users/${
-              this.state.id
-            }`,
-            {
-              name: this.state.name,
-              email: this.state.email,
-              // username: this.state.name,
-              stripeId: response
-            }
-          )
-          .then(response => console.log('put response', response))
-          .catch(err => console.log('err \n', err));
-      });
+      .then(response => console.log('put response', response))
+      .catch(err => console.log('err \n', err));
+
+    // call PaymentView to re-render
+    // redirect user /invoice
   };
 
   render() {
