@@ -102,130 +102,158 @@ class PremiumView extends Component {
                   </span>
                 </li>
 
-                <li className="list-group-item pl-5 bg-white"><span className="small badge badge-light mr-1">Name: </span>
-                    <span className="badge badge-dark">{this.state.name}</span>
+                <li className="list-group-item pl-5 bg-white">
+                  <span className="small badge badge-light mr-1">Name: </span>
+                  <span className="badge badge-dark">{this.state.name}</span>
                 </li>
 
-                <li className="list-group-item pl-5 bg-white"><span className="small badge badge-light mr-1"> Email: </span>
+                <li className="list-group-item pl-5 bg-white">
+                  <span className="small badge badge-light mr-1"> Email: </span>
                   <span className="badge badge-dark">{this.state.email}</span>
                 </li>
 
-                {this.state.premium ?
-                  <> 
-                    <li className="list-group-item pl-5 bg-white"><span className="small badge badge-light mr-1">Subscription: </span>
-                      <span className="badge badge-dark">{this.state.subType}</span>
-                    </li>
-
-                    <li className="list-group-item pl-5 bg-white"><span className="small badge badge-light mr-1">Billing Amount: </span>
-                      <span className="badge badge-dark">{this.state.subType === 'Yearly' ? '$9.99' : '$0.99'}</span>
+                {this.state.premium ? (
+                  <>
+                    <li className="list-group-item pl-5 bg-white">
+                      <span className="small badge badge-light mr-1">
+                        Subscription:{' '}
+                      </span>
+                      <span className="badge badge-dark">
+                        {this.state.subType}
+                      </span>
                     </li>
 
                     <li className="list-group-item pl-5 bg-white">
-                      <button 
-                        type="button" 
+                      <span className="small badge badge-light mr-1">
+                        Billing Amount:{' '}
+                      </span>
+                      <span className="badge badge-dark">
+                        {this.state.subType === 'Yearly' ? '$9.99' : '$0.99'}
+                      </span>
+                    </li>
+
+                    <li className="list-group-item pl-5 bg-white">
+                      <button
+                        type="button"
                         className="btn btn-small text-danger text-left pl-1"
                         onClick={() => this.handleCancel(this.state.id)}
                       >
-                        <span className="small">Cancel {this.state.subType} Subscription</span>
+                        <span className="small">
+                          Cancel {this.state.subType} Subscription
+                        </span>
                       </button>
                     </li>
                   </>
-                : null}
+                ) : null}
               </ul>
-              
             </div>
           </div>
-          
+
           <div className="col-md-8 mb-5">
-            {!this.state.premium 
-              ? <h1 className="font-weight-light mb-5">Premium Subscriptions</h1>
-              : this.state.subType === 'Yearly'
-                ? <h2 className="font-weight-light mb-5 text-center">Yearly Premium</h2>
-                : <h2 className="font-weight-light mb-5 text-center">Monthly Premium</h2>
-            }
+            {!this.state.premium ? (
+              <h1 className="font-weight-light mb-5">Premium Subscriptions</h1>
+            ) : this.state.subType === 'Yearly' ? (
+              <h2 className="font-weight-light mb-5 text-center">
+                Yearly Premium
+              </h2>
+            ) : (
+              <h2 className="font-weight-light mb-5 text-center">
+                Monthly Premium
+              </h2>
+            )}
 
             <div className="row">
               {!this.state.premium ? (
-                <> 
+                <>
                   <div className="col-md-6">
-                    <PremiumCard 
-                      header={"Yearly Subscription"}
-                      priceTitle={"$9.99"} 
-                      description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
+                    <PremiumCard
+                      header={'Yearly Subscription'}
+                      priceTitle={'$9.99'}
+                      description={
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                      }
                       totalCents={999}
+                      currentUser={this.state}
                     />
                   </div>
-          
+
                   <div className="col-md-6">
-                    <PremiumCard 
-                      header={"Monthly Subscription"}
-                      priceTitle={"$0.99"} 
-                      description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
+                    <PremiumCard
+                      header={'Monthly Subscription'}
+                      priceTitle={'$0.99'}
+                      description={
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                      }
                       totalCents={99}
+                      currentUser={this.state}
                     />
-                  </div> 
+                  </div>
+                </>
+              ) : this.state.subType === 'Yearly' ? (
+                <>
+                  <div className="col-md-6">
+                    <PremiumCard
+                      header={'Yearly Subscription'}
+                      priceTitle={'$9.99'}
+                      description={
+                        'TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                      }
+                      totalCents={999}
+                      displayNone="displayNone"
+                      currentSub="Yearly"
+                      premium={this.state.premium}
+                    />
+                  </div>
+
+                  <div className="col-md-6">
+                    <PremiumCard
+                      header={'Monthly Subscription'}
+                      priceTitle={'$0.99'}
+                      description={
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                      }
+                      totalCents={99}
+                      displayNone="displayNone"
+                      premium={this.state.premium}
+                    />
+                  </div>
                 </>
               ) : (
-                this.state.subType === 'Yearly' ? (
-                  <>
-                    <div className="col-md-6">
-                      <PremiumCard 
-                        header={"Yearly Subscription"}
-                        priceTitle={"$9.99"} 
-                        description={"TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
-                        totalCents={999}
-                        displayNone='displayNone'
-                        currentSub="Yearly"
-                        premium={this.state.premium}
-                      />
-                    </div>
+                <>
+                  <div className="col-md-6">
+                    <PremiumCard
+                      header={'Yearly Subscription'}
+                      priceTitle={'$9.99'}
+                      description={
+                        'TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                      }
+                      totalCents={999}
+                      displayNone="displayNone"
+                      premium={this.state.premium}
+                    />
+                  </div>
 
-                    <div className="col-md-6">
-                      <PremiumCard 
-                        header={"Monthly Subscription"}
-                        priceTitle={"$0.99"} 
-                        description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
-                        totalCents={99}
-                        displayNone='displayNone'
-                        premium={this.state.premium}
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="col-md-6">
-                      <PremiumCard 
-                        header={"Yearly Subscription"}
-                        priceTitle={"$9.99"} 
-                        description={"TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
-                        totalCents={999}
-                        displayNone='displayNone'
-                        premium={this.state.premium}
-                      />
-                    </div>
-
-                    <div className="col-md-6">
-                      <PremiumCard 
-                        header={"Monthly Subscription"}
-                        priceTitle={"$0.99"} 
-                        description={"TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
-                        totalCents={99}
-                        displayNone='displayNone'
-                        currentSub="Monthly"
-                        premium={this.state.premium}
-                      />
-                    </div>
-                  </>
-                )
+                  <div className="col-md-6">
+                    <PremiumCard
+                      header={'Monthly Subscription'}
+                      priceTitle={'$0.99'}
+                      description={
+                        'TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                      }
+                      totalCents={99}
+                      displayNone="displayNone"
+                      currentSub="Monthly"
+                      premium={this.state.premium}
+                    />
+                  </div>
+                </>
               )}
-
             </div>
           </div>
-  
         </div>
       </div>
-    )
-  }  
+    );
+  }
 }
 
 export default PremiumView;
