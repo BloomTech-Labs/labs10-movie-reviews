@@ -42,35 +42,6 @@ class MyReviews extends Component {
         email: userRes.data.email
       });
       console.log('userData', userRes.data);
-      // axios
-      // .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
-      // .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
-      // .then(getRes => {
-      //   console.log("getRes \n", getRes.data)
-      //   this.setState({
-      //     id: getRes.data[0].id,
-      //     photo: getRes.data[0].photo,
-      //     email: getRes.data[0].email,
-      //     name: getRes.data[0].name,
-      //   })
-      // })
-      // const requestOptions = {
-      //   headers: { stripeid: getRes.data.stripeId },
-
-      // }
-      // axios
-      //   .get('https://labs10-movie-reviews.herokuapp.com/api/customer/premium', requestOptions)
-      //     .then(premiumRes => {
-      //       // console.log(premiumRes)
-      //       this.setState({
-      // id: getRes.data.id,
-      // photo: getRes.data.photo,
-      // email: getRes.data.email,
-      // name: getRes.data.name,
-      // stripeId: getRes.data.stripeId,
-      // premium: premiumRes.data.premium,
-      //       })
-      //     })
     } else {
       console.log('Unable to get current user information');
     }

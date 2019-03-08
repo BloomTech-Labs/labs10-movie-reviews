@@ -37,7 +37,7 @@ class PremiumView extends Component {
     } else {
       axios
         .post(
-          'https://labs10-movie-reviews.herokuapp.com/api/customer/plan',
+          'http://localhost:5000/api/customer/plan',
           // .post('http://localhost:5000/api/customer/plan',
           {
             stripeId
@@ -68,10 +68,7 @@ class PremiumView extends Component {
       headers: { stripeid: this.state.stripeId }
     };
     axios
-      .get(
-        'https://labs10-movie-reviews.herokuapp.com/api/customer/delete',
-        requestOptions
-      )
+      .get('http://localhost:5000/api/customer/delete', requestOptions)
       // .get('http://localhost:5000/api/customer/delete', requestOptions)
       .then(delRes => {
         console.log(delRes);

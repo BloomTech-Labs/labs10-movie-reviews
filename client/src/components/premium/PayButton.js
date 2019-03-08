@@ -43,7 +43,7 @@ class PayButton extends Component {
     };
 
     const paymentRes = await axios.post(
-      'https://labs10-movie-reviews.herokuapp.com/api/payment',
+      'http://localhost:5000/api/payment',
       // 'http://localhost:5000/api/payment',
       body
     );
@@ -66,7 +66,7 @@ class PayButton extends Component {
 
     axios
       .put(
-        `https://labs10-movie-reviews.herokuapp.com/api/users/${id}`,
+        `http://localhost:5000/api/users/${id}`,
         // .put(`http://localhost:5000/api/users/${id}`,
         {
           name,
