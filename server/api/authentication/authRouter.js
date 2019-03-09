@@ -5,6 +5,7 @@ const router = require('express').Router();
 const passport = require('passport');
 const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 
+const usersDb = require('../users/usersHelper');
 // ==============================================
 // Step #1 of login flow ➡️
 // this route ('/auth/twitter') initiates the
@@ -47,9 +48,20 @@ router.get('/logout', (req, res) => {
 // logged in.
 // ==============================================
 router.get('/current_user', (req, res) => {
-  if (req.user) {
+  if (!req.user || (req.user && !req.user.id)) {
+    res.status(400).send({ error: 'You are not log in' });
+  }
+
+  const user = usersDb.getUsersById(req.user.id);
+
+  // load the latest data of this user
+  if (user) {
     res.status(200).send(req.user);
   }
+
+  // load data from request
+  const { id, name, email, username } = req.user;
+  res.status(200).send({ id, name, email, username });
 });
 
 // passport.authenticate middleware is used here to authenticate the request

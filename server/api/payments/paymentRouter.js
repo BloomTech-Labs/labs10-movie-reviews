@@ -1,4 +1,4 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const router = require('express').Router();
 
 // First, we create our customer. we use the stripe API will return a customer
@@ -57,24 +57,23 @@ router.post('/customer/plan', function(req, res) {
 
   stripe.customers.retrieve(stripeId, function(error, customer) {
     if (error) {
-      res.status(500).send({ error });
+      return res.status(500).send({ error });
     }
 
     if (customer) {
       if (customer.deleted) {
-        res.status(404).send({
+        return res.status(404).send({
           message: 'No subscription found',
           premium: false
         });
-      } else {
-        // console.log("customer plan \n", customer)
-        res.status(200).send({
-          customer: customer.subscriptions.data[0].items.data[0].plan,
-          premium: true
-        });
       }
+      // console.log("customer plan \n", customer)
+      return res.status(200).send({
+        customer: customer.subscriptions.data[0].items.data[0].plan,
+        premium: true
+      });
     }
-    res.status(404).send({ error: 'Cannot find customer' });
+    return res.status(404).send({ error: 'Cannot find customer' });
   });
 });
 
@@ -106,17 +105,13 @@ router.get('/customer/premium', function(req, res) {
 
 // Deletes customer from stripe and cancels subscription
 router.post('/customer/delete', function(req, res) {
-  // console.log("customer req \n", req.headers);
   const { stripeid } = req.body;
-  stripe.customers.del(stripeid, function(err, confirmation) {
-    if (err) {
-      res.send({ error: 'Unable to delete customer' });
-    } else {
-      console.log('confirmation /n', confirmation);
-      res.send({
-        message: 'successsfully deleted customer'
-      });
+  stripe.customers.del(stripeid, function(error, confirmation) {
+    if (error) {
+      return res.status(500).send({ error });
     }
+
+    return res.status(200).send(confirmation);
   });
 });
 

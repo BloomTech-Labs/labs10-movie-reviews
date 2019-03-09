@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './premium.css';
 import PremiumCard from './PremiumCard';
 import axios from 'axios';
-import { currentUser } from '../../services/userURLs';
+import { currentUser, users } from '../../services/userURLs';
 import { placeholderUrl } from '../../services/resourceURLs';
 import { customerDelete, customerPlan } from '../../services/paymentURLs';
 
@@ -32,42 +32,63 @@ class PremiumView extends Component {
     }
 
     const { id, photo, email, name, stripeId } = userRes.data;
-
+    console.log(userRes.data);
     if (!stripeId) {
       console.log('I have not subscribed yet');
       this.setState({ id, photo, email, name });
     } else {
-      axios
-        .post(customerPlan, {
-          stripeId
-        })
-        .then(planRes => {
-          console.log('planRes \n', planRes.data);
-          if (planRes.data.premium) {
-            this.setState({
-              id,
-              photo,
-              email,
-              name,
-              stripeId,
-              premium: planRes.data.customer.active,
-              subType: planRes.data.customer.nickname
-            });
-          } else {
-            console.log('My premium is false. Line 63');
-          }
-        })
-        .catch(error => console.log(error));
+      this.handleLoadSubType(stripeId, userRes.data);
     }
   };
 
-  handleCancel = id => {
+  handleCompleteSuccessfulPayment = stripeId => {
+    const { id, photo, email, name } = this.state;
+    this.handleLoadSubType(stripeId, { id, photo, email, name });
+  };
+
+  handleLoadSubType = (stripeId, currentUser) => {
     axios
-      .post(customerDelete, { stripeid: this.state.stripeId })
-      .then(delRes => {
-        console.log(delRes);
-        window.location.reload();
+      .post(customerPlan, {
+        stripeId
+      })
+      .then(planRes => {
+        if (planRes.data.premium) {
+          this.setState({
+            ...currentUser,
+            stripeId,
+            premium: planRes.data.customer.active,
+            subType: planRes.data.customer.nickname
+          });
+        }
+      })
+      .catch(error => {
+        this.setState({
+          ...currentUser,
+          stripeId: null,
+          premium: false,
+          subType: ''
+        });
       });
+  };
+
+  handleCancel = async id => {
+    const updateUserStripeIdRes = await axios.put(`${users}/${id}`, {
+      stripeId: ''
+    });
+
+    if (updateUserStripeIdRes.status === 200) {
+      const cancellationRes = await axios.post(customerDelete, {
+        stripeid: this.state.stripeId
+      });
+
+      if (cancellationRes.data.deleted) {
+        this.setState({
+          premium: false,
+          subType: '',
+          stripeId: ''
+        });
+      }
+    }
   };
 
   render() {
@@ -169,6 +190,9 @@ class PremiumView extends Component {
                       }
                       totalCents={999}
                       currentUser={this.state}
+                      onCompleteSuccessfulPayment={
+                        this.handleCompleteSuccessfulPayment
+                      }
                     />
                   </div>
 
@@ -181,6 +205,9 @@ class PremiumView extends Component {
                       }
                       totalCents={99}
                       currentUser={this.state}
+                      onCompleteSuccessfulPayment={
+                        this.handleCompleteSuccessfulPayment
+                      }
                     />
                   </div>
                 </>
@@ -197,6 +224,10 @@ class PremiumView extends Component {
                       displayNone="displayNone"
                       currentSub="Yearly"
                       premium={this.state.premium}
+                      currentUser={this.state}
+                      onCompleteSuccessfulPayment={
+                        this.handleCompleteSuccessfulPayment
+                      }
                     />
                   </div>
 
@@ -210,6 +241,10 @@ class PremiumView extends Component {
                       totalCents={99}
                       displayNone="displayNone"
                       premium={this.state.premium}
+                      currentUser={this.state}
+                      onCompleteSuccessfulPayment={
+                        this.handleCompleteSuccessfulPayment
+                      }
                     />
                   </div>
                 </>

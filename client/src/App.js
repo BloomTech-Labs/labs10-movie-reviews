@@ -200,7 +200,10 @@ class App extends Component {
             <Route path="/myreviews" component={MyReviews} />
             <Route path="/reviewform/:id" component={ReviewForm} />
             <Route path="/moviereviews/:id" component={MovieRev} />
-            <Route path="/premium" component={PremiumView} />
+            <Route
+              path="/premium"
+              render={props => <PremiumView {...props} />}
+            />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/privacy" component={Privacy} />

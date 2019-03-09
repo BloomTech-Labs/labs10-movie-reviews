@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { currentUser } from '../../services/userURLs';
+import { users } from '../../services/userURLs';
 import { makePayment } from '../../services/paymentURLs';
 import axios from 'axios';
 
@@ -18,20 +18,7 @@ class PayButton extends Component {
     };
   }
 
-  componentDidMount = async () => {
-    const res = await axios.get(currentUser, {
-      withCredentials: true
-    });
-    if (res.data) {
-      // console.log("res.data \n", res.data)
-      this.setState({
-        id: res.data.id,
-        name: res.data.name,
-        email: res.data.email,
-        username: res.data.username
-      });
-    }
-  };
+  componentDidMount = async () => {};
 
   onToken = async token => {
     const { id, name, email } = this.props.currentUser;
@@ -61,15 +48,17 @@ class PayButton extends Component {
     }
     // update the user stripeId
 
-    axios
-      .put(currentUser, {
-        name,
-        email,
-        stripeId: paymentRes.data.stripeId
-      })
-      .then(response => console.log('put response', response))
-      .catch(err => console.log('err \n', err));
+    const updatedUserRes = await axios.put(`${users}/${id}`, {
+      name,
+      email,
+      stripeId: paymentRes.data.stripeId
+    });
 
+    if (updatedUserRes.data) {
+      return this.props.onCompleteSuccessfulPayment(paymentRes.data.stripeId);
+    }
+
+    console.log('Cannot updated user after pay');
     // call PaymentView to re-render
     // redirect user /invoice
   };
