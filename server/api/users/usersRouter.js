@@ -18,7 +18,7 @@ router.get('/users', (req, res) => {
 });
 
 // GET request that gets a user by id
-router.get('/users/:id', async (req, res) => {
+router.get('/users/:id', (req, res) => {
   const { id } = req.params;
   getUsersById(id).then(user =>
     res
