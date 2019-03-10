@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import StarRatingComponent from 'react-star-rating-component';
-import './stars.css';
 
 export default class ratingStars extends React.Component {
   constructor() {

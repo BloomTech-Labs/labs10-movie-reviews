@@ -1,7 +1,7 @@
 // ==============================================
 // 🎥🎥 Movie Reviews Server 🍿🍿
 // ==============================================
-require('dotenv').config()
+require('dotenv').config();
 const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 const express = require('express');
 const server = express();
@@ -21,8 +21,11 @@ configureMiddleware(server);
 
 // Middleware to check if the user is authenticated
 function isUserAuthenticated(req, res, next) {
-  if (debugging === true) console.log('isAuthenticated:', req.isAuthenticated(), {withCredentials: true});
-  if (req.isAuthenticated(), {withCredentials: true}) {
+  if (debugging === true)
+    console.log('isAuthenticated:', req.isAuthenticated(), {
+      withCredentials: true
+    });
+  if ((req.isAuthenticated(), { withCredentials: true })) {
     return next();
   } else {
     res.redirect('/');
@@ -31,11 +34,11 @@ function isUserAuthenticated(req, res, next) {
 
 // configure routes to our server
 server.get('/', (req, res) =>
-  res.send({ Success: 'Sanity check is working...' })
+  res.status(200).send({ Success: 'Sanity check is working...' })
 );
 
 server.get('/sanityauth', isUserAuthenticated, (req, res) => {
-  res.send({ Success: 'You have the secret!' });
+  res.status(200).send({ Success: 'You have the secret!' });
 });
 
 server.use('/auth', authRouter);

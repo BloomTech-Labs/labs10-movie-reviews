@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
+import { users } from '../../services/userURLs';
+import { reviews } from '../../services/reviewURLs';
+
 class Auth extends React.Component {
   state = {
     userId: null,
@@ -17,13 +20,13 @@ class Auth extends React.Component {
   // allows us to get all the reviews data from the API
   fetchReviews = () => {
     axios
-      .get('http://localhost:5000/api/users')
+      .get(users)
       .then(response => {
         console.log('response auth - Users: ', response);
         this.setState({
           users: response.data
         });
-        return axios.get('http://localhost:5000/api/reviews');
+        return axios.get(reviews);
       })
       .then(response => {
         console.log('response auth - Reviews: ', response);

@@ -1,6 +1,7 @@
 import React from 'react';
 import './MovieRev.css';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { placeholderUrl, viaPlaceholderUrl } from '../../services/resourceURLs';
 
 export default class MovieRev extends React.Component {
   constructor(props) {
@@ -23,8 +24,8 @@ export default class MovieRev extends React.Component {
           <Col sm="4">
             <h4>Title of the Movie</h4>
             <div className="placeholder">
-              <a href="https://placeholder.com">
-                <img src="https://via.placeholder.com/150" />
+              <a href={`${placeholderUrl}`}>
+                <img src={`${viaPlaceholderUrl}/150`} />
               </a>
             </div>
             <p />
@@ -43,8 +44,8 @@ export default class MovieRev extends React.Component {
             <Row>
               <Col sm="4">
                 <div className="placeholder">
-                  <a href="https://placeholder.com">
-                    <img src="https://via.placeholder.com/100" />
+                  <a href={`${placeholderUrl}`}>
+                    <img src={`${viaPlaceholderUrl}/100`} />
                   </a>
                 </div>
                 <p>

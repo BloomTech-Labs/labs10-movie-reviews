@@ -8,16 +8,24 @@ const router = require('express').Router();
 const usersDb = require('./usersHelper.js');
 
 // A GET request that returns all users from the database
-router.get('/users', async (req, res) => {
-  const users = await usersDb.getUsers();
-  res.json(users);
+router.get('/users', (req, res) => {
+  usersDb.getUsers().then(users =>
+    res
+      .status(200)
+      .send(users)
+      .catch(error => res.status(500).send(error))
+  );
 });
 
 // GET request that gets a user by id
-router.get('/users/:id', async (req, res) => {
+router.get('/users/:id', (req, res) => {
   const { id } = req.params;
-  const user = await usersDb.getUsersById(id);
-  res.json(user);
+  getUsersById(id).then(user =>
+    res
+      .status(200)
+      .send(user)
+      .catch(error => res.status(500).send(error))
+  );
 });
 
 // POST request to add a user
@@ -49,22 +57,24 @@ router.post('/users', async (req, res) => {
 router.put('/users/:id', async (req, res) => {
   const changes = req.body;
   const { id } = req.params;
-  if (req.body.name && req.body.email && req.body.stripeId) {
-    try {
-      const count = await usersDb.update(id, changes);
-      //count is the number of records updated
-      if (count) {
-        const user = await usersDb.get(id);
-        res.status(200).json(user);
-      } else
-        res.status(404).json({ Error: `User with ID ${id} does not exist.` });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  } else
+  if (!id) {
     res.status(400).json({
-      Error: 'Please provide a name, username & email for the user profile.'
+      error: 'Missing id'
     });
+  }
+  try {
+    const count = await usersDb.update(id, changes);
+    //count is the number of records updated
+
+    if (count) {
+      const user = await usersDb.getUsersById(id);
+      res.status(200).json(user);
+    } else {
+      res.status(404).json({ Error: `User with ID ${id} does not exist.` });
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 //A DELETE request that deletes a user

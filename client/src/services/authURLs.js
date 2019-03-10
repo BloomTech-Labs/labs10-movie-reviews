@@ -1,14 +1,14 @@
 export const twitterLogin =
   process.env.NODE_ENV === 'production'
-    ? 'https://labs10-movie-reviews.herokuapp.com/auth/twitter'
-    : 'http://localhost:5000/auth/twitter';
+    ? `${process.env.REACT_APP_PROD_SERVER_URI}/auth/twitter`
+    : `${process.env.REACT_APP_DEV_SERVER_URI}/auth/twitter`
 
 export const logout =
   process.env.NODE_ENV === 'production'
-    ? 'https://labs10-movie-reviews.herokuapp.com/auth/logout'
-    : 'http://localhost:5000/auth/logout';
+    ? `${process.env.REACT_APP_PROD_SERVER_URI}/auth/logout`
+    : `${process.env.REACT_APP_DEV_SERVER_URI}/auth/logout`
 
 export const googleLogin =
   process.env.NODE_ENV === 'production'
-    ? 'https://labs10-movie-reviews.herokuapp.com/auth/google'
-    : 'http://localhost:5000/auth/google';
+    ? `${process.env.REACT_APP_PROD_SERVER_URI}/auth/google`
+    : `${process.env.REACT_APP_DEV_SERVER_URI}/auth/google`

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import axios from 'axios';
-import { currentUser } from '../../services/currentUserURLs';
-import { currentReviews } from '../../services/currentUserURLs';
+import { currentUser } from '../../services/userURLs';
+import { reviews } from '../../services/reviewURLs';
+import { placeholderUrl } from '../../services/resourceURLs';
 import { Link } from 'react-router-dom';
 
 import ReviewsList from './MyReviewsList';
@@ -42,35 +43,6 @@ class MyReviews extends Component {
         email: userRes.data.email
       });
       console.log('userData', userRes.data);
-      // axios
-      // .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
-      // .get(`https://labs10-movie-reviews.herokuapp.com/api/users/${userRes.data.id}`)
-      // .then(getRes => {
-      //   console.log("getRes \n", getRes.data)
-      //   this.setState({
-      //     id: getRes.data[0].id,
-      //     photo: getRes.data[0].photo,
-      //     email: getRes.data[0].email,
-      //     name: getRes.data[0].name,
-      //   })
-      // })
-      // const requestOptions = {
-      //   headers: { stripeid: getRes.data.stripeId },
-
-      // }
-      // axios
-      //   .get('https://labs10-movie-reviews.herokuapp.com/api/customer/premium', requestOptions)
-      //     .then(premiumRes => {
-      //       // console.log(premiumRes)
-      //       this.setState({
-      // id: getRes.data.id,
-      // photo: getRes.data.photo,
-      // email: getRes.data.email,
-      // name: getRes.data.name,
-      // stripeId: getRes.data.stripeId,
-      // premium: premiumRes.data.premium,
-      //       })
-      //     })
     } else {
       console.log('Unable to get current user information');
     }
@@ -79,7 +51,7 @@ class MyReviews extends Component {
   // allows us to get all the reviews data from the API
   fetchReviews = () => {
     axios
-      .get(currentReviews)
+      .get(reviews)
       .then(response => {
         this.setState({ reviews: response.data });
       })
@@ -95,7 +67,7 @@ class MyReviews extends Component {
         <Row>
           <Col md="3">
             <div className="placeholder">
-              <a href="https://placeholder.com">
+              <a href={`${placeholderUrl}`}>
                 <img
                   className="myreviews-avatar img-responsive mb-3 "
                   src={this.state.photo}
