@@ -1,7 +1,7 @@
 import React from 'react';
 import './MovieRev.css';
 import { Container, Row, Col, Button } from 'reactstrap';
-import { placeholderUrl } from '../../services/resourceURLs';
+import { placeholderUrl, viaPlaceholderUrl } from '../../services/resourceURLs';
 
 export default class MovieRev extends React.Component {
   constructor(props) {

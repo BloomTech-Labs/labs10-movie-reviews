@@ -19,7 +19,7 @@ import { googleLogin, logout } from '../../services/authURLs';
 import GoogleLogin from '../../assets/svg/btn_google_1.png';
 import Search from './NavSearch';
 import NavbarBrand from 'reactstrap/lib/NavbarBrand';
-import { users } from '../../services/userURLs';
+import { currentUser } from '../../services/userURLs';
 
 export default class Navigation extends React.Component {
   constructor(props) {
@@ -60,7 +60,7 @@ export default class Navigation extends React.Component {
                 </a>
               </RenderLogin>
               <RenderDropdown>
-              <img className="avatar" src={this.state.photo} alt="avatar"/>
+                <img className="avatar" src={this.state.photo} alt="avatar" />
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
                     Options
@@ -71,7 +71,9 @@ export default class Navigation extends React.Component {
                       <Link to="/myreviews">My Reviews</Link>
                     </DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem><Link to="/premium">Become a Premium Reviewer!</Link></DropdownItem>
+                    <DropdownItem>
+                      <Link to="/premium">Become a Premium Reviewer!</Link>
+                    </DropdownItem>
                     <a href={logout}>
                       <DropdownItem>Logout</DropdownItem>
                     </a>
