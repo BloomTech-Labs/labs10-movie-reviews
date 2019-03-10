@@ -60,8 +60,8 @@ router.get('/current_user', (req, res) => {
   }
 
   // load data from request
-  const { id, name, email, username } = req.user;
-  res.status(200).send({ id, name, email, username });
+  const { id, name, email, username, photo } = req.user;
+  res.status(200).send({ id, name, email, username, photo });
 });
 
 // passport.authenticate middleware is used here to authenticate the request
