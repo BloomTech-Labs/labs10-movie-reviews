@@ -78,28 +78,36 @@ router.post('/customer/plan', function(req, res) {
 });
 
 // Gets customer's status; "premium: true" if customer has active subscription
-router.get('/customer/premium', function(req, res) {
+router.post('/customer/premium', function(req, res) {
   // console.log("customer req \n", req.headers);
-  const { stripeid } = req.headers;
+  const { stripeid } = req.body;
   if (!stripeid) {
-    res.send({
-      premium: false
+    res.status(400).send({
+      error: 'Missing stripe Id'
     });
   }
   stripe.customers.retrieve(stripeid, function(err, customer) {
-    if (customer.deleted) {
-      res.send({ premium: false });
-      return;
-    } else if (err) {
-      res.send({
-        error: 'Unable to get customer'
-      });
-    } else {
-      // console.log("customer plan/n", customer)
-      res.send({
-        premium: customer.subscriptions.data[0].items.data[0].plan.active
-      });
+    if (error) {
+      return res.status(500).send({ error });
     }
+
+    if (customer) {
+      if (customer.deleted) {
+        res.send({ premium: false });
+        return;
+      } else if (err) {
+        res.send({
+          error: 'Unable to get customer'
+        });
+      } else {
+        // console.log("customer plan/n", customer)
+        res.send({
+          premium: customer.subscriptions.data[0].items.data[0].plan.active
+        });
+      }
+    }
+
+    return res.status(404).send({ error: 'Cannot find customer' });
   });
 });
 
