@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
-import { currentUser } from '../../services/currentUserURLs';
+import { currentUser } from '../../services/userURLs';
 
 export default class RenderDropdown extends Component {
   state = { isLoggedIn: false };

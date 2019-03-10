@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { tmdbUrl } from '../../services/resourceURLs';
 import StarRatingComponent from 'react-star-rating-component';
 import './stars.css';
-import { currentUser } from '../../services/currentUserURLs';
-import { currentReviews } from '../../services/currentUserURLs';
-import { editDeleteReviews } from '../../services/currentUserURLs';
+import { currentUser } from '../../services/userURLs';
+import { reviews, reviewById } from '../../services/reviewURLs';
 import { Container, Row, Col, Form, Label, Input } from 'reactstrap';
 
 class ReviewForm extends Component {
@@ -71,7 +71,7 @@ class ReviewForm extends Component {
     };
 
     axios
-      .put(editDeleteReviews(this.id), editedReview)
+      .put(reviewById(this.id), editedReview)
       .then(response => {
         // this.props.fetchReviews();
         this.props.history.push('/myreviews');
@@ -96,7 +96,7 @@ class ReviewForm extends Component {
     console.log('RevForm review: ', review);
 
     axios
-      .post(currentReviews, review)
+      .post(reviews, review)
       .then(response => {
         console.log('RevForm response: ', response);
       })
@@ -123,9 +123,7 @@ class ReviewForm extends Component {
                 {/* <div className="card" style={{ width: '18rem' }}> */}
                 <img
                   className="card-img-top"
-                  src={`http://image.tmdb.org/t/p/original//${
-                    this.props.location.state.img
-                  }`}
+                  src={`${tmdbUrl}//${this.props.location.state.img}`}
                   alt="Poster of the movie"
                 />
                 <div className="card-body">

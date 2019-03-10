@@ -1,15 +1,17 @@
+const clientURL = require('../../services/config');
+
 require('dotenv').config();
 const router = require('express').Router();
 const passport = require('passport');
 const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 
-
+const usersDb = require('../users/usersHelper');
 // ==============================================
 // Step #1 of login flow ➡️
 // this route ('/auth/twitter') initiates the
 // passport-twitter oauth flow. On the client-
 // side, an <a> tag with an href that equals:
-// href="http://localhost:5000/auth/twitter"
+// href={`${twitterLogin}`}
 // (with our production origin as well) will
 // initiate the passport-twitter OAuth flow.
 // ==============================================
@@ -21,14 +23,8 @@ router.get('/twitter', passport.authenticate('twitter'));
 // accepted the Twitter prompt), the user will be
 // redirected back to the React client.
 // ==============================================
-router.get(
-  '/twitter/callback',
-  passport.authenticate('twitter'),
-  (req, res) => {
-    if (process.env.NODE_ENV === 'production') {
-      res.redirect('https://cineview.netlify.com');
-    } else res.redirect('http://localhost:3000');
-  }
+router.get('/twitter/callback', passport.authenticate('twitter'), (req, res) =>
+  res.redirect(clientURL)
 );
 
 // ==============================================
@@ -40,9 +36,7 @@ router.get(
 // ==============================================
 router.get('/logout', (req, res) => {
   req.logout();
-  if (process.env.NODE_ENV === 'production') {
-    res.redirect('https://cineview.netlify.com');
-  } else res.redirect('http://localhost:3000');
+  res.redirect(clientURL);
 });
 
 // ==============================================
@@ -53,20 +47,34 @@ router.get('/logout', (req, res) => {
 // checking in order to see if the user is
 // logged in.
 // ==============================================
-router.get('/current_user', (req, res) => res.send(req.user));
+router.get('/current_user', (req, res) => {
+  if (!req.user || (req.user && !req.user.id)) {
+    res.status(400).send({ error: 'You are not log in' });
+  }
 
-// passport.authenticate middleware is used here to authenticate the request
-router.get('/google', passport.authenticate('google', {
-  scope: ['profile', 'email'] // Scope is Used to specify the required data
-})); 
+  const user = usersDb.getUsersById(req.user.id);
 
-// The middleware receives the data from Google and runs the function on Strategy config
-router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-  if (process.env.NODE_ENV === 'production') {
-    res.redirect(process.env.REDIRECT_URI_PROD);
-  } else res.redirect(process.env.REDIRECT_URI_DEV);
-  
+  // load the latest data of this user
+  if (user) {
+    res.status(200).send(req.user);
+  }
+
+  // load data from request
+  const { id, name, email, username, photo } = req.user;
+  res.status(200).send({ id, name, email, username, photo });
 });
 
+// passport.authenticate middleware is used here to authenticate the request
+router.get(
+  '/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email'] // Scope is Used to specify the required data
+  })
+);
+
+// The middleware receives the data from Google and runs the function on Strategy config
+router.get('/google/callback', passport.authenticate('google'), (req, res) =>
+  res.redirect(clientURL)
+);
 
 module.exports = router;
