@@ -260,6 +260,7 @@ class PremiumView extends Component {
                       totalCents={999}
                       displayNone="displayNone"
                       premium={this.state.premium}
+                      currentUser={this.state}
                     />
                   </div>
 
@@ -274,6 +275,7 @@ class PremiumView extends Component {
                       displayNone="displayNone"
                       currentSub="Monthly"
                       premium={this.state.premium}
+                      currentUser={this.state}
                     />
                   </div>
                 </>
