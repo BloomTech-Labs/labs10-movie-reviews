@@ -11,7 +11,7 @@ import Footer from './components/footer/Footer';
 import Home from './components/home/Home';
 import MovieRev from './components/movieReviews/MovieRev';
 import MyReviews from './components/myReviews/MyReviews';
-import Navigation from './components/navbar/TestNavigation';
+import Navigation from './components/navbar/ProductionNavigation';
 import PremiumView from './components/premium/PremiumView';
 import Privacy from './components/footer/privacy/PrivacyPolicy';
 import ratingStars from './components/stars/ratingStars';
@@ -49,7 +49,7 @@ class App extends Component {
     );
     promise
       .then(response => {
-        console.log('response: ', response);
+        // console.log('response: ', response);
         const random = Math.floor(Math.random() * response.data.results.length); //instantiates a random number between 0 and length of response.data.results array
         const title = response.data.results[random].title;
         //grabs random movie title from response data results array
@@ -62,7 +62,7 @@ class App extends Component {
           randomTitle: title,
           loading: false
         });
-        console.log('movies: ', this.state.movies);
+        // console.log('movies: ', this.state.movies);
         //sets the information retrieved onto state
       })
       .catch(err => {
@@ -104,7 +104,7 @@ class App extends Component {
   */
 
   searchHandler() {
-    console.log('this.state', this.state);
+    // console.log('this.state', this.state);
     let promise = axios.get(
       `${theMovieDbUrl}/3/search/movie?api_key=${
         process.env.REACT_APP_API
@@ -128,7 +128,6 @@ class App extends Component {
           inputCriteria: ''
         });
         //this sets the searchResults on state
-        console.log(this.props, 'props from search');
       })
       .catch(err => {
         console.log(err);
@@ -149,12 +148,16 @@ class App extends Component {
     return (
       <div className="App-body">
         <div className="main">
-          <Navigation
-            handleChange={this.handleChange}
-            loading={this.state.loading}
-            searchHandler={this.searchHandler}
-            inputCriteria={this.state.inputCriteria}
-            searchResults={this.state.searchResults}
+          <Route render={props => (
+            <Navigation
+              {...props}
+              handleChange={this.handleChange}
+              loading={this.state.loading}
+              searchHandler={this.searchHandler}
+              inputCriteria={this.state.inputCriteria}
+              searchResults={this.state.searchResults}
+            />
+          )} 
           />
           {/* exact path limits the page from rendering to 
           anything other than the path mentioned */}

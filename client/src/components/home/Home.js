@@ -22,26 +22,25 @@ const Home = props => {
         searchResults={props.searchResults}
         searchCriteria={props.searchCriteria}
       />
-
-      <FeatureList />
-
       <div className="featured">
         <h2 className="popular-title">Popular Movies</h2>
         <div className="cardWrapper">
           <Row className="nopadding">
             {movies.map(item => {
-              console.log('results', item);
+              // console.log('results', item);
               return <MappedItem key={item.id} item={item} />;
             })}
           </Row>
         </div>
       </div>
-      <div className="popularReviewers">
+      {/* <div className="popularReviewers"> */}
         {/* <h1>Popular Reviewers</h1> */}
-        <Card>
-          <div className="cardWrapper" />
-        </Card>
-      </div>
+        {/* <Card> */}
+          {/* <div className="cardWrapper" /> */}
+        {/* </Card> */}
+      {/* </div> */}
+      <FeatureList />
+
     </>
   );
 };
