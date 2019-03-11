@@ -23,6 +23,13 @@ module.exports = {
         console.error(err);
       });
   },
+  // getReviewOrder method
+  getReviewOrder: id => {
+    return db('users')
+      .where('id', id)
+      .select('reviewOrder')
+      .first();
+  },
   update: function(id, user) {
     if (debugging === true)
       console.log('PUT Users Helper', '\nid:', id, 'user:', user);
