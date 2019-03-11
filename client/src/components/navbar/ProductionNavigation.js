@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Button, Form, Input } from 'reactstrap';
+import { Button, Input } from 'reactstrap';
 import { logout } from '../../services/authURLs';
 import { currentUser } from '../../services/userURLs';
 
@@ -9,7 +9,6 @@ import Modal from './Modal';
 import RenderDropdown from './RenderDropdown';
 import RenderLogin from './RenderLogin';
 import './Navbar.css';
-
 
 class ProductionNavigation extends React.Component {
   constructor(props) {
@@ -40,13 +39,13 @@ class ProductionNavigation extends React.Component {
     }));
   }
 
-  handleKeyUp(event){
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        document.getElementById('nav-button').click();
-        this.props.history.push(`/search/?q=${this.props.inputCriteria}`)
-      }
+  handleKeyUp(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById('nav-button').click();
+      this.props.history.push(`/search/?q=${this.props.inputCriteria}`);
     }
+  }
 
   render() {
     return (
