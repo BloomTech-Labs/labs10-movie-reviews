@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     users.string('email', 254).unique(); // email field
     users.boolean('premium_user').defaultTo(false);
     users.string('photo', 200);
-    users.text('reviewOrder').notNullable(); // review order field
+    users.text('reviewOrder'); // review order field
     users.timestamp('created_at').defaultTo(knex.fn.now()); // user creation date
     users.timestamp('updated_at').defaultTo(knex.fn.now()); // last updated
   });
