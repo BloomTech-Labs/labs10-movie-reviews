@@ -30,6 +30,7 @@ export default class ratingStars extends React.Component {
           name="rate1"
           starCount={5}
           value={rating}
+          onStarHover={this.onStarClick.bind(this)}
           onStarClick={this.onStarClick.bind(this)}
         />
       </div>
