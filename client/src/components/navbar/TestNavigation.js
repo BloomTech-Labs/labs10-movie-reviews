@@ -75,9 +75,9 @@ class TestNavigation extends React.Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <form className="form-inline my-2 my-lg-0">
+          <form className="form-inline">
             <input
-              className="form-control mr-sm-2"
+              className="form-control"
               type="search"
               placeholder="Search"
               name="inputCriteria"
@@ -86,7 +86,7 @@ class TestNavigation extends React.Component {
               aria-label="Search"
             />
             <button
-              className="btn btn-outline-success my-2 my-sm-0"
+              className="btn btn-outline-success"
               onClick={this.props.searchHandler}
               type="submit"
             >
@@ -95,7 +95,7 @@ class TestNavigation extends React.Component {
               </Link>
             </button>
           </form>
-          <ul className="navbar-nav mr-auto">
+          <ul className="navbar-nav">
             <li className="nav-item active">
               <RenderLogin>
                 <Modal
@@ -118,8 +118,9 @@ class TestNavigation extends React.Component {
               <a href={logout}>
                 <Button color="light">Logout</Button>
               </a>
-              <Link to="/myreviews">
+              <Link to="/myreviews" className="avatar-link">
                 <img className="avatar" src={this.state.photo} alt="avatar" />
+                <p>{`${this.state.name}`}</p>
               </Link>
             </RenderDropdown>
           </ul>

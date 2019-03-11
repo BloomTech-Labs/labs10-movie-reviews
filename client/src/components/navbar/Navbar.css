@@ -1,70 +1,89 @@
-/* .input-and-button {
-    display: flex;
-    margin: 5px;
-}
-
-
-.button-nav {
-    padding: 15px;
-    height: 4vh;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    margin: 0px 20px 0px 0px;
-    align-items: center;
-    border-radius: 0px 5px 5px 0px;
-    background-color: royalblue;
-    background-blend-mode: color;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.nav-input {
-  height: 4vh;
-  padding-left: 10px;
-  border-radius: 5px 0px 0px 5px;
-  width: 200px;
-  background-color: whitesmoke;
-}
-
-.avatar{
-  height: 40px;
-  border-radius: 50%;
-  margin: 5px 30px 0px 30px;
-} */
-
-@media only screen and (min-width: 576px) {
-  nav div {
-    position: absolute;
-    right: 0;
-    width: 40%;
+@media only screen and (min-width:600px) and (max-width: 991px){
+  .navbar-nav {
+    margin: 0 !important;
   }
 
-  nav div form {
-    margin-right: 30px;
-    width: 70% !important;
+  nav div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .form-inline {
+    margin-top: 50px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
   }
 
   nav div form .form-control {
-    margin-right: 0 !important;
-    padding: 10px;
-    width: 75% !important;
-    border-radius: 20px 0px 0px 20px !important;
+    border-radius: 20px 0px 0px 20px;
+    width: 30%;
   }
   nav div form button {
     margin: 0;
     padding: 20px;
-    width: 25%;
+    width: 20%;
+    background-color: #464e7d !important;
+    color: white !important;
+    border-top: 1px solid #ced4da !important;
+    border-right: 1px solid #ced4da !important;
+    border-bottom: 1px solid #ced4da !important;
+    border-left: none !important;
+    border-radius: 0px 20px 20px 0px !important;
+  }
+
+
+
+}
+@media only screen and (min-width:992px) {
+  nav div {
+    position: absolute;
+    right: 0;
+    width: 70%;
+  }
+
+  nav div form {
+    margin-right: 30px;
+    width: 70% 
+  }
+
+  nav div form .form-control {
+    margin-right: 0;
+    padding: 10px;
+    width: 75%;
+    border-radius: 20px 0px 0px 20px 
+  }
+  nav div form button {
+    margin: 0;
+    padding: 20px;
+    width: 20%;
+    background-color: #464e7d !important;
+    color: white !important;
+    border-top: 1px solid #ced4da !important;
+    border-right: 1px solid #ced4da !important;
+    border-bottom: 1px solid #ced4da !important;
+    border-left: none !important;
     border-radius: 0px 20px 20px 0px !important;
   }
 
   nav div ul {
-
+    display: flex;
     width: 100%;
+    align-items: center;
   }
 }
 
+.avatar-link {
+  display: flex;
+}
+.avatar-link p {
+  margin-top: 10px;
+  margin-left: -25px;
+  align-items: center;
+  font-weight: bolder;
+}
 .avatar{
   height: 40px;
   border-radius: 50%;
