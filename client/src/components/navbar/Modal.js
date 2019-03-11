@@ -11,7 +11,7 @@ import RenderLogin from './RenderLogin';
 
 const LoginModal = props => {
     return (
-      <div>
+      <>
         <Button color="light" onClick={props.toggle}>{props.buttonLabel}</Button>
         <Modal isOpen={props.modal} toggle={props.toggle} className={props.className}>
           <ModalHeader toggle={props.toggle}>Log In To Start Writing Reviews!</ModalHeader>
@@ -24,7 +24,7 @@ const LoginModal = props => {
               </RenderLogin>
           </ModalBody>
         </Modal>
-      </div>
+      </>
     );
   }
 
