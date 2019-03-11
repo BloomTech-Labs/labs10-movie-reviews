@@ -32,7 +32,10 @@
     border-left: none !important;
     border-radius: 0px 20px 20px 0px !important;
   }
-
+  .avatar-link {
+    display: flex;
+    align-self: center;
+  }
 
 
 
@@ -80,15 +83,18 @@
 }
 .avatar-link {
   display: flex;
+  align-items: flex-end;
   margin-right: 20px;
   margin-left: -25px;
 }
-.avatar-link p {
-  margin-top: 10px;
-  margin-left: -25px;
-  height: 40px;
+.avatar-link div {
+  width: auto;
+  height: 35px;
+  margin-top: 0px;
+  margin-left: -10px;
+  display: flex;
   align-items: center;
-  font-weight: bolder;
+  font-weight: bold;
 }
 .avatar{
   height: 40px;
