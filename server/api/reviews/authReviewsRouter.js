@@ -84,7 +84,21 @@ router.delete('/reviews/:id', async (req, res) => {
         .status(404)
         .json({ message: `the review with id ${id}  does not exist` });
     } else {
-      // otherwise send a 200 on success
+      // get the order string from users
+      const reviewOrderString = await users.getReviewOrder(1);
+      // set the order array by parsing the json and taking out review order array
+      let reviewOrderArray = JSON.parse(reviewOrderString.reviewOrder);
+
+      // update to the new ordered array by doing a filter on the array
+      reviewOrderArray = reviewOrderArray.filter(id => id != req.params.id);
+
+      // set the updated review order to the new note order
+      const updatedNoteOrder = { noteOrder: JSON.stringify(noteOrderArray) };
+
+      // update the note order in the data
+      await users.updateReviewOrder(1, updatedReviewOrder);
+
+      // return the deleted review with a status of 200
       return res.status(200).json(deletedReview);
     }
   } catch (error) {
