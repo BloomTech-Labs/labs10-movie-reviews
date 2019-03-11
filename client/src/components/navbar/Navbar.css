@@ -16,11 +16,11 @@
     justify-content: center;
   }
 
-  nav div form .form-control {
+  nav div div .form-control {
     border-radius: 20px 0px 0px 20px;
     width: 30%;
   }
-  nav div form button {
+  nav div div button {
     margin: 0;
     padding: 20px;
     width: 20%;
@@ -44,19 +44,19 @@
     width: 70%;
   }
 
-  nav div form {
+  nav div div {
     margin-left: 30px;
     width: 50%;
     justify-content: flex-end;
   }
 
-  nav div form .form-control {
+  nav div div .form-control {
     margin-right: 0;
     padding: 10px;
     width: 75%;
     border-radius: 20px 0px 0px 20px 
   }
-  nav div form button {
+  nav div div button {
     margin: 0;
     padding: 20px;
     width: 20%;
@@ -81,6 +81,8 @@
 }
 .avatar-link {
   display: flex;
+  margin-right: 20px;
+  margin-left: -25px;
 }
 .avatar-link p {
   margin-top: 10px;

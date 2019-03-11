@@ -21,6 +21,7 @@ class ProductionNavigation extends React.Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
   }
 
   componentDidMount = async () => {
@@ -39,13 +40,22 @@ class ProductionNavigation extends React.Component {
     }));
   }
 
+  handleKeyUp(event){
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById('nav-button').click();
+        this.props.history.push(`/search/?q=${this.props.inputCriteria}`)
+      }
+    }
+
   render() {
+    console.log(this.props, "nav props", this.state, 'nav state');
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link className="navbar-brand" to="/">
           CineView
         </Link>
-        <Button
+        <button
           className="navbar-toggler"
           type="button"
           data-toggle="collapse"
@@ -55,20 +65,22 @@ class ProductionNavigation extends React.Component {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon" />
-        </Button>
+        </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <Form className="form-inline">
+          <div className="form-inline">
             <Input
               className="form-control"
               placeholder="Search"
+              type="text"
               name="inputCriteria"
               value={this.props.inputCriteria}
+              onSubmit={this.props.searchHandler}
               onChange={this.props.handleChange}
-              aria-label="Search"
               onKeyUp={this.handleKeyUp}
+              id="nav-input"
             />
-            <Button
+            <button
               id="nav-button"
               className="btn btn-outline-success"
               onClick={this.props.searchHandler}
@@ -76,8 +88,8 @@ class ProductionNavigation extends React.Component {
               <Link to={`/search/?q=${this.props.inputCriteria}`}>
                 {<i className="fas fa-search" />}
               </Link>
-            </Button>
-          </Form>
+            </button>
+          </div>
           <ul className="navbar-nav">
             <li className="nav-item active">
               <RenderLogin>
