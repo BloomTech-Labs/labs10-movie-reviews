@@ -38,14 +38,12 @@
 
 }
 @media only screen and (min-width:992px) {
-  nav div {
-    position: absolute;
-    right: 0;
+  nav div {    
     width: 70%;
   }
 
   nav div .form-inline {
-    width: 70%;
+    width: 40%;
   }
 
   nav div div .form-control {
@@ -100,7 +98,7 @@
 
 .navbar-nav {
   width: 100%;
-  z-index: 1;
+  z-index: auto;
 }
 
 
