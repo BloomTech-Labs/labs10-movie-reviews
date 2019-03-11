@@ -49,13 +49,12 @@ class ProductionNavigation extends React.Component {
     }
 
   render() {
-    console.log(this.props, "nav props", this.state, 'nav state');
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link className="navbar-brand" to="/">
           CineView
         </Link>
-        <button
+        <Button
           className="navbar-toggler"
           type="button"
           data-toggle="collapse"
@@ -65,7 +64,7 @@ class ProductionNavigation extends React.Component {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon" />
-        </button>
+        </Button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <div className="form-inline">
@@ -80,7 +79,7 @@ class ProductionNavigation extends React.Component {
               onKeyUp={this.handleKeyUp}
               id="nav-input"
             />
-            <button
+            <Button
               id="nav-button"
               className="btn btn-outline-success"
               onClick={this.props.searchHandler}
@@ -88,7 +87,7 @@ class ProductionNavigation extends React.Component {
               <Link to={`/search/?q=${this.props.inputCriteria}`}>
                 {<i className="fas fa-search" />}
               </Link>
-            </button>
+            </Button>
           </div>
           <ul className="navbar-nav">
             <li className="nav-item active">
@@ -101,9 +100,9 @@ class ProductionNavigation extends React.Component {
               </RenderLogin>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="/premium">
+              <Link className="nav-link" to="/premium">
                 Premium Subscriptions
-              </a>
+              </Link>
             </li>
             <RenderDropdown>
               <a href={logout}>

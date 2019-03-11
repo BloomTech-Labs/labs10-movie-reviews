@@ -44,8 +44,8 @@
     width: 70%;
   }
 
-  nav div div {
-    width: 100%;
+  nav div .form-inline {
+    width: 70%;
   }
 
   nav div div .form-control {
@@ -71,7 +71,9 @@
   nav div ul {
     display: flex;
     width: 100%;
+    height: auto;
     justify-content: flex-end;
+    align-items: flex-end;
   }
 }
 
@@ -86,6 +88,7 @@
 .avatar-link p {
   margin-top: 10px;
   margin-left: -25px;
+  height: 40px;
   align-items: center;
   font-weight: bolder;
 }
@@ -96,12 +99,9 @@
 }
 
 .navbar-nav {
-  display: flex;
+  width: 100%;
+  z-index: 1;
 }
 
-.collapse {
-  width: 90%;
-  display:flex;
-  justify-content: space-around;
-  align-items: center;
-}
+
+
