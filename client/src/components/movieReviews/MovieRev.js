@@ -1,7 +1,7 @@
 import React from 'react';
 import './MovieRev.css';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button, CardImg } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import UserReview from './UserReview';
 import { reviews } from '../../services/reviewURLs';
