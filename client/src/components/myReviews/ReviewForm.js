@@ -109,8 +109,6 @@ class ReviewForm extends Component {
   };
 
   render() {
-    const { rating } = this.state;
-
     return (
       <Container>
         <br />
