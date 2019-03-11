@@ -1,5 +1,3 @@
-const clientURL = require('../../services/config');
-
 require('dotenv').config();
 const router = require('express').Router();
 const passport = require('passport');
@@ -23,8 +21,16 @@ router.get('/twitter', passport.authenticate('twitter'));
 // accepted the Twitter prompt), the user will be
 // redirected back to the React client.
 // ==============================================
-router.get('/twitter/callback', passport.authenticate('twitter'), (req, res) =>
-  res.redirect(clientURL)
+router.get(
+  '/twitter/callback',
+  passport.authenticate('twitter'),
+  (req, res) => {
+    if (process.env.NODE_ENV === 'production') {
+      res.redirect(process.env.REDIRECT_URI_PROD);
+    } else {
+      res.redirect(process.env.REDIRECT_URI_DEV);
+    }
+  }
 );
 
 // ==============================================
@@ -36,7 +42,11 @@ router.get('/twitter/callback', passport.authenticate('twitter'), (req, res) =>
 // ==============================================
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect(clientURL);
+  if (process.env.NODE_ENV === 'production') {
+    res.redirect(process.env.REDIRECT_URI_PROD);
+  } else {
+    res.redirect(process.env.REDIRECT_URI_DEV);
+  }
 });
 
 // ==============================================
@@ -73,8 +83,12 @@ router.get(
 );
 
 // The middleware receives the data from Google and runs the function on Strategy config
-router.get('/google/callback', passport.authenticate('google'), (req, res) =>
-  res.redirect(clientURL)
-);
+router.get('/google/callback', passport.authenticate('google'), (req, res) => {
+  if (process.env.NODE_ENV === 'production') {
+    res.redirect(process.env.REDIRECT_URI_PROD);
+  } else {
+    res.redirect(process.env.REDIRECT_URI_DEV);
+  }
+});
 
 module.exports = router;

@@ -26,8 +26,6 @@ router.post('/payment', function(req, res) {
 
   stripe.customers.create({ email, source }, (err, customer) => {
     // the first argument creates our new customer
-    console.log('customer id\n', customer);
-
     err
       ? res.send({ createdCustomer: false }) // if there's an error in creating our customer
       : stripe.subscriptions // Successfully created customer. Now we can create a sub for our customer
