@@ -3,19 +3,14 @@ import { Button, Input} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './Hero.css';
 
-const HeroInput = (props) => {
+const HeroSearch = (props) => {
     const handleKeyUp = (event) => {
         if (event.keyCode === 13) {
-          document.getElementById('hero-input').addEventListener('keydown', function(event){
-              if(event.keyCode === 13) {
-            //   event.preventDefault();
-              document.getElementById('hero-button').click();
-              props.history.push(`/search?q=${props.searchCriteria}`)
-              }
-          });
+          event.preventDefault();
+          document.getElementById('hero-button').click();
+          props.history.push(`/search?q=${props.searchCriteria}`)
         }
       }
-
     return (
             <>
             <Input
@@ -39,4 +34,4 @@ const HeroInput = (props) => {
     );
 };
 
-export default HeroInput;
+export default HeroSearch;

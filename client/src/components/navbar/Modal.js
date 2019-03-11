@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import GoogleLogin from '../../assets/svg/btn_google_1.png';
 import TwitterLogin from '../../assets/svg/btn_twitter_1.svg';
 import { googleLogin, twitterLogin } from '../../services/authURLs';
@@ -9,9 +9,9 @@ import RenderLogin from './RenderLogin';
 
 
 
-const ModalExample = props => {
+const LoginModal = props => {
     return (
-      <div>
+      <>
         <Button color="light" onClick={props.toggle}>{props.buttonLabel}</Button>
         <Modal isOpen={props.modal} toggle={props.toggle} className={props.className}>
           <ModalHeader toggle={props.toggle}>Log In To Start Writing Reviews!</ModalHeader>
@@ -24,8 +24,8 @@ const ModalExample = props => {
               </RenderLogin>
           </ModalBody>
         </Modal>
-      </div>
+      </>
     );
   }
 
-export default ModalExample;
+export default LoginModal;
