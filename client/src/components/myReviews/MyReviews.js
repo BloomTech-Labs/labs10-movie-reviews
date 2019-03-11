@@ -25,7 +25,7 @@ class MyReviews extends Component {
   };
 
   componentDidMount = async () => {
-    this.fetchReviews();
+    // this.fetchReviews();
     const userRes = await axios.get(currentUser, {
       withCredentials: true
     });
@@ -43,6 +43,7 @@ class MyReviews extends Component {
         name: userRes.data.name,
         email: userRes.data.email
       });
+      this.fetchReviews(userRes.data.id);
       console.log('userData', userRes.data);
     } else {
       console.log('Unable to get current user information');
@@ -50,9 +51,9 @@ class MyReviews extends Component {
   };
 
   // allows us to get all the reviews data from the API
-  fetchReviews = () => {
+  fetchReviews = userId => {
     axios
-      .get(reviews)
+      .post(currentUserReviews, { userId })
       .then(response => {
         this.setState({ reviews: response.data });
       })
@@ -60,6 +61,16 @@ class MyReviews extends Component {
         console.log(err);
       });
   };
+  // fetchReviews = () => {
+  //   axios
+  //     .get(reviews)
+  //     .then(response => {
+  //       this.setState({ reviews: response.data });
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // };
 
   render() {
     console.log('MyReviews: ', this.props);
