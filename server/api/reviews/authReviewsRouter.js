@@ -15,6 +15,23 @@ router.post('/reviews', async (req, res) => {
     // create a new review based on the caller body
     const newReview = await reviewsDb.insert(req.body);
     try {
+      // set an order string from the users table
+      const reviewOrderString = await users.getReviewOrder(1);
+
+      // using json parse the order string array in to an array
+      const reviewOrderArray = JSON.parse(reviewOrderString.reviewOrder);
+
+      // unshift the newReview.id from the order array
+      reviewOrderArray.unshift(newReview.id);
+
+      // the updated review order from the review order array using json stringify
+      const updatedReviewOrder = {
+        reviewOrder: JSON.stringify(ReviewOrderArray)
+      };
+
+      // update the review order in the users table
+      await users.updateReviewOrder(1, updatedReviewOrder);
+
       // respond with a 201 on success
       res.status(201).json(newReview);
     } catch (error) {
