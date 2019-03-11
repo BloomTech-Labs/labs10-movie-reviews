@@ -1,8 +1,7 @@
 import React from 'react';
 import Hero from './Hero/Hero';
-import Jumbotron from './Jumbotron';
 import MappedItem from './MappedItem';
-import { Row, Card } from 'reactstrap';
+import { Row } from 'reactstrap';
 import './mappedItem.css';
 import FeatureList from './FeatureList';
 
@@ -34,13 +33,12 @@ const Home = props => {
         </div>
       </div>
       {/* <div className="popularReviewers"> */}
-        {/* <h1>Popular Reviewers</h1> */}
-        {/* <Card> */}
-          {/* <div className="cardWrapper" /> */}
-        {/* </Card> */}
+      {/* <h1>Popular Reviewers</h1> */}
+      {/* <Card> */}
+      {/* <div className="cardWrapper" /> */}
+      {/* </Card> */}
       {/* </div> */}
       <FeatureList />
-
     </>
   );
 };
