@@ -7,11 +7,10 @@ import './mappedItem.css';
 import FeatureList from './FeatureList';
 
 const Home = props => {
+  const randomArr = props.movies.sort(function() { return 0.5 - Math.random() });
   const start = Math.floor(Math.random() * 12);
   const end = start + 8;
-  console.log("start",start);
-  console.log("start",end);
-  const movies = props.movies.slice(start, end);
+  const movies = randomArr.slice(start, end);
 
   return (
     <>
@@ -37,12 +36,6 @@ const Home = props => {
           </Row>
         </div>
       </div>
-      {/* <div className="popularReviewers"> */}
-        {/* <h1>Popular Reviewers</h1> */}
-        {/* <Card> */}
-          {/* <div className="cardWrapper" /> */}
-        {/* </Card> */}
-      {/* </div> */}
       <FeatureList />
 
     </>
