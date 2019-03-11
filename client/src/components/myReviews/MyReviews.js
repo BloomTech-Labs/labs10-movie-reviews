@@ -73,7 +73,7 @@ class MyReviews extends Component {
   // };
 
   render() {
-    console.log('MyReviews: ', this.props);
+    console.log('MyReviews: ', this.state.reviews);
     return (
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
