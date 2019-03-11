@@ -6,24 +6,21 @@ import { logout } from '../../services/authURLs';
 import { currentUser } from '../../services/userURLs';
 
 import Modal from './Modal';
-
-import './Navbar.css';
 import RenderDropdown from './RenderDropdown';
 import RenderLogin from './RenderLogin';
-class TestNavigation extends React.Component {
+import './Navbar.css';
+
+
+class ProductionNavigation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
-      nestedModal: false,
-      closeAll: false,
       photo: '',
       name: ''
     };
 
     this.toggle = this.toggle.bind(this);
-    this.toggleNested = this.toggleNested.bind(this);
-    this.toggleAll = this.toggleAll.bind(this);
   }
 
   componentDidMount = async () => {
@@ -40,20 +37,6 @@ class TestNavigation extends React.Component {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
-
-  toggleNested() {
-    this.setState({
-      nestedModal: !this.state.nestedModal,
-      closeAll: false
-    });
-  }
-
-  toggleAll() {
-    this.setState({
-      nestedModal: !this.state.nestedModal,
-      closeAll: true
-    });
   }
 
   render() {
@@ -101,11 +84,7 @@ class TestNavigation extends React.Component {
                 <Modal
                   buttonLabel="Log In"
                   modal={this.state.modal}
-                  nestedModal={this.state.nestedModal}
-                  closeAll={this.state.closeAll}
                   toggle={this.toggle}
-                  toggleAll={this.toggleAll}
-                  toggleNested={this.toggleNested}
                 />
               </RenderLogin>
             </li>
@@ -130,4 +109,4 @@ class TestNavigation extends React.Component {
   }
 }
 
-export default TestNavigation;
+export default ProductionNavigation;

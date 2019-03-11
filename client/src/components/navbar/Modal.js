@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import GoogleLogin from '../../assets/svg/btn_google_1.png';
 import TwitterLogin from '../../assets/svg/btn_twitter_1.svg';
 import { googleLogin, twitterLogin } from '../../services/authURLs';
@@ -9,7 +9,7 @@ import RenderLogin from './RenderLogin';
 
 
 
-const ModalExample = props => {
+const LoginModal = props => {
     return (
       <div>
         <Button color="light" onClick={props.toggle}>{props.buttonLabel}</Button>
@@ -28,4 +28,4 @@ const ModalExample = props => {
     );
   }
 
-export default ModalExample;
+export default LoginModal;
