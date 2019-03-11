@@ -128,7 +128,6 @@ class App extends Component {
           inputCriteria: ''
         });
         //this sets the searchResults on state
-        console.log(this.props, 'props from search');
       })
       .catch(err => {
         console.log(err);
@@ -149,12 +148,16 @@ class App extends Component {
     return (
       <div className="App-body">
         <div className="main">
-          <Navigation
-            handleChange={this.handleChange}
-            loading={this.state.loading}
-            searchHandler={this.searchHandler}
-            inputCriteria={this.state.inputCriteria}
-            searchResults={this.state.searchResults}
+          <Route render={props => (
+            <Navigation
+              {...props}
+              handleChange={this.handleChange}
+              loading={this.state.loading}
+              searchHandler={this.searchHandler}
+              inputCriteria={this.state.inputCriteria}
+              searchResults={this.state.searchResults}
+            />
+          )} 
           />
           {/* exact path limits the page from rendering to 
           anything other than the path mentioned */}
