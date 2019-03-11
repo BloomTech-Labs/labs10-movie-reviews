@@ -30,7 +30,7 @@ class TestNavigation extends React.Component {
     const res = await axios.get(currentUser, {
       withCredentials: true
     });
-    console.log(res.data.photo, 'photo');
+    // console.log(res.data.photo, 'photo');
     if (res.data) {
       this.setState({ name: res.data.name, photo: res.data.photo });
     }
