@@ -8,7 +8,7 @@
   padding-left: 0;
 }
 
-.card-img {
+.popular-img {
   display: block;
   margin: auto 0;
   height: 38vh;
@@ -16,30 +16,30 @@
   margin-bottom: 1rem;
 }
 
-.movie-title {
-  position: absolute;
-  bottom: 22px;
-  left: 0px;
-  color: white;
-  size: 10px;
-  background-color: rgba(0, 0, 0, 0);
-  font-weight: 400;
-  width: 100%;
-  height: 2rem;
-  padding-top: 0.2rem;
-}
-
 .popular-title {
-  font-weight: bold;
   margin-bottom: 40px;
   padding-top: 40px;
   color: inherit;
 }
 
+.movie-title {
+  position: absolute;
+  bottom:0px;
+  left: 0px;
+  color: white;
+  size: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  /* font-weight: 400; */
+  width: 100%;
+  height: 2rem;
+  padding-top: 0.2rem;
+  background-color: rgba(50,50,50,0.2);
+}
+
 .title-text {
-  background-color: rgba(50,50,50,0.7);
+  background-color: rgba(50,50,50,0.8);
   padding: 0;
-  font-size: 14px;
+  /* font-size: 14px; */
   font-weight: 700;
 }
 
