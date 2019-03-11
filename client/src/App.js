@@ -11,7 +11,7 @@ import Footer from './components/footer/Footer';
 import Home from './components/home/Home';
 import MovieRev from './components/movieReviews/MovieRev';
 import MyReviews from './components/myReviews/MyReviews';
-import Navigation from './components/navbar/TestNavigation';
+import Navigation from './components/navbar/ProductionNavigation';
 import PremiumView from './components/premium/PremiumView';
 import Privacy from './components/footer/privacy/PrivacyPolicy';
 import ratingStars from './components/stars/ratingStars';
