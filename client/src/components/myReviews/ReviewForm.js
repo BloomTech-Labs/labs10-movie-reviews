@@ -99,6 +99,10 @@ class ReviewForm extends Component {
       .post(reviews, review)
       .then(response => {
         console.log('RevForm response: ', response);
+        this.props.history.push({
+          pathname: '/myreviews',
+          state: { detail: response.data }
+        });
       })
       .then(response => {
         this.props.history.push('/myreviews');

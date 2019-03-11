@@ -12,6 +12,11 @@ module.exports = {
     if (id) query.where('id', Number(id)).first();
     return query;
   },
+  // GEt Reviews by user id
+  getReviewsByUserId: function(userId) {
+    return db('movieReviews').where('userId', Number(userId));
+  },
+
   //POST Review
   // insert: function(review) {
   //   return db('movieReviews')
@@ -21,7 +26,7 @@ module.exports = {
   //       ({ id: ids[0] });
   //     })
   insert: review => {
-    console.log(review);
+    console.log('insert: ', review);
     return db('movieReviews')
       .insert(review)
       .then(([id]) => module.exports.getReviews(id))
@@ -49,7 +54,7 @@ module.exports = {
         .where('id', id)
         .update(editedReview)
         // get the id if there are more than 0 records otherwise get 0
-        .then(count => (count > 0 ? module.exports.get(id) : 0))
+        .then(count => (count > 0 ? module.exports.getReviews(id) : 0))
     );
   },
   //DELETE Review

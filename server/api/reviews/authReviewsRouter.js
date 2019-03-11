@@ -8,32 +8,64 @@ const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 // requests all the reviews in the reviews database)
 // ==============================================
 const reviewsDb = require('./reviewsHelper.js');
+const usersDb = require('../users/usersHelper');
+
+//GET review by user id
+router.get('/currentuserreviews', async (req, res) => {
+  const userId = req.body.userId;
+  // if (req.body.textBody && req.body.rating && userId) {
+  try {
+    // get reviews of the current user
+    const currentUserReviews = await reviewsDb.getReviewsByUserId(userId);
+    console.log('currentUserReviews: ', currentUserReviews);
+
+    // respond with a 201 on success
+    res.status(201).json(currentUserReviews);
+  } catch (error) {
+    // catch any error and return a 500
+    return res.status(500).json({
+      message: 'the review could not be added',
+      error: error.message
+    });
+    // }
+  }
+});
 
 //POST review
 router.post('/reviews', async (req, res) => {
-  if (req.body.textBody && req.body.rating) {
+  const userId = req.body.userId;
+  if (req.body.textBody && req.body.rating && userId) {
     // create a new review based on the caller body
     const newReview = await reviewsDb.insert(req.body);
     try {
-      // set an order string from the users table
-      const reviewOrderString = await users.getReviewOrder(1);
+      // // set an order string from the users table
+      // const reviewOrderString = await usersDb.getReviewOrder(userId);
+      // console.log('RevOrdString: ', reviewOrderString);
+      // // using json parse the order string array in to an array
+      // const reviewOrderArray = JSON.parse(reviewOrderString.reviewOrder);
 
-      // using json parse the order string array in to an array
-      const reviewOrderArray = JSON.parse(reviewOrderString.reviewOrder);
+      // // unshift the newReview.id from the order array
+      // reviewOrderArray.unshift(newReview.id);
 
-      // unshift the newReview.id from the order array
-      reviewOrderArray.unshift(newReview.id);
+      // // the updated review order from the review order array using json stringify
+      // const updatedReviewOrder = {
+      //   reviewOrder: JSON.stringify(reviewOrderArray)
+      // };
 
-      // the updated review order from the review order array using json stringify
-      const updatedReviewOrder = {
-        reviewOrder: JSON.stringify(ReviewOrderArray)
-      };
+      // // update the review order in the users table
+      // const updatedRevOrder = await usersDb.updateReviewOrder(
+      //   userId,
+      //   updatedReviewOrder
 
-      // update the review order in the users table
-      await users.updateReviewOrder(1, updatedReviewOrder);
+      // get reviews of the current user
+      const currentUserReviews = await reviewsDb.getReviewsByUserId(userId);
+      console.log('currentUserReviews: ', currentUserReviews);
+
+      // // respond with a 201 on success
+      // res.status(201).json(newReview);
 
       // respond with a 201 on success
-      res.status(201).json(newReview);
+      res.status(201).json(currentUserReviews);
     } catch (error) {
       // catch any error and return a 500
       return res.status(500).json({

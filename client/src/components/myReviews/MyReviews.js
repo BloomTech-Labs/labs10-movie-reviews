@@ -31,10 +31,10 @@ class MyReviews extends Component {
     if (userRes.data) {
       let newPhoto;
       if (userRes.data.twitterId) {
-        //this code takes the photo URL from twitter - which is low resolution and takes a substring of it and concats it with the jpg to give us a higher resolution photo for myReviews dashboard. 
-        newPhoto = userRes.data.photo.substr(0, (userRes.data.photo.length - 11)) + ".jpg";
-      }
-      else {
+        //this code takes the photo URL from twitter - which is low resolution and takes a substring of it and concats it with the jpg to give us a higher resolution photo for myReviews dashboard.
+        newPhoto =
+          userRes.data.photo.substr(0, userRes.data.photo.length - 11) + '.jpg';
+      } else {
         newPhoto = userRes.data.photo;
       }
       this.setState({
@@ -61,6 +61,7 @@ class MyReviews extends Component {
   };
 
   render() {
+    console.log('MyReviews: ', this.props);
     return (
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
