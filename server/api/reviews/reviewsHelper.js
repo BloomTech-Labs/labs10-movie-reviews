@@ -13,28 +13,39 @@ module.exports = {
     return query;
   },
   //POST Review
-  insert: function(review) {
+  // insert: function(review) {
+  //   return db('movieReviews')
+  //     .insert(review)
+  //     .then(ids => {
+  //       if (debugging === true) console.log('POST Reviews Helper', '\nids:', ids);
+  //       ({ id: ids[0] });
+  //     })
+  insert: review => {
+    console.log(review);
     return db('movieReviews')
       .insert(review)
-      .then(ids => {
-        if (debugging === true) console.log('POST Reviews Helper', '\nids:', ids);
-        ({ id: ids[0] });
-      })
-
+      .then(([id]) => module.exports.getReviews(id))
       .catch(err => {
         console.error(err);
       });
   },
   //PUT Review
   update: function(id, movieReview) {
-    if (debugging === true) console.log('PUT Reviews Helper', '\nid:', id, 'movieReview:', movieReview);
+    if (debugging === true)
+      console.log(
+        'PUT Reviews Helper',
+        '\nid:',
+        id,
+        'movieReview:',
+        movieReview
+      );
     return db('movieReviews')
       .where('id', id)
       .update(movieReview);
   },
   //DELETE Review
   remove: function(id) {
-    if (debugging === true) console.log('DELETE Reviews Helper', '\nid:', id)
+    if (debugging === true) console.log('DELETE Reviews Helper', '\nid:', id);
     return db('movieReviews')
       .where('id', id)
       .del();
