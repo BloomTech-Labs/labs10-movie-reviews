@@ -30,6 +30,13 @@ module.exports = {
       .select('reviewOrder')
       .first();
   },
+  // updateReviewOrder method
+  updateReviewOrder: (id, updatedReviewOrder) => {
+    return db('users')
+      .where('id', id)
+      .update(updatedReviewOrder)
+      .then(count => (count > 0 ? module.exports.getReviewOrder(id) : 0));
+  },
   update: function(id, user) {
     if (debugging === true)
       console.log('PUT Users Helper', '\nid:', id, 'user:', user);
