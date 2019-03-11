@@ -11,7 +11,7 @@ const reviewsDb = require('./reviewsHelper.js');
 const usersDb = require('../users/usersHelper');
 
 //GET review by user id
-router.get('/currentuserreviews', async (req, res) => {
+router.post('/currentuserreviews', async (req, res) => {
   const userId = req.body.userId;
   // if (req.body.textBody && req.body.rating && userId) {
   try {
