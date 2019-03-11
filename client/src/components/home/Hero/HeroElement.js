@@ -1,7 +1,6 @@
 import React from 'react';
 import HeroHeader from './HeroHeader';
-import HeroInput from './HeroInput';
-import HeroButton from './HeroButton';
+import HeroSearch from './HeroSearch';
 import Search from './Search';
 import './Hero.css';
 
@@ -10,7 +9,7 @@ const HeroElement = props => {
     <>
       <HeroHeader appName="CineView" appSlug="Real People. Real Reviews." />
       <div className="landing-page-route-wrapper">
-        <HeroInput
+        <HeroSearch
           {...props}
           id="hero-input"
           searchHandler={props.searchHandler}
@@ -20,12 +19,6 @@ const HeroElement = props => {
           label="Search for Movies:"
           buttonLabel={<i className="fas fa-search"></i>}
         />
-        {/* <HeroButton
-          id="hero-button"
-          buttonLabel={<i className="fas fa-search"></i>}
-          searchCriteria={props.searchCriteria}
-          searchHandler={props.searchHandler}
-        /> */}
       </div>
 
         <Search 
