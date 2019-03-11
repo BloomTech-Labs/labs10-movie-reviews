@@ -30,18 +30,27 @@ module.exports = {
       });
   },
   //PUT Review
-  update: function(id, movieReview) {
-    if (debugging === true)
-      console.log(
-        'PUT Reviews Helper',
-        '\nid:',
-        id,
-        'movieReview:',
-        movieReview
-      );
-    return db('movieReviews')
-      .where('id', id)
-      .update(movieReview);
+  // update: function(id, movieReview) {
+  //   if (debugging === true)
+  //     console.log(
+  //       'PUT Reviews Helper',
+  //       '\nid:',
+  //       id,
+  //       'movieReview:',
+  //       movieReview
+  //     );
+  //   return db('movieReviews')
+  //     .where('id', id)
+  //     .update(movieReview);
+  // },
+  update: (id, editedReview) => {
+    return (
+      db('movieReviews')
+        .where('id', id)
+        .update(editedReview)
+        // get the id if there are more than 0 records otherwise get 0
+        .then(count => (count > 0 ? module.exports.get(id) : 0))
+    );
   },
   //DELETE Review
   remove: function(id) {
