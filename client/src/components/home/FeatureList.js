@@ -20,9 +20,6 @@ const FeatureList = props => {
                   Write reviews on any movie from A Trip To The Moon to your box
                   office favorite
                 </p>
-                <a href="#" className="learn-more">
-                  Learn more »
-                </a>
               </div>
             </div>
             <div className="col-sm-6 col-md-5 col-lg-4 item">
@@ -33,9 +30,6 @@ const FeatureList = props => {
                   Rate each film on a five-star scale to record and share your
                   reaction
                 </p>
-                <a href="#" className="learn-more">
-                  Learn more »
-                </a>
               </div>
             </div>
             <div className="col-sm-6 col-md-5 col-lg-4 item">
@@ -46,9 +40,6 @@ const FeatureList = props => {
                   Keep a diary of the films you have seen and share your
                   thoughts on them with others
                 </p>
-                <a href="#" className="learn-more">
-                  Learn more »
-                </a>
               </div>
             </div>
             <div className="col-sm-6 col-md-5 col-lg-4 item">
@@ -59,9 +50,6 @@ const FeatureList = props => {
                   See current list of popular movies so you know what's fresh at
                   the box office
                 </p>
-                <a href="#" className="learn-more">
-                  Learn more »
-                </a>
               </div>
             </div>
             <div className="col-sm-6 col-md-5 col-lg-4 item">
@@ -71,9 +59,6 @@ const FeatureList = props => {
                 <p className="description">
                   Fast access to movie reviews by real people just like you
                 </p>
-                <a href="#" className="learn-more">
-                  Learn more »
-                </a>
               </div>
             </div>
             <div className="col-sm-6 col-md-5 col-lg-4 item">
@@ -83,9 +68,6 @@ const FeatureList = props => {
                 <p className="description">
                   Access our app on any of your favorite devices
                 </p>
-                <a href="#" className="learn-more">
-                  Learn more »
-                </a>
               </div>
             </div>
           </div>
