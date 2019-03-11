@@ -15,7 +15,7 @@ const MappedItem = props => {
         <img
           src={`${tmdbUrl}/${props.item.backdrop_path}`}
           className="card-img img-responsive popular-img"
-          alt="movie image"
+          alt="movie poster"
         />
         <h6 className="movie-title">
           <span className="title-text rounded">{props.item.title}</span>

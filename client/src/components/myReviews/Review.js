@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Container, CardImg } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import { reviewById } from '../../services/reviewURLs';
@@ -156,7 +156,7 @@ class Review extends Component {
                 className="card-img-top img-responsive img-thumbnail"
                 src={`${tmdbUrl}${this.state.img}`}
                 style={{ height: 170, width: '100%' }}
-                alt="Card image cap"
+                alt="Card poster cap"
               />
             </Link>
             <div className="card-body pt-0">

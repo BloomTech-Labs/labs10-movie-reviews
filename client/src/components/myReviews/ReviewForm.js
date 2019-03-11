@@ -13,7 +13,7 @@ class ReviewForm extends Component {
     googleId: 0,
     movieId: 0,
     reviewer: '',
-    rating: 0,
+    rating: 3,
     textBody: '',
     email: '',
     review: 0
@@ -109,8 +109,6 @@ class ReviewForm extends Component {
   };
 
   render() {
-    const { rating } = this.state;
-
     return (
       <Container>
         <br />
@@ -146,7 +144,8 @@ class ReviewForm extends Component {
                   <StarRatingComponent
                     name="rate1"
                     starCount={5}
-                    value={rating}
+                    value={this.state.rating}
+                    onStarHover={this.onStarClick.bind(this)}
                     onStarClick={this.onStarClick.bind(this)}
                   />
                 </div>

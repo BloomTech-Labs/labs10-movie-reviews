@@ -1,7 +1,7 @@
 import React from 'react';
 import './MovieRev.css';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button, CardImg } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import UserReview from './UserReview';
 import { reviews } from '../../services/reviewURLs';
@@ -105,22 +105,20 @@ export default class MovieRev extends React.Component {
                     Watch Trailer
                   </a>
                   {/* <p /> */}
-                  <a href="#" className="btn btn-info">
-                    <Link
-                      to={{
-                        pathname: `/reviewform/${this.state.id}`,
-                        state: {
-                          id: this.state.id,
-                          title: this.state.title,
-                          year: this.state.year,
-                          overview: this.state.overview,
-                          img: this.state.img
-                        }
-                      }}
-                    >
-                      Write Review
-                    </Link>
-                  </a>
+                  <Link
+                    to={{
+                      pathname: `/reviewform/${this.state.id}`,
+                      state: {
+                        id: this.state.id,
+                        title: this.state.title,
+                        year: this.state.year,
+                        overview: this.state.overview,
+                        img: this.state.img
+                      }
+                    }}
+                  >
+                    <button className="btn btn-info mr-3">Write Review</button>
+                  </Link>
                   <p />
                   <p className="card-text">{this.state.overview}</p>
                 </div>

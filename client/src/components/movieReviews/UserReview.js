@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row } from 'reactstrap';
 import axios from 'axios';
 import { currentUser } from '../../services/userURLs';
 import { placeholderUrl } from '../../services/resourceURLs';
