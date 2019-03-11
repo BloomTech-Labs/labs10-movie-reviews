@@ -1,5 +1,4 @@
 import React from 'react';
-import { Row } from 'reactstrap';
 import Review from './Review';
 
 function MyReviewsList(props) {
