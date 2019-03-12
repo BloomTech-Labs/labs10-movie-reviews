@@ -5,6 +5,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import { reviewById } from '../../services/reviewURLs';
 import { tmdbUrl, theMovieDbUrl } from '../../services/resourceURLs';
+import Modal from './Modal';
 
 import ReviewForm from './ReviewForm';
 
@@ -20,7 +21,8 @@ class Review extends Component {
     title: '',
     overview: '',
     img: '',
-    isEditing: false
+    isEditing: false,
+    isShowing: false
   };
   componentDidMount() {
     const movie_id = this.props.review.movieId;
@@ -47,6 +49,19 @@ class Review extends Component {
         console.log(err);
       });
   }
+  // activates delete modal
+  openModalHandler = () => {
+    this.setState({
+      isShowing: true
+    });
+  };
+
+  // deactivates delete modal
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false
+    });
+  };
 
   // sets review id to this.id for use in deleting
   get id() {
@@ -102,8 +117,16 @@ class Review extends Component {
     }
 
     return (
-      <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
-        <div
+      <div>
+        <Modal
+          className="modal"
+          overlayClassName="overlay"
+          show={this.state.isShowing}
+          close={this.closeModalHandler}
+          handleDelete={this.handleDelete}
+        />
+        <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
+          {/* <div
           class="modal fade"
           id="exampleModal"
           tabindex="-1"
@@ -147,72 +170,90 @@ class Review extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <Row>
-          <Col sm="4">
-            <Link to={`/moviereviews/${this.props.review.movieId}`}>
-              <img
-                className="card-img-top img-responsive img-thumbnail"
-                src={`${tmdbUrl}${this.state.img}`}
-                style={{ height: 170, width: '100%' }}
-                alt="Card poster cap"
-              />
-            </Link>
-            <div className="card-body pt-0">
-              <p className="card-text" />
-              <StarRatingComponent
-                name="rate2"
-                editing={false}
-                renderStarIcon={() => <span>★</span>}
-                starCount={5}
-                value={rating}
-              />
-              <p className="mt-0">{this.state.title}</p>
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="btn-group">
-                  <button
-                    type="button"
-                    className="btn btn-outline-info"
-                    onClick={this.toggleEdit}
-                  >
-                    {' '}
-                    <Link
-                      to={{
-                        pathname: `/reviewform/${this.id}`,
-                        state: {
-                          id: this.id,
-                          title: this.state.title,
-                          year: this.state.year,
-                          overview: this.state.overview,
-                          img: this.state.img,
-                          edit: true,
-                          textBody: this.props.review.textBody,
-                          rating: this.props.review.rating,
-                          movieId: this.props.review.movieId
-                        }
-                      }}
+          <Row>
+            <Col sm="4">
+              <Link to={`/moviereviews/${this.props.review.movieId}`}>
+                <img
+                  className="card-img-top img-responsive img-thumbnail"
+                  src={`${tmdbUrl}${this.state.img}`}
+                  style={{ height: 170, width: '100%' }}
+                  alt="Card poster cap"
+                />
+              </Link>
+              <div className="card-body pt-0">
+                <p className="card-text" />
+                <StarRatingComponent
+                  name="rate2"
+                  editing={false}
+                  renderStarIcon={() => <span>★</span>}
+                  starCount={5}
+                  value={rating}
+                />
+                <p className="mt-0">{this.state.title}</p>
+                <div className="d-flex justify-content-between align-items-center">
+                  <div className="btn-group">
+                    <button
+                      type="button"
+                      className="btn btn-outline-info"
+                      onClick={this.toggleEdit}
                     >
-                      Edit
-                    </Link>
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-outline-danger"
-                    data-toggle="modal"
-                    data-target="#exampleModal"
+                      {' '}
+                      <Link
+                        to={{
+                          pathname: `/reviewform/${this.id}`,
+                          state: {
+                            id: this.id,
+                            title: this.state.title,
+                            year: this.state.year,
+                            overview: this.state.overview,
+                            img: this.state.img,
+                            edit: true,
+                            textBody: this.props.review.textBody,
+                            rating: this.props.review.rating,
+                            movieId: this.props.review.movieId
+                          }
+                        }}
+                      >
+                        Edit
+                      </Link>
+                    </button>
+                    {/* <button
+                    // type="button"
+                    // class="btn btn-outline-danger"
+                    // data-toggle="modal"
+                    // data-target="#exampleModal"
+                    onClick={this.openModalHandler}
                   >
                     Delete
-                  </button>
+                  </button> */}
+                    {this.state.isShowing ? (
+                      <div
+                        onClick={this.closeModalHandler}
+                        className="back-drop"
+                      />
+                    ) : null}
+                    <button
+                      // type="button"
+                      // class="btn btn-outline-danger"
+                      // data-toggle="modal"
+                      // data-target="#exampleModal"
+                      className="first-delete-btn"
+                      onClick={this.openModalHandler}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Col>
-          <Col sm="8">
-            <h4 className="pb-2">Review</h4>
-            <p>{textBody}</p>
-          </Col>
-        </Row>
+            </Col>
+            <Col sm="8">
+              <h4 className="pb-2">Review</h4>
+              <p>{textBody}</p>
+            </Col>
+          </Row>
+        </div>
       </div>
     );
   }
