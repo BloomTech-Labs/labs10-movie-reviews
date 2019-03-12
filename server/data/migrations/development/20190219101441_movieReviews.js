@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
       .notNullable() // userId field is required
       .references('id') // reference primary key 'id' from users table
       .inTable('users') // reference users table
+      .onUpdate('cascade')
       .onDelete('cascade') // when you delete a row on the parent table, the related "children" rows on the other one are deleted.
       .index(); // adds an index to a table over the given columns
     movieReviews
@@ -18,6 +19,7 @@ exports.up = function(knex, Promise) {
       // .foreign('reviewer') // adds a foreign key constraint to movieReviews table for reviewer column
       .references('email') // reference 'name' from users table
       .inTable('users') // reference users table
+      .onUpdate('cascade')
       .onDelete('cascade') // when you delete a row on the parent table, the related "children" rows on the other one are deleted.
       .index(); // adds an index to a table over the given columns
     movieReviews.text('textBody', 5000).notNullable(); // textBody field limited to 500 chars

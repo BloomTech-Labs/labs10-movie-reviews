@@ -8,15 +8,64 @@ const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 // requests all the reviews in the reviews database)
 // ==============================================
 const reviewsDb = require('./reviewsHelper.js');
+const usersDb = require('../users/usersHelper');
+
+//GET review by user id
+router.post('/currentuserreviews', async (req, res) => {
+  const userId = req.body.userId;
+  // if (req.body.textBody && req.body.rating && userId) {
+  try {
+    // get reviews of the current user
+    const currentUserReviews = await reviewsDb.getReviewsByUserId(userId);
+    console.log('currentUserReviews: ', currentUserReviews);
+
+    // respond with a 201 on success
+    res.status(201).json(currentUserReviews);
+  } catch (error) {
+    // catch any error and return a 500
+    return res.status(500).json({
+      message: 'the review could not be added',
+      error: error.message
+    });
+    // }
+  }
+});
 
 //POST review
 router.post('/reviews', async (req, res) => {
-  if (req.body.textBody && req.body.rating) {
+  const userId = req.body.userId;
+  if (req.body.textBody && req.body.rating && userId) {
     // create a new review based on the caller body
     const newReview = await reviewsDb.insert(req.body);
     try {
+      // // set an order string from the users table
+      // const reviewOrderString = await usersDb.getReviewOrder(userId);
+      // console.log('RevOrdString: ', reviewOrderString);
+      // // using json parse the order string array in to an array
+      // const reviewOrderArray = JSON.parse(reviewOrderString.reviewOrder);
+
+      // // unshift the newReview.id from the order array
+      // reviewOrderArray.unshift(newReview.id);
+
+      // // the updated review order from the review order array using json stringify
+      // const updatedReviewOrder = {
+      //   reviewOrder: JSON.stringify(reviewOrderArray)
+      // };
+
+      // // update the review order in the users table
+      // const updatedRevOrder = await usersDb.updateReviewOrder(
+      //   userId,
+      //   updatedReviewOrder
+
+      // get reviews of the current user
+      const currentUserReviews = await reviewsDb.getReviewsByUserId(userId);
+      console.log('currentUserReviews: ', currentUserReviews);
+
+      // // respond with a 201 on success
+      // res.status(201).json(newReview);
+
       // respond with a 201 on success
-      res.status(201).json(newReview);
+      res.status(201).json(currentUserReviews);
     } catch (error) {
       // catch any error and return a 500
       return res.status(500).json({
@@ -67,7 +116,21 @@ router.delete('/reviews/:id', async (req, res) => {
         .status(404)
         .json({ message: `the review with id ${id}  does not exist` });
     } else {
-      // otherwise send a 200 on success
+      // get the order string from users
+      const reviewOrderString = await users.getReviewOrder(1);
+      // set the order array by parsing the json and taking out review order array
+      let reviewOrderArray = JSON.parse(reviewOrderString.reviewOrder);
+
+      // update to the new ordered array by doing a filter on the array
+      reviewOrderArray = reviewOrderArray.filter(id => id != req.params.id);
+
+      // set the updated review order to the new note order
+      const updatedNoteOrder = { noteOrder: JSON.stringify(noteOrderArray) };
+
+      // update the note order in the data
+      await users.updateReviewOrder(1, updatedReviewOrder);
+
+      // return the deleted review with a status of 200
       return res.status(200).json(deletedReview);
     }
   } catch (error) {

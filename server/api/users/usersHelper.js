@@ -12,16 +12,35 @@ module.exports = {
   getUsersById: function(id) {
     return db('users').where({ id: id });
   },
-  insert: function(user) {
+  // get method
+  get: credentials => {
     return db('users')
-      .insert(user)
-      .then(ids => {
-        if (debugging === true) console.log('POST Users Helper', '\nids:', ids);
-        ({ id: ids[0] });
-      })
-      .catch(err => {
-        console.error(err);
-      });
+      .where({ email: credentials.email })
+      .first();
+  },
+  insert: function(user) {
+    return db('users').insert(user);
+    // .then(ids => {
+    //   if (debugging === true) console.log('POST Users Helper', '\nids:', ids);
+    //   ({ id: ids[0] });
+    // })
+    // .catch(err => {
+    //   console.error(err);
+    // });
+  },
+  // getReviewOrder method
+  getReviewOrder: id => {
+    return db('users')
+      .where('id', id)
+      .select('reviewOrder')
+      .first();
+  },
+  // updateReviewOrder method
+  updateReviewOrder: (id, updatedReviewOrder) => {
+    return db('users')
+      .where('id', id)
+      .update(updatedReviewOrder);
+    // .then(count => (count > 0 ? module.exports.getReviewOrder(id) : 0));
   },
   update: function(id, user) {
     if (debugging === true)
