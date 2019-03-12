@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { currentUser } from '../../services/userURLs';
-import { reviews } from '../../services/reviewURLs';
 import { currentUserReviews } from '../../services/reviewURLs';
 import { placeholderUrl } from '../../services/resourceURLs';
 

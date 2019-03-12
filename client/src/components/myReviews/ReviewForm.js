@@ -28,7 +28,7 @@ class ReviewForm extends Component {
       console.log('RevForm res.data: ', res.data);
       this.setState({
         textBody: this.props.location.state.textBody,
-        rating: this.props.location.state.rating,
+        rating: this.state.rating ? 3 : this.props.location.state.rating,
         googleId: res.data.googleId,
         reviewer: res.data.email,
         id: res.data.id,
@@ -39,7 +39,7 @@ class ReviewForm extends Component {
     console.log('RevForm state in reviewForm: ', this.state);
   };
 
-  onStarClick(nextValue, prevValue, name) {
+  onStarClick(nextValue, prevValue = 3, name) {
     this.setState({ rating: nextValue }, () => {
       this.setState({ rating: this.state.rating });
       console.log('stars num: ', this.state.rating);
@@ -86,6 +86,7 @@ class ReviewForm extends Component {
   // allows us to create a new review and post it to the API
   handleWriteNewReview = event => {
     event.preventDefault();
+
     const review = {
       userId: this.state.id,
       movieId: this.id,
@@ -114,13 +115,10 @@ class ReviewForm extends Component {
 
   render() {
     return (
-      <Container>
-        <br />
-        <br />
-        <br />
+      <Container className="movieRevWrapper">
         <Row>
-          <Col md="6">
-            <div className="card-body text-left">
+          <Col sm="5">
+            <div className="card-body text-left colRight">
               <div className="card">
                 {/* <div className="card" style={{ width: '18rem' }}> */}
                 <img
@@ -141,7 +139,7 @@ class ReviewForm extends Component {
               </div>
             </div>
           </Col>
-          <Col md="6">
+          <Col sm="7">
             <div className="card-body text-left">
               <Form>
                 <div className="form-div starS">
@@ -149,7 +147,7 @@ class ReviewForm extends Component {
                     name="rate1"
                     starCount={5}
                     value={this.state.rating}
-                    onStarHover={this.onStarClick.bind(this)}
+                    // onStarHover={this.onStarClick.bind(this)}
                     onStarClick={this.onStarClick.bind(this)}
                   />
                 </div>
@@ -177,6 +175,7 @@ class ReviewForm extends Component {
                   <button
                     onClick={this.handleWriteNewReview}
                     className="btn btn-outline-info"
+                    id="submit"
                   >
                     Submit Review
                   </button>

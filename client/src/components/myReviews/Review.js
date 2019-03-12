@@ -124,52 +124,52 @@ class Review extends Component {
             handleDelete={this.handleDelete}
           />
           <Row>
-            <Col sm="4">
-              <Link to={`/moviereviews/${this.props.review.movieId}`}>
-                <img
-                  className="card-img-top img-responsive img-thumbnail"
-                  src={`${tmdbUrl}${this.state.img}`}
-                  style={{ height: 170, width: '100%' }}
-                  alt="Card poster cap"
-                />
-              </Link>
-              <div className="card-body pt-0">
-                <p className="card-text" />
-                <StarRatingComponent
-                  name="rate2"
-                  editing={false}
-                  renderStarIcon={() => <span>★</span>}
-                  starCount={5}
-                  value={rating}
-                />
-                <p className="mt-0">{this.state.title}</p>
-                <div className="d-flex justify-content-between align-items-center">
-                  <div className="btn-group">
-                    <button
-                      type="button"
-                      className="btn btn-outline-info"
-                      onClick={this.toggleEdit}
+          <Col sm="4">
+            <Link to={`/moviereviews/${this.props.review.movieId}`}>
+              <img
+                className="card-img-top img-responsive img-thumbnail"
+                src={`${tmdbUrl}${this.state.img}`}
+                style={{ height: 170, width: '100%' }}
+                alt="Card poster cap"
+              />
+            </Link>
+            <div className="card-body pt-0">
+              <p className="card-text" />
+              <StarRatingComponent
+                name="rate2"
+                editing={false}
+                renderStarIcon={() => <span className="smallStar">★</span>}
+                starCount={5}
+                value={rating}
+              />
+              <p className="mt-0">{this.state.title}</p>
+              <div className="d-flex justify-content-between align-items-center">
+                <div className="btn-group">
+                  <button
+                    type="button"
+                    className="btn btn-outline-info"
+                    onClick={this.toggleEdit}
+                  >
+                    {' '}
+                    <Link
+                      to={{
+                        pathname: `/reviewform/${this.id}`,
+                        state: {
+                          id: this.id,
+                          title: this.state.title,
+                          year: this.state.year,
+                          overview: this.state.overview,
+                          img: this.state.img,
+                          edit: true,
+                          textBody: this.props.review.textBody,
+                          rating: this.props.review.rating,
+                          movieId: this.props.review.movieId
+                        }
+                      }}
                     >
-                      {' '}
-                      <Link
-                        to={{
-                          pathname: `/reviewform/${this.id}`,
-                          state: {
-                            id: this.id,
-                            title: this.state.title,
-                            year: this.state.year,
-                            overview: this.state.overview,
-                            img: this.state.img,
-                            edit: true,
-                            textBody: this.props.review.textBody,
-                            rating: this.props.review.rating,
-                            movieId: this.props.review.movieId
-                          }
-                        }}
-                      >
-                        Edit
-                      </Link>
-                    </button>
+                      Edit
+                    </Link>
+                  </button>
                     {this.state.isShowing ? (
                       <div
                         onClick={this.closeModalHandler}
@@ -182,7 +182,7 @@ class Review extends Component {
                     >
                       Delete
                     </button>
-                  </div>
+                 </div>
                 </div>
               </div>
             </Col>

@@ -5,8 +5,30 @@
 .movieRevWrapper,
 .secondCol {
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .bodyRev {
   text-align: left;
+}
+
+#submit {
+  color: #464e7d;
+  border-color: #464e7d;
+  background: white;
+}
+#submit:hover {
+  color: white;
+  background: #464e7d;
+}
+
+#trailer:hover {
+  color: #464e7d;
+  background: white;
+  border-color: #464e7d;
+}
+#trailer {
+  color: white;
+  background: #464e7d;
+  border: 1px solid #464e7d;
 }

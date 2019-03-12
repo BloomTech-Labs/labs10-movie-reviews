@@ -2,3 +2,19 @@
   font-size: 3rem;
   cursor: pointer;
 }
+#submit:hover {
+  color: #464e7d;
+  border-color: #464e7d;
+  background: white;
+}
+#submit {
+  color: white;
+  background: #464e7d;
+  border-color: #464e7d;
+}
+.dv-star-rating-empty-star i {
+  color: rgb(208, 207, 207);
+}
+.dv-star-rating-empty-star .smallStar {
+  color: rgb(208, 207, 207);
+}
