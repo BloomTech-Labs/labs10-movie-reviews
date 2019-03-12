@@ -7,20 +7,6 @@ import { tmdbUrl } from '../../services/resourceURLs';
 const MappedItem = props => {
   return (
     <Col lg={3} md={4}>
-      {/* <div className="singleMovie">
-        <Card>
-          <Link to={`moviereviews/${props.item.id}`} className="linksMovie">
-            <CardImg
-              src={`${tmdbUrl}//${
-                props.item.backdrop_path
-              }`}
-              alt="image"
-            />
-            <CardTitle>{props.item.title}</CardTitle>
-            <hr />
-          </Link>
-        </Card>
-      </div> */}
       <Link
         to={`moviereviews/${props.item.id}`}
         className="linksMovie"
@@ -28,12 +14,12 @@ const MappedItem = props => {
       >
         <img
           src={`${tmdbUrl}/${props.item.backdrop_path}`}
-          className="card-img"
+          className="card-img img-responsive popular-img"
           alt="movie poster"
         />
-        <p className="movie-title">
-          <span className="title-text rounded small">{props.item.title}</span>
-        </p>
+        <h6 className="movie-title">
+          <span className="title-text rounded">{props.item.title}</span>
+        </h6>
       </Link>
     </Col>
   );
