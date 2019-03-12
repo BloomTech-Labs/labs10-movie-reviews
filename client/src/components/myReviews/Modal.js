@@ -11,7 +11,7 @@ const Modal = props => {
       }}
     >
       <div className="modal-header">
-        <h3>Are you sure?</h3>
+        <h4>Are you sure?</h4>
       </div>
       <div className="modal-body">
         <div>
