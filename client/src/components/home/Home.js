@@ -25,7 +25,7 @@ const Home = props => {
         searchCriteria={props.searchCriteria}
       />
       <div className="featured">
-        <h3 className="popular-title">Popular Movies</h3>
+        <h4 className="popular-title">Popular Movies</h4>
         <div className="cardWrapper">
           <Row className="nopadding">
             {movies.map(item => {

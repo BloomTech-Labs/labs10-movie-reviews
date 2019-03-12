@@ -1,3 +1,8 @@
+:root {
+  border-color: rgb(206, 212, 218);
+}
+
+
 @media only screen and (min-width:0px) and (max-width: 991px){
   .navbar-nav {
     margin: 0 !important;
@@ -23,13 +28,7 @@
   nav div div button {
     margin: 0;
     padding: 20px;
-    width: 20%;
-    background-color: #464e7d !important;
-    color: white !important;
-    border-top: 1px solid #ced4da !important;
-    border-right: 1px solid #ced4da !important;
-    border-bottom: 1px solid #ced4da !important;
-    border-left: none !important;
+    border: 1px solid var(--border-color)  1px solid var(--border-color) 1px solid var(--border-color) none !important;
     border-radius: 0px 20px 20px 0px !important;
   }
   .avatar-link {
@@ -60,12 +59,7 @@
     margin: 0;
     padding: 20px;
     width: 10%;
-    background-color: #464e7d !important;
-    color: white !important;
-    border-top: 1px solid #ced4da !important;
-    border-right: 1px solid #ced4da !important;
-    border-bottom: 1px solid #ced4da !important;
-    border-left: none !important;
+    border: 1px solid var(--border-color)  1px solid var(--border-color) 1px solid var(--border-color) none !important;
     border-radius: 0px 20px 20px 0px !important;
   }
 
@@ -104,7 +98,6 @@
 
 .navbar-nav {
   width: 100%;
-  z-index: auto;
 }
 
 

@@ -153,7 +153,7 @@ class Review extends Component {
           <Col sm="4">
             <Link to={`/moviereviews/${this.props.review.movieId}`}>
               <img
-                className="card-img-top img-responsive img-thumbnail"
+                className="card-img-top img-responsive"
                 src={`${tmdbUrl}${this.state.img}`}
                 style={{ height: 170, width: '100%' }}
                 alt="Card poster cap"

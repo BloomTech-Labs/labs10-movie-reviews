@@ -53,14 +53,14 @@
 }
 
 .submit-button {
-    color: #18A2B8 !important;
-    background-color:white !important;
+    background-color: initial;
+    color: initial;
     border-radius: 3px;
 }
 
 .submit-button:hover {
-    color: white !important;
-    background-color: #18A2B8 !important;
+    color: initial;
+    background-color: initial;
 
 }
 
