@@ -11,7 +11,7 @@ function MyReviewsList(props) {
       <div className="reviews-list-wrapper">
         <div className="reviews-card-wrapper">
           {props.reviewslist.map(review => (
-            <div className="review-card">
+            <div className="review-card" key={review.id}>
               <Review review={review} />
             </div>
           ))}

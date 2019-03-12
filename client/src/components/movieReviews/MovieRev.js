@@ -79,7 +79,7 @@ export default class MovieRev extends React.Component {
     // console.log('all props movie rev has: ', this.props);
 
     const data = this.state.reviews;
-    console.log('length: ', this.state.reviews.length);
+    // console.log('length: ', this.state.reviews.length);
     return (
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
@@ -94,17 +94,21 @@ export default class MovieRev extends React.Component {
                 />
                 <div className="card-body">
                   <h5 className="card-title text-left">{this.state.title}</h5>
+                  {/* <div className="row">
+                    <div className="col-xs-6"> */}
                   <a
                     href={`https://www.youtube.com/embed/${
                       this.state.trailerKey
                     }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-info mr-3"
+                    className="btn btn-info mr-3 mb-2"
+                    id="trailer"
                   >
                     Watch Trailer
                   </a>
-                  {/* <p /> */}
+                  {/* </div>
+                    <div className="col-xs-6"> */}
                   <Link
                     to={{
                       pathname: `/reviewform/${this.state.id}`,
@@ -117,8 +121,12 @@ export default class MovieRev extends React.Component {
                       }
                     }}
                   >
-                    <button className="btn btn-info mr-3">Write Review</button>
+                    <button className="btn btn-info mr-3 mb-2" id="submit">
+                      Write Review
+                    </button>
                   </Link>
+                  {/* </div> */}
+                  {/* </div> */}
                   <p />
                   <p className="card-text">{this.state.overview}</p>
                 </div>
