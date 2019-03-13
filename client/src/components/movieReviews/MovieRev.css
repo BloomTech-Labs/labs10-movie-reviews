@@ -32,3 +32,9 @@
   background: #464e7d;
   border: 1px solid #464e7d;
 }
+
+@media (max-width: 991px) {
+  #noMarginLeft {
+    margin-left: 0rem;
+  }
+}
