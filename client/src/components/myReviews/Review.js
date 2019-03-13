@@ -189,7 +189,6 @@ class Review extends Component {
                   renderStarIcon={() => <span className="smallStar">★</span>}
                   starCount={5}
                   value={rating}
-                  className="mt-4"
                 />
                 <p className="space"> Date: {created_at}</p>
               </div>
