@@ -125,7 +125,7 @@ class Review extends Component {
             handleDelete={this.handleDelete}
           />
           <Row>
-            <Col sm="4">
+            <Col md="4">
               <Link to={`/moviereviews/${this.props.review.movieId}`}>
                 <img
                   className="card-img-top img-responsive"
@@ -180,8 +180,7 @@ class Review extends Component {
                 </div>
               </div>
             </Col>
-            <Col sm="8">
-              {/* <h4 className="pb-2">Review</h4> */}
+            <Col md="8">
               <div className="goFlex">
                 <StarRatingComponent
                   name="rate2"
