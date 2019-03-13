@@ -90,6 +90,11 @@ class ProductionNavigation extends React.Component {
           </div>
           <ul className="navbar-nav">
             <li className="nav-item active">
+              <Link className="nav-link" to="/premium">
+                Premium Subscriptions
+              </Link>
+            </li>
+            <li className="nav-item active">
               <RenderLogin>
                 <Modal
                   buttonLabel="Log In"
@@ -98,18 +103,13 @@ class ProductionNavigation extends React.Component {
                 />
               </RenderLogin>
             </li>
-            <li className="nav-item active">
-              <Link className="nav-link" to="/premium">
-                Premium Subscriptions
-              </Link>
-            </li>
             <RenderDropdown>
               <a href={logout}>
                 <div className="bg-light">Logout</div>
               </a>
               <Link to="/myreviews" className="avatar-link">
                 <img className="avatar" src={this.state.photo} alt="avatar" />
-                <div className="welcome">Welcome, <strong>{`${this.state.name}`}</strong>!</div>
+                <div className="welcome">Welcome,{` ${this.state.name}`}!</div>
               </Link>
             </RenderDropdown>
           </ul>
