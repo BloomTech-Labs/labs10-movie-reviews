@@ -102,7 +102,7 @@ class MyReviews extends Component {
                   <span className="badge badge-light">{this.state.name}</span>
                 </li>
 
-                <li className="list-group-item pl-3 bg-white">
+                {/* <li className="list-group-item pl-3 bg-white">
                   <span className="small badge badge-light mr-1"> Email: </span>
                   <span className="badge badge-light">{this.state.email}</span>
                 </li>
@@ -113,7 +113,7 @@ class MyReviews extends Component {
                     Number of Reviews:
                   </span>
                   <span className="badge badge-light">TBD</span>
-                </li>
+                </li> */}
               </ul>
             </div>
           </Col>
