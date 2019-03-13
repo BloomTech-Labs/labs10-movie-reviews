@@ -2,11 +2,10 @@
   display: flex;
 }
 
-.movieRevWrapper,
-.secondCol {
+/* .secondCol {
   margin-top: 30px;
   margin-bottom: 30px;
-}
+} */
 
 .bodyRev {
   text-align: left;

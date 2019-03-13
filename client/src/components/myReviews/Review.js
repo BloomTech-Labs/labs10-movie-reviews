@@ -5,8 +5,6 @@ import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import { reviewById } from '../../services/reviewURLs';
 import { tmdbUrl, theMovieDbUrl } from '../../services/resourceURLs';
-import DeleteModal from './DeleteModal';
-import './review.css';
 
 import ReviewForm from './ReviewForm';
 
@@ -22,8 +20,7 @@ class Review extends Component {
     title: '',
     overview: '',
     img: '',
-    isEditing: false,
-    isShowing: false
+    isEditing: false
   };
   componentDidMount() {
     const movie_id = this.props.review.movieId;
@@ -50,19 +47,6 @@ class Review extends Component {
         console.log(err);
       });
   }
-  // activates delete modal
-  openModalHandler = () => {
-    this.setState({
-      isShowing: true
-    });
-  };
-
-  // deactivates delete modal
-  closeModalHandler = () => {
-    this.setState({
-      isShowing: false
-    });
-  };
 
   // sets review id to this.id for use in deleting
   get id() {
@@ -77,11 +61,13 @@ class Review extends Component {
       .delete(reviewById(this.id))
       .then(response => {
         console.log('response in delete rev: ', response);
+        // this.props.fetchReviews();
+        //this.props.history.push('/myreviews');
       })
       .catch(error => {
         console.error(error);
       });
-    window.location.reload();
+    //window.location.reload();
   };
 
   // changes rating and textBody on state when an edit happens
@@ -116,14 +102,54 @@ class Review extends Component {
     }
 
     return (
-      <div>
-        <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
-          <DeleteModal
-            show={this.state.isShowing}
-            close={this.closeModalHandler}
-            handleDelete={this.handleDelete}
-          />
-          <Row>
+      <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabIndex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Are you sure?
+                </h5>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                Do you really want to delete your review?
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-outline-success"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-danger"
+                  onClick={this.handleDelete}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Row>
           <Col sm="4">
             <Link to={`/moviereviews/${this.props.review.movieId}`}>
               <img
@@ -170,28 +196,23 @@ class Review extends Component {
                       Edit
                     </Link>
                   </button>
-                    {this.state.isShowing ? (
-                      <div
-                        onClick={this.closeModalHandler}
-                        className="back-drop"
-                      />
-                    ) : null}
-                    <button
-                      className="first-delete-btn"
-                      onClick={this.openModalHandler}
-                    >
-                      Delete
-                    </button>
-                 </div>
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
-            </Col>
-            <Col sm="8">
-              <h4 className="pb-2">Review</h4>
-              <p>{textBody}</p>
-            </Col>
-          </Row>
-        </div>
+            </div>
+          </Col>
+          <Col sm="8">
+            <h4 className="pb-2">Review</h4>
+            <p>{textBody}</p>
+          </Col>
+        </Row>
       </div>
     );
   }
