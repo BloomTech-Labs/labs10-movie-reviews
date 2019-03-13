@@ -6,7 +6,7 @@ import { tmdbUrl } from '../../services/resourceURLs';
 
 const MappedItem = props => {
   return (
-    <Col lg={3} md={4}>
+    <Col lg={3} md={4} sm={6} xs={12}>
       <Link
         to={`moviereviews/${props.item.id}`}
         className="linksMovie"

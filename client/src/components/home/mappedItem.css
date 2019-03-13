@@ -15,12 +15,12 @@
 .popular-title {
   margin-bottom: 40px;
   padding-top: 40px;
-  color: inherit;
+  /* color: inherit; */
 }
 
 .movie-title {
   position: absolute;
-  bottom:0px;
+  bottom:5px;
   left: 0px;
   color: white;
   size: 10px;

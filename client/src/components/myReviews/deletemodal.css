@@ -33,10 +33,8 @@
   margin-left: 48px;
 }
 
-.btn-cancel {
+.modal-wrapper .modal-footer .btn-cancel {
   margin-left: 25px;
-  background-color: #464e7d;
-  color: white;
   width: 41%;
   height: 44px;
   border-radius: 5px;
@@ -46,9 +44,9 @@
   font-weight: 400;
 }
 
-.btn-delete {
-  background-color: #760d17;
-  color: white;
+.modal-wrapper .modal-footer .btn-delete {
+  background-color: #760d17 !important;
+  color: initial;
   width: 41%;
   height: 44px;
   border-radius: 5px;
