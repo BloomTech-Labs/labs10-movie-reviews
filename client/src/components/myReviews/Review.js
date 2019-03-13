@@ -6,6 +6,7 @@ import axios from 'axios';
 import { reviewById } from '../../services/reviewURLs';
 import { tmdbUrl, theMovieDbUrl } from '../../services/resourceURLs';
 import DeleteModal from './DeleteModal';
+import './deletemodal.css';
 import './review.css';
 
 import ReviewForm from './ReviewForm';
@@ -144,7 +145,7 @@ class Review extends Component {
               />
               <h5 className="mt-3">{this.state.title}</h5>
               <div className="">
-                <div className="btn-group my-4">
+                <div className="my-4">
                   <button
                     type="button"
                     className="btn mr-3"
