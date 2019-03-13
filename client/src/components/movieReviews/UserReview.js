@@ -56,7 +56,7 @@ export default class UserReview extends React.Component {
                         {/* {this.state.premium ? ( */}
                         {/* <h3 className="badge badge-info">Premium</h3>
                     ) : ( */}
-                        <h3 className="badge badge-light">Standard</h3>
+                        {/* <h3 className="badge badge-light">Standard</h3> */}
                         {/* )} */}
                       </span>
                     </li>
