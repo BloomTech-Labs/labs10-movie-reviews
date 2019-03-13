@@ -51,14 +51,14 @@ export default class UserReview extends React.Component {
                   <ul className="list-group list-group-flush text-left">
                     <li className=" bg-white">
                       <br />
-                      <span className="small badge badge-light">Status: </span>
-                      <span>
-                        {/* {this.state.premium ? ( */}
-                        {/* <h3 className="badge badge-info">Premium</h3>
+                      {/* <span className="small badge badge-light">Status: </span>
+                      <span> */}
+                      {/* {this.state.premium ? ( */}
+                      {/* <h3 className="badge badge-info">Premium</h3>
                     ) : ( */}
-                        {/* <h3 className="badge badge-light">Standard</h3> */}
-                        {/* )} */}
-                      </span>
+                      {/* <h3 className="badge badge-light">Standard</h3> */}
+                      {/* )} */}
+                      {/* </span> */}
                     </li>
 
                     <li className="bg-white">
