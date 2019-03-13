@@ -3,6 +3,7 @@
   --main-font-color: rgb(237, 237, 233);
   --overlay-color: rgba(35, 35, 35, 0.5);
   --input-background-color: rgba(255, 255, 255, .7);
+  --button-hover-color: rgb(175,222,253);
   --shadow: gray;
 }
 
@@ -73,6 +74,10 @@
   width: 150px !important;
   border: initial;
   border-radius: 0px 30px 30px 0px !important;
+}
+
+.button:hover {
+  background-color: var(--button-hover-color) !important;
 }
 
 .input-label-div {
@@ -157,7 +162,11 @@
   text-align: left;
 }
 
-@media only screen and (max-width: 426px) {
+.linksMovie {
+  color: black;
+}
+
+@media only screen and (max-width: 576px) {
   .hero {
     min-width: 100%;
     height: 35vh;
@@ -176,13 +185,12 @@
 
 
   .search-results-container {
-    width: 100%;
+    width: 85%;
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
   }
   .search-results-query {
-    font-size: 1em;
+    font-size: 1rem;
     display: flex;
     flex-direction:column;
     width: 100%;
@@ -218,19 +226,20 @@
   .search-result-length .result-length {
     font-style: italic;
     font-weight: lighter;
-    font-size: .5em;
+    font-size: .5rem;
 
   }
 
   .result-card {
     width: 100%;
-    display: flex;
-    margin: 0px;
-    padding: 0px;
   }
 
   .poster-img {
-    width: 100%;
+    width:50%;
     border-radius: 5px;
+  }
+
+  .linksMovie {
+    color: black;
   }
 }

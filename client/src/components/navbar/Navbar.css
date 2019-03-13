@@ -2,12 +2,26 @@
   --border-color: rgb(206, 212, 218);
   --main-font-color: rgb(237, 237, 233);
   --font-color: black;
+  --button-hover-color: rgb(175,222,253);
+
 }
 
 
-@media only screen and (min-width:0px) and (max-width: 991px){
+@media only screen and (min-width:0px) and (max-width:991px){
   .navbar-nav {
     margin: 0 !important;
+    width: 100%;
+  }
+
+  .avatar-link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .welcome {
+    margin: 10px;
   }
 
   nav div {
@@ -33,14 +47,23 @@
     border: 1px solid var(--border-color)  1px solid var(--border-color) 1px solid var(--border-color) none !important;
     border-radius: 0px 20px 20px 0px !important;
   }
-  .avatar-link {
-    display: flex;
-    align-self: center;
+
+  nav div div button:hover {
+    background-color: var(--button-hover-color) !important;
   }
 
+  .avatar-link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
 
-
+  a .avatar-link .welcome:hover {
+    text-decoration: none;
+  }
 }
+
 @media only screen and (min-width:992px) {
   nav div {    
     width: 70%;
@@ -67,6 +90,10 @@
     border-radius: 0px 20px 20px 0px !important;
   }
 
+  nav div div button:hover {
+    background-color: var(--button-hover-color) !important;
+  }
+
   nav div ul {
     display: flex;
     width: 100%;
@@ -76,12 +103,25 @@
   }
 }
 
-#login {
+.login {
   display:flex;
+  width: auto;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.logout:hover {
+  text-decoration: none;
+  color: black;
 }
 .avatar-link {
   display: flex;
   align-items: center;
+}
+
+.avatar-link .logout {
+  text-decoration: none;
+  color: black;
 }
 
 .avatar{
