@@ -75,16 +75,19 @@ export default class UserReview extends React.Component {
             </div>
           </Col>
           <Col lg="8" sm="12">
-            <br />
-            <StarRatingComponent
-              name="rate2"
-              editing={false}
-              renderStarIcon={() => <span className="smallStar">★</span>}
-              starCount={5}
-              value={this.props.item.rating}
-            />
-            <br />
-            <br />
+            <div className="goFlex">
+              <br />
+              <StarRatingComponent
+                name="rate2"
+                editing={false}
+                renderStarIcon={() => <span className="smallStar">★</span>}
+                starCount={5}
+                value={this.props.item.rating}
+              />
+              <p className="space"> Date: {this.props.item.created_at}</p>
+              <br />
+              <br />
+            </div>
             <p className="card-text">{this.props.item.textBody}</p>
           </Col>
         </Row>
