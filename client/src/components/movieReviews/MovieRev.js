@@ -84,7 +84,7 @@ export default class MovieRev extends React.Component {
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
         <Row>
-          <Col lg="5">
+          <Col lg="5" className="mb-3">
             <div className="card card-body">
               <div className="text-left">
                 <img
@@ -136,7 +136,6 @@ export default class MovieRev extends React.Component {
             </div>
             {/* </div> */}
           </Col>
-
           {/* 12 grid B */}
           <Col lg="7" className="secondCol text-left">
             {this.state.reviews.length > 0 ? (
