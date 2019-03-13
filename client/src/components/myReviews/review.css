@@ -45,7 +45,7 @@
 .goFlex {
   display: flex;
 }
-@media (min-width: 992px) {
+@media (min-width: 576px) {
   .goFlex {
     margin-left: 0rem;
   }
