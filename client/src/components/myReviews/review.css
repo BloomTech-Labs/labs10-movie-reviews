@@ -4,14 +4,33 @@
 }
 
 .edit-delete-btns {
-  width: 111px;
+  width: 90px;
 }
-@media (max-width: 991px) {
+@media (min-width: 0px) {
   .edit-delete-btns {
-    width: 88px;
+    width: 48%;
   }
 }
-
+@media (min-width: 576px) {
+  .edit-delete-btns {
+    width: 48%;
+  }
+}
+@media (min-width: 768px) {
+  .edit-delete-btns {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .edit-delete-btns {
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .edit-delete-btns {
+    width: 48%;
+  }
+}
 .first-delete-btn {
   background-color: #760d17 !important;
   color: white;
@@ -20,12 +39,13 @@
   border-style: none;
   font: Roboto;
   font-weight: 400;
-  padding: 0.7rem;
+  padding: 0.583rem;
 }
+
 .goFlex {
   display: flex;
 }
-@media (max-width: 991px) {
+@media (min-width: 992px) {
   .goFlex {
     margin-left: 0rem;
   }

@@ -140,7 +140,7 @@ class Review extends Component {
                   <div className="my-4">
                     <button
                       type="button"
-                      className="btn mr-3 edit-delete-btns"
+                      className="btn mr-1 py-1 edit-delete-btns"
                       onClick={this.toggleEdit}
                     >
                       {' '}
@@ -171,7 +171,7 @@ class Review extends Component {
                       />
                     ) : null}
                     <button
-                      className="first-delete-btn edit-delete-btns"
+                      className="py-2.01 first-delete-btn edit-delete-btns"
                       onClick={this.openModalHandler}
                     >
                       Delete
