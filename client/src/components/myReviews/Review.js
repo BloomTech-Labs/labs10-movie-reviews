@@ -125,7 +125,7 @@ class Review extends Component {
             handleDelete={this.handleDelete}
           />
           <Row>
-            <Col sm="4">
+            <Col md="4">
               <Link to={`/moviereviews/${this.props.review.movieId}`}>
                 <img
                   className="card-img-top img-responsive"
@@ -140,7 +140,7 @@ class Review extends Component {
                   <div className="my-4">
                     <button
                       type="button"
-                      className="btn mr-3 edit-delete-btns"
+                      className="btn mr-1 py-1 edit-delete-btns"
                       onClick={this.toggleEdit}
                     >
                       {' '}
@@ -171,7 +171,7 @@ class Review extends Component {
                       />
                     ) : null}
                     <button
-                      className="first-delete-btn edit-delete-btns"
+                      className="py-2.01 first-delete-btn edit-delete-btns"
                       onClick={this.openModalHandler}
                     >
                       Delete
@@ -180,8 +180,7 @@ class Review extends Component {
                 </div>
               </div>
             </Col>
-            <Col sm="8">
-              {/* <h4 className="pb-2">Review</h4> */}
+            <Col md="8">
               <div className="goFlex">
                 <StarRatingComponent
                   name="rate2"
@@ -189,7 +188,6 @@ class Review extends Component {
                   renderStarIcon={() => <span className="smallStar">★</span>}
                   starCount={5}
                   value={rating}
-                  className="mt-4"
                 />
                 <p className="space"> Date: {created_at}</p>
               </div>
