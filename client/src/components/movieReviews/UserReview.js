@@ -35,6 +35,7 @@ export default class UserReview extends React.Component {
     console.log('props in reviews: ', this.props);
     return (
       <div className="container card mb-2 mb-3 pt-2 bg-white">
+        <br />
         <Row>
           <Col lg="4" sm="12">
             <div className="pt-0">
@@ -89,6 +90,7 @@ export default class UserReview extends React.Component {
               <br />
             </div>
             <p className="card-text">{this.props.item.textBody}</p>
+            <br />
           </Col>
         </Row>
       </div>
