@@ -85,8 +85,8 @@ export default class MovieRev extends React.Component {
         {/* start of Grid A */}
         <Row>
           <Col lg="5">
-            <div className="card-body text-left">
-              <div className="card">
+            <div className="card">
+              <div className="card-body text-left">
                 <img
                   className="card-img-top"
                   src={`${tmdbUrl}${this.state.img}`}
