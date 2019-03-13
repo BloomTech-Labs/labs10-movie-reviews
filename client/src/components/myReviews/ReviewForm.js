@@ -118,8 +118,8 @@ class ReviewForm extends Component {
       <Container className="movieRevWrapper">
         <Row>
           <Col sm="5">
-            <div className="card-body text-left colRight">
-              <div className="card">
+            <div className="card">
+              <div className="card-body text-left colRight">
                 {/* <div className="card" style={{ width: '18rem' }}> */}
                 <img
                   className="card-img-top"
