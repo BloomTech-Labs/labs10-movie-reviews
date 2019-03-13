@@ -7,7 +7,7 @@ const FeatureList = props => {
       <div className="features-boxed">
         <div className="container">
           <div className="intro">
-            <h2 className="text-center">CineView let's you...</h2>
+            <h4 className="text-center">CineView let's you...</h4>
             {/* <p className="text-center">Write reviews on any movie from A Trip To The Moon to your box
                   office favorite</p> */}
           </div>
