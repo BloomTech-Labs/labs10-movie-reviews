@@ -1,5 +1,7 @@
 :root {
-  border-color: rgb(206, 212, 218);
+  --border-color: rgb(206, 212, 218);
+  --main-font-color: rgb(237, 237, 233);
+  --font-color: black;
 }
 
 
@@ -23,7 +25,7 @@
 
   nav div div .form-control {
     border-radius: 20px 0px 0px 20px;
-    width: 60%;
+    width: 80%;
   }
   nav div div button {
     margin: 0;
@@ -46,19 +48,21 @@
 
   nav div .form-inline {
     width: 40%;
+    display: flex;
+    justify-content: center;
   }
 
   nav div div .form-control {
     margin-right: 0;
     margin-left: 20px;
     padding: 10px;
-    width: 30% !important;
+    width: 50% !important;
     border-radius: 20px 0px 0px 20px 
   }
   nav div div button {
     margin: 0;
     padding: 20px;
-    width: 10%;
+    width: 20%;
     border: 1px solid var(--border-color)  1px solid var(--border-color) 1px solid var(--border-color) none !important;
     border-radius: 0px 20px 20px 0px !important;
   }
@@ -77,19 +81,9 @@
 }
 .avatar-link {
   display: flex;
-  align-items: flex-end;
-  margin-right: 20px;
-  margin-left: -25px;
-}
-.avatar-link div {
-  width: auto;
-  height: 35px;
-  margin-top: 0px;
-  margin-left: -10px;
-  display: flex;
   align-items: center;
-  font-weight: bold;
 }
+
 .avatar{
   height: 40px;
   border-radius: 50%;
@@ -97,7 +91,30 @@
 }
 
 .navbar-nav {
-  width: 100%;
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-nav a {
+  margin-right: 20px;
+  align-self: center;
+}
+
+ul a {
+  color: var(--font-color);
+}
+
+ul a .welcome {
+  color:var(--font-color);
+}
+
+ul a:visited {
+  text-decoration: none;
+}
+
+.search-icon {
+  color: var(--main-font-color) !important;
 }
 
 

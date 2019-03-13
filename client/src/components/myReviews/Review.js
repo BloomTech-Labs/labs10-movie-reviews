@@ -5,6 +5,8 @@ import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import { reviewById } from '../../services/reviewURLs';
 import { tmdbUrl, theMovieDbUrl } from '../../services/resourceURLs';
+import DeleteModal from './DeleteModal';
+import './review.css';
 
 import ReviewForm from './ReviewForm';
 
@@ -20,7 +22,8 @@ class Review extends Component {
     title: '',
     overview: '',
     img: '',
-    isEditing: false
+    isEditing: false,
+    isShowing: false
   };
   componentDidMount() {
     const movie_id = this.props.review.movieId;
@@ -47,6 +50,19 @@ class Review extends Component {
         console.log(err);
       });
   }
+  // activates delete modal
+  openModalHandler = () => {
+    this.setState({
+      isShowing: true
+    });
+  };
+
+  // deactivates delete modal
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false
+    });
+  };
 
   // sets review id to this.id for use in deleting
   get id() {
@@ -61,13 +77,11 @@ class Review extends Component {
       .delete(reviewById(this.id))
       .then(response => {
         console.log('response in delete rev: ', response);
-        // this.props.fetchReviews();
-        //this.props.history.push('/myreviews');
       })
       .catch(error => {
         console.error(error);
       });
-    //window.location.reload();
+    window.location.reload();
   };
 
   // changes rating and textBody on state when an edit happens
@@ -102,6 +116,7 @@ class Review extends Component {
     }
 
     return (
+<<<<<<< HEAD
       <div className="card mb-2 mb-3 p-2 mb-5 bg-white">
         <div
           className="modal fade"
@@ -152,6 +167,17 @@ class Review extends Component {
       <div className="container-fluid">
         <Row>
           <Col lg="4" sm="12">
+=======
+      <div>
+        <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
+          <DeleteModal
+            show={this.state.isShowing}
+            close={this.closeModalHandler}
+            handleDelete={this.handleDelete}
+          />
+          <Row>
+          <Col sm="4">
+>>>>>>> 9f96e2b9f7a69a026f49d045a2d34189d33c8e01
             <Link to={`/moviereviews/${this.props.review.movieId}`}>
               <img
                 className="card-img-top img-responsive"
@@ -198,6 +224,7 @@ class Review extends Component {
                       Edit
                     </Link>
                   </button>
+<<<<<<< HEAD
                   <button
                     type="button"
                     className="btn bg-danger"
@@ -215,6 +242,29 @@ class Review extends Component {
             <p>{textBody}</p>
           </Col>
         </Row>
+=======
+                    {this.state.isShowing ? (
+                      <div
+                        onClick={this.closeModalHandler}
+                        className="back-drop"
+                      />
+                    ) : null}
+                    <button
+                      className="first-delete-btn"
+                      onClick={this.openModalHandler}
+                    >
+                      Delete
+                    </button>
+                 </div>
+                </div>
+              </div>
+            </Col>
+            <Col sm="8">
+              <h4 className="pb-2">Review</h4>
+              <p>{textBody}</p>
+            </Col>
+          </Row>
+>>>>>>> 9f96e2b9f7a69a026f49d045a2d34189d33c8e01
         </div>
       </div>
     );

@@ -76,7 +76,7 @@ class MyReviews extends Component {
       <Container className="movieRevWrapper background-color">
         {/* start of Grid A */}
         <Row>
-          <Col md="3">
+          <Col lg="3">
             <div className="placeholder">
               <a href={`${placeholderUrl}`}>
                 <img
@@ -118,7 +118,7 @@ class MyReviews extends Component {
             </div>
           </Col>
           {/* 12 grid B */}
-          <Col md="9" className="secondCol">
+          <Col lg="9" className="secondCol">
             <div className="bodyRev">
               <div className="My-Reviews">
                 <header className="sidebar" />
