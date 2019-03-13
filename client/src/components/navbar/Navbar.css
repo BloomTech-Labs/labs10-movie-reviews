@@ -76,8 +76,11 @@
   }
 }
 
-#login {
+.login {
   display:flex;
+  width: auto;
+  cursor: pointer;
+  margin-right: 20px;
 }
 .avatar-link {
   display: flex;
