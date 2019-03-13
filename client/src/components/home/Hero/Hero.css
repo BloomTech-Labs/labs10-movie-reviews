@@ -81,6 +81,10 @@
   width: 50%;
 }
 
+.call-to-action-buttons .button a {
+  color: var(--main-font-color);
+}
+
 
 
 

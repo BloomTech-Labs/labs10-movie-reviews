@@ -54,7 +54,7 @@ class ProductionNavigation extends React.Component {
           CineView
         </Link>
         <Button
-          className="navbar-toggler"
+          className="navbar-toggler bg-light"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -84,7 +84,7 @@ class ProductionNavigation extends React.Component {
               onClick={this.props.searchHandler}
             >
               <Link to={`/search/?q=${this.props.inputCriteria}`}>
-                {<i className="fas fa-search" />}
+                {<i className="fas fa-search search-icon" />}
               </Link>
             </Button>
           </div>
@@ -105,11 +105,11 @@ class ProductionNavigation extends React.Component {
             </li>
             <RenderDropdown>
               <a href={logout}>
-                <Button color="light">Logout</Button>
+                <div className="bg-light">Logout</div>
               </a>
               <Link to="/myreviews" className="avatar-link">
                 <img className="avatar" src={this.state.photo} alt="avatar" />
-                <div>{`Welcome, ${this.state.name}!`}</div>
+                <div className="welcome">Welcome, <strong>{`${this.state.name}`}</strong>!</div>
               </Link>
             </RenderDropdown>
           </ul>

@@ -6,8 +6,13 @@ import './Footer.css';
 const Footer = props => {
   return (
     <div className="footer">
-      <p className="footer-text">
-        {`© CineView. Made by fans in the United States. `}
+      <nav className="footer-nav">
+        <div className="links">
+          <Link to="/about"><h5>About</h5></Link>
+          <Link to="/contact"><h5>Contact</h5></Link>
+        </div>
+        <p className="footer-text">
+        <Link to="/" className="home">{`© CineView. `}</Link>{`Made by fans in the United States.  `}
         <Link className="footer-link" to="/about">{`Film data `}</Link>
         {`from `}
         <a href={`${theMovieDbUrl}`} className="footer-link">
@@ -15,12 +20,10 @@ const Footer = props => {
         </a>
         .
       </p>
-      <nav className="footer-nav">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/privacy">Privacy</Link>
-        <Link to="/terms">Terms</Link>
+        <div className="links">
+        <Link to="/privacy"><h5>Privacy</h5></Link>
+        <Link to="/terms"><h5>Terms</h5></Link>
+      </div>
       </nav>
     </div>
   );

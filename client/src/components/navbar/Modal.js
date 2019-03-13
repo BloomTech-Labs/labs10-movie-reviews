@@ -3,6 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import GoogleLogin from '../../assets/svg/btn_google_1.png';
 import TwitterLogin from '../../assets/svg/btn_twitter_1.svg';
 import { googleLogin, twitterLogin } from '../../services/authURLs';
+import "./Navbar.css";
 
 import RenderLogin from './RenderLogin';
 
@@ -12,7 +13,7 @@ import RenderLogin from './RenderLogin';
 const LoginModal = props => {
     return (
       <>
-        <Button color="light" onClick={props.toggle}>{props.buttonLabel}</Button>
+        <div className="bg-light" onClick={props.toggle}>{props.buttonLabel}</div>
         <Modal isOpen={props.modal} toggle={props.toggle} className={props.className}>
           <ModalHeader toggle={props.toggle}>Log In To Start Writing Reviews!</ModalHeader>
           <ModalBody>
