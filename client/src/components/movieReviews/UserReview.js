@@ -34,7 +34,7 @@ export default class UserReview extends React.Component {
   render() {
     console.log('props in reviews: ', this.props);
     return (
-      <div className="container card mb-2 mb-3 pt-2 bg-white">
+      <div className="container card mb-3 pt-2 bg-white">
         <br />
         <Row>
           <Col lg="4" sm="12">
