@@ -74,9 +74,10 @@ export default class UserReview extends React.Component {
                 </div>
               </div>
             </div>
-          </Col>
-          <Col lg="8" sm="12">
             <br />
+          </Col>
+          <br />
+          <Col lg="8" sm="12">
             <div className="goFlex">
               <StarRatingComponent
                 name="rate2"
@@ -85,7 +86,7 @@ export default class UserReview extends React.Component {
                 starCount={5}
                 value={this.props.item.rating}
               />
-              <p className="space"> Date: {this.props.item.created_at}</p>
+              <p className="spaceU"> Date: {this.props.item.created_at}</p>
               <br />
               <br />
             </div>
