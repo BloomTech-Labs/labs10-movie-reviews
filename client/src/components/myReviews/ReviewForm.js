@@ -126,17 +126,19 @@ class ReviewForm extends Component {
                   src={`${tmdbUrl}//${this.props.location.state.img}`}
                   alt="Poster of the movie"
                 />
-                <div className="card-body">
-                  <h5 className="card-title text-left">
-                    {this.props.location.state.title}
-                  </h5>
-                  {/* <p />
+                {/* <div className="card-body"> */}
+                <br />
+                <br />
+                <h5 className="card-title text-left">
+                  {this.props.location.state.title}
+                </h5>
+                {/* <p />
                   <p /> */}
-                  <p className="card-text">
-                    {this.props.location.state.overview}
-                  </p>
-                </div>
+                <p className="card-text">
+                  {this.props.location.state.overview}
+                </p>
               </div>
+              {/* </div> */}
             </div>
           </Col>
           <Col sm="7">
