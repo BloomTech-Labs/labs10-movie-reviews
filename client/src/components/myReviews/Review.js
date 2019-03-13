@@ -116,60 +116,8 @@ class Review extends Component {
     }
 
     return (
-<<<<<<< HEAD
-      <div className="card mb-2 mb-3 p-2 mb-5 bg-white">
-        <div
-          className="modal fade"
-          id="exampleModal"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  Are you sure?
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                Do you really want to delete your review?
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-outline-success"
-                  data-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-outline-danger"
-                  onClick={this.handleDelete}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      <div className="container-fluid">
-        <Row>
-          <Col lg="4" sm="12">
-=======
       <div>
-        <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
+        <div className="card mb-2 mb-3 p-2 mb-5 bg-white">
           <DeleteModal
             show={this.state.isShowing}
             close={this.closeModalHandler}
@@ -177,7 +125,6 @@ class Review extends Component {
           />
           <Row>
           <Col sm="4">
->>>>>>> 9f96e2b9f7a69a026f49d045a2d34189d33c8e01
             <Link to={`/moviereviews/${this.props.review.movieId}`}>
               <img
                 className="card-img-top img-responsive"
@@ -224,25 +171,6 @@ class Review extends Component {
                       Edit
                     </Link>
                   </button>
-<<<<<<< HEAD
-                  <button
-                    type="button"
-                    className="btn bg-danger"
-                    data-toggle="modal"
-                    data-target="#exampleModal"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col lg="8" sm="12" className="pl-3">
-            <h4 className="pb-2">Review</h4>
-            <p>{textBody}</p>
-          </Col>
-        </Row>
-=======
                     {this.state.isShowing ? (
                       <div
                         onClick={this.closeModalHandler}
@@ -255,7 +183,7 @@ class Review extends Component {
                     >
                       Delete
                     </button>
-                 </div>
+                  </div>
                 </div>
               </div>
             </Col>
@@ -264,7 +192,6 @@ class Review extends Component {
               <p>{textBody}</p>
             </Col>
           </Row>
->>>>>>> 9f96e2b9f7a69a026f49d045a2d34189d33c8e01
         </div>
       </div>
     );
