@@ -109,7 +109,7 @@ class ProductionNavigation extends React.Component {
               </a>
               <Link to="/myreviews" className="avatar-link">
                 <img className="avatar" src={this.state.photo} alt="avatar" />
-                <div className="welcome">Welcome, <strong>{`${this.state.name}`}</strong>!</div>
+                <div className="welcome">Welcome,{` ${this.state.name}`}!</div>
               </Link>
             </RenderDropdown>
           </ul>
