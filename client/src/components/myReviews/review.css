@@ -6,6 +6,11 @@
 .edit-delete-btns {
   width: 111px;
 }
+@media (max-width: 991px) {
+  .edit-delete-btns {
+    width: 88px;
+  }
+}
 
 .first-delete-btn {
   background-color: #760d17 !important;
@@ -19,6 +24,11 @@
 }
 .goFlex {
   display: flex;
+}
+@media (max-width: 991px) {
+  .goFlex {
+    margin-left: 0rem;
+  }
 }
 
 .space {
