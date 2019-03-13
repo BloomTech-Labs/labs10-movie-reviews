@@ -84,59 +84,61 @@ export default class MovieRev extends React.Component {
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
         <Row>
-          <Col sm="5">
-            <div className="card-body text-left">
-              <div className="card">
+          <Col lg="5">
+            <div className="card card-body">
+              <div className="text-left">
                 <img
                   className="card-img-top"
                   src={`${tmdbUrl}${this.state.img}`}
                   alt="Poster of the movie"
                 />
-                <div className="card-body">
-                  <h5 className="card-title text-left">{this.state.title}</h5>
-                  {/* <div className="row">
+                <br />
+                <br />
+                <h5 className="card-title">{this.state.title}</h5>
+                {/* <div className="row">
                     <div className="col-xs-6"> */}
-                  <a
-                    href={`https://www.youtube.com/embed/${
-                      this.state.trailerKey
-                    }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-info mr-3 mb-2"
-                    id="trailer"
-                  >
-                    Watch Trailer
-                  </a>
-                  {/* </div>
+                <a
+                  href={`https://www.youtube.com/embed/${
+                    this.state.trailerKey
+                  }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-info mr-3 mb-2"
+                  id="trailer"
+                >
+                  Watch Trailer
+                </a>
+                {/* </div>
                     <div className="col-xs-6"> */}
-                  <Link
-                    to={{
-                      pathname: `/reviewform/${this.state.id}`,
-                      state: {
-                        id: this.state.id,
-                        title: this.state.title,
-                        year: this.state.year,
-                        overview: this.state.overview,
-                        img: this.state.img
-                      }
-                    }}
-                  >
-                    <button className="btn btn-info mr-3 mb-2" id="submit">
-                      Write Review
-                    </button>
-                  </Link>
-                  {/* </div> */}
-                  {/* </div> */}
-                  <p />
-                  <p className="card-text">{this.state.overview}</p>
-                </div>
+                <Link
+                  to={{
+                    pathname: `/reviewform/${this.state.id}`,
+                    state: {
+                      id: this.state.id,
+                      title: this.state.title,
+                      year: this.state.year,
+                      overview: this.state.overview,
+                      img: this.state.img
+                    }
+                  }}
+                >
+                  <button className="btn btn-info mr-3 mb-2" id="submit">
+                    Write Review
+                  </button>
+                </Link>
+                {/* </div> */}
+                {/* </div> */}
+                <p />
+                <p className="card-text" id="noMarginLeft">
+                  {this.state.overview}
+                </p>
               </div>
             </div>
             {/* </div> */}
           </Col>
 
           {/* 12 grid B */}
-          <Col sm="7" className="secondCol text-left">
+          <Col lg="7" className="secondCol text-left">
             {this.state.reviews.length > 0 ? (
               data.map(item => {
                 return <UserReview key={item.id} item={item} />;

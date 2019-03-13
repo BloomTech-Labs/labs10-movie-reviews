@@ -10,8 +10,23 @@
 .goFlex {
   display: flex;
 }
+@media (max-width: 991px) {
+  .goFlex {
+    margin-left: 1rem;
+  }
+}
 
 .space {
   margin-top: 8px;
   margin-left: 20px;
+  font-size: 0.8rem;
+}
+
+.card-text {
+  line-height: 1.5rem;
+}
+@media (max-width: 991px) {
+  .card-text {
+    margin-left: 1rem;
+  }
 }
