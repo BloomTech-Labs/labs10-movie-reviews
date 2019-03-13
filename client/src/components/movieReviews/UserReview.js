@@ -75,8 +75,8 @@ export default class UserReview extends React.Component {
             </div>
           </Col>
           <Col lg="8" sm="12">
+            <br />
             <div className="goFlex">
-              <br />
               <StarRatingComponent
                 name="rate2"
                 editing={false}
