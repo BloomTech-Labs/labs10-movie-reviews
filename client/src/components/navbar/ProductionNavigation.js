@@ -90,6 +90,11 @@ class ProductionNavigation extends React.Component {
           </div>
           <ul className="navbar-nav">
             <li className="nav-item active">
+              <Link className="nav-link" to="/premium">
+                Premium Subscriptions
+              </Link>
+            </li>
+            <li className="nav-item active">
               <RenderLogin>
                 <Modal
                   buttonLabel="Log In"
@@ -97,11 +102,6 @@ class ProductionNavigation extends React.Component {
                   toggle={this.toggle}
                 />
               </RenderLogin>
-            </li>
-            <li className="nav-item active">
-              <Link className="nav-link" to="/premium">
-                Premium Subscriptions
-              </Link>
             </li>
             <RenderDropdown>
               <a href={logout}>
