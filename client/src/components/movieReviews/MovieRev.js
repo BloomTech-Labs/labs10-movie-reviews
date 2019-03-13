@@ -84,7 +84,7 @@ export default class MovieRev extends React.Component {
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
         <Row>
-          <Col sm="5">
+          <Col lg="5">
             <div className="card-body text-left">
               <div className="card">
                 <img
@@ -136,7 +136,7 @@ export default class MovieRev extends React.Component {
           </Col>
 
           {/* 12 grid B */}
-          <Col sm="7" className="secondCol text-left">
+          <Col lg="7" className="secondCol text-left">
             {this.state.reviews.length > 0 ? (
               data.map(item => {
                 return <UserReview key={item.id} item={item} />;
