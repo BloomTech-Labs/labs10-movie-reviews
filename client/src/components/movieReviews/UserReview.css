@@ -15,3 +15,7 @@
   margin-top: 8px;
   margin-left: 20px;
 }
+
+.card-text {
+  line-height: 1.5rem;
+}
