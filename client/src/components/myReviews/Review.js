@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import { reviewById } from '../../services/reviewURLs';
@@ -102,7 +102,7 @@ class Review extends Component {
     }
 
     return (
-      <div className="card mb-2 box-shadow mb-3 shadow p-2 mb-5 bg-white">
+      <div className="card mb-2 mb-3 p-2 mb-5 bg-white">
         <div
           className="modal fade"
           id="exampleModal"
@@ -149,17 +149,17 @@ class Review extends Component {
           </div>
         </div>
 
+      <div className="container-fluid">
         <Row>
-          <Col sm="4">
+          <Col lg="4" sm="12">
             <Link to={`/moviereviews/${this.props.review.movieId}`}>
               <img
                 className="card-img-top img-responsive"
                 src={`${tmdbUrl}${this.state.img}`}
-                style={{ height: 170, width: '100%' }}
                 alt="Card poster cap"
               />
             </Link>
-            <div className="card-body pt-0">
+            <div className="pt-0">
               <p className="card-text" />
               <StarRatingComponent
                 name="rate2"
@@ -167,13 +167,14 @@ class Review extends Component {
                 renderStarIcon={() => <span className="smallStar">★</span>}
                 starCount={5}
                 value={rating}
+                className="mt-4"
               />
-              <p className="mt-0">{this.state.title}</p>
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="btn-group">
+              <h5 className="mt-3">{this.state.title}</h5>
+              <div className="">
+                <div className="btn-group my-4">
                   <button
                     type="button"
-                    className="btn btn-outline-info"
+                    className="btn mr-3"
                     onClick={this.toggleEdit}
                   >
                     {' '}
@@ -192,13 +193,14 @@ class Review extends Component {
                           movieId: this.props.review.movieId
                         }
                       }}
+                      style={{ textDecoration: 'none', color: 'white'}}
                     >
                       Edit
                     </Link>
                   </button>
                   <button
                     type="button"
-                    className="btn btn-outline-danger"
+                    className="btn bg-danger"
                     data-toggle="modal"
                     data-target="#exampleModal"
                   >
@@ -208,11 +210,12 @@ class Review extends Component {
               </div>
             </div>
           </Col>
-          <Col sm="8">
+          <Col lg="8" sm="12" className="pl-3">
             <h4 className="pb-2">Review</h4>
             <p>{textBody}</p>
           </Col>
         </Row>
+        </div>
       </div>
     );
   }

@@ -73,7 +73,7 @@ class MyReviews extends Component {
   render() {
     console.log('MyReviews: ', this.state.reviews);
     return (
-      <Container className="movieRevWrapper">
+      <Container className="movieRevWrapper background-color">
         {/* start of Grid A */}
         <Row>
           <Col md="3">
