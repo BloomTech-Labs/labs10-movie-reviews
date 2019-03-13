@@ -118,8 +118,8 @@ class ReviewForm extends Component {
       <Container className="movieRevWrapper">
         <Row>
           <Col sm="5">
-            <div className="card-body text-left colRight">
-              <div className="card">
+            <div className="card">
+              <div className="card-body text-left colRight">
                 {/* <div className="card" style={{ width: '18rem' }}> */}
                 <img
                   className="card-img-top"
@@ -151,11 +151,11 @@ class ReviewForm extends Component {
                     onStarClick={this.onStarClick.bind(this)}
                   />
                 </div>
-
-                <Label for="exampleText">Write Review:</Label>
+                <br />
+                {/* <Label for="exampleText">Write Review:</Label> */}
                 <Input
                   type="textarea"
-                  placeholder="Review Content"
+                  placeholder="Write Review"
                   //   name="text"
                   id="exampleText"
                   rows={8}
@@ -163,22 +163,27 @@ class ReviewForm extends Component {
                   name="textBody"
                   onChange={this.handleInputChange}
                 />
+                <br />
                 <p />
                 {this.props.location.state.edit ? (
-                  <button
-                    className="material-button-raised btn btn-outline-info"
-                    onClick={this.handleEditReview}
-                  >
-                    Update Review
-                  </button>
+                  <div className="text-right">
+                    <button
+                      className="material-button-raised btn btn-outline-info"
+                      onClick={this.handleEditReview}
+                    >
+                      Update Review
+                    </button>
+                  </div>
                 ) : (
-                  <button
-                    onClick={this.handleWriteNewReview}
-                    className="btn btn-outline-info"
-                    id="submit"
-                  >
-                    Submit Review
-                  </button>
+                  <div className="text-right">
+                    <button
+                      onClick={this.handleWriteNewReview}
+                      className="btn btn-outline-info"
+                      id="submit"
+                    >
+                      Submit Review
+                    </button>
+                  </div>
                 )}
               </Form>
               <p />
