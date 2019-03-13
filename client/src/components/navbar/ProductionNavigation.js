@@ -104,12 +104,12 @@ class ProductionNavigation extends React.Component {
               </RenderLogin>
             </li>
             <RenderDropdown>
-              <a href={logout}>
-                <div className="bg-light">Logout</div>
+              <a className="logout" href={logout}>
+                <div className="bg-light logout">Logout</div>
               </a>
               <Link to="/myreviews" className="avatar-link">
                 <img className="avatar" src={this.state.photo} alt="avatar" />
-                <div className="welcome">Welcome,{` ${this.state.name}`}!</div>
+                <div className="welcome logout"><h6 className="logout">Welcome,{` ${this.state.name}`}!</h6></div>
               </Link>
             </RenderDropdown>
           </ul>
