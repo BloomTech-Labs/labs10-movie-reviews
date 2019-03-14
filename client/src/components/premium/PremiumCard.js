@@ -11,16 +11,6 @@ const premiumCard = props => {
         mb-3 
         rounded
         bg-white
-        ${
-          props.currentSub === 'Yearly'
-            ? null
-            : 'bg-light no-display'
-        }
-        ${
-          props.currentSub === 'Monthly'
-            ? null
-            : 'bg-light'
-        }
       `}
     >
       <div className="card-header bg-dark text-white">{props.header}</div>

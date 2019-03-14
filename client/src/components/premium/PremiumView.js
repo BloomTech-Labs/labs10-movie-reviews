@@ -163,7 +163,7 @@ class PremiumView extends Component {
                         onClick={() => this.handleCancel(this.state.id)}
                       >
                         <span className="small">
-                          <p>Cancel {this.state.subType} Subscription</p>
+                          <p>Cancel Subscription</p>
                         </span>
                       </button>
                     </li>

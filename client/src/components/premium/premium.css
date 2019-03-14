@@ -1,5 +1,11 @@
 .card {
   min-height: 35vh;
+  border: none !important;
+}
+
+ul li h5 span {
+  margin: .5rem auto !important;
+  float: left;
 }
 
 .bg-custom {
@@ -23,10 +29,6 @@
 
 .col-md-8 h3 {
   margin-bottom: 3rem;
-}
-
-ul li h5 span {
-  margin: .5rem auto;
 }
 
 .top-padding {
@@ -68,7 +70,7 @@ ul li h5 span {
 
 @media (max-width: 560px) {
   .col-md-8 h3 {
-    margin: 1rem 0 .4rem 0;
+    margin: 1.5rem 0 .4rem 0;
     font-weight: 400;
     font-size: 25px;
   }
@@ -77,13 +79,14 @@ ul li h5 span {
     margin: 0;
   }
 
+  .card {
+    min-height: 25vh;
+  }
+
   ul li span,
   ul li button {
     float: left;
-  }
-
-  .card {
-    min-height: 25vh;
+    font-size: 12px;
   }
 
   .premium-avatar {
@@ -94,7 +97,7 @@ ul li h5 span {
   }
 
   .top-padding {
-    padding-top: 1rem;
+    padding-top: 1.5rem;
   }
 
   div .card-body {
