@@ -33,7 +33,8 @@
 }
 
 @media (max-width: 991px) {
-  #noMarginLeft {
+  #noMarginLeft,
+  #movieInfoWrapper {
     margin-left: 0rem;
   }
 }
