@@ -6,7 +6,7 @@ const DeleteModal = props => {
     <div
       className="modal-wrapper"
       style={{
-        top: props.show ? '15%' : '-100%',
+        right: props.show ? '15%' : '-4%',
         opacity: props.show ? '1' : '0'
       }}
     >

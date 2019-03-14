@@ -7,14 +7,14 @@ const FeatureList = props => {
       <div className="features-boxed">
         <div className="container">
           <div className="intro">
-            <h2 className="text-center">CineView let's you...</h2>
+            <h4 className="text-center">CineView let's you...</h4>
             {/* <p className="text-center">Write reviews on any movie from A Trip To The Moon to your box
                   office favorite</p> */}
           </div>
           <div className="row justify-content-center features">
             <div className="col-sm-6 col-md-5 col-lg-4 item">
               <div className="box">
-                <i className="fa fa-map-marker icon" />
+                <i className="fa fa-map-marker-alt icon" />
                 <h3 className="name">Review anywhere</h3>
                 <p className="description">
                   Write reviews on any movie from A Trip To The Moon to your box
@@ -54,10 +54,10 @@ const FeatureList = props => {
             </div>
             <div className="col-sm-6 col-md-5 col-lg-4 item">
               <div className="box">
-                <i className="fas fa-plane icon" />
+                <i className="fas fa-fighter-jet icon" />
                 <h3 className="name">Fast </h3>
                 <p className="description">
-                  Fast access to movie reviews by real people just like you
+                  Have fast access to movie reviews by real people just like you
                 </p>
               </div>
             </div>
