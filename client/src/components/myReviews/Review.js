@@ -6,7 +6,6 @@ import axios from 'axios';
 import { reviewById } from '../../services/reviewURLs';
 import { tmdbUrl, theMovieDbUrl } from '../../services/resourceURLs';
 import DeleteModal from './DeleteModal';
-import './deletemodal.css';
 import './review.css';
 
 import ReviewForm from './ReviewForm';
@@ -120,6 +119,8 @@ class Review extends Component {
       <div>
         <div className="card mb-2 mb-3 p-4 mb-5 bg-white">
           <DeleteModal
+            className="modal"
+            overlayClassName="overlay"
             show={this.state.isShowing}
             close={this.closeModalHandler}
             handleDelete={this.handleDelete}
