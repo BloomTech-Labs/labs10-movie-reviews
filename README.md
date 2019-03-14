@@ -36,7 +36,6 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
     - [Using the Application](#using-the-application)
 - [Contributing](#contributing)
 - [Data Models](#data-models)
-    - [Login Table](#login-table)
     - [Users Table](#users-table)
     - [Reviews Table](#reviews-table)
 - [Database in Development and Production](#database)
@@ -44,6 +43,9 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
     - [Production](#postgresql)
 - [Stripe](#stripe)
 - [Payment Structure](#payment-structure)
+- [Passport-js](#Passport-JS)
+    - [Google Strategy](#Google-Strategy)
+    - [Twitter Strategy](#Twitter-Strategy)
 - [Design](#design)
 
 ## Tech Stack
@@ -60,6 +62,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
     - [react-star-rating-component](https://www.npmjs.com/package/react-star-rating-component)
     - [react-stripe-checkout](https://www.npmjs.com/package/react-stripe-checkout)
     - [reactstrap](https://reactstrap.github.io/)
+- [TMDb - The Movie Database API](https://www.themoviedb.org/documentation/api)
 
 - Netlify
     - [https://www.netlify.com/](https://www.netlify.com/)
@@ -104,6 +107,39 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 
 ##### CSS/Reactstrap/Bootstrap
 - We decided to utilize Reactstrap and Bootstrap to take advantage of the ease of responsiveness on those components. In addition to our own custom CSS, along with the ability to customize the frameworks to our liking, it gave us the opportunity to create a design to our liking. 
+
+### Testing
+
+Testing of this application was completed through every stage of development using terminal logging, Chrome DevTools, and Postman. 
+
+Testing was incorporated into this application by each contributor before submitting a pull request to the master branch and after each merge ensure all elements were working together properly. 
+
+In addition, all pull requests were reviewed by one or more team members, and merges were supervised by our project manager. 
+
+The application for the most part was set up to continuously deploy to Netlify and Heroku. In order to satisfy the requirements of continuous deployment, our master branch was automatically checked upon every pull request to mae sure the new code would not break the build. 
+
+### Installation Instructions
+
+##### Frontend Variables:
+- REACT_APP_API= please see [TMDB](https://www.themoviedb.org/documentation/api) to get an API Key
+- REACT_APP_DEV_SERVER_URI= your localhost for server side
+- REACT_APP_PROD_SERVER_URI= your deployed server site
+- REACT_APP_THE_MOVIE_DB_URL= TMDB Base URL
+- REACT_APP_TMDB_URL= TMDB Base URL for images
+
+##### Backend Variables:
+- DEBUGGING= boolean
+- REDIRECT_URI_PROD= deployed client site
+- REDIRECT_URI_DEV= your localhost for client site
+- PROD_CLIENT_URI= deployed client site
+- DEV_CLIENT_URI= your localhost for client site
+- DATABASE_URL= given variable by Heroku when using their PostgreSQL database plugin
+- NODE_ENV= tells us to use production or development
+
+* Please see [Twitter Strategy](#twitter-strategy) and [Google Strategy](#google-strategy) for requirements on those variables. 
+
+
+##### Using the Application
 
 
 
