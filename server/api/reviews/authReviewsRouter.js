@@ -82,25 +82,49 @@ router.put('/reviews/:id', async (req, res) => {
 //DELETE request that deletes a review
 router.delete('/reviews/:id', async (req, res) => {
   const { id } = req.params;
-  const deletedReview = await reviewsDb.remove(id);
   try {
-    // make sure deletedReview is not null
-    if (deletedReview === 0) {
-      // otherwise return a 404
-      return res
+    // this returns the count, not the review
+    const count = await reviewsDb.remove(id);
+
+    if (count === 0) {
+      res
         .status(404)
         .json({ message: `the review with id ${id}  does not exist` });
     } else {
-      // return the deleted review with a status of 200
-      return res.status(200).json(deletedReview);
+      // so this would be returning a number
+      res.status(200).json(count);
     }
   } catch (error) {
     // catch any other error and return a 500 with the error message
-    return res.status(500).json({
+    console.log('\n******* ERROR Deleting Review ********', error);
+    res.status(500).json({
       message: 'the review could not be deleted',
       error: error.message
     });
   }
 });
+
+// router.delete('/reviews/:id', async (req, res) => {
+//   const { id } = req.params;
+//   const deletedReview = await reviewsDb.remove(id);
+//   try {
+//     // make sure deletedReview is not null
+//     if (deletedReview === 0) {
+//       // otherwise return a 404
+//       return res
+//         .status(404)
+//         .json({ message: `the review with id ${id}  does not exist` });
+//     } else {
+//       // return the deleted review with a status of 200
+//       return res.status(200).json(deletedReview);
+//     }
+//   } catch (error) {
+//     // catch any other error and return a 500 with the error message
+//     return res.status(500).json({
+//       message: 'the review could not be deleted',
+//       error: error.message
+//     });
+//   }
+// });
 
 module.exports = router;
