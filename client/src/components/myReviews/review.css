@@ -39,3 +39,12 @@
 .movieTitle {
   font-weight: bolder;
 }
+@media (max-width: 991px) {
+  #noMarginL {
+    margin-left: 0rem;
+  }
+}
+.errorM {
+  color: red;
+  margin-right: 2rem;
+}

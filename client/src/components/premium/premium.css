@@ -1,3 +1,158 @@
 .card {
-  min-height: 35vh;
+  min-height: 40vh;
+  border: none !important;
+}
+
+.card-title {
+  margin-bottom: 1rem !important;
+}
+
+.card-text {
+  text-align: justify;
+  line-height: 23px;
+  margin: 2rem 1rem !important;
+}
+
+.pay-button {
+
+}
+
+.bg-custom {
+  background-color: #EEF4F7 !important;
+}
+
+.badge-info {
+  background-color: #464E7D !important;
+}
+
+.delete-button {
+  background-color: #EEF4F7 !important;
+  padding: .1rem !important;
+  font-size: 10px !important;
+}
+
+.premium-avatar {
+  border-radius: 50% !important;
+  height: 200px !important;
+}
+
+.col-md-8 h3 {
+  margin-bottom: 3rem;
+}
+
+ul li h5 span {
+  margin: .5rem auto;
+}
+
+.top-padding {
+  padding-top: 2rem;
+}
+
+@media (max-width: 720px) {
+  .card {
+    min-height: 40vh;
+    border: none !important;
+  }
+  
+  .card-title {
+    margin-bottom: 1rem !important;
+  }
+  
+  .card-text {
+    text-align: justify;
+    line-height: 20px;
+    margin: 1.5rem auto .8rem auto !important;
+    font-size: 15px;
+  }
+
+  .col-md-8 h3 {
+    margin: 1rem 0 .4rem 0;
+    font-weight: 400;
+    font-size: 25px;
+  }
+
+  ul li {
+    margin: 0 auto;
+  }
+
+  ul li span {
+    float: left;
+  }
+
+  .card {
+    min-height: 25vh;
+  }
+
+  .premium-avatar {
+    border-radius: 50% !important;
+    height: 150px !important;
+  }
+
+  .top-padding {
+    padding-top: 2rem;
+  }
+
+  div .card-body {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .card {
+    min-height: 25vh;
+    border: none !important;
+  }
+  
+  .card-title {
+    margin-bottom: 1rem !important;
+  }
+  
+  .card-text {
+    text-align: justify;
+    line-height: 20px;
+    font-size: 15px;
+    margin: 1.5rem auto .8rem auto !important;
+  }
+  .col-md-8 h3 {
+    margin: 1.5rem 0 .4rem 0;
+    font-weight: 400;
+    font-size: 25px;
+  }
+
+  ul li {
+    margin: 0;
+  }
+
+  ul li span,
+  ul li button {
+    float: left;
+    font-size: 12px;
+  }
+
+  .premium-avatar {
+    border-radius: 50% !important;
+    height: 130px !important;
+    float: left;
+    margin-right: 6rem;
+  }
+
+  .top-padding {
+    padding-top: 1.5rem;
+  }
+
+  div .card-body {
+    padding-top: 0;
+  }
+
+}
+
+@media (max-width: 469px) {
+
+  .premium-avatar {
+    border-radius: 50% !important;
+    height: 130px !important;
+    float: left;
+    margin-right: 2rem;
+  }
+
 }

@@ -6,6 +6,7 @@ import './stars.css';
 import { currentUser } from '../../services/userURLs';
 import { reviews, reviewById } from '../../services/reviewURLs';
 import { Container, Row, Col, Form, Label, Input } from 'reactstrap';
+import { truncate } from 'fs';
 
 class ReviewForm extends Component {
   state = {
@@ -16,6 +17,8 @@ class ReviewForm extends Component {
     rating: 3,
     textBody: '',
     email: '',
+    emptyBody: false,
+    errorM: '',
     review: 0
   };
 
@@ -95,29 +98,33 @@ class ReviewForm extends Component {
       textBody: this.state.textBody
     };
     console.log('RevForm review: ', review);
-
-    axios
-      .post(reviews, review)
-      .then(response => {
-        console.log('RevForm response: ', response);
-        this.props.history.push({
-          pathname: '/myreviews',
-          state: { detail: response.data }
-        });
-      })
-      .then(response => {
-        this.props.history.push('/myreviews');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.state.textBody
+      ? axios
+          .post(reviews, review)
+          .then(response => {
+            console.log('RevForm response: ', response);
+            this.props.history.push({
+              pathname: '/myreviews',
+              state: { detail: response.data }
+            });
+          })
+          .then(response => {
+            this.props.history.push('/myreviews');
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      : console.log('empty field');
+    this.setState({ emptyBody: true });
   };
 
   render() {
+    console.log('checking empty body state: ', this.state.emptyBody);
+
     return (
       <Container className="movieRevWrapper">
         <Row>
-          <Col sm="5">
+          <Col lg="5">
             <div className="card">
               <div className="card-body text-left colRight">
                 {/* <div className="card" style={{ width: '18rem' }}> */}
@@ -134,14 +141,14 @@ class ReviewForm extends Component {
                 </h5>
                 {/* <p />
                   <p /> */}
-                <p className="card-text">
+                <p className="card-text text-left" id="noMarginL">
                   {this.props.location.state.overview}
                 </p>
               </div>
               {/* </div> */}
             </div>
           </Col>
-          <Col sm="7">
+          <Col lg="7">
             <div className="card-body text-left">
               <Form>
                 <div className="form-div starS">
@@ -178,6 +185,9 @@ class ReviewForm extends Component {
                   </div>
                 ) : (
                   <div className="text-right">
+                    <span className="errorM">
+                      {this.state.emptyBody ? 'Please add a review' : null}
+                    </span>
                     <button
                       onClick={this.handleWriteNewReview}
                       className="btn btn-outline-info"
