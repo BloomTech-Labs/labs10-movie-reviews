@@ -94,68 +94,76 @@ class PremiumView extends Component {
   render() {
     console.log('this state', this.state);
     return (
-      <div className="container pt-5 bg-white">
+      <div className="container bg-custom top-padding">
         <div className="row">
           <div className="col-md-4">
             <div className="placeholder">
               <a href={`${placeholderUrl}`}>
                 <img
-                  className="myreviews-avatar img-responsive mb-3"
+                  className="premium-avatar img-responsive mb-3"
                   src={this.state.photo}
                   alt="avatar"
                 />
               </a>
 
-              <ul className="list-group list-group-flush text-left">
-                <li className="list-group-item pl-5 bg-white border-info">
-                  <span className="small badge badge-light mr-1">Status: </span>
+              <ul className="list-group">
+                <li className="bg-custom border-none">
+                  <h5>
+                  <span className="badge badge-light">Status:</span>
                   <span>
                     {this.state.premium ? (
                       <h3 className="badge badge-info">Premium</h3>
                     ) : (
-                      <h3 className="badge badge-info">Standard</h3>
+                      <h3 className="badge badge-secondary">Standard</h3>
                     )}
                   </span>
+                  </h5>
                 </li>
 
-                <li className="list-group-item pl-5 bg-white">
-                  <span className="small badge badge-light mr-1">Name: </span>
-                  <span className="badge badge-dark">{this.state.name}</span>
+                <li className="bg-custom">
+                  <h5>
+                  <span className="badge badge-light">Name:</span>
+                  <span className="badge badge-light">{this.state.name}</span>
+                  </h5>
                 </li>
 
-                <li className="list-group-item pl-5 bg-white">
-                  <span className="small badge badge-light mr-1"> Email: </span>
-                  <span className="badge badge-dark">{this.state.email}</span>
-                </li>
+                {/* <li className="mt-3 bg-custom">
+                  <span className="small badge badge-light mr-1">Email:</span>
+                  <span className="badge badge-light">{this.state.email}</span>
+                </li> */}
 
                 {this.state.premium ? (
                   <>
-                    <li className="list-group-item pl-5 bg-white">
-                      <span className="small badge badge-light mr-1">
-                        Subscription:{' '}
+                    <li className="bg-custom">
+                      <h5>
+                      <span className="badge badge-light">
+                        Subscription:{''}
                       </span>
-                      <span className="badge badge-dark">
+                      <span className="badge badge-light">
                         {this.state.subType}
                       </span>
+                      </h5>
                     </li>
 
-                    <li className="list-group-item pl-5 bg-white">
-                      <span className="small badge badge-light mr-1">
-                        Billing Amount:{' '}
+                    <li className="bg-custom">
+                      <h5>
+                      <span className="badge badge-light">
+                        Billing Amount:{''}
                       </span>
-                      <span className="badge badge-dark">
+                      <span className="badge badge-light">
                         {this.state.subType === 'Yearly' ? '$9.99' : '$0.99'}
                       </span>
+                      </h5>
                     </li>
 
-                    <li className="list-group-item pl-5 bg-white">
+                    <li className="bg-custom">
                       <button
                         type="button"
-                        className="btn btn-small text-danger text-left pl-1"
+                        className="btn btn-small text-danger text-left delete-button"
                         onClick={() => this.handleCancel(this.state.id)}
                       >
                         <span className="small">
-                          Cancel {this.state.subType} Subscription
+                          <p>Cancel Subscription</p>
                         </span>
                       </button>
                     </li>
@@ -167,26 +175,26 @@ class PremiumView extends Component {
 
           <div className="col-md-8 mb-5">
             {!this.state.premium ? (
-              <h1 className="font-weight-light mb-5">Premium Subscriptions</h1>
+              <h3 className="font-weight-light">Premium Subscriptions</h3>
             ) : this.state.subType === 'Yearly' ? (
-              <h2 className="font-weight-light mb-5 text-center">
+              <h3 className="font-weight-light text-center">
                 Yearly Premium
-              </h2>
+              </h3>
             ) : (
-              <h2 className="font-weight-light mb-5 text-center">
+              <h3 className="font-weight-light text-center">
                 Monthly Premium
-              </h2>
+              </h3>
             )}
 
             <div className="row">
               {!this.state.premium ? (
                 <>
-                  <div className="col-md-6">
+                  <div className="col-lg-6">
                     <PremiumCard
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
                       description={
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={999}
                       currentUser={this.state}
@@ -196,12 +204,12 @@ class PremiumView extends Component {
                     />
                   </div>
 
-                  <div className="col-md-6">
+                  <div className="col-lg-6">
                     <PremiumCard
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}
                       description={
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={99}
                       currentUser={this.state}
@@ -213,12 +221,12 @@ class PremiumView extends Component {
                 </>
               ) : this.state.subType === 'Yearly' ? (
                 <>
-                  <div className="col-md-6">
+                  <div className="col-lg-6">
                     <PremiumCard
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
                       description={
-                        'TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={999}
                       displayNone="displayNone"
@@ -231,12 +239,12 @@ class PremiumView extends Component {
                     />
                   </div>
 
-                  <div className="col-md-6">
+                  <div className="col-lg-6">
                     <PremiumCard
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}
                       description={
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={99}
                       displayNone="displayNone"
@@ -250,12 +258,12 @@ class PremiumView extends Component {
                 </>
               ) : (
                 <>
-                  <div className="col-md-6">
+                  <div className="col-lg-6 subscribed">
                     <PremiumCard
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
                       description={
-                        'TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={999}
                       displayNone="displayNone"
@@ -264,12 +272,12 @@ class PremiumView extends Component {
                     />
                   </div>
 
-                  <div className="col-md-6">
+                  <div className="col-lg-6 subscribed">
                     <PremiumCard
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}
                       description={
-                        'TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={99}
                       displayNone="displayNone"
