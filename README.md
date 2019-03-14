@@ -24,7 +24,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - [Tech Stack](#tech-stack)
     - [Front End](#frontend-built-using)
     - [Back End](#backend-built-using)
-- [Reasoning](#reasoning)
+- [Reasoning](#why-this-stack?)
     - [React](#react.js)
     - [Netlify](#netlify)
     - [Express/Node](#express/node.js)
@@ -83,4 +83,27 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 
 - Heroku
     - [http://www.heroku.com](http://www.heroku.com)
+
+#### Why this Stack?
+
+##### React.js
+
+- React is a mature, robust, and industry tested Javascript library with access to loads of npm packages than can work seamlessly inside React. React will allow us to be flexible with what we want to use in our application. React’s composition patterns will allow us to fluidly separate individual tasks to individual teammates. 
+
+##### Netlify
+- Netlify has a great GUI for deployment versus the other options (Now, Firebase, surge, Heroku, etc.). Netlify also integrates with GitHub, providing an option for continuous deployment. 
+
+##### PostgreSQL/sqlite3
+- Lightweight, safe - supports concurrency. 
+
+##### Express/Node.js
+- Reliable documentation, good performance, compatible with React, using JS throughout this project 
+
+##### Heroku
+- The reasoning behind using Heroku is similar to the reasoning for the use of Netlify. 
+
+##### CSS/Reactstrap/Bootstrap
+- We decided to utilize Reactstrap and Bootstrap to take advantage of the ease of responsiveness on those components. In addition to our own custom CSS, along with the ability to customize the frameworks to our liking, it gave us the opportunity to create a design to our liking. 
+
+
 
