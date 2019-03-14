@@ -134,7 +134,7 @@ class ReviewForm extends Component {
                 </h5>
                 {/* <p />
                   <p /> */}
-                <p className="card-text">
+                <p className="card-text text-left" id="noMarginL">
                   {this.props.location.state.overview}
                 </p>
               </div>
