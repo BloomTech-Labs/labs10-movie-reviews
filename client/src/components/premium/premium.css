@@ -29,15 +29,23 @@ ul li h5 span {
   margin: .5rem auto;
 }
 
+.top-padding {
+  padding-top: 2rem;
+}
+
 @media (max-width: 767px) {
   .col-md-8 h3 {
-    margin: .8rem 0 .5rem 0;
+    margin: 1rem 0 .4rem 0;
     font-weight: 400;
     font-size: 25px;
   }
 
-  ul li h5 span {
-    margin: .2rem auto;
+  ul li {
+    margin: 0 auto;
+  }
+
+  ul li span {
+    float: left;
   }
 
   .card {
@@ -47,6 +55,61 @@ ul li h5 span {
   .premium-avatar {
     border-radius: 50% !important;
     height: 150px !important;
+  }
+
+  .top-padding {
+    padding-top: 2rem;
+  }
+
+  div .card-body {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .col-md-8 h3 {
+    margin: 1rem 0 .4rem 0;
+    font-weight: 400;
+    font-size: 25px;
+  }
+
+  ul li {
+    margin: 0;
+  }
+
+  ul li span,
+  ul li button {
+    float: left;
+  }
+
+  .card {
+    min-height: 25vh;
+  }
+
+  .premium-avatar {
+    border-radius: 50% !important;
+    height: 130px !important;
+    float: left;
+    margin-right: 6rem;
+  }
+
+  .top-padding {
+    padding-top: 1rem;
+  }
+
+  div .card-body {
+    padding-top: 0;
+  }
+
+}
+
+@media (max-width: 469px) {
+
+  .premium-avatar {
+    border-radius: 50% !important;
+    height: 130px !important;
+    float: left;
+    margin-right: 2rem;
   }
 
 }

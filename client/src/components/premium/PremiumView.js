@@ -94,7 +94,7 @@ class PremiumView extends Component {
   render() {
     console.log('this state', this.state);
     return (
-      <div className="container pt-5 bg-custom">
+      <div className="container bg-custom top-padding">
         <div className="row">
           <div className="col-md-4">
             <div className="placeholder">

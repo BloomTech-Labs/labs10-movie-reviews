@@ -11,15 +11,14 @@ const premiumCard = props => {
         mb-3 
         rounded
         bg-white
-        ${!props.premium ? 'shadow-lg' : null}  
         ${
           props.currentSub === 'Yearly'
-            ? 'border border-info shadow-lg'
-            : 'bg-light'
+            ? null
+            : 'bg-light no-display'
         }
         ${
           props.currentSub === 'Monthly'
-            ? 'border border-info shadow-lg'
+            ? null
             : 'bg-light'
         }
       `}
@@ -32,7 +31,9 @@ const premiumCard = props => {
             className={`
               badge 
               ${
-                props.currentSub === 'Yearly' ? 'badge-info' : 'badge-secondary'
+                props.currentSub === 'Yearly' 
+                ? 'badge-info' 
+                : 'badge-secondary'
               }
               ${
                 props.currentSub === 'Monthly'
