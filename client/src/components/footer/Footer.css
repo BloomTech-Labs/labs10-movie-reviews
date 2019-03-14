@@ -4,37 +4,86 @@
     --footer-link-color: #01d277;
 }
 
-.footer .footer-nav {
-    margin: 20px auto;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+@media only screen and (max-width: 991px) {
+    .mobile-hidden {
+        display: none;
+    }
+    .footer {
+        width: 100%;
+    }
+
+    .footer-nav {
+        width: 100%;
+        display:flex;
+        margin-bottom: 10px;
+    }
+
+   .links {
+        width: 100%;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+      
+    .footer .footer-nav h5{
+        color: var(--home-link);
+        font-weight: bold;
+    }
+
+    .mobile-home{
+        color: var(--home-link);
+    }
+
+    .footer-link-mobile {
+        color: var(--footer-link-color);
+    }
 }
 
-.footer .footer-nav .home{
-    color: var(--home-link);
+@media only screen and (min-width: 992px) {
+    .hidden-desktop {
+        display: none;
+    }
 
+    .footer {
+        width: 100%;
+    }
+
+    .footer .footer-nav {
+        margin: 20px auto;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .footer .footer-nav .home{
+        color: var(--home-link);
+    
+    }
+    
+    .footer .footer-nav .links {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .footer .footer-nav .footer-text {
+        width: 100%;
+        margin: 5px 0px 0px 0px;
+    }
+    
+    .footer .footer-nav h5{
+        color: var(--home-link);
+        font-weight: bold;
+    }
+    
+    .footer .footer-nav p {
+        align-self: center;
+    }
+    
+    .footer .footer-nav p  .footer-link {
+        color:  var(--footer-link-color);
+    }
 }
 
-.footer .footer-nav .links {
-    display: flex;
-    justify-content: space-around;
-}
 
-.footer .footer-nav .footer-text {
-    width: 100%;
-    margin: 5px 0px 0px 0px;
-}
 
-.footer .footer-nav h5{
-    color: var(--home-link);
-    font-weight: bold;
-}
-
-.footer .footer-nav p {
-    align-self: center;
-}
-
-.footer .footer-nav p  .footer-link {
-    color:  var(--footer-link-color);
-}
