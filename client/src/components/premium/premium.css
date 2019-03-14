@@ -1,11 +1,15 @@
 .card {
-  min-height: 35vh;
+  min-height: 40vh;
   border: none !important;
 }
 
-ul li h5 span {
-  margin: .5rem auto !important;
-  float: left;
+.card-text {
+  text-align: justify;
+  line-height: 20px;
+}
+
+.pay-button {
+  
 }
 
 .bg-custom {
@@ -31,11 +35,15 @@ ul li h5 span {
   margin-bottom: 3rem;
 }
 
+ul li h5 span {
+  margin: .5rem auto;
+}
+
 .top-padding {
   padding-top: 2rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 720px) {
   .col-md-8 h3 {
     margin: 1rem 0 .4rem 0;
     font-weight: 400;
@@ -68,7 +76,7 @@ ul li h5 span {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 540px) {
   .col-md-8 h3 {
     margin: 1.5rem 0 .4rem 0;
     font-weight: 400;

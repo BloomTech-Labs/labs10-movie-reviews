@@ -194,7 +194,7 @@ class PremiumView extends Component {
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
                       description={
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={999}
                       currentUser={this.state}
@@ -209,7 +209,7 @@ class PremiumView extends Component {
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}
                       description={
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={99}
                       currentUser={this.state}
@@ -226,7 +226,7 @@ class PremiumView extends Component {
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
                       description={
-                        'TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={999}
                       displayNone="displayNone"
@@ -244,7 +244,7 @@ class PremiumView extends Component {
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}
                       description={
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={99}
                       displayNone="displayNone"
@@ -263,7 +263,7 @@ class PremiumView extends Component {
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
                       description={
-                        'TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={999}
                       displayNone="displayNone"
@@ -277,7 +277,7 @@ class PremiumView extends Component {
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}
                       description={
-                        'TLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        'Enjoy the benefits of being a Premium Member.Write reviews on any movie from A Trip To The Moon to your box office favorite. Rate each film on a five-star scale to record and share your reaction. Keep a diary of the films you have seen and share your thoughts on them with others in the CineView community!'
                       }
                       totalCents={99}
                       displayNone="displayNone"

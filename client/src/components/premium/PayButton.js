@@ -77,7 +77,7 @@ class PayButton extends Component {
         // image="" //Pop-in header image
         billingAddress={false}
       >
-        <button type="button" className="btn btn-outline-dark my-2">
+        <button type="button" className="btn btn-outline-dark my-2 pay-button">
           <span className="">{this.state.subType} Subscribe Yearly</span>
         </button>
       </StripeCheckout>
@@ -93,7 +93,7 @@ class PayButton extends Component {
         // image="" //Pop-in header image
         billingAddress={false}
       >
-        <button type="button" className="btn btn-outline-dark my-2">
+        <button type="button" className="btn btn-outline-dark my-2 pay-button">
           <span className="">{this.state.subType} Subscribe Monthly</span>
         </button>
       </StripeCheckout>
