@@ -194,7 +194,7 @@ export default class MovieRev extends React.Component {
                   {/* </div> */}
                   <p />
                   <br />
-                  <p>Year: {this.state.year} </p>
+                  <p>Release Date: {this.state.year} </p>
 
                   <p>Genres: {newGenres} </p>
                   <br />
