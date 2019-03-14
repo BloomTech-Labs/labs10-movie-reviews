@@ -7,14 +7,21 @@
     align-items: center;
 }
 
-.about-wrapper h2 {
+.about-wrapper h3 {
+    margin: 30px 0;
     font-weight: bold;
     text-align: left;
     width: 50%;
 }
+
+.about-wrapper h4 {
+    margin: 30px 0px;
+    text-align: left;
+}
 .about-text {
     width: 50%;
     text-align:left;
+    margin-bottom: 30px;
 }
 
 .tmdb-terms-block {
@@ -23,4 +30,16 @@
     margin: 20px;
     background-color: rgb(237, 237, 237);
     border-radius: 5px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+.about-text ul {
+    list-style-type: disc;
+    line-height: 2;
+    display: block;
+    padding: 30px;
+    margin: 20px;
 }
