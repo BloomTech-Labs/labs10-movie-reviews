@@ -35,7 +35,7 @@ const premiumCard = props => {
             {props.priceTitle}
           </span>
         </h3>
-        <p className="card-text text-dark">{props.description}</p>
+        <p className="card-text text-secondary">{props.description}</p>
         {props.displayNone ? null : (
           <PayButton
             header={props.header}
