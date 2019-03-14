@@ -44,3 +44,7 @@
     margin-left: 0rem;
   }
 }
+.errorM {
+  color: red;
+  margin-right: 2rem;
+}
