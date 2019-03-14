@@ -117,7 +117,7 @@ class ReviewForm extends Component {
     return (
       <Container className="movieRevWrapper">
         <Row>
-          <Col sm="5">
+          <Col lg="5">
             <div className="card">
               <div className="card-body text-left colRight">
                 {/* <div className="card" style={{ width: '18rem' }}> */}
@@ -141,7 +141,7 @@ class ReviewForm extends Component {
               {/* </div> */}
             </div>
           </Col>
-          <Col sm="7">
+          <Col lg="7">
             <div className="card-body text-left">
               <Form>
                 <div className="form-div starS">
