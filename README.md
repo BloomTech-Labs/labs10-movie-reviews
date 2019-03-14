@@ -47,3 +47,41 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - [Payment Structure](#payment-structure)
 - [Design](#design)
 
+## Tech Stack
+
+#### Frontend Built Using:
+
+- React.js
+- Dependencies:
+    - [Axios](https://github.com/axios/axios)
+    - [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
+    - [dotenv](https://www.npmjs.com/package/dotenv)
+    - [react](https://reactjs.org/docs/getting-started.html)
+    - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+    - [react-star-rating-component](https://www.npmjs.com/package/react-star-rating-component)
+    - [react-stripe-checkout](https://www.npmjs.com/package/react-stripe-checkout)
+    - [reactstrap](https://reactstrap.github.io/)
+
+- Netlify
+    - [https://www.netlify.com/](https://www.netlify.com/)
+
+
+#### Backend Built Using:
+
+- PostgreSQL (in production)
+    - [pg](https://www.postgresql.org/docs/)
+- sqlite3 (in development)
+    - [sqlite3](https://www.npmjs.com/package/sqlite3)
+- Knex
+    - [knex](https://github.com/tgriesser/knex)
+- Express
+    - [express](https://expressjs.com/en/starter/installing.html)
+- Node.js
+    - [node.js](https://nodejs.org/en/)
+- Passport
+    - [Passport Google Strategy](http://www.passportjs.org/packages/passport-google-oauth20/)
+    - [Passport Twitter Strategy](http://www.passportjs.org/packages/passport-twitter/)
+
+- Heroku
+    - [http://www.heroku.com](http://www.heroku.com)
+
