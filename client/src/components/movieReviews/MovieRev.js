@@ -17,6 +17,7 @@ export default class MovieRev extends React.Component {
       title: '',
       rating: 0,
       year: '',
+      countries: '',
       overview: '',
       genres: '',
       img: '',
@@ -83,13 +84,21 @@ export default class MovieRev extends React.Component {
           ? response.data.genres.filter(word => genres.push(word.name))
           : console.log('got 0 genres');
         console.log('genres: ', genres);
+        const countries = [];
+        response.data.production_countries
+          ? response.data.production_countries.filter(item =>
+              countries.push(item.name)
+            )
+          : console.log('got 0 countries');
+        console.log('countries: ', countries);
         this.setState({
           title: response.data.title,
           year: response.data.release_date,
           overview: response.data.overview,
           img: response.data.backdrop_path,
           id: response.data.id,
-          genres: genres
+          genres: genres,
+          countries: countries
         });
         console.log('movies genres: ', this.state.genres);
         // //sets the information retrieved onto state
@@ -133,6 +142,9 @@ export default class MovieRev extends React.Component {
     const genres = this.state.genres + ' ';
     const newGenres = genres.split(',').join(`, `);
     console.log('genres in render: ', newGenres);
+    const countries = this.state.countries + ' ';
+    const newCountries = countries.split(',').join(`, `);
+    console.log('countries in render: ', newCountries);
     // const splittedG = newGenres.map(item => item + ' ');
     // const splittedG = newGenres.replace(/,(?=[^\s])/g, ', ');
 
@@ -194,13 +206,24 @@ export default class MovieRev extends React.Component {
                   {/* </div> */}
                   <p />
                   <br />
-                  <p className="card-text">
-                    <span className="bold">Genres:</span> {newGenres} <br />
-                    <span className="bold">Release Date:</span>{' '}
-                    {this.state.year}
-                  </p>
+                  <div className="card-text" id="movieInfoWrapper">
+                    <p>
+                      <span className="bold">Genres:</span>{' '}
+                      <span className="movieInfo">{newGenres}</span>
+                    </p>
+                    <p>
+                      <span className="bold">Release Date: </span>
+                      <span className="movieInfo">{this.state.year}</span>
+                    </p>
+                    <p>
+                      <span className="bold">Countries: </span>
+                      <span className="movieInfo">{newCountries}</span>
+                    </p>
+                  </div>
                   <br />
-                  <p className="card-text">{this.state.overview}</p>
+                  <p className="card-text" id="noMarginLeft">
+                    {this.state.overview}
+                  </p>
                 </div>
               </div>
             </div>
