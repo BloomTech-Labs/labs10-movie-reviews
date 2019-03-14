@@ -16,15 +16,7 @@ module.exports = {
   getReviewsByUserId: function(userId) {
     return db('movieReviews').where('userId', Number(userId));
   },
-
   //POST Review
-  // insert: function(review) {
-  //   return db('movieReviews')
-  //     .insert(review)
-  //     .then(ids => {
-  //       if (debugging === true) console.log('POST Reviews Helper', '\nids:', ids);
-  //       ({ id: ids[0] });
-  //     })
   insert: review => {
     console.log('insert: ', review);
     return db('movieReviews')
@@ -34,20 +26,6 @@ module.exports = {
         console.error(err);
       });
   },
-  //PUT Review
-  // update: function(id, movieReview) {
-  //   if (debugging === true)
-  //     console.log(
-  //       'PUT Reviews Helper',
-  //       '\nid:',
-  //       id,
-  //       'movieReview:',
-  //       movieReview
-  //     );
-  //   return db('movieReviews')
-  //     .where('id', id)
-  //     .update(movieReview);
-  // },
   update: (id, editedReview) => {
     return (
       db('movieReviews')
