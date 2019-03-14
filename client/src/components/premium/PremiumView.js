@@ -106,9 +106,10 @@ class PremiumView extends Component {
                 />
               </a>
 
-              <ul className="list-group list-group-flush text-left">
-                <li className="pl-5 bg-custom border-none">
-                  <span className="small badge badge-light mr-1">Status: </span>
+              <ul className="list-group">
+                <li className="bg-custom border-none">
+                  <h5>
+                  <span className="badge badge-light">Status:</span>
                   <span>
                     {this.state.premium ? (
                       <h3 className="badge badge-info">Premium</h3>
@@ -116,46 +117,53 @@ class PremiumView extends Component {
                       <h3 className="badge badge-secondary">Standard</h3>
                     )}
                   </span>
+                  </h5>
                 </li>
 
-                <li className="pl-5 mt-3 bg-custom">
-                  <span className="small badge badge-light mr-1">Name: </span>
+                <li className="bg-custom">
+                  <h5>
+                  <span className="badge badge-light">Name:</span>
                   <span className="badge badge-light">{this.state.name}</span>
+                  </h5>
                 </li>
 
-                <li className="pl-5 mt-3 bg-custom">
-                  <span className="small badge badge-light mr-1"> Email: </span>
+                {/* <li className="mt-3 bg-custom">
+                  <span className="small badge badge-light mr-1">Email:</span>
                   <span className="badge badge-light">{this.state.email}</span>
-                </li>
+                </li> */}
 
                 {this.state.premium ? (
                   <>
-                    <li className="pl-5 mt-3 bg-custom">
-                      <span className="small badge badge-light mr-1">
-                        Subscription:{' '}
+                    <li className="bg-custom">
+                      <h5>
+                      <span className="badge badge-light">
+                        Subscription:{''}
                       </span>
                       <span className="badge badge-light">
                         {this.state.subType}
                       </span>
+                      </h5>
                     </li>
 
-                    <li className="pl-5 mt-3 bg-custom">
-                      <span className="small badge badge-light mr-1">
-                        Billing Amount:{' '}
+                    <li className="bg-custom">
+                      <h5>
+                      <span className="badge badge-light">
+                        Billing Amount:{''}
                       </span>
                       <span className="badge badge-light">
                         {this.state.subType === 'Yearly' ? '$9.99' : '$0.99'}
                       </span>
+                      </h5>
                     </li>
 
-                    <li className="pl-5 mt-2 bg-custom">
+                    <li className="bg-custom">
                       <button
                         type="button"
-                        className="btn btn-small text-danger text-left pl-1 delete-button"
+                        className="btn btn-small text-danger text-left delete-button"
                         onClick={() => this.handleCancel(this.state.id)}
                       >
                         <span className="small">
-                          Cancel {this.state.subType} Subscription
+                          <p>Cancel {this.state.subType} Subscription</p>
                         </span>
                       </button>
                     </li>
@@ -167,15 +175,15 @@ class PremiumView extends Component {
 
           <div className="col-md-8 mb-5">
             {!this.state.premium ? (
-              <h1 className="font-weight-light mb-5">Premium Subscriptions</h1>
+              <h3 className="font-weight-light">Premium Subscriptions</h3>
             ) : this.state.subType === 'Yearly' ? (
-              <h2 className="font-weight-light mb-5 text-center">
+              <h3 className="font-weight-light text-center">
                 Yearly Premium
-              </h2>
+              </h3>
             ) : (
-              <h2 className="font-weight-light mb-5 text-center">
+              <h3 className="font-weight-light text-center">
                 Monthly Premium
-              </h2>
+              </h3>
             )}
 
             <div className="row">
@@ -250,7 +258,7 @@ class PremiumView extends Component {
                 </>
               ) : (
                 <>
-                  <div className="col-md-6">
+                  <div className="col-md-6 subscribed">
                     <PremiumCard
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
@@ -264,7 +272,7 @@ class PremiumView extends Component {
                     />
                   </div>
 
-                  <div className="col-md-6">
+                  <div className="col-md-6 subscribed">
                     <PremiumCard
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}

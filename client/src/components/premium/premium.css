@@ -12,9 +12,41 @@
 
 .delete-button {
   background-color: #EEF4F7 !important;
+  padding: .1rem !important;
+  font-size: 10px !important;
 }
 
 .premium-avatar {
   border-radius: 50% !important;
   height: 200px !important;
+}
+
+.col-md-8 h3 {
+  margin-bottom: 3rem;
+}
+
+ul li h5 span {
+  margin: .5rem auto;
+}
+
+@media (max-width: 767px) {
+  .col-md-8 h3 {
+    margin: .8rem 0 .5rem 0;
+    font-weight: 400;
+    font-size: 25px;
+  }
+
+  ul li h5 span {
+    margin: .2rem auto;
+  }
+
+  .card {
+    min-height: 25vh;
+  }
+
+  .premium-avatar {
+    border-radius: 50% !important;
+    height: 150px !important;
+  }
+
 }
