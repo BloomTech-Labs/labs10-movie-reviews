@@ -37,3 +37,7 @@
     margin-left: 0rem;
   }
 }
+.bold {
+  font-weight: bolder;
+  font-size: 0.9rem;
+}
