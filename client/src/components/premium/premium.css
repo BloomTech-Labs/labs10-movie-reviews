@@ -9,3 +9,12 @@
 .badge-info {
   background-color: #464E7D !important;
 }
+
+.delete-button {
+  background-color: #EEF4F7 !important;
+}
+
+.premium-avatar {
+  border-radius: 50% !important;
+  height: 200px !important;
+}

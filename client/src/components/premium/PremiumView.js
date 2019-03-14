@@ -100,7 +100,7 @@ class PremiumView extends Component {
             <div className="placeholder">
               <a href={`${placeholderUrl}`}>
                 <img
-                  className="myreviews-avatar img-responsive mb-3"
+                  className="premium-avatar img-responsive mb-3"
                   src={this.state.photo}
                   alt="avatar"
                 />
@@ -113,19 +113,19 @@ class PremiumView extends Component {
                     {this.state.premium ? (
                       <h3 className="badge badge-info">Premium</h3>
                     ) : (
-                      <h3 className="badge badge-info">Standard</h3>
+                      <h3 className="badge badge-secondary">Standard</h3>
                     )}
                   </span>
                 </li>
 
                 <li className="pl-5 mt-3 bg-custom">
                   <span className="small badge badge-light mr-1">Name: </span>
-                  <span className="badge badge-dark">{this.state.name}</span>
+                  <span className="badge badge-light">{this.state.name}</span>
                 </li>
 
                 <li className="pl-5 mt-3 bg-custom">
                   <span className="small badge badge-light mr-1"> Email: </span>
-                  <span className="badge badge-dark">{this.state.email}</span>
+                  <span className="badge badge-light">{this.state.email}</span>
                 </li>
 
                 {this.state.premium ? (
@@ -134,7 +134,7 @@ class PremiumView extends Component {
                       <span className="small badge badge-light mr-1">
                         Subscription:{' '}
                       </span>
-                      <span className="badge badge-dark">
+                      <span className="badge badge-light">
                         {this.state.subType}
                       </span>
                     </li>
@@ -143,15 +143,15 @@ class PremiumView extends Component {
                       <span className="small badge badge-light mr-1">
                         Billing Amount:{' '}
                       </span>
-                      <span className="badge badge-dark">
+                      <span className="badge badge-light">
                         {this.state.subType === 'Yearly' ? '$9.99' : '$0.99'}
                       </span>
                     </li>
 
-                    <li className="pl-5 mt-3 bg-custom">
+                    <li className="pl-5 mt-2 bg-custom">
                       <button
                         type="button"
-                        className="btn btn-small text-danger text-left pl-1"
+                        className="btn btn-small text-danger text-left pl-1 delete-button"
                         onClick={() => this.handleCancel(this.state.id)}
                       >
                         <span className="small">
