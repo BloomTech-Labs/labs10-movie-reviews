@@ -141,5 +141,30 @@ The application for the most part was set up to continuously deploy to Netlify a
 
 ##### Using the Application
 
+Requirements: 
+- Node
+- Package Manager (such as Yarn or npm)
+    - [**Yarn**](https://yarnpkg.com/en/) was used to build this project.
+
+Have Node? Have **Yarn** or **npm**?
+Follow these steps:
+
+1. Fork and clone repo
+
+2. Add an `.env` file to both client and server sides at the root of the folder (same level as the `package.json` file). 
+
+3. Add environmental variables for both the frontend and the backend. 
+
+4. Open terminal and `cd` into the server folder and run `yarn install` to install the necessary node_modules on the backend. 
+
+5. `cd` into the client folder and run `yarn install` to install the necessary node_modules on the frontend. 
+
+6. Run `yarn start` on the client folder to run the frontend on `localhost:3000`
+
+7. Run `yarn start` on the server folder to run the backend on `localhost:5000`
+
+8. Your application is now running and can be tested locally. 
+
+
 
 
