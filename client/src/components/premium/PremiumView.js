@@ -94,7 +94,7 @@ class PremiumView extends Component {
   render() {
     console.log('this state', this.state);
     return (
-      <div className="container pt-5 bg-white">
+      <div className="container pt-5 bg-custom">
         <div className="row">
           <div className="col-md-4">
             <div className="placeholder">
@@ -107,7 +107,7 @@ class PremiumView extends Component {
               </a>
 
               <ul className="list-group list-group-flush text-left">
-                <li className="list-group-item pl-5 bg-white border-info">
+                <li className="pl-5 bg-custom border-none">
                   <span className="small badge badge-light mr-1">Status: </span>
                   <span>
                     {this.state.premium ? (
@@ -118,19 +118,19 @@ class PremiumView extends Component {
                   </span>
                 </li>
 
-                <li className="list-group-item pl-5 bg-white">
+                <li className="pl-5 mt-3 bg-custom">
                   <span className="small badge badge-light mr-1">Name: </span>
                   <span className="badge badge-dark">{this.state.name}</span>
                 </li>
 
-                <li className="list-group-item pl-5 bg-white">
+                <li className="pl-5 mt-3 bg-custom">
                   <span className="small badge badge-light mr-1"> Email: </span>
                   <span className="badge badge-dark">{this.state.email}</span>
                 </li>
 
                 {this.state.premium ? (
                   <>
-                    <li className="list-group-item pl-5 bg-white">
+                    <li className="pl-5 mt-3 bg-custom">
                       <span className="small badge badge-light mr-1">
                         Subscription:{' '}
                       </span>
@@ -139,7 +139,7 @@ class PremiumView extends Component {
                       </span>
                     </li>
 
-                    <li className="list-group-item pl-5 bg-white">
+                    <li className="pl-5 mt-3 bg-custom">
                       <span className="small badge badge-light mr-1">
                         Billing Amount:{' '}
                       </span>
@@ -148,7 +148,7 @@ class PremiumView extends Component {
                       </span>
                     </li>
 
-                    <li className="list-group-item pl-5 bg-white">
+                    <li className="pl-5 mt-3 bg-custom">
                       <button
                         type="button"
                         className="btn btn-small text-danger text-left pl-1"
