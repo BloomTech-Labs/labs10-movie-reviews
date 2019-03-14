@@ -8,12 +8,10 @@ const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 // requests all the reviews in the reviews database)
 // ==============================================
 const reviewsDb = require('./reviewsHelper.js');
-const usersDb = require('../users/usersHelper');
 
 //GET review by user id
 router.post('/currentuserreviews', async (req, res) => {
   const userId = req.body.userId;
-  // if (req.body.textBody && req.body.rating && userId) {
   try {
     // get reviews of the current user
     const currentUserReviews = await reviewsDb.getReviewsByUserId(userId);
@@ -27,7 +25,6 @@ router.post('/currentuserreviews', async (req, res) => {
       message: 'the review could not be added',
       error: error.message
     });
-    // }
   }
 });
 
@@ -38,31 +35,9 @@ router.post('/reviews', async (req, res) => {
     // create a new review based on the caller body
     const newReview = await reviewsDb.insert(req.body);
     try {
-      // // set an order string from the users table
-      // const reviewOrderString = await usersDb.getReviewOrder(userId);
-      // console.log('RevOrdString: ', reviewOrderString);
-      // // using json parse the order string array in to an array
-      // const reviewOrderArray = JSON.parse(reviewOrderString.reviewOrder);
-
-      // // unshift the newReview.id from the order array
-      // reviewOrderArray.unshift(newReview.id);
-
-      // // the updated review order from the review order array using json stringify
-      // const updatedReviewOrder = {
-      //   reviewOrder: JSON.stringify(reviewOrderArray)
-      // };
-
-      // // update the review order in the users table
-      // const updatedRevOrder = await usersDb.updateReviewOrder(
-      //   userId,
-      //   updatedReviewOrder
-
       // get reviews of the current user
       const currentUserReviews = await reviewsDb.getReviewsByUserId(userId);
       console.log('currentUserReviews: ', currentUserReviews);
-
-      // // respond with a 201 on success
-      // res.status(201).json(newReview);
 
       // respond with a 201 on success
       res.status(201).json(currentUserReviews);
