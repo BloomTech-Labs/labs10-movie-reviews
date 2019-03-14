@@ -33,7 +33,17 @@
 }
 
 @media (max-width: 991px) {
-  #noMarginLeft {
+  #noMarginLeft,
+  #movieInfoWrapper {
     margin-left: 0rem;
   }
+}
+.bold {
+  font-weight: bolder;
+}
+/* .bold .movieInfo {
+  font-size: 0.1rem;
+} */
+.movieInfo {
+  color: #464e7d;
 }
