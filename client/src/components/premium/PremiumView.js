@@ -189,7 +189,7 @@ class PremiumView extends Component {
             <div className="row">
               {!this.state.premium ? (
                 <>
-                  <div className="col-md-6">
+                  <div className="col-lg-6">
                     <PremiumCard
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
@@ -204,7 +204,7 @@ class PremiumView extends Component {
                     />
                   </div>
 
-                  <div className="col-md-6">
+                  <div className="col-lg-6">
                     <PremiumCard
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}
@@ -221,7 +221,7 @@ class PremiumView extends Component {
                 </>
               ) : this.state.subType === 'Yearly' ? (
                 <>
-                  <div className="col-md-6">
+                  <div className="col-lg-6">
                     <PremiumCard
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
@@ -239,7 +239,7 @@ class PremiumView extends Component {
                     />
                   </div>
 
-                  <div className="col-md-6">
+                  <div className="col-lg-6">
                     <PremiumCard
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}
@@ -258,7 +258,7 @@ class PremiumView extends Component {
                 </>
               ) : (
                 <>
-                  <div className="col-md-6 subscribed">
+                  <div className="col-lg-6 subscribed">
                     <PremiumCard
                       header={'Yearly Subscription'}
                       priceTitle={'$9.99'}
@@ -272,7 +272,7 @@ class PremiumView extends Component {
                     />
                   </div>
 
-                  <div className="col-md-6 subscribed">
+                  <div className="col-lg-6 subscribed">
                     <PremiumCard
                       header={'Monthly Subscription'}
                       priceTitle={'$0.99'}

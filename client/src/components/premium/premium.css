@@ -3,13 +3,18 @@
   border: none !important;
 }
 
+.card-title {
+  margin-bottom: 1rem !important;
+}
+
 .card-text {
   text-align: justify;
-  line-height: 20px;
+  line-height: 23px;
+  margin: 2rem 1rem !important;
 }
 
 .pay-button {
-  
+
 }
 
 .bg-custom {
@@ -44,6 +49,22 @@ ul li h5 span {
 }
 
 @media (max-width: 720px) {
+  .card {
+    min-height: 40vh;
+    border: none !important;
+  }
+  
+  .card-title {
+    margin-bottom: 1rem !important;
+  }
+  
+  .card-text {
+    text-align: justify;
+    line-height: 20px;
+    margin: 1.5rem auto .8rem auto !important;
+    font-size: 15px;
+  }
+
   .col-md-8 h3 {
     margin: 1rem 0 .4rem 0;
     font-weight: 400;
@@ -77,6 +98,21 @@ ul li h5 span {
 }
 
 @media (max-width: 540px) {
+  .card {
+    min-height: 25vh;
+    border: none !important;
+  }
+  
+  .card-title {
+    margin-bottom: 1rem !important;
+  }
+  
+  .card-text {
+    text-align: justify;
+    line-height: 20px;
+    font-size: 15px;
+    margin: 1.5rem auto .8rem auto !important;
+  }
   .col-md-8 h3 {
     margin: 1.5rem 0 .4rem 0;
     font-weight: 400;
@@ -85,10 +121,6 @@ ul li h5 span {
 
   ul li {
     margin: 0;
-  }
-
-  .card {
-    min-height: 25vh;
   }
 
   ul li span,
