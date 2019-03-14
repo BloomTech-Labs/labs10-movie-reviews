@@ -7,9 +7,7 @@ const FeatureList = props => {
       <div className="features-boxed">
         <div className="container">
           <div className="intro">
-            <h4 className="text-center">CineView let's you...</h4>
-            {/* <p className="text-center">Write reviews on any movie from A Trip To The Moon to your box
-                  office favorite</p> */}
+            <h4 className="text-center">CineView lets you...</h4>
           </div>
           <div className="row justify-content-center features">
             <div className="col-sm-6 col-md-5 col-lg-4 item">
