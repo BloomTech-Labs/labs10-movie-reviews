@@ -206,7 +206,6 @@ export default class MovieRev extends React.Component {
                 {/* </div> */}
                 {/* </div> */}
                 <p />
-                <br />
                 <div className="card-text" id="movieInfoWrapper">
                   <p>
                     <span className="bold">Genres:</span>{' '}
@@ -221,7 +220,7 @@ export default class MovieRev extends React.Component {
                     <span className="movieInfo">{newCountries}</span>
                   </p>
                 </div>
-                <br />
+                <hr />
                 <p className="card-text" id="noMarginLeft">
                   {this.state.overview}
                 </p>
