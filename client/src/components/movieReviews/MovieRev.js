@@ -153,78 +153,78 @@ export default class MovieRev extends React.Component {
         {/* start of Grid A */}
         <Row>
           <Col lg="5" className="mb-3">
-            <div className="card">
-              <div className="card-body text-left">
+            <div className="card card-body">
+              <div className="text-left">
                 <img
                   className="card-img-top"
                   src={`${tmdbUrl}${this.state.img}`}
                   alt="Poster of the movie"
                 />
-                <div className="card-body">
-                  <h5 className="card-title text-left">{this.state.title}</h5>
-                  {/* <div className="row">
+                <br />
+                <br />
+                <h5 className="card-title">{this.state.title}</h5>
+                {/* <div className="row">
                     <div className="col-xs-6"> */}
-                  <a
-                    href={`https://www.youtube.com/embed/${
-                      this.state.trailerKey
-                    }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-info mr-3 mb-2"
-                    id="trailer"
-                  >
-                    Watch Trailer
-                  </a>
-                  {/* </div>
+                <a
+                  href={`https://www.youtube.com/embed/${
+                    this.state.trailerKey
+                  }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-info mr-3 mb-2"
+                  id="trailer"
+                >
+                  Watch Trailer
+                </a>
+                {/* </div>
                     <div className="col-xs-6"> */}
 
-                  {this.state.premium ? (
-                    <Link
-                      to={{
-                        pathname: `/reviewform/${this.state.id}`,
-                        state: {
-                          id: this.state.id,
-                          title: this.state.title,
-                          year: this.state.year,
-                          overview: this.state.overview,
-                          img: this.state.img
-                        }
-                      }}
-                    >
-                      <button className="btn btn-info mr-3 mb-2" id="submit">
-                        Write Review
-                      </button>
-                    </Link>
-                  ) : (
-                    <Link to={{ pathname: '/premium' }}>
-                      <button className="btn btn-info mr-3 mb-2" id="submit">
-                        Go Premium
-                      </button>
-                    </Link>
-                  )}
-                  {/* </div> */}
-                  {/* </div> */}
-                  <p />
-                  <br />
-                  <div className="card-text" id="movieInfoWrapper">
-                    <p>
-                      <span className="bold">Genres:</span>{' '}
-                      <span className="movieInfo">{newGenres}</span>
-                    </p>
-                    <p>
-                      <span className="bold">Release Date: </span>
-                      <span className="movieInfo">{this.state.year}</span>
-                    </p>
-                    <p>
-                      <span className="bold">Countries: </span>
-                      <span className="movieInfo">{newCountries}</span>
-                    </p>
-                  </div>
-                  <br />
-                  <p className="card-text" id="noMarginLeft">
-                    {this.state.overview}
+                {this.state.premium ? (
+                  <Link
+                    to={{
+                      pathname: `/reviewform/${this.state.id}`,
+                      state: {
+                        id: this.state.id,
+                        title: this.state.title,
+                        year: this.state.year,
+                        overview: this.state.overview,
+                        img: this.state.img
+                      }
+                    }}
+                  >
+                    <button className="btn btn-info mr-3 mb-2" id="submit">
+                      Write Review
+                    </button>
+                  </Link>
+                ) : (
+                  <Link to={{ pathname: '/premium' }}>
+                    <button className="btn btn-info mr-3 mb-2" id="submit">
+                      Go Premium
+                    </button>
+                  </Link>
+                )}
+                {/* </div> */}
+                {/* </div> */}
+                <p />
+                <br />
+                <div className="card-text" id="movieInfoWrapper">
+                  <p>
+                    <span className="bold">Genres:</span>{' '}
+                    <span className="movieInfo">{newGenres}</span>
+                  </p>
+                  <p>
+                    <span className="bold">Release Date: </span>
+                    <span className="movieInfo">{this.state.year}</span>
+                  </p>
+                  <p>
+                    <span className="bold">Countries: </span>
+                    <span className="movieInfo">{newCountries}</span>
                   </p>
                 </div>
+                <br />
+                <p className="card-text" id="noMarginLeft">
+                  {this.state.overview}
+                </p>
               </div>
             </div>
             {/* </div> */}
