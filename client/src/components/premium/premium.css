@@ -1,3 +1,11 @@
 .card {
   min-height: 35vh;
 }
+
+.bg-custom {
+  background-color: #EEF4F7 !important;
+}
+
+.badge-info {
+  background-color: #464E7D !important;
+}
