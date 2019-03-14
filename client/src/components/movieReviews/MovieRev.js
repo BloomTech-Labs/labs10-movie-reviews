@@ -194,9 +194,11 @@ export default class MovieRev extends React.Component {
                   {/* </div> */}
                   <p />
                   <br />
-                  <p>Release Date: {this.state.year} </p>
-
-                  <p>Genres: {newGenres} </p>
+                  <p className="card-text">
+                    <span className="bold">Genres:</span> {newGenres} <br />
+                    <span className="bold">Release Date:</span>{' '}
+                    {this.state.year}
+                  </p>
                   <br />
                   <p className="card-text">{this.state.overview}</p>
                 </div>
