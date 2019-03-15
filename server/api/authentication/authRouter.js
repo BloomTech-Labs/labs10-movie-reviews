@@ -66,10 +66,19 @@ router.get('/current_user', (req, res) => {
 
     const user = usersDb.getUsersById(req.user.id);
     if (user) {
-      const { id, name, email, username, photo } = user;
-      res.status(200).send({ id, name, email, username, photo });
+      res.status(200).send(req.user);
+      // const { id, name, email, username, photo } = user;
+  // res.status(200).send({ id, name, email, username, photo });
     }
   }
+
+
+  // load the latest data of this user
+ 
+
+  // load data from request
+  // const { id, name, email, username, photo } = user;
+  // res.status(200).send({ id, name, email, username, photo });
 });
 
 // passport.authenticate middleware is used here to authenticate the request
