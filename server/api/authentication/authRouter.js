@@ -61,17 +61,15 @@ router.get('/current_user', (req, res) => {
   if (!req.user || (req.user && !req.user.id)) {
     res.status(400).send({ error: 'You are not log in' });
   }
+  else {
+    if( debugging ) console.log(req.user, "hello from authRouter");
 
-  const user = usersDb.getUsersById(req.user.id);
-
-  // load the latest data of this user
-  if (user) {
-    res.status(200).send(req.user);
+    const user = usersDb.getUsersById(req.user.id);
+    if (user) {
+      const { id, name, email, username, photo } = user;
+      res.status(200).send({ id, name, email, username, photo });
+    }
   }
-
-  // load data from request
-  const { id, name, email, username, photo } = req.user;
-  res.status(200).send({ id, name, email, username, photo });
 });
 
 // passport.authenticate middleware is used here to authenticate the request
