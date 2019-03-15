@@ -7,6 +7,11 @@
   margin-bottom: 1rem !important;
 }
 
+.card-sub-type {
+  font-size: 15px;
+}
+
+
 .card-text {
   text-align: justify;
   line-height: 23px;

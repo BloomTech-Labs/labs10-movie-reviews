@@ -6,7 +6,8 @@ import './mappedItem.css';
 import FeatureList from './FeatureList';
 
 const Home = props => {
-  const randomArr = props.movies.sort(function() { return 0.5 - Math.random() });
+  let randomArr = props.movies.concat();
+  randomArr = props.movies.sort(function() { return 0.5 - Math.random() });
   const start = Math.floor(Math.random() * 12);
   const end = start + 8;
   const movies = randomArr.slice(start, end);
