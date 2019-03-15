@@ -6,8 +6,7 @@ const cors = require('cors');
 
 const corsOptions = {
   credentials: true,
-  // origin: ['http://localhost:3000', 'https://cineview.netlify.com']
-  origin: 'https://cineview.netlify.com'
+  origin: ['http://localhost:3000', 'https://cineview.netlify.com']
 };
 
 // list of middlewares configured to our Express
