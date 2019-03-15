@@ -42,7 +42,8 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
         - [Reviews Table](#reviews-table)
 - [Stripe](#stripe)
 - [Payment Structure](#payment-structure)
-- [Passport-js](#Passport-JS)
+- [The Movie Database](#the-movie-database)
+- [Passport JS](#Passport-JS)
     - [Google Strategy](#Google-Strategy)
     - [Twitter Strategy](#Twitter-Strategy)
 - [Design](#design)
@@ -271,52 +272,92 @@ Follow these steps:
             ```
     
 
-    - ##### Stripe
-        - A Stripe Dashboard account will need to be created. Here are the instructions:
+- ##### Stripe
+    - A Stripe Dashboard account will need to be created. Here are the instructions:
 
-            1. Click on the icon in the upper right to either SignUp/SignIn for Stripe
-            2. Complete the Stripe SignUp form to create your Stripe Account
-            3. Once you have your account created, please proceed in going into the dashboard and click on the `Home` section on the left side and click on `Get Your API Keys`. These keys will need to be integrated into the project environmental variables.
-            4. There are two keys that will be needed for the project:
-                1. Publishable Test Key `tk-1234` example
-                2. Secret Test Key (need to click on and authenticate to review, if authentication successful, key will be revealed) `sk-1234` need to be added to the Heroku Database in the `Reveal Config Vars` section under settings.
+        1. Click on the icon in the upper right to either SignUp/SignIn for Stripe
+        2. Complete the Stripe SignUp form to create your Stripe Account
+        3. Once you have your account created, please proceed in going into the dashboard and click on the `Home` section on the left side and click on `Get Your API Keys`. These keys will need to be integrated into the project environmental variables.
+        4. There are two keys that will be needed for the project:
+            1. Publishable Test Key `tk-1234` example
+            2. Secret Test Key (need to click on and authenticate to review, if authentication successful, key will be revealed) `sk-1234` need to be added to the Heroku Database in the `Reveal Config Vars` section under settings.
 
                 * NOTE: Make sure that you are using the `Test` keys and not the `Live` keys. The difference between the two is that the `Test` does not create an actual charge whereas the `Live` key does.
 
-            5. Once you have your `Test` Publishable API Key, you want to:
+        5. Once you have your `Test` Publishable API Key, you want to:
 
-                1. `cd front-end`
-                2. `cd src`
-                3. `cd components`
-                4. `cd premium`
-                
-            6. Click on `PayButton.js` add your test publishable key to 
+            1. `cd front-end`
+            2. `cd src`
+            3. `cd components`
+            4. `cd premium`
             
-            ```jsx
-                this.state = {
-                    publishableKey: (insert publishable key here),
-            }
-            ```
-            
-   See below example of PayButton.js file:
-
-   ```jsx
-
-   class PayButton extends Component {
-        constructor(props) {
-            super(props);
+        6. Click on `PayButton.js` add your test publishable key to 
+        
+        ```jsx
             this.state = {
-                publishableKey: 'insert publishable key here',
-                id: null,
-                name: '',
-                email: '',
-                username: '',
-                stripeId: ''
-            };
+                publishableKey: (insert publishable key here),
         }
-  ```
+        ```
+        
+See below example of PayButton.js file:
 
-  ##### You can view your payment transactions from the Stripe Dashboard once you have configured the API keys into the project.
+```jsx
+
+class PayButton extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            publishableKey: 'insert publishable key here',
+            id: null,
+            name: '',
+            email: '',
+            username: '',
+            stripeId: ''
+        };
+    }
+```
+
+##### You can view your payment transactions from the Stripe Dashboard once you have configured the API keys into the project.
+
+- ##### Payment Structure
+
+    A person who is _searching_ for a movie or reads reviews does **not** need to make any payments for our service
+
+    - ##### Users who wish to post a movie review have the following options:
+        - Year long subscription for **$9.99** per year
+        - Month-long subscription for **$0.99** per month
+
+- ##### The Movie Database
+
+    The Movie Database (TMDB) is our third party API that handles the management of all film data. All film-related metadata used in CineView, including synopses, release dates, trailers and poster art is supplied by TMDb. CineView uses the TMDb API but is not endorsed or certified by TMDb.
+
+    To use The Movie Database as a developer, you need to enroll in an Account and receive an API_KEY. Instructions to apply for an API_KEY are provided [here](https://developers.themoviedb.org/3/getting-started/introduction). When API_Key is obtained, place it in the frontend `.env` file you have created.
+
+- ##### Passport-JS
+
+    * This application uses [Passport-JS](http://passportjs.org) to handle OAuth. Two strategies were used in this implementation:
+
+        - [Passport Google Strategy](http://www.passportjs.org/packages/passport-google-oauth20/)
+        - [Passport Twitter Strategy](http://www.passportjs.org/packages/passport-twitter/)
+
+        To utilize both strategies in our application, we had to have certain variables in place in our backend `.env` file:
+
+        ```
+            TWITTER_CONSUMER_KEY=enroll for a Twitter Developer Account to Obtain a Key
+            TWITTER_CONSUMER_SECRET=enroll for a Twitter Developer Account to Obtain a Secret
+            GOOGLE_CLIENT_ID=enroll for a Google Developer Account to Obtain an ID.
+            GOOGLE_CLIENT_SECRET=enroll for a Google Developer Account to Obtain a Secret. 
+            REDIRECT_URI=your redirect after login *Google Strategy only*
+        ```
+
+        If using an `.env` file, ensure that there are no spaces or quotes within the file. Simply Replace the name of each value with the value received from your Strategy's developer account. 
+
+- ##### Design
+
+    - [**Original Wireframe**](https://balsamiq.cloud/snv27r3/pkkkbfv/r2278)
+    - [**Technical Design Document**](https://docs.google.com/document/d/1sb2JAW1FqGwmWSkeCsIEwU0yIbXYmDrEK7GUTaQdK10/edit)
+    - [**Design System Document**](https://codepen.io/flute1952/pen/NJwdqL)
+ 
 
 
-
+            
