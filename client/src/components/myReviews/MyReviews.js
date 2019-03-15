@@ -59,16 +59,6 @@ class MyReviews extends Component {
         console.log(err);
       });
   };
-  // fetchReviews = () => {
-  //   axios
-  //     .get(reviews)
-  //     .then(response => {
-  //       this.setState({ reviews: response.data });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
 
   render() {
     console.log('MyReviews: ', this.state.reviews);
@@ -88,32 +78,10 @@ class MyReviews extends Component {
               </a>
 
               <ul className="list-group list-group-flush text-left">
-                {/* <li className="list-group-item pl-3 bg-white border-info"><span className="small badge badge-light mr-2">Status: </span>
-                    <span>
-                      {this.state.premium 
-                        ? <h3 className="badge badge-info">Premium</h3>
-                        : <h3 className="badge badge-info">Standard</h3>
-                      }
-                    </span>
-                  </li> */}
-
                 <li className="list-group-item pl-3 bg-white">
                   <span className="small badge badge-light mr-1">Name: </span>
                   <span className="badge badge-light">{this.state.name}</span>
                 </li>
-
-                {/* <li className="list-group-item pl-3 bg-white">
-                  <span className="small badge badge-light mr-1"> Email: </span>
-                  <span className="badge badge-light">{this.state.email}</span>
-                </li>
-
-                <li className="list-group-item pl-3 bg-white">
-                  <span className="small badge badge-light mr-1">
-                    {' '}
-                    Number of Reviews:
-                  </span>
-                  <span className="badge badge-light">TBD</span>
-                </li> */}
               </ul>
             </div>
           </Col>
@@ -127,7 +95,6 @@ class MyReviews extends Component {
                 </div>
               </div>
             </div>
-
             {/* end of Grid B */}
           </Col>
         </Row>
