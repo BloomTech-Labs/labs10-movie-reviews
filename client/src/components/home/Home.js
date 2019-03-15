@@ -6,7 +6,9 @@ import './mappedItem.css';
 import FeatureList from './FeatureList';
 
 const Home = props => {
-  const randomArr = props.movies.sort(function() { return 0.5 - Math.random() });
+  const randomArr = props.movies.sort(function() {
+    return 0.5 - Math.random();
+  });
   const start = Math.floor(Math.random() * 12);
   const end = start + 8;
   const movies = randomArr.slice(start, end);
@@ -25,7 +27,7 @@ const Home = props => {
         searchCriteria={props.searchCriteria}
       />
       <div className="featured">
-        <h4 className="popular-title">Popular Movies</h4>
+        <h4 className="popular-title">Today's Popular Movies</h4>
         <div className="cardWrapper">
           <Row className="nopadding">
             {movies.map(item => {
