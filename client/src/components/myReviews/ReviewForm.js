@@ -5,8 +5,8 @@ import StarRatingComponent from 'react-star-rating-component';
 import './stars.css';
 import { currentUser } from '../../services/userURLs';
 import { reviews, reviewById } from '../../services/reviewURLs';
-import { Container, Row, Col, Form, Label, Input } from 'reactstrap';
-import { truncate } from 'fs';
+import { Container, Row, Col, Form, Input } from 'reactstrap';
+// import { truncate } from 'fs';
 
 class ReviewForm extends Component {
   state = {
@@ -116,8 +116,8 @@ class ReviewForm extends Component {
           .catch(err => {
             console.log(err);
           })
-      : console.log('empty field');
-    this.setState({ emptyBody: true });
+      : this.setState({ emptyBody: true });
+    console.log('empty field state: ', this.state.emptyBody);
   };
 
   render() {
