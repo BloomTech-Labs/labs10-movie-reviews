@@ -31,7 +31,7 @@ class ReviewForm extends Component {
       console.log('RevForm res.data: ', res.data);
       this.setState({
         textBody: this.props.location.state.textBody,
-        rating: this.state.rating ? 3 : this.props.location.state.rating,
+        rating: this.state.rating ? this.props.location.state.rating : 3,
         googleId: res.data.googleId,
         reviewer: res.data.email,
         id: res.data.id,
