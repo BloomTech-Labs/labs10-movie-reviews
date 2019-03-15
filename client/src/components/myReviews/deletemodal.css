@@ -55,3 +55,8 @@
   font: Roboto;
   font-weight: 400;
 }
+
+.modal-wrapper .modal-footer .btn-delete:hover {
+  background-color: rgb(237, 237, 233) !important;
+  color: #760d17 !important;
+}
