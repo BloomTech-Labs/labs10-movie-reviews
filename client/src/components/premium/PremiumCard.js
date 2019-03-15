@@ -22,12 +22,12 @@ const premiumCard = props => {
               badge 
               ${
                 props.currentSub === 'Yearly' 
-                ? 'badge-info' 
+                ? 'badge-info text-white' 
                 : 'badge-light'
               }
               ${
                 props.currentSub === 'Monthly'
-                  ? 'badge-info'
+                  ? 'badge-info text-white'
                   : 'badge-light'
               }
             `}
