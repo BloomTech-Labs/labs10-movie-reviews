@@ -64,7 +64,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - Netlify
     - [https://www.netlify.com/](https://www.netlify.com/)
 
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+
 
 #### Backend Built Using:
 
@@ -85,7 +85,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - Heroku
     - [http://www.heroku.com](http://www.heroku.com)
 
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+<p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
 #### Why this Stack
 
@@ -108,7 +108,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 ##### CSS
 - We decided to utilize Reactstrap and Bootstrap to take advantage of the ease of responsiveness on those components. In addition to our own custom CSS, along with the ability to customize the frameworks to our liking, it gave us the opportunity to create a design to our liking. 
 
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+<p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
 ### Testing
 
@@ -120,7 +120,7 @@ In addition, all pull requests were reviewed by one or more team members, and me
 
 The application for the most part was set up to continuously deploy to Netlify and Heroku. In order to satisfy the requirements of continuous deployment, our master branch was automatically checked upon every pull request to mae sure the new code would not break the build. 
 
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+<p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
 ### Installation Instructions
 
@@ -143,7 +143,7 @@ The application for the most part was set up to continuously deploy to Netlify a
 
     * Please see [Twitter Strategy](#twitter-strategy) and [Google Strategy](#google-strategy) for requirements on those variables. 
 
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+<p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
 ##### Using the Application
 
@@ -171,7 +171,7 @@ Follow these steps:
 
 8. Your application is now running and can be tested locally. 
 
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+<p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
 ##### Database
 
@@ -213,7 +213,7 @@ Follow these steps:
             };
             
             ```
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+<p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
     - ##### Data Models
 
@@ -279,7 +279,7 @@ Follow these steps:
                     movieReviews.timestamp('updated_at').defaultTo(knex.fn.now()); // review last updated
                 });
             ```
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+<p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
 
 - ##### Stripe
@@ -337,14 +337,15 @@ class PayButton extends Component {
         - Year long subscription for **$9.99** per year
         - Month-long subscription for **$0.99** per month
 
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+<p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+
 - ##### The Movie Database
 
     The Movie Database (TMDB) is our third party API that handles the management of all film data. All film-related metadata used in CineView, including synopses, release dates, trailers and poster art is supplied by TMDb. CineView uses the TMDb API but is not endorsed or certified by TMDb.
 
     To use The Movie Database as a developer, you need to enroll in an Account and receive an API_KEY. Instructions to apply for an API_KEY are provided [here](https://developers.themoviedb.org/3/getting-started/introduction). When API_Key is obtained, place it in the frontend `.env` file you have created.
 
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+
 - ##### Passport-JS
 
     * This application uses [Passport-JS](http://passportjs.org) to handle OAuth. Two strategies were used in this implementation:
@@ -364,7 +365,7 @@ class PayButton extends Component {
 
         If using an `.env` file, ensure that there are no spaces or quotes within the file. Simply Replace the name of each value with the value received from your Strategy's developer account. 
 
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+
 
 - ##### Design
 
@@ -372,6 +373,6 @@ class PayButton extends Component {
     - [**Technical Design Document**](https://docs.google.com/document/d/1sb2JAW1FqGwmWSkeCsIEwU0yIbXYmDrEK7GUTaQdK10/edit)
     - [**Design System Document**](https://codepen.io/flute1952/pen/NJwdqL)
  
-<p align="center"><a style="color: maroon" href="#table-of-contents"><strong>Back To Top</strong></a></p> 
+<p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
             
