@@ -24,7 +24,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - [Tech Stack](#tech-stack)
     - [Front End](#frontend-built-using)
     - [Back End](#backend-built-using)
-- [Reasoning](#why-this-stack?)
+- [Reasoning](#why-this-stack)
     - [React](#react)
     - [Netlify](#netlify)
     - [Express/Node](#express-node)
@@ -85,7 +85,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - Heroku
     - [http://www.heroku.com](http://www.heroku.com)
 
-#### Why this Stack?
+#### Why this Stack
 
 ##### React
 
