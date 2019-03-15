@@ -34,11 +34,10 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - [Installation Instructions](#installation-instructions)
     - [Environmental Variables](#environmental-variables)
     - [Using the Application](#using-the-application)
-- [Contributing](#contributing)
-- [Data Models](#data-models)
-    - [Users Table](#users-table)
-    - [Reviews Table](#reviews-table)
 - [Database in Development and Production](#database)
+    - [Data Models](#data-models)
+        - [Users Table](#users-table)
+        - [Reviews Table](#reviews-table)
     - [Development](#sqlite3)
     - [Production](#postgresql)
 - [Stripe](#stripe)
@@ -166,5 +165,110 @@ Follow these steps:
 8. Your application is now running and can be tested locally. 
 
 
+##### Database
+
+* ##### Database in Development and Production
+
+    - ##### Development
+        - Development database setup:
+            ```
+
+            development: {
+                client: 'sqlite3',
+                connection: {
+                filename: './data/moviereviews.sqlite3'
+                },
+                useNullAsDefault: true,
+                migrations: { directory: './data/migrations/development' },
+                seeds: { directory: './data/seeds/development' }
+            },
+
+            ```
+
+    - ##### Production
+        - Production database setup:
+            ```
+
+            production: {
+                client: 'pg', 
+                connection: process.env.DATABASE_URL,
+                useNullAsDefault: true,
+                    pool: {
+                        min: 2,
+                        max: 10
+                    },
+                migrations: {
+                tableName: 'knex_migrations',
+                directory: './data/migrations/development'
+                },
+                seeds: { directory: './data/seeds/production' }
+            };
+            
+            ```
+    - ##### Data Models
+
+        - Users Table
+            * The ‘users’ table stores the profile for a user. A user’s row is initially created once the ‘Log In’ prompt from Google is completed.
+
+
+            ```js
+
+            return knex.schema.createTable('users', users => {
+                users.increments('id'); // primary key called id
+                users.string('twitterId', 25).unique(); // official twitterId of Twitter user
+                users.string('googleId', 50).unique(); //official googleId of google user
+                users.string('stripeId', 50).unique(); //official stripeId of stripe user
+                users.string('username', 20).unique(); // username field
+                users.string('name', 100); // name field
+                users.string('email', 254).unique(); // email field
+                users.boolean('premium_user').defaultTo(false);
+                users.string('photo', 200);
+                users.text('reviewOrder'); // review order field
+                users.timestamp('created_at').defaultTo(knex.fn.now()); // user creation date
+                users.timestamp('updated_at').defaultTo(knex.fn.now()); // last updated
+            });
+
+            ```
+
+
+
+        - Reviews Table
+
+            * The reviews table contains the information for our reviews after a user has completed a Review Form  on a movie they have seen. 
+
+
+            ```js
+
+            return knex.schema.createTable('movieReviews', movieReviews => {
+                    movieReviews
+                    .increments('id'); // primary key called id
+                    movieReviews
+                    .integer('movieId') // movieId must be a    non-negative number
+                    .notNullable(); // movieId field is required
+                    movieReviews
+                    .integer('userId')
+                    .unsigned() // userId must be a non-negative number
+                    .notNullable() // userId field is required
+                    .references('id') // reference primary key 'id' from users table
+                    .inTable('users') // reference users table
+                    .onUpdate('cascade')
+                    .onDelete('cascade') // when you delete a row on the parent table, the related "children" rows on the other one are deleted.
+                    .index(); // adds an index to a table over the given columns
+                    movieReviews
+                    .string('reviewer')
+                    .notNullable() // name field is required
+                    // .foreign('reviewer') // adds a foreign key constraint to movieReviews table for reviewer column
+                    .references('email') // reference 'name' from users table
+                    .inTable('users') // reference users table
+                    .onUpdate('cascade')
+                    .onDelete('cascade') // when you delete a row on the parent table, the related "children" rows on the other one are deleted.
+                    .index(); // adds an index to a table over the given columns
+                    movieReviews.text('textBody', 5000).notNullable(); // textBody field limited to 500 chars
+                    movieReviews.integer('rating'); // rating field
+                    movieReviews.timestamp('created_at').defaultTo(knex.fn.now()); // review creation date
+                    movieReviews.timestamp('updated_at').defaultTo(knex.fn.now()); // review last updated
+                });
+            ```
+    
 
 
