@@ -35,11 +35,11 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
     - [Environmental Variables](#environmental-variables)
     - [Using the Application](#using-the-application)
 - [Database in Development and Production](#database)
+    - [Development](#sqlite3)
+    - [Production](#postgresql)
     - [Data Models](#data-models)
         - [Users Table](#users-table)
         - [Reviews Table](#reviews-table)
-    - [Development](#sqlite3)
-    - [Production](#postgresql)
 - [Stripe](#stripe)
 - [Payment Structure](#payment-structure)
 - [Passport-js](#Passport-JS)
@@ -207,7 +207,7 @@ Follow these steps:
             ```
     - ##### Data Models
 
-        - Users Table
+        - ##### Users Table
             * The ‘users’ table stores the profile for a user. A user’s row is initially created once the ‘Log In’ prompt from Google is completed.
 
 
@@ -232,7 +232,7 @@ Follow these steps:
 
 
 
-        - Reviews Table
+        - ##### Reviews Table
 
             * The reviews table contains the information for our reviews after a user has completed a Review Form  on a movie they have seen. 
 
@@ -270,5 +270,53 @@ Follow these steps:
                 });
             ```
     
+
+    - ##### Stripe
+        - A Stripe Dashboard account will need to be created. Here are the instructions:
+
+            1. Click on the icon in the upper right to either SignUp/SignIn for Stripe
+            2. Complete the Stripe SignUp form to create your Stripe Account
+            3. Once you have your account created, please proceed in going into the dashboard and click on the `Home` section on the left side and click on `Get Your API Keys`. These keys will need to be integrated into the project environmental variables.
+            4. There are two keys that will be needed for the project:
+                1. Publishable Test Key `tk-1234` example
+                2. Secret Test Key (need to click on and authenticate to review, if authentication successful, key will be revealed) `sk-1234` need to be added to the Heroku Database in the `Reveal Config Vars` section under settings.
+
+                * NOTE: Make sure that you are using the `Test` keys and not the `Live` keys. The difference between the two is that the `Test` does not create an actual charge whereas the `Live` key does.
+
+            5. Once you have your `Test` Publishable API Key, you want to:
+
+                1. `cd front-end`
+                2. `cd src`
+                3. `cd components`
+                4. `cd premium`
+                
+            6. Click on `PayButton.js` add your test publishable key to 
+            
+            ```jsx
+                this.state = {
+                    publishableKey: (insert publishable key here),
+            }
+            ```
+            
+   See below example of PayButton.js file:
+
+   ```jsx
+
+   class PayButton extends Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                publishableKey: 'insert publishable key here',
+                id: null,
+                name: '',
+                email: '',
+                username: '',
+                stripeId: ''
+            };
+        }
+  ```
+
+  ##### You can view your payment transactions from the Stripe Dashboard once you have configured the API keys into the project.
+
 
 
