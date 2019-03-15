@@ -116,8 +116,8 @@ class ReviewForm extends Component {
           .catch(err => {
             console.log(err);
           })
-      : console.log('empty field');
-    this.setState({ emptyBody: true });
+      : this.setState({ emptyBody: true });
+    console.log('empty field state: ', this.state.emptyBody);
   };
 
   render() {
