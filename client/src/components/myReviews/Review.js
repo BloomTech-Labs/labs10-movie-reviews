@@ -77,11 +77,12 @@ class Review extends Component {
       .delete(reviewById(this.id))
       .then(response => {
         console.log('response in delete rev: ', response);
+        window.location.reload();
       })
       .catch(error => {
         console.error(error);
       });
-    window.location.reload();
+    // window.location.reload();
   };
 
   // changes rating and textBody on state when an edit happens
