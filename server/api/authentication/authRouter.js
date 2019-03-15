@@ -26,7 +26,7 @@ router.get(
   passport.authenticate('twitter'),
   (req, res) => {
     if (process.env.NODE_ENV === 'production') {
-      res.redirect(process.env.REDIRECT_URI_PROD);
+      res.redirect(process.env.REDIRECT_URI_DEV);
     } else {
       res.redirect(process.env.REDIRECT_URI_DEV);
     }
@@ -43,7 +43,7 @@ router.get(
 router.get('/logout', (req, res) => {
   req.logout();
   if (process.env.NODE_ENV === 'production') {
-    res.redirect(process.env.REDIRECT_URI_PROD);
+    res.redirect(process.env.REDIRECT_URI_DEV);
   } else {
     res.redirect(process.env.REDIRECT_URI_DEV);
   }
@@ -85,7 +85,7 @@ router.get(
 // The middleware receives the data from Google and runs the function on Strategy config
 router.get('/google/callback', passport.authenticate('google'), (req, res) => {
   if (process.env.NODE_ENV === 'production') {
-    res.redirect(process.env.REDIRECT_URI_PROD);
+    res.redirect(process.env.REDIRECT_URI_DEV);
   } else {
     res.redirect(process.env.REDIRECT_URI_DEV);
   }

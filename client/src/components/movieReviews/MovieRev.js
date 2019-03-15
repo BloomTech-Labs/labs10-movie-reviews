@@ -83,14 +83,12 @@ export default class MovieRev extends React.Component {
         response.data.genres
           ? response.data.genres.filter(word => genres.push(word.name))
           : console.log('got 0 genres');
-        console.log('genres: ', genres);
         const countries = [];
         response.data.production_countries
           ? response.data.production_countries.filter(item =>
               countries.push(item.name)
             )
           : console.log('got 0 countries');
-        console.log('countries: ', countries);
         this.setState({
           title: response.data.title,
           year: response.data.release_date,
@@ -100,7 +98,7 @@ export default class MovieRev extends React.Component {
           genres: genres,
           countries: countries
         });
-        console.log('movies genres: ', this.state.genres);
+        // console.log('movies genres: ', this.state.genres);
         // //sets the information retrieved onto state
         return axios.get(
           `${theMovieDbUrl}/3/movie/${this.props.match.params.id}?api_key=${
@@ -137,17 +135,14 @@ export default class MovieRev extends React.Component {
   }
   render() {
     // console.log('all props movie rev has: ', this.props);
-    console.log('this.state', this.state);
+    // console.log('this.state', this.state);
     const data = this.state.reviews;
     const genres = this.state.genres + ' ';
     const newGenres = genres.split(',').join(`, `);
-    console.log('genres in render: ', newGenres);
     const countries = this.state.countries + ' ';
     const newCountries = countries.split(',').join(`, `);
-    console.log('countries in render: ', newCountries);
     // const splittedG = newGenres.map(item => item + ' ');
     // const splittedG = newGenres.replace(/,(?=[^\s])/g, ', ');
-
     return (
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
@@ -171,7 +166,7 @@ export default class MovieRev extends React.Component {
                   }?rel=0&amp;autoplay=1;fs=0;autohide=0;hd=0;`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-info mr-3 mb-2"
+                  className="btn btn-info mr-3 mb-1"
                   id="trailer"
                 >
                   Watch Trailer
@@ -192,7 +187,7 @@ export default class MovieRev extends React.Component {
                       }
                     }}
                   >
-                    <button className="btn btn-info mr-3 mb-2" id="submit">
+                    <button className="btn btn-info mr-3 mb-1" id="submit">
                       Write Review
                     </button>
                   </Link>
@@ -203,7 +198,7 @@ export default class MovieRev extends React.Component {
                     </button>
                   </Link>
                 )}
-                <div className="card-text mb-3" id="movieInfoWrapper">
+                <div className="card-text mb-1" id="movieInfoWrapper">
                   <p>
                     <span className="bold">Genres:</span>{' '}
                     <span className="movieInfo">{newGenres}</span>
