@@ -25,9 +25,9 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
     - [Front End](#frontend-built-using)
     - [Back End](#backend-built-using)
 - [Reasoning](#why-this-stack?)
-    - [React](#react.js)
+    - [React](#react)
     - [Netlify](#netlify)
-    - [Express/Node](#express/node.js)
+    - [Express/Node](#express-node)
     - [Heroku](#heroku)
     - [CSS](#css)
 - [Testing](#testing)
@@ -35,8 +35,8 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
     - [Environmental Variables](#environmental-variables)
     - [Using the Application](#using-the-application)
 - [Database in Development and Production](#database)
-    - [Development](#sqlite3)
-    - [Production](#postgresql)
+    - [Development](#development)
+    - [Production](#production)
     - [Data Models](#data-models)
         - [Users Table](#users-table)
         - [Reviews Table](#reviews-table)
@@ -89,7 +89,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 
 #### Why this Stack?
 
-##### React.js
+##### React
 
 - React is a mature, robust, and industry tested Javascript library with access to loads of npm packages than can work seamlessly inside React. React will allow us to be flexible with what we want to use in our application. React’s composition patterns will allow us to fluidly separate individual tasks to individual teammates. 
 
@@ -99,13 +99,13 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 ##### PostgreSQL/sqlite3
 - Lightweight, safe - supports concurrency. 
 
-##### Express/Node.js
+##### Express-Node
 - Reliable documentation, good performance, compatible with React, using JS throughout this project 
 
 ##### Heroku
 - The reasoning behind using Heroku is similar to the reasoning for the use of Netlify. 
 
-##### CSS/Reactstrap/Bootstrap
+##### CSS
 - We decided to utilize Reactstrap and Bootstrap to take advantage of the ease of responsiveness on those components. In addition to our own custom CSS, along with the ability to customize the frameworks to our liking, it gave us the opportunity to create a design to our liking. 
 
 ### Testing
@@ -120,23 +120,24 @@ The application for the most part was set up to continuously deploy to Netlify a
 
 ### Installation Instructions
 
-##### Frontend Variables:
-- REACT_APP_API= please see [TMDB](https://www.themoviedb.org/documentation/api) to get an API Key
-- REACT_APP_DEV_SERVER_URI= your localhost for server side
-- REACT_APP_PROD_SERVER_URI= your deployed server site
-- REACT_APP_THE_MOVIE_DB_URL= TMDB Base URL
-- REACT_APP_TMDB_URL= TMDB Base URL for images
+#### Environmental Variables:
+    ##### Frontend Variables:
+    - REACT_APP_API= please see [TMDB](https://www.themoviedb.org/documentation/api) to get an API Key
+    - REACT_APP_DEV_SERVER_URI= your localhost for server side
+    - REACT_APP_PROD_SERVER_URI= your deployed server site
+    - REACT_APP_THE_MOVIE_DB_URL= TMDB Base URL
+    - REACT_APP_TMDB_URL= TMDB Base URL for images
 
-##### Backend Variables:
-- DEBUGGING= boolean
-- REDIRECT_URI_PROD= deployed client site
-- REDIRECT_URI_DEV= your localhost for client site
-- PROD_CLIENT_URI= deployed client site
-- DEV_CLIENT_URI= your localhost for client site
-- DATABASE_URL= given variable by Heroku when using their PostgreSQL database plugin
-- NODE_ENV= tells us to use production or development
+    ##### Backend Variables:
+    - DEBUGGING= boolean
+    - REDIRECT_URI_PROD= deployed client site
+    - REDIRECT_URI_DEV= your localhost for client site
+    - PROD_CLIENT_URI= deployed client site
+    - DEV_CLIENT_URI= your localhost for client site
+    - DATABASE_URL= given variable by Heroku when using their PostgreSQL database plugin
+    - NODE_ENV= tells us to use production or development
 
-* Please see [Twitter Strategy](#twitter-strategy) and [Google Strategy](#google-strategy) for requirements on those variables. 
+    * Please see [Twitter Strategy](#twitter-strategy) and [Google Strategy](#google-strategy) for requirements on those variables. 
 
 
 ##### Using the Application
