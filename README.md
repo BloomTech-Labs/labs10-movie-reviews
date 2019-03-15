@@ -44,8 +44,6 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - [Payment Structure](#payment-structure)
 - [The Movie Database](#the-movie-database)
 - [Passport JS](#Passport-JS)
-    - [Google Strategy](#Google-Strategy)
-    - [Twitter Strategy](#Twitter-Strategy)
 - [Design](#design)
 
 ## Tech Stack
