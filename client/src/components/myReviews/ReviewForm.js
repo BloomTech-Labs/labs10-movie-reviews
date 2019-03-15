@@ -6,7 +6,7 @@ import './stars.css';
 import { currentUser } from '../../services/userURLs';
 import { reviews, reviewById } from '../../services/reviewURLs';
 import { Container, Row, Col, Form, Input } from 'reactstrap';
-import { truncate } from 'fs';
+// import { truncate } from 'fs';
 
 class ReviewForm extends Component {
   state = {
