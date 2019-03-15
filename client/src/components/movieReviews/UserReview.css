@@ -10,6 +10,7 @@
 .goFlex {
   display: flex;
 }
+
 @media (max-width: 991px) {
   .goFlex {
     margin-left: 1rem;
@@ -28,6 +29,7 @@
 .card-text {
   line-height: 1.5rem;
 }
+
 @media (max-width: 991px) {
   .card-text {
     margin-left: 1rem;

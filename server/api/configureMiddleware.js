@@ -1,9 +1,8 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const cors = require('cors');
-
 
 const corsOptions = {
   credentials: true,

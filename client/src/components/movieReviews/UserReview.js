@@ -35,7 +35,6 @@ export default class UserReview extends React.Component {
     console.log('props in reviews: ', this.props);
     return (
       <div className="container card mb-3 pt-2 bg-white">
-        <br />
         <Row>
           <Col lg="4" sm="12">
             <div className="pt-0">
@@ -50,18 +49,6 @@ export default class UserReview extends React.Component {
                   </Link>
 
                   <ul className="list-group list-group-flush text-left">
-                    <li className=" bg-white">
-                      <br />
-                      {/* <span className="small badge badge-light">Status: </span>
-                      <span> */}
-                      {/* {this.state.premium ? ( */}
-                      {/* <h3 className="badge badge-info">Premium</h3>
-                    ) : ( */}
-                      {/* <h3 className="badge badge-light">Standard</h3> */}
-                      {/* )} */}
-                      {/* </span> */}
-                    </li>
-
                     <li className="bg-white">
                       <span className="small badge badge-light mr-1">
                         Name:{' '}
@@ -74,11 +61,9 @@ export default class UserReview extends React.Component {
                 </div>
               </div>
             </div>
-            <br />
           </Col>
-          <br />
           <Col lg="8" sm="12">
-            <div className="goFlex">
+            <div className="goFlex mb-1">
               <div className="marginLeft">
                 <StarRatingComponent
                   name="rate2"
@@ -90,9 +75,7 @@ export default class UserReview extends React.Component {
               </div>
               <p className="spaceU"> Date: {this.props.item.created_at}</p>
             </div>
-            <br />
             <p className="card-text">{this.props.item.textBody}</p>
-            <br />
           </Col>
         </Row>
       </div>
