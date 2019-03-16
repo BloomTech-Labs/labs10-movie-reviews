@@ -166,12 +166,6 @@ class Review extends Component {
                         Edit
                       </Link>
                     </button>
-                    {this.state.isShowing ? (
-                      <div
-                        onClick={this.closeModalHandler}
-                        className="back-drop"
-                      />
-                    ) : null}
                     <button
                       className="py-2.01 first-delete-btn edit-delete-btns"
                       onClick={this.openModalHandler}
