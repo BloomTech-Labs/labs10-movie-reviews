@@ -20,7 +20,7 @@
 
 .movie-title {
   position: absolute;
-  bottom:5px;
+  bottom: 5px;
   left: 0px;
   color: white;
   size: 10px;
@@ -29,13 +29,12 @@
   width: 100%;
 
   padding-top: 0.2rem;
-  background-color: rgba(50,50,50,0.5);
+  background-color: rgba(50, 50, 50, 0.5);
 }
 
 .title-text {
-  background-color: rgba(50,50,60,1);
+  background-color: rgba(50, 50, 60, 1);
   padding: 0;
   /* font-size: 14px; */
   font-weight: 500;
 }
-
