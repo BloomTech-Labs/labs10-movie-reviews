@@ -48,6 +48,7 @@ const premiumCard = props => {
             totalCents={props.totalCents}
             currentUser={props.currentUser}
             onCompleteSuccessfulPayment={props.onCompleteSuccessfulPayment}
+            handleClick={props.handleClick}
           />
         )}
       </div>
