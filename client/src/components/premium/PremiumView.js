@@ -16,7 +16,9 @@ class PremiumView extends Component {
       photo: '',
       stripeId: '',
       premium: false,
-      subType: ''
+      subType: '',
+      loggedIn: false,
+      paymentSuccess: false,
     };
   }
 
@@ -24,29 +26,51 @@ class PremiumView extends Component {
     // check if user already logging in or not
     const userRes = await axios.get(currentUser, {
       withCredentials: true
-    });
-
-    if (!userRes.data) {
-      console.log(userRes.error);
+    })
+    .then(userRes => {
+      console.log('userRes', userRes)
+      if (!userRes.data) {
+        console.log(userRes.error);
+        return;
+      }
+  
+      const { id, photo, email, name, stripeId } = userRes.data;
+      console.log(userRes.data);
+      if (!stripeId) {
+        this.setState({ id, photo, email, name, loggedIn: true });
+      } else {
+        this.handleLoadSubType(stripeId, userRes.data, { loggedIn: true });
+      }
+    })
+    .catch(error => {
+      console.log('error', error)
+      // console.log('history', this.props.history.push('/'));
+      // this.props.history.push('/');
       return;
-    }
+    })
 
-    const { id, photo, email, name, stripeId } = userRes.data;
-    console.log(userRes.data);
-    if (!stripeId) {
-      console.log('I have not subscribed yet');
-      this.setState({ id, photo, email, name });
-    } else {
-      this.handleLoadSubType(stripeId, userRes.data);
-    }
+    // if (!userRes.data) {
+    //   this.props.history.replace('/');
+    //   console.log(userRes.error);
+    //   return;
+    // }
+
+    // const { id, photo, email, name, stripeId } = userRes.data;
+    // console.log(userRes.data);
+    // if (!stripeId) {
+    //   console.log('I have not subscribed yet');
+    //   this.setState({ id, photo, email, name });
+    // } else {
+    //   this.handleLoadSubType(stripeId, userRes.data);
+    // }
   };
 
   handleCompleteSuccessfulPayment = stripeId => {
     const { id, photo, email, name } = this.state;
-    this.handleLoadSubType(stripeId, { id, photo, email, name });
+    this.handleLoadSubType(stripeId, { id, photo, email, name }, {loggedIn: true, paymentSuccess: true });
   };
 
-  handleLoadSubType = (stripeId, currentUser) => {
+  handleLoadSubType = (stripeId, currentUser, options) => {
     axios
       .post(customerPlan, {
         stripeId
@@ -55,9 +79,10 @@ class PremiumView extends Component {
         if (planRes.data.premium) {
           this.setState({
             ...currentUser,
+            ...options,
             stripeId,
             premium: planRes.data.customer.active,
-            subType: planRes.data.customer.nickname
+            subType: planRes.data.customer.nickname,
           });
         }
       })
@@ -66,7 +91,8 @@ class PremiumView extends Component {
           ...currentUser,
           stripeId: null,
           premium: false,
-          subType: ''
+          subType: '',
+          paymentSuccess: false,
         });
       });
   };
@@ -85,7 +111,7 @@ class PremiumView extends Component {
         this.setState({
           premium: false,
           subType: '',
-          stripeId: ''
+          stripeId: '',
         });
       }
     }
@@ -93,10 +119,14 @@ class PremiumView extends Component {
 
   render() {
     console.log('this state', this.state);
+    console.log('currentUser', currentUser);
     return (
       <div className="container bg-custom top-padding">
         <div className="row">
+
+        {/* Start of left Google Col */}
           <div className="col-md-4">
+            { this.state.loggedIn ? (
             <div className="placeholder">
               <a href={`${placeholderUrl}`}>
                 <img
@@ -171,9 +201,17 @@ class PremiumView extends Component {
                 ) : null}
               </ul>
             </div>
+            ) : (
+              <h5>Please Log In To Become a Premium Member</h5>
+            )}
           </div>
+          {/* end of left Google Col */}
 
           <div className="col-md-8 mb-5">
+            {this.state.paymentSuccess 
+              ? <h6>Payment successfull</h6> 
+              : null
+            }
             {!this.state.premium ? (
               <h3 className="font-weight-light">Premium Subscriptions</h3>
             ) : this.state.subType === 'Yearly' ? (
@@ -198,6 +236,7 @@ class PremiumView extends Component {
                       }
                       totalCents={999}
                       currentUser={this.state}
+                      displayNone={!this.state.loggedIn}
                       onCompleteSuccessfulPayment={
                         this.handleCompleteSuccessfulPayment
                       }
@@ -213,6 +252,7 @@ class PremiumView extends Component {
                       }
                       totalCents={99}
                       currentUser={this.state}
+                      displayNone={!this.state.loggedIn}
                       onCompleteSuccessfulPayment={
                         this.handleCompleteSuccessfulPayment
                       }
@@ -269,6 +309,9 @@ class PremiumView extends Component {
                       displayNone="displayNone"
                       premium={this.state.premium}
                       currentUser={this.state}
+                      onCompleteSuccessfulPayment={
+                        this.handleCompleteSuccessfulPayment
+                      }
                     />
                   </div>
 
@@ -284,6 +327,9 @@ class PremiumView extends Component {
                       currentSub="Monthly"
                       premium={this.state.premium}
                       currentUser={this.state}
+                      onCompleteSuccessfulPayment={
+                        this.handleCompleteSuccessfulPayment
+                      }
                     />
                   </div>
                 </>
