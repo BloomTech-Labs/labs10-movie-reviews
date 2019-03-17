@@ -46,8 +46,8 @@ class PayButton extends Component {
       console.log(' Cannot create subscription');
       return;
     }
+    
     // update the user stripeId
-
     const updatedUserRes = await axios.put(`${users}/${id}`, {
       name,
       email,
