@@ -25,7 +25,6 @@ export default class MovieRev extends React.Component {
       reviews: [],
       stripeId: '',
       premium: false
-      //   loading: true
     };
   }
 
@@ -125,10 +124,7 @@ export default class MovieRev extends React.Component {
         );
         this.setState({
           reviews: result
-          //   loading: false
         });
-        // console.log('filtered result in third nested: ', result);
-        // console.log('review state after third nested: ', this.state.reviews);
       })
       .catch(err => {
         console.log(err);
@@ -142,8 +138,6 @@ export default class MovieRev extends React.Component {
     const newGenres = genres.split(',').join(`, `);
     const countries = this.state.countries + ' ';
     const newCountries = countries.split(',').join(`, `);
-    // const splittedG = newGenres.map(item => item + ' ');
-    // const splittedG = newGenres.replace(/,(?=[^\s])/g, ', ');
     return (
       <Container className="movieRevWrapper">
         {/* start of Grid A */}

@@ -3,6 +3,7 @@ import { Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { currentUser } from '../../services/userURLs';
+import { users } from '../../services/userURLs';
 import './UserReview.css';
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -12,7 +13,11 @@ export default class UserReview extends React.Component {
     this.state = {
       reviewer: '',
       photo: '',
-      name: ''
+      name: '',
+      users: '',
+      id: '',
+      photo1: '',
+      name1: ''
     };
   }
 
@@ -28,10 +33,32 @@ export default class UserReview extends React.Component {
         name: res.data.name
       });
     }
+    this.fetchReviews();
+  };
+  fetchReviews = () => {
+    axios
+      .get(users)
+      .then(response => {
+        console.log('response auth - Users: ', response);
+        const user = response.data.filter(i => i.id === this.props.item.userId);
+        console.log('user: ', user[0]);
+        this.setState({
+          photo1: user[0].photo,
+          name1: user[0].name
+        });
+        // this.setState({
+        //   users: response.data
+        // });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
     console.log('props in reviews: ', this.props);
+    console.log('this. props id: ', this.props.item.userId);
+
     return (
       <div className="container card mb-3 pt-2 bg-white">
         <Row>
@@ -42,7 +69,7 @@ export default class UserReview extends React.Component {
                   <Link to={`/myreviews`}>
                     <img
                       className="movie-profile-avatar"
-                      src={this.state.photo}
+                      src={this.state.photo1}
                       alt="placeholder"
                     />
                   </Link>
@@ -53,7 +80,7 @@ export default class UserReview extends React.Component {
                         Name:{' '}
                       </span>
                       <span className="badge badge-light">
-                        {this.state.name}
+                        {this.state.name1}
                       </span>
                     </li>
                   </ul>
