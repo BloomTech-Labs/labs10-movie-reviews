@@ -24,18 +24,18 @@ class PremiumView extends Component {
 
   componentDidMount = async () => {
     // check if user already logging in or not
-    const userRes = await axios.get(currentUser, {
+    axios.get(currentUser, {
       withCredentials: true
     })
     .then(userRes => {
-      console.log('userRes', userRes)
+      // console.log('userRes', userRes)
       if (!userRes.data) {
         console.log(userRes.error);
         return;
       }
   
       const { id, photo, email, name, stripeId } = userRes.data;
-      console.log(userRes.data);
+      // console.log(userRes.data);
       if (!stripeId) {
         this.setState({ id, photo, email, name, loggedIn: true });
       } else {
@@ -118,8 +118,8 @@ class PremiumView extends Component {
   };
 
   render() {
-    console.log('this state', this.state);
-    console.log('currentUser', currentUser);
+    // console.log('this state', this.state);
+    // console.log('currentUser', currentUser);
     return (
       <div className="container bg-custom top-padding">
         <div className="row">

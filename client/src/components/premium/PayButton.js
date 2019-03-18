@@ -23,7 +23,6 @@ class PayButton extends Component {
   onToken = async token => {
     const { id, name, email } = this.props.currentUser;
 
-    console.log('token', token);
     const body = {
       amount: this.props.totalCents,
       token: token,
