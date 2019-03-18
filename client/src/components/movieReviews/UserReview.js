@@ -3,7 +3,6 @@ import { Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { currentUser } from '../../services/userURLs';
-import { placeholderUrl } from '../../services/resourceURLs';
 import './UserReview.css';
 import StarRatingComponent from 'react-star-rating-component';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import GoogleLogin from '../../assets/svg/btn_google_1.png';
 import { googleLogin } from '../../services/authURLs';
 import "./Navbar.css";

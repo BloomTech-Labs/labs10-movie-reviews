@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Container } from 'reactstrap';
+import { Row, Col} from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import { reviewById } from '../../services/reviewURLs';

@@ -5,8 +5,8 @@ import StarRatingComponent from 'react-star-rating-component';
 import './stars.css';
 import { currentUser } from '../../services/userURLs';
 import { reviews, reviewById } from '../../services/reviewURLs';
-import { Container, Row, Col, Form, Label, Input } from 'reactstrap';
-import { truncate } from 'fs';
+import { Container, Row, Col, Form, Input } from 'reactstrap';
+// import { truncate } from 'fs';
 
 class ReviewForm extends Component {
   state = {

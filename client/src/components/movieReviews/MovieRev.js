@@ -35,7 +35,7 @@ export default class MovieRev extends React.Component {
       withCredentials: true
     });
     if (userRes.data) {
-      console.log('userRes.data', userRes.data);
+      // console.log('userRes.data', userRes.data);
       const stripeId = userRes.data.stripeId;
 
       if (!stripeId) {
@@ -78,7 +78,7 @@ export default class MovieRev extends React.Component {
     );
     promise
       .then(response => {
-        console.log('response in movie rev: ', response);
+        // console.log('response in movie rev: ', response);
         const genres = [];
         response.data.genres
           ? response.data.genres.filter(word => genres.push(word.name))
