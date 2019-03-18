@@ -80,7 +80,6 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
     - [node.js](https://nodejs.org/en/)
 - Passport
     - [Passport Google Strategy](http://www.passportjs.org/packages/passport-google-oauth20/)
-    - [Passport Twitter Strategy](http://www.passportjs.org/packages/passport-twitter/)
 
 - Heroku
     - [http://www.heroku.com](http://www.heroku.com)
@@ -141,7 +140,7 @@ The application for the most part was set up to continuously deploy to Netlify a
     - DATABASE_URL= given variable by Heroku when using their PostgreSQL database plugin
     - NODE_ENV= tells us to use production or development
 
-    * Please see [Twitter Strategy](#twitter-strategy) and [Google Strategy](#google-strategy) for requirements on those variables. 
+    * Please see [Google Strategy](#google-strategy) for requirements on that variable. 
 
 <p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
@@ -225,7 +224,6 @@ Follow these steps:
 
             return knex.schema.createTable('users', users => {
                 users.increments('id'); // primary key called id
-                users.string('twitterId', 25).unique(); // official twitterId of Twitter user
                 users.string('googleId', 50).unique(); //official googleId of google user
                 users.string('stripeId', 50).unique(); //official stripeId of stripe user
                 users.string('username', 20).unique(); // username field
@@ -351,13 +349,10 @@ class PayButton extends Component {
     * This application uses [Passport-JS](http://passportjs.org) to handle OAuth. Two strategies were used in this implementation:
 
         - [Passport Google Strategy](http://www.passportjs.org/packages/passport-google-oauth20/)
-        - [Passport Twitter Strategy](http://www.passportjs.org/packages/passport-twitter/)
 
-        To utilize both strategies in our application, we had to have certain variables in place in our backend `.env` file:
+        To utilize a strategy in our application, we had to have certain variables in place in our backend `.env` file:
 
         ```
-            TWITTER_CONSUMER_KEY=enroll for a Twitter Developer Account to Obtain a Key
-            TWITTER_CONSUMER_SECRET=enroll for a Twitter Developer Account to Obtain a Secret
             GOOGLE_CLIENT_ID=enroll for a Google Developer Account to Obtain an ID.
             GOOGLE_CLIENT_SECRET=enroll for a Google Developer Account to Obtain a Secret. 
             REDIRECT_URI=your redirect after login *Google Strategy only*
