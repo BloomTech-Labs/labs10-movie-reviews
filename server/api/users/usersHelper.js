@@ -6,7 +6,7 @@ const db = require('../../data/dbConfig.js');
 // USER HELPERS
 // ==============================================
 module.exports = {
-  getUsers: function(id) {
+  getUsers: function() {
     return db('users');
   },
   getUsersById: function(id) {
