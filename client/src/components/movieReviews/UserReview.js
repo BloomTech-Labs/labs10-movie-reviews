@@ -23,17 +23,6 @@ export default class UserReview extends React.Component {
   }
 
   componentDidMount = async () => {
-    const res = await axios.get(currentUser, {
-      withCredentials: true
-    });
-    if (res.data) {
-      console.log('res data in UserReview.js: ', res.data);
-      this.setState({
-        reviewer: res.data.reviewer,
-        photo: res.data.photo,
-        name: res.data.name
-      });
-    }
     this.fetchReviews();
   };
   fetchReviews = () => {
@@ -47,9 +36,6 @@ export default class UserReview extends React.Component {
           photo1: user[0].photo,
           name1: user[0].name
         });
-        // this.setState({
-        //   users: response.data
-        // });
       })
       .catch(err => {
         console.log(err);
