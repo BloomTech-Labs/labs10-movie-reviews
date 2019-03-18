@@ -209,7 +209,7 @@ class PremiumView extends Component {
 
           <div className="col-md-8 mb-5">
             {this.state.paymentSuccess 
-              ? <h6>Payment successfull</h6> 
+              ? <h5 className="bg-white my-2 mx-2 py-3 px-3 text-success">Payment Successfully Processed</h5> 
               : null
             }
             {!this.state.premium ? (
