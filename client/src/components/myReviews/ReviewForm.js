@@ -73,16 +73,17 @@ class ReviewForm extends Component {
       rating: this.state.rating,
       textBody: this.state.textBody
     };
-
-    axios
-      .put(reviewById(this.id), editedReview)
-      .then(response => {
-        // this.props.fetchReviews();
-        this.props.history.push('/myreviews');
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    this.state.textBody
+      ? axios
+          .put(reviewById(this.id), editedReview)
+          .then(response => {
+            // this.props.fetchReviews();
+            this.props.history.push('/myreviews');
+          })
+          .catch(error => {
+            console.error(error);
+          })
+      : this.setState({ emptyBody: true });
     // window.location.reload();
     // this.props.history.push('/myreviews');
   };
@@ -98,7 +99,7 @@ class ReviewForm extends Component {
       rating: this.state.rating,
       textBody: this.state.textBody
     };
-    console.log('RevForm review: ', review);
+    // console.log('RevForm review: ', review);
     this.state.textBody
       ? axios
           .post(reviews, review)
@@ -178,6 +179,9 @@ class ReviewForm extends Component {
                 <p />
                 {this.props.location.state.edit ? (
                   <div className="text-right">
+                    <span className="errorM">
+                      {this.state.emptyBody ? 'Please add a review' : null}
+                    </span>
                     <button
                       className="material-button-raised btn btn-outline-info"
                       onClick={this.handleEditReview}

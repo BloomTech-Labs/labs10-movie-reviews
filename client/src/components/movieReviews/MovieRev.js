@@ -141,9 +141,9 @@ export default class MovieRev extends React.Component {
     const newGenres = genres.split(',').join(`, `);
     const countries = this.state.countries + ' ';
     const newCountries = countries.split(',').join(`, `);
-    console.log('current user id: ', this.state.currUserId);
+    // console.log('current user id: ', this.state.currUserId);
     const findIfWrote = data.filter(i => i.userId == this.state.currUserId);
-    console.log('find if wrote: ', findIfWrote);
+    // console.log('find if wrote: ', findIfWrote);
 
     return (
       <Container className="movieRevWrapper">
