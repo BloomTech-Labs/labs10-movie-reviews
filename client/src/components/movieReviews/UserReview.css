@@ -21,9 +21,11 @@
 }
 
 .spaceU {
-  margin-top: 8px;
-  margin-left: 20px;
+  /* width: 7rem; */
+  margin-top: 5px;
   font-size: 0.8rem;
+  margin-left: 1rem;
+  float: right;
 }
 
 .card-text {
