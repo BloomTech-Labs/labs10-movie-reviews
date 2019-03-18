@@ -20,6 +20,7 @@ export default class MovieRev extends React.Component {
       countries: '',
       overview: '',
       genres: '',
+      currUserId: 0,
       img: '',
       trailerKey: '',
       reviews: [],
@@ -52,7 +53,8 @@ export default class MovieRev extends React.Component {
             if (planRes.data.premium) {
               this.setState({
                 stripeId,
-                premium: planRes.data.customer.active
+                premium: planRes.data.customer.active,
+                currUserId: userRes.data.id
               });
             }
           })
@@ -125,6 +127,7 @@ export default class MovieRev extends React.Component {
         this.setState({
           reviews: result
         });
+        console.log('state reviews: ', this.state.reviews);
       })
       .catch(err => {
         console.log(err);
@@ -138,6 +141,10 @@ export default class MovieRev extends React.Component {
     const newGenres = genres.split(',').join(`, `);
     const countries = this.state.countries + ' ';
     const newCountries = countries.split(',').join(`, `);
+    console.log('current user id: ', this.state.currUserId);
+    const findIfWrote = data.filter(i => i.userId == this.state.currUserId);
+    console.log('find if wrote: ', findIfWrote);
+
     return (
       <Container className="movieRevWrapper">
         {/* start of Grid A */}
@@ -153,8 +160,6 @@ export default class MovieRev extends React.Component {
                 <br />
                 <br />
                 <h5 className="card-title">{this.state.title}</h5>
-                {/* <div className="row">
-                    <div className="col-xs-6"> */}
                 <a
                   href={`https://www.youtube.com/embed/${
                     this.state.trailerKey
@@ -170,22 +175,26 @@ export default class MovieRev extends React.Component {
                     <div className="col-xs-6"> */}
 
                 {this.state.premium ? (
-                  <Link
-                    to={{
-                      pathname: `/reviewform/${this.state.id}`,
-                      state: {
-                        id: this.state.id,
-                        title: this.state.title,
-                        year: this.state.year,
-                        overview: this.state.overview,
-                        img: this.state.img
-                      }
-                    }}
-                  >
-                    <button className="btn btn-info mr-3 mb-1" id="submit">
-                      Write Review
-                    </button>
-                  </Link>
+                  findIfWrote.length ? (
+                    <p> You wrote already a review</p>
+                  ) : (
+                    <Link
+                      to={{
+                        pathname: `/reviewform/${this.state.id}`,
+                        state: {
+                          id: this.state.id,
+                          title: this.state.title,
+                          year: this.state.year,
+                          overview: this.state.overview,
+                          img: this.state.img
+                        }
+                      }}
+                    >
+                      <button className="btn btn-info mr-3 mb-1" id="submit">
+                        Write Review
+                      </button>
+                    </Link>
+                  )
                 ) : (
                   <Link to={{ pathname: '/premium' }}>
                     <button className="btn btn-info mr-3 mb-2" id="submit">
