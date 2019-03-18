@@ -54,7 +54,7 @@ class App extends Component {
         const title = response.data.results[random].title;
         //grabs random movie title from response data results array
         const backdropURL =
-          tmdbUrl + response.data.results[random].backdrop_path;
+          `${tmdbUrl}${response.data.results[random].backdrop_path}`;
         //grabs random movie backdrop_path (background image) from response data results array
         this.setState({
           movies: response.data.results,
