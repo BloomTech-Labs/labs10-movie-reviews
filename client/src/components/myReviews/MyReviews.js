@@ -23,7 +23,6 @@ class MyReviews extends Component {
   };
 
   componentDidMount = async () => {
-    // this.fetchReviews();
     const userRes = await axios.get(currentUser, {
       withCredentials: true
     });
@@ -79,7 +78,6 @@ class MyReviews extends Component {
 
               <ul className="list-group list-group-flush text-left">
                 <li className="list-group-item pl-3 bg-white">
-                  <span className="small badge badge-light mr-1">Name: </span>
                   <span className="badge badge-light">{this.state.name}</span>
                 </li>
               </ul>
