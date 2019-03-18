@@ -23,7 +23,6 @@ class PayButton extends Component {
   onToken = async token => {
     const { id, name, email } = this.props.currentUser;
 
-    console.log('token', token);
     const body = {
       amount: this.props.totalCents,
       token: token,
@@ -46,8 +45,8 @@ class PayButton extends Component {
       console.log(' Cannot create subscription');
       return;
     }
+    
     // update the user stripeId
-
     const updatedUserRes = await axios.put(`${users}/${id}`, {
       name,
       email,

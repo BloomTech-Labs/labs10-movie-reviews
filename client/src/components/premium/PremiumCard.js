@@ -3,7 +3,7 @@ import './premium.css';
 import PayButton from './PayButton';
 
 const premiumCard = props => {
-  console.log('props current sub', props.currentSub);
+  // console.log('props current sub', props.currentSub);
   return (
     <div
       className={`
@@ -48,6 +48,7 @@ const premiumCard = props => {
             totalCents={props.totalCents}
             currentUser={props.currentUser}
             onCompleteSuccessfulPayment={props.onCompleteSuccessfulPayment}
+            handleClick={props.handleClick}
           />
         )}
       </div>
