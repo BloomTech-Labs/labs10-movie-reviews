@@ -100,6 +100,7 @@ class ProductionNavigation extends React.Component {
                   buttonLabel="Log In"
                   modal={this.state.modal}
                   toggle={this.toggle}
+                  className="modal-open"
                 />
               </RenderLogin>
             </li>
