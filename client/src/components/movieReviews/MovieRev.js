@@ -89,11 +89,12 @@ export default class MovieRev extends React.Component {
               countries.push(item.name)
             )
           : console.log('got 0 countries');
+          const backdropImgUrl = `${tmdbUrl}${response.data.backdrop_path}`;
         this.setState({
           title: response.data.title,
           year: response.data.release_date,
           overview: response.data.overview,
-          img: response.data.backdrop_path,
+          img: backdropImgUrl,
           id: response.data.id,
           genres: genres,
           countries: countries
@@ -152,7 +153,7 @@ export default class MovieRev extends React.Component {
               <div className="text-left">
                 <img
                   className="card-img-top"
-                  src={`${tmdbUrl}${this.state.img}`}
+                  src={`${this.state.img}`}
                   alt="Poster of the movie"
                 />
                 <br />
