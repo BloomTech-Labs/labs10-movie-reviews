@@ -13,29 +13,35 @@ const premiumCard = props => {
         bg-white
       `}
     >
-      <div className="card-header bg-dark text-white">{props.header}</div>
+      {/* <div className="card-header bg-dark text-white">{props.header}</div> */}
 
       <div className="card-body bg-light">
-        <h3 className="card-title text-success">
+        <h3 className="card-title">
           <span
             className={`
               badge 
               ${
                 props.currentSub === 'Yearly' 
-                ? 'badge-info' 
-                : 'badge-secondary'
+                ? 'badge-info text-white' 
+                : 'badge-light'
               }
               ${
                 props.currentSub === 'Monthly'
-                  ? 'badge-info'
-                  : 'badge-secondary'
+                  ? 'badge-info text-white'
+                  : 'badge-light'
               }
             `}
           >
-            {props.priceTitle}
+            {props.priceTitle} 
+            {props.totalCents === 999 ? " /year" : " /month"}
           </span>
+          {/* <span className="badge badge-light">/ year</span> */}
         </h3>
-        <p className="card-text text-secondary">{props.description}</p>
+        <p className="card-text text-secondary">
+          As a premium member, you can write reviews on any movie,
+          rate each film on a five-star scale,
+          and keep a diary of the movies you have seen.
+        </p>
         {props.displayNone ? null : (
           <PayButton
             header={props.header}
