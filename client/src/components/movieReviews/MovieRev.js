@@ -176,7 +176,7 @@ export default class MovieRev extends React.Component {
 
                 {this.state.premium ? (
                   findIfWrote.length ? (
-                    <p> You wrote already a review</p>
+                    <p> You already wrote a review</p>
                   ) : (
                     <Link
                       to={{
