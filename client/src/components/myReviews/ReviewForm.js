@@ -121,7 +121,12 @@ class ReviewForm extends Component {
   };
 
   render() {
-    console.log('checking empty body state: ', this.state.emptyBody);
+    // console.log('checking empty body state: ', this.state.emptyBody);
+    const genres = this.props.location.state.genres + ' ';
+    const newGenres = genres.split(',').join(`, `);
+    const countries = this.props.location.state.countries + ' ';
+    const newCountries = countries.split(',').join(`, `);
+    // console.log('all props in Review form: ', this.props.location.state);
 
     return (
       <Container className="movieRevWrapper">
@@ -141,8 +146,22 @@ class ReviewForm extends Component {
                 <h5 className="card-title text-left movieTitle">
                   {this.props.location.state.title}
                 </h5>
-                {/* <p />
-                  <p /> */}
+                <div className="card-text mb-1" id="movieInfoWrapper">
+                  <p>
+                    <span className="bold">Genres:</span>{' '}
+                    <span className="movieInfo">{newGenres}</span>
+                  </p>
+                  <p>
+                    <span className="bold">Release Date: </span>
+                    <span className="movieInfo">
+                      {this.props.location.state.year}
+                    </span>
+                  </p>
+                  <p>
+                    <span className="bold">Countries: </span>
+                    <span className="movieInfo">{newCountries}</span>
+                  </p>
+                </div>
                 <p className="card-text text-left" id="noMarginL">
                   {this.props.location.state.overview}
                 </p>
