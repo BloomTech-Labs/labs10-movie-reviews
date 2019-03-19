@@ -135,8 +135,9 @@ export default class MovieRev extends React.Component {
           return total;
         });
         const newTotal = parseFloat(total / this.state.reviews.length);
+        const newTotal1 = newTotal.toFixed(1);
         this.setState({
-          newRating: newTotal
+          newRating: newTotal1
         });
         console.log('newRating: ', this.state.newRating);
         // console.log(
