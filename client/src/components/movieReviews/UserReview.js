@@ -41,40 +41,58 @@ export default class UserReview extends React.Component {
       });
   };
 
+  getReviewDate = string => {
+    let regex = /(18|19|20)\d{2}-(0|1)\d{1}-(0|1|2|3)\d{1}/g;
+
+    let found = string.match(regex);
+    console.log(found);
+    if (!found) {
+      return '';
+    } else {
+      let split = found[0].split('');
+      console.log(split);
+      let year = split.splice(0, 4).join('');
+      let month = split.splice(1, 2).join('');
+      let day = split.splice(2).join('');
+      console.log(year, month, day);
+
+      return month + '-' + day + '-' + year;
+    }
+  };
+
   render() {
     console.log('props in reviews: ', this.props);
     console.log('this. props id: ', this.props.item.userId);
+    const string = this.props.item.created_at;
 
     return (
       <div className="container card mb-3 pt-2 bg-white">
         <Row>
-          <Col lg="4" sm="12">
-            <div className="pt-0">
-              <div className="col">
-                <div className="placeholder">
-                  <Link to={`/myreviews`}>
-                    <img
-                      className="movie-profile-avatar"
-                      src={this.state.photo1}
-                      alt="placeholder"
-                    />
-                  </Link>
+          <Col lg="3" sm="12">
+            {/* <div className="pt-0"> */}
+            <div className="col">
+              <div className="placeholder">
+                <Link to={`/myreviews`}>
+                  <img
+                    className="movie-profile-avatar"
+                    src={this.state.photo1}
+                    alt="placeholder"
+                  />
+                </Link>
 
-                  <ul className="list-group list-group-flush text-left">
-                    <li className="bg-white">
-                      <span className="small badge badge-light mr-1">
-                        Name:{' '}
-                      </span>
-                      <span className="badge badge-light">
-                        {this.state.name1}
-                      </span>
-                    </li>
-                  </ul>
-                </div>
+                <ul className="list-group list-group-flush text-left">
+                  <li className="bg-white">
+                    <span className="small badge badge-light mr-1">Name: </span>
+                    <span className="badge badge-light">
+                      {this.state.name1}
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
+            {/* </div> */}
           </Col>
-          <Col lg="8" sm="12">
+          <Col lg="9" sm="12">
             <div className="goFlex mb-1">
               <div className="marginLeft">
                 <StarRatingComponent
@@ -85,7 +103,10 @@ export default class UserReview extends React.Component {
                   value={this.props.item.rating}
                 />
               </div>
-              <p className="spaceU"> Date: {this.props.item.created_at}</p>
+              <p className="spaceU text-right">
+                {' '}
+                Date: {this.getReviewDate(this.props.item.created_at)}
+              </p>
             </div>
             <p className="card-text">{this.props.item.textBody}</p>
           </Col>
