@@ -121,12 +121,12 @@ class ReviewForm extends Component {
   };
 
   render() {
-    console.log('checking empty body state: ', this.state.emptyBody);
+    // console.log('checking empty body state: ', this.state.emptyBody);
     const genres = this.props.location.state.genres + ' ';
     const newGenres = genres.split(',').join(`, `);
     const countries = this.props.location.state.countries + ' ';
     const newCountries = countries.split(',').join(`, `);
-    console.log('all props in Review form: ', this.props.location.state);
+    // console.log('all props in Review form: ', this.props.location.state);
 
     return (
       <Container className="movieRevWrapper">
