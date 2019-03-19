@@ -28,7 +28,7 @@ class PremiumView extends Component {
       withCredentials: true
     })
     .then(userRes => {
-      // console.log('userRes', userRes)
+      console.log('userRes', userRes)
       if (!userRes.data) {
         console.log(userRes.error);
         return;

@@ -89,7 +89,9 @@ class MyReviews extends Component {
               <div className="My-Reviews">
                 <header className="sidebar" />
                 <div className="reviews-section text-left">
-                  <ReviewsList reviewslist={this.state.reviews} />
+                  <ReviewsList 
+                    getReleaseYear={this.props.getReleaseYear}
+                    reviewslist={this.state.reviews} />
                 </div>
               </div>
             </div>

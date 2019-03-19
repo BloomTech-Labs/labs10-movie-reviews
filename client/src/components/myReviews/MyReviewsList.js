@@ -12,7 +12,9 @@ function MyReviewsList(props) {
         <div className="reviews-card-wrapper">
           {props.reviewslist.map(review => (
             <div className="review-card" key={review.id}>
-              <Review review={review} />
+              <Review 
+                getReleaseYear={props.getReleaseYear}
+                review={review} />
             </div>
           ))}
         </div>
