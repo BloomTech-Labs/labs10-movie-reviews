@@ -32,18 +32,26 @@
   border: 1px solid #464e7d;
 }
 
+#noMarginLeft,
+#movieInfoWrapper {
+  margin-left: 0rem !important;
+  margin-top: 1rem !important;
+}
+
 @media (max-width: 991px) {
-  #noMarginLeft,
+  /* #noMarginLeft,
   #movieInfoWrapper {
-    margin-left: 0rem;
-  }
+    margin-left: 0rem !important;
+  } */
 }
 .bold {
   font-weight: bolder;
 }
-/* .bold .movieInfo {
-  font-size: 0.1rem;
-} */
+
 .movieInfo {
   color: #464e7d;
+}
+
+.wroteReview {
+  color: #5f6691;
 }
