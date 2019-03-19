@@ -29,6 +29,7 @@ class App extends Component {
       movies: [],
       random: '',
       randomTitle: '',
+      randomArr: [],
       resultLength: null,
       inputCriteria: '',
       searchCriteria: '',
@@ -39,6 +40,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.searchHandler = this.searchHandler.bind(this);
     this.getReleaseYear = this.getReleaseYear.bind(this);
+    this.randomPopularMovies = this.randomPopularMovies.bind(this);
   }
 
   componentDidMount() {
@@ -56,8 +58,15 @@ class App extends Component {
         const backdropURL =
           `${tmdbUrl}${response.data.results[random].backdrop_path}`;
         //grabs random movie backdrop_path (background image) from response data results array
+        const randomArr = response.data.results.concat().sort(function() {
+        return 0.5 - Math.random();
+        });
+        const start = Math.floor(Math.random() * 12);
+        const end = start + 8;
+
         this.setState({
           movies: response.data.results,
+          randomArr: randomArr.slice(start, end),
           random: backdropURL,
           randomTitle: title,
           loading: false
@@ -82,6 +91,15 @@ class App extends Component {
     return '(' + found + ')';
   }
 
+  randomPopularMovies() {
+    let randomArr = this.state.movies.concat();
+    randomArr = this.state.movies.sort(function() {
+      return 0.5 - Math.random();
+    });
+    const start = Math.floor(Math.random() * 12);
+    const end = start + 8;
+    this.setState({randomArr: randomArr.slice(start, end)});
+  }
   //this handles input when user types in the search box to search for movie and places that on state
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
@@ -171,6 +189,7 @@ class App extends Component {
                   movies={this.state.movies}
                   loading={this.state.loading}
                   randomBackgroundImage={this.state.random}
+                  randomArr={this.state.randomArr}
                   randomTitle={this.state.randomTitle}
                   getReleaseYear={this.getReleaseYear}
                   handleChange={this.handleChange}

@@ -8,6 +8,12 @@
   padding-left: 0;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .popular-img {
   /* min-height: 38vh; */
 }

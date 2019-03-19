@@ -5,36 +5,7 @@ const debugging = process.env.DEBUGGING.toLowerCase() === 'true' || false;
 
 const usersDb = require('../users/usersHelper');
 // ==============================================
-// Step #1 of login flow ➡️
-// this route ('/auth/twitter') initiates the
-// passport-twitter oauth flow. On the client-
-// side, an <a> tag with an href that equals:
-// href={`${twitterLogin}`}
-// (with our production origin as well) will
-// initiate the passport-twitter OAuth flow.
-// ==============================================
-router.get('/twitter', passport.authenticate('twitter'));
-
-// ==============================================
-// Step #2 of login flow ➡️
-// If step #1 is successful (if the user has
-// accepted the Twitter prompt), the user will be
-// redirected back to the React client.
-// ==============================================
-router.get(
-  '/twitter/callback',
-  passport.authenticate('twitter'),
-  (req, res) => {
-    if (process.env.NODE_ENV === 'production') {
-      res.redirect(process.env.REDIRECT_URI_PROD);
-    } else {
-      res.redirect(process.env.REDIRECT_URI_DEV);
-    }
-  }
-);
-
-// ==============================================
-// This route ('auth/logout'), which be on an <a>
+// This route ('auth/logout'), which is on an <a>
 // tag (logout button) on the client-side, will log
 // the user out, remove the user session data on
 // the endpoint ('auth/current_user'), then redirect
@@ -59,7 +30,7 @@ router.get('/logout', (req, res) => {
 // ==============================================
 router.get('/current_user', (req, res) => {
   if (!req.user || (req.user && !req.user.id)) {
-    res.status(400).send({ error: 'You are not log in' });
+    res.status(400).send({ error: 'You are not logged in' });
   }
   else {
 
@@ -77,6 +48,13 @@ router.get('/current_user', (req, res) => {
 });
 
 // passport.authenticate middleware is used here to authenticate the request
+// Step #1 of login flow ➡️
+// this route ('/auth/google') initiates the
+// passport google oauth flow. On the client-
+// side, an <a> tag with an href that equals:
+// href={`${googleLogin}`}
+// (with our production origin as well) will
+// initiate the passport google OAuth flow.
 router.get(
   '/google',
   passport.authenticate('google', {
@@ -92,5 +70,36 @@ router.get('/google/callback', passport.authenticate('google'), (req, res) => {
     res.redirect(process.env.REDIRECT_URI_DEV);
   }
 });
+
+// Twitter Strategy -- commented out due to lack of time to implement on client side
+ // ==============================================
+// Step #1 of login flow ➡️
+// this route ('/auth/twitter') initiates the
+// passport-twitter oauth flow. On the client-
+// side, an <a> tag with an href that equals:
+// href={`${twitterLogin}`}
+// (with our production origin as well) will
+// initiate the passport-twitter OAuth flow.
+// ==============================================
+// router.get('/twitter', passport.authenticate('twitter'));
+
+// ==============================================
+// Step #2 of login flow ➡️
+// If step #1 is successful (if the user has
+// accepted the Twitter prompt), the user will be
+// redirected back to the React client.
+// ==============================================
+// router.get(
+//   '/twitter/callback',
+//   passport.authenticate('twitter'),
+//   (req, res) => {
+//     if (process.env.NODE_ENV === 'production') {
+//       res.redirect(process.env.REDIRECT_URI_PROD);
+//     } else {
+//       res.redirect(process.env.REDIRECT_URI_DEV);
+//     }
+//   }
+// );
+
 
 module.exports = router;
