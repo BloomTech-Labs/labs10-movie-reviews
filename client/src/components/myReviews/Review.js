@@ -177,7 +177,7 @@ class Review extends Component {
               </Link>
               <div className="pt-0">
                 <p className="card-text" />
-                <h5 className="mt-3">{this.state.title}</h5>
+                <h5 className="mt-3">{`${this.state.title} ${this.props.getReleaseYear(this.state.releaseDate)}`}</h5>
                 <div className="">
                   <div className="my-4">
                     <button

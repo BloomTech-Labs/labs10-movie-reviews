@@ -218,8 +218,16 @@ class App extends Component {
                 />
               )}
             />
+            <Route path="/myreviews" 
+              render={props => (
+                <MyReviews
+                  {...props}
+                  getReleaseYear={this.getReleaseYear}
+                  />
+              )} 
+            />
+
             <Route path="/dummyusers" component={Dummyusers} />
-            <Route path="/myreviews" component={MyReviews} />
             <Route path="/reviewform/:id" component={ReviewForm} />
             <Route path="/moviereviews/:id" component={MovieRev} />
             <Route path="/premium" component={PremiumView} />
