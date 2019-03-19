@@ -126,7 +126,7 @@ class ReviewForm extends Component {
     const newGenres = genres.split(',').join(`, `);
     const countries = this.props.location.state.countries + ' ';
     const newCountries = countries.split(',').join(`, `);
-    // console.log('all props in Review form: ', this.props.location.state);
+    console.log('all props in Review form: ', this.props.location.state);
 
     return (
       <Container className="movieRevWrapper">

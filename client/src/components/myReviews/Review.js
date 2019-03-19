@@ -173,7 +173,7 @@ class Review extends Component {
                             title: this.state.title,
                             year: this.state.year,
                             overview: this.state.overview,
-                            img: this.state.img,
+                            img: `${tmdbUrl}${this.state.img}`,
                             edit: true,
                             textBody: this.props.review.textBody,
                             rating: this.props.review.rating,
