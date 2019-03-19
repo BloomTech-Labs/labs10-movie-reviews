@@ -47,9 +47,11 @@
 .bold {
   font-weight: bolder;
 }
-/* .bold .movieInfo {
-  font-size: 0.1rem;
-} */
+
 .movieInfo {
   color: #464e7d;
+}
+
+.wroteReview {
+  color: #5f6691;
 }
