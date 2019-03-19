@@ -37,15 +37,21 @@ passport.use(
         if (debugging === true) console.log('existingUser-passportjs:', existingUser);
         done(null, existingUser);
       } else {
-        const user =  await usersDb.createUser({
-          googleId: profile.id,
-          name: profile.displayName,
-          email: profile.emails[0].value,
-          photo: profile.photos[0].value
-        });
-        if (debugging === true) console.log('user-passportjs:', user);
-        done(null, user);
-      }
+          const user =  usersDb.createUser({
+            googleId: profile.id,
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            photo: profile.photos[0].value
+          });
+          const found = await usersDb.findUserByProfileId({
+            googleId: profile.id,
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            photo: profile.photos[0].value
+          });
+          if (debugging === true) console.log('user after create', found);
+          done(null, found);
+        }
     }
   )
 );
