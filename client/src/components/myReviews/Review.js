@@ -23,7 +23,10 @@ class Review extends Component {
     overview: '',
     img: '',
     isEditing: false,
-    isShowing: false
+    isShowing: false,
+    releaseDate: '',
+    countries: '',
+    genres: ''
   };
   componentDidMount() {
     const movie_id = this.props.review.movieId;
@@ -36,15 +39,33 @@ class Review extends Component {
     );
     promise
       .then(response => {
-        // console.log('response in movie rev: ', response);
+        console.log('response in movie rev: ', response);
+        const genres = [];
+        response.data.genres
+          ? response.data.genres.filter(word => genres.push(word.name))
+          : console.log('got 0 genres');
+        const countries = [];
+        response.data.production_countries
+          ? response.data.production_countries.filter(item =>
+              countries.push(item.name)
+            )
+          : console.log('got 0 countries');
         this.setState({
           title: response.data.title,
           // year: response.data.release_date,
           overview: response.data.overview,
           img: response.data.backdrop_path,
-          id: response.data.id
+          id: response.data.id,
+          releaseDate: response.data.release_date,
+          countries: countries,
+          genres: genres
         });
-        // console.log('movies id: ', this.state.id);
+        console.log(
+          'movie info: ',
+          this.state.releaseDate,
+          this.state.countries,
+          this.state.genres
+        );
       })
       .catch(err => {
         console.log(err);
@@ -173,11 +194,14 @@ class Review extends Component {
                             title: this.state.title,
                             year: this.state.year,
                             overview: this.state.overview,
-                            img: this.state.img,
+                            img: `${tmdbUrl}${this.state.img}`,
                             edit: true,
                             textBody: this.props.review.textBody,
                             rating: this.props.review.rating,
-                            movieId: this.props.review.movieId
+                            movieId: this.props.review.movieId,
+                            genres: this.state.genres,
+                            year: this.state.releaseDate,
+                            countries: this.state.countries
                           }
                         }}
                         style={{ textDecoration: 'none', color: 'white' }}
