@@ -25,6 +25,7 @@ export default class MovieRev extends React.Component {
       trailerKey: '',
       reviews: [],
       stripeId: '',
+      newRating: 0,
       premium: false
     };
   }
@@ -128,13 +129,28 @@ export default class MovieRev extends React.Component {
           reviews: result
         });
         console.log('state reviews: ', this.state.reviews);
+        let total = 0;
+        const totalRating = this.state.reviews.map(review => {
+          total = total + review.rating;
+          return total;
+        });
+        const newTotal = parseFloat(total / this.state.reviews.length);
+        const newTotal1 = newTotal.toFixed(1);
+        this.setState({
+          newRating: newTotal1
+        });
+        console.log('newRating: ', this.state.newRating);
+        // console.log(
+        //   'allRatings const: ',
+        //   parseFloat(total / this.state.reviews.length)
+        // );
       })
       .catch(err => {
         console.log(err);
       });
   }
   render() {
-    // console.log('all props movie rev has: ', this.props);
+    console.log('all props movie rev has: ', this.props);
     // console.log('this.state', this.state);
     const data = this.state.reviews;
     const genres = this.state.genres + ' ';
@@ -160,6 +176,7 @@ export default class MovieRev extends React.Component {
                 <br />
                 <br />
                 <h5 className="card-title">{this.state.title}</h5>
+                <p>Rating: {this.state.newRating}</p>
                 <a
                   href={`https://www.youtube.com/embed/${
                     this.state.trailerKey
