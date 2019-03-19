@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import { reviewById } from '../../services/reviewURLs';
@@ -96,6 +96,25 @@ class Review extends Component {
     this.setState({ isEditing: true });
   };
 
+  getReviewDate = string => {
+    let regex = /(18|19|20)\d{2}-(0|1)\d{1}-(0|1|2|3)\d{1}/g;
+
+    let found = string.match(regex);
+    console.log(found);
+    if (!found) {
+      return '';
+    } else {
+      let split = found[0].split('');
+      console.log(split);
+      let year = split.splice(0, 4).join('');
+      let month = split.splice(1, 2).join('');
+      let day = split.splice(2).join('');
+      console.log(year, month, day);
+
+      return month + '-' + day + '-' + year;
+    }
+  };
+
   render() {
     const { rating, textBody, created_at } = this.props.review;
     console.log('all props in review page: ', this.props);
@@ -185,7 +204,7 @@ class Review extends Component {
                   starCount={5}
                   value={rating}
                 />
-                <p className="space"> Date: {created_at}</p>
+                <p className="space"> Date: {this.getReviewDate(created_at)}</p>
               </div>
               <p className="textbody">{textBody}</p>
             </Col>
