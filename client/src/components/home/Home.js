@@ -6,13 +6,6 @@ import './mappedItem.css';
 import FeatureList from './FeatureList';
 
 const Home = props => {
-  let randomArr = props.movies.concat();
-  randomArr = props.movies.sort(function() {
-    return 0.5 - Math.random();
-  });
-  const start = Math.floor(Math.random() * 12);
-  const end = start + 8;
-  const movies = randomArr.slice(start, end);
 
   return (
     <>
@@ -31,7 +24,7 @@ const Home = props => {
         <h4 className="popular-title">Today's Popular Movies</h4>
         <div className="cardWrapper">
           <Row className="nopadding">
-            {movies.map(item => {
+            {props.randomArr.map(item => {
               // console.log('results', item);
               return <MappedItem key={item.id} item={item} />;
             })}
