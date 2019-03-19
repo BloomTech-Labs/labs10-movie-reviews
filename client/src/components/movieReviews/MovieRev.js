@@ -186,7 +186,9 @@ export default class MovieRev extends React.Component {
                           title: this.state.title,
                           year: this.state.year,
                           overview: this.state.overview,
-                          img: this.state.img
+                          img: this.state.img,
+                          genres: newGenres,
+                          countries: newCountries
                         }
                       }}
                     >
@@ -202,7 +204,7 @@ export default class MovieRev extends React.Component {
                     </button>
                   </Link>
                 )}
-                <div className="card-text mb-1" id="movieInfoWrapper">
+                <div className="card-text" id="movieInfoWrapper">
                   <p>
                     <span className="bold">Genres:</span>{' '}
                     <span className="movieInfo">{newGenres}</span>
