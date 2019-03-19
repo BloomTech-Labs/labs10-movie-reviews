@@ -36,14 +36,15 @@
 .col-md-8 .textbody {
   margin-top: 10px;
 }
+
 .movieTitle {
   font-weight: bolder;
 }
-@media (max-width: 991px) {
-  #noMarginL {
-    margin-left: 0rem;
-  }
+
+#noMarginL {
+  margin-left: 0rem !important;
 }
+
 .errorM {
   color: red;
   margin-right: 2rem;
