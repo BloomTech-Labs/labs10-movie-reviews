@@ -90,7 +90,7 @@ export default class MovieRev extends React.Component {
               countries.push(item.name)
             )
           : console.log('got 0 countries');
-          const backdropImgUrl = `${tmdbUrl}${response.data.backdrop_path}`;
+        const backdropImgUrl = `${tmdbUrl}${response.data.backdrop_path}`;
         this.setState({
           title: response.data.title,
           year: response.data.release_date,
@@ -171,12 +171,12 @@ export default class MovieRev extends React.Component {
                 >
                   Watch Trailer
                 </a>
-                {/* </div>
-                    <div className="col-xs-6"> */}
-
                 {this.state.premium ? (
                   findIfWrote.length ? (
-                    <p> You already wrote a review</p>
+                    <p className="wroteReview mt-1">
+                      {' '}
+                      You already wrote a review for this movie{' '}
+                    </p>
                   ) : (
                     <Link
                       to={{
