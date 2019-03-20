@@ -67,7 +67,7 @@ class MyReviews extends Component {
         <Row>
           <Col lg="3">
             <div className="placeholder">
-              <a href={`${placeholderUrl}`}>
+              <a href="">
                 <img
                   className="myreviews-avatar img-responsive mb-3 "
                   src={this.state.photo}
@@ -89,9 +89,10 @@ class MyReviews extends Component {
               <div className="My-Reviews">
                 <header className="sidebar" />
                 <div className="reviews-section text-left">
-                  <ReviewsList 
+                  <ReviewsList
                     getReleaseYear={this.props.getReleaseYear}
-                    reviewslist={this.state.reviews} />
+                    reviewslist={this.state.reviews}
+                  />
                 </div>
               </div>
             </div>
