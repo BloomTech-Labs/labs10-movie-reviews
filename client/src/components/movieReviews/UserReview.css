@@ -23,7 +23,7 @@
 .spaceU {
   /* width: 7rem; */
   margin-top: 5px;
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
   margin-left: 1rem;
   float: right;
 }
@@ -32,8 +32,8 @@
   line-height: 1.5rem;
 }
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   .card-text {
     margin-left: 1rem;
   }
-}
+} */
