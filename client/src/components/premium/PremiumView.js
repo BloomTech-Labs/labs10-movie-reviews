@@ -33,6 +33,11 @@ class PremiumView extends Component {
         console.log(userRes.error);
         return;
       }
+      // .axios.put(`${users}/${id}`, {
+      //   name,
+      //   email,
+      //   stripeId: paymentRes.data.stripeId
+      // });
   
       const { id, photo, email, name, stripeId } = userRes.data;
       // console.log(userRes.data);
@@ -103,23 +108,26 @@ class PremiumView extends Component {
     });
 
     if (updateUserStripeIdRes.status === 200) {
+    
       const cancellationRes = await axios.post(customerDelete, {
         stripeid: this.state.stripeId
       });
-
+      console.log('cancellationRes', cancellationRes)
       if (cancellationRes.data.deleted) {
         this.setState({
           premium: false,
           subType: '',
           stripeId: '',
+          loggedIn: true,
+          paymentSuccess: false,
         });
       }
     }
   };
 
   render() {
-    // console.log('this state', this.state);
-    // console.log('currentUser', currentUser);
+    console.log('this state\n', this.state);
+    console.log('currentUser\n', currentUser);
     return (
       <div className="container bg-custom top-padding">
         <div className="row">
@@ -213,15 +221,15 @@ class PremiumView extends Component {
               : null
             }
             {!this.state.premium ? (
-              <h3 className="font-weight-light">Premium Subscriptions</h3>
+              <h4 className="font-weight-light">Premium Subscriptions</h4>
             ) : this.state.subType === 'Yearly' ? (
-              <h3 className="font-weight-light text-center">
+              <h4 className="font-weight-light text-center">
                 Yearly Premium
-              </h3>
+              </h4>
             ) : (
-              <h3 className="font-weight-light text-center">
+              <h4 className="font-weight-light text-center">
                 Monthly Premium
-              </h3>
+              </h4>
             )}
 
             <div className="row">

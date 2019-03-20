@@ -16,7 +16,7 @@ const premiumCard = props => {
       {/* <div className="card-header bg-dark text-white">{props.header}</div> */}
 
       <div className="card-body bg-light">
-        <h3 className="card-title">
+        <h3 className="card-title" id="card-title2">
           <span
             className={`
               badge 
@@ -34,8 +34,8 @@ const premiumCard = props => {
           >
             {props.priceTitle} 
             {props.totalCents === 999 ? " /year" : " /month"}
-          </span>
           {/* <span className="badge badge-light">/ year</span> */}
+          </span>
         </h3>
         <p className="card-text text-secondary">
           As a premium member, you can write reviews on any movie,
