@@ -5,6 +5,7 @@
 
 .card-title {
   margin-bottom: 1rem !important;
+  font-size: 
 }
 
 .card-sub-type {
@@ -41,7 +42,7 @@
   height: 200px !important;
 }
 
-.col-md-8 h3 {
+.col-md-8 h4 {
   margin-bottom: 3rem;
 }
 
@@ -70,7 +71,7 @@ ul li h5 span {
     font-size: 15px;
   }
 
-  .col-md-8 h3 {
+  .col-md-8 h4 {
     margin: 1rem 0 .4rem 0;
     font-weight: 400;
     font-size: 25px;
@@ -118,7 +119,7 @@ ul li h5 span {
     font-size: 15px;
     margin: 1.5rem auto .8rem auto !important;
   }
-  .col-md-8 h3 {
+  .col-md-8 h4 {
     margin: 1.5rem 0 .4rem 0;
     font-weight: 400;
     font-size: 25px;
