@@ -3,7 +3,7 @@ import Hero from './Hero/Hero';
 import MappedItem from './MappedItem';
 import { Row } from 'reactstrap';
 import './mappedItem.css';
-import FeatureList from './FeatureList';
+import FeatureList from './FeatureList20';
 
 const Home = props => {
 
