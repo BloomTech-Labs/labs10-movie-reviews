@@ -80,8 +80,8 @@ export default class UserReview extends React.Component {
               </Link>
 
               <ul className="list-group list-group-flush text-left">
-                <li className="bg-white">
-                  <span className="small badge badge-light mr-1">Name: </span>
+                <li className="bg-white mr-1 mt-1 mb-1">
+                  <span className="small badge badge-light">Name: </span>
                   <span className="badge badge-light">{this.state.name1}</span>
                 </li>
               </ul>
@@ -89,7 +89,7 @@ export default class UserReview extends React.Component {
             {/* </div> */}
           </Col>
           <Col lg="9" sm="12" className="mt-1">
-            <div className="goFlex mb-1">
+            <div className="goFlex">
               {/* <div className="marginLeft"> */}
               <StarRatingComponent
                 name="rate2"
@@ -104,7 +104,7 @@ export default class UserReview extends React.Component {
                 Date: {this.getReviewDate(this.props.item.created_at)}
               </p>
             </div>
-            <p className="card-text">{this.props.item.textBody}</p>
+            <p className="card-text ml-0 mb-1">{this.props.item.textBody}</p>
           </Col>
         </Row>
       </div>
