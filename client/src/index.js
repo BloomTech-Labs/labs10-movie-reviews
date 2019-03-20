@@ -6,12 +6,15 @@ import App from './App';
 import * as serviceWorker from './services/serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import ScrollToTop from './components/ScrollToTop';
 
 require('dotenv').config();
 
 ReactDOM.render(
   <Router>
-    <App />
+    <ScrollToTop>
+      <App />
+    </ScrollToTop>
   </Router>,
   document.getElementById('root')
 );
