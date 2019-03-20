@@ -108,23 +108,26 @@ class PremiumView extends Component {
     });
 
     if (updateUserStripeIdRes.status === 200) {
+    
       const cancellationRes = await axios.post(customerDelete, {
         stripeid: this.state.stripeId
       });
-
+      console.log('cancellationRes', cancellationRes)
       if (cancellationRes.data.deleted) {
         this.setState({
           premium: false,
           subType: '',
           stripeId: '',
+          loggedIn: true,
+          paymentSuccess: false,
         });
       }
     }
   };
 
   render() {
-    // console.log('this state', this.state);
-    // console.log('currentUser', currentUser);
+    console.log('this state\n', this.state);
+    console.log('currentUser\n', currentUser);
     return (
       <div className="container bg-custom top-padding">
         <div className="row">
