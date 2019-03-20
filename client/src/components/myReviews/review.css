@@ -3,9 +3,17 @@
   margin-top: 5px !important;
 }
 
-.edit-delete-btns {
+.my-4 button a {
   width: 90px;
+  color: rgb(237, 237, 233);
 }
+
+.my-4 button a:hover {
+  width: 90px;
+  color: rgb(70, 78, 125);
+  text-decoration: none;
+}
+
 @media (min-width: 0px) {
   .edit-delete-btns {
     width: 48%;
