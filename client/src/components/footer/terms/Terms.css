@@ -1,3 +1,58 @@
 .terms-wrapper {
     min-height: 84vh;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 0px 40px;
+    background: white;
+    text-align: left;
+}
+
+.terms-wrapper h1 {
+    font-size: 2.6rem;
+    margin-top: 40px;
+}
+
+.terms-page-wrapper {
+    display: flex;
+    flex-direction :column;
+    padding: 40px;
+}
+
+span {
+    font-weight: bolder;
+}
+
+.terms-list {
+    list-style-type: lower-alpha;
+    margin: 40px;
+    line-height: 1.5;
+}
+
+div {
+    line-height: 1.25;
+}
+
+.terms-numerical-list {
+    margin: 20px;
+    list-style: decimal;
+}
+
+.terms-numerical-list li {
+    margin: 20px;
+}
+
+.terms-header {
+    display: flex;
+
+}
+.terms-header h1 {
+    font-size: 1.25rem;
+    margin: 0px 40px;
+}
+
+.terms-header p {
+    display: flex;
+    align-self: flex-end;
+    font-size: .8rem;
+    font-style: oblique;
 }
