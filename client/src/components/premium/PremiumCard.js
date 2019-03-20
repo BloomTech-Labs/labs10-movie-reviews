@@ -16,7 +16,7 @@ const premiumCard = props => {
       {/* <div className="card-header bg-dark text-white">{props.header}</div> */}
 
       <div className="card-body bg-light">
-        <h3 className="card-title">
+        <h3 className="card-title" id="card-title2">
           <span
             className={`
               badge 
