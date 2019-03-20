@@ -34,6 +34,7 @@ const premiumCard = props => {
           >
             {props.priceTitle} 
             {props.totalCents === 999 ? " /year" : " /month"}
+          {/* <span className="badge badge-light">/ year</span> */}
           </span>
           {/* <span className="badge badge-light">/ year</span> */}
         </h3>
