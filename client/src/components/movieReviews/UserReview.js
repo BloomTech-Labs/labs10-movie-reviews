@@ -104,7 +104,7 @@ export default class UserReview extends React.Component {
                 Date: {this.getReviewDate(this.props.item.created_at)}
               </p>
             </div>
-            <p className="card-text ml-0 mb-1">{this.props.item.textBody}</p>
+            <p className="textbody mb-2">{this.props.item.textBody}</p>
           </Col>
         </Row>
       </div>
