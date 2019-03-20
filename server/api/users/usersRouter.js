@@ -20,12 +20,16 @@ router.get('/users', (req, res) => {
 // GET request that gets a user by id
 router.get('/users/:id', (req, res) => {
   const { id } = req.params;
-  getUsersById(id).then(user =>
-    res
-      .status(200)
-      .send(user)
-      .catch(error => res.status(500).send(error))
-  );
+  try {
+    const user = await usersDb.getUsersById(id);
+    if (user && user.length > 0) {
+      res.status(200).send(user[0]);
+    } else {
+      res.status(404).send('Cannot get user data');
+    }
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 // POST request to add a user

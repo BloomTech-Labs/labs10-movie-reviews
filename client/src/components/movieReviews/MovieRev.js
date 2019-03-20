@@ -6,7 +6,7 @@ import axios from 'axios';
 import UserReview from './UserReview';
 import { reviews } from '../../services/reviewURLs';
 import { tmdbUrl, theMovieDbUrl } from '../../services/resourceURLs';
-import { currentUser } from '../../services/userURLs';
+import { currentUser, users } from '../../services/userURLs';
 import { customerPlan } from '../../services/paymentURLs';
 
 export default class MovieRev extends React.Component {
@@ -32,9 +32,13 @@ export default class MovieRev extends React.Component {
 
   componentWillMount = async () => {
     // this.fetchReviews();
-    const userRes = await axios.get(currentUser, {
+    const currentUserRes = await axios.get(currentUser, {
       withCredentials: true
     });
+    let userRes;
+    if (currentUserRes.data) {
+      userRes = await axios.get(`${users}/${currentUserRes.data.id}`);
+    }
     if (userRes.data) {
       // console.log('userRes.data', userRes.data);
       const stripeId = userRes.data.stripeId;
