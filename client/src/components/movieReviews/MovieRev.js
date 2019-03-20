@@ -176,7 +176,9 @@ export default class MovieRev extends React.Component {
                 <br />
                 <br />
                 <h5 className="card-title">{this.state.title}</h5>
-                <p>Rating: {this.state.newRating}</p>
+                <p className="mb-1">
+                  Rating: <span className="averageRating">{this.state.newRating}</span>
+                </p>
                 <a
                   href={`https://www.youtube.com/embed/${
                     this.state.trailerKey

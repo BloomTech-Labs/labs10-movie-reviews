@@ -55,3 +55,9 @@
 .wroteReview {
   color: #5f6691;
 }
+
+.averageRating {
+  background-color: #ffb301;
+  padding: 0 1rem;
+  font-weight: bolder;
+}
