@@ -33,11 +33,11 @@ class PremiumView extends Component {
         console.log(userRes.error);
         return;
       }
-      .axios.put(`${users}/${id}`, {
-        name,
-        email,
-        stripeId: paymentRes.data.stripeId
-      });
+      // .axios.put(`${users}/${id}`, {
+      //   name,
+      //   email,
+      //   stripeId: paymentRes.data.stripeId
+      // });
   
       const { id, photo, email, name, stripeId } = userRes.data;
       // console.log(userRes.data);
