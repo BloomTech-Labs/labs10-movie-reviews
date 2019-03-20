@@ -68,41 +68,37 @@ export default class UserReview extends React.Component {
     return (
       <div className="container card mb-3 pt-2 bg-white">
         <Row>
-          <Col lg="3" sm="12">
+          <Col lg="3" sm="12" className="mt-1">
             {/* <div className="pt-0"> */}
-            <div className="col">
-              <div className="placeholder">
-                <Link to={`/myreviews`}>
-                  <img
-                    className="movie-profile-avatar"
-                    src={this.state.photo1}
-                    alt="placeholder"
-                  />
-                </Link>
+            <div className="placeholder">
+              <Link to={`/myreviews`}>
+                <img
+                  className="movie-profile-avatar"
+                  src={this.state.photo1}
+                  alt="placeholder"
+                />
+              </Link>
 
-                <ul className="list-group list-group-flush text-left">
-                  <li className="bg-white">
-                    <span className="small badge badge-light mr-1">Name: </span>
-                    <span className="badge badge-light">
-                      {this.state.name1}
-                    </span>
-                  </li>
-                </ul>
-              </div>
+              <ul className="list-group list-group-flush text-left">
+                <li className="bg-white">
+                  <span className="small badge badge-light mr-1">Name: </span>
+                  <span className="badge badge-light">{this.state.name1}</span>
+                </li>
+              </ul>
             </div>
             {/* </div> */}
           </Col>
-          <Col lg="9" sm="12">
+          <Col lg="9" sm="12" className="mt-1">
             <div className="goFlex mb-1">
-              <div className="marginLeft">
-                <StarRatingComponent
-                  name="rate2"
-                  editing={false}
-                  renderStarIcon={() => <span className="smallStar">★</span>}
-                  starCount={5}
-                  value={this.props.item.rating}
-                />
-              </div>
+              {/* <div className="marginLeft"> */}
+              <StarRatingComponent
+                name="rate2"
+                editing={false}
+                renderStarIcon={() => <span className="smallStar">★</span>}
+                starCount={5}
+                value={this.props.item.rating}
+              />
+              {/* </div> */}
               <p className="spaceU text-right">
                 {' '}
                 Date: {this.getReviewDate(this.props.item.created_at)}
