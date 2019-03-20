@@ -23,7 +23,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - [Tech Stack](#tech-stack)
     - [Front End](#frontend-built-using)
     - [Back End](#backend-built-using)
-- [Reasoning](#why-this-stack)
+- [Analysis of Choosing Tech Stack](#analysis-of-choosing-tech-stack)
     - [React](#react)
     - [Netlify](#netlify)
     - [Express/Node](#express-node)
@@ -42,7 +42,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 - [Stripe](#stripe)
 - [Payment Structure](#payment-structure)
 - [The Movie Database](#the-movie-database)
-- [Passport JS](#Passport-JS)
+- [Authentication](#authentication)
 - [Design](#design)
 
 ## Tech Stack
@@ -86,7 +86,7 @@ Server: [https://labs10-movie-reviews.herokuapp.com/](https://labs10-movie-revie
 
 <p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
-#### Why this Stack
+#### Analysis of Choosing Tech Stack
 
 ##### React
 
@@ -140,7 +140,7 @@ The application for the most part was set up to continuously deploy to Netlify a
     - DATABASE_URL= given variable by Heroku when using their PostgreSQL database plugin
     - NODE_ENV= tells us to use production or development
 
-    * Please see [Google Strategy](#google-strategy) for requirements on that variable. 
+* Please see [Google Strategy](#google-strategy) for requirements on that variable. 
 
 <p align="center"><a href="#table-of-contents"><strong>Back To Top</strong></a></p> 
 
@@ -325,11 +325,11 @@ class PayButton extends Component {
     }
 ```
 
-##### You can view your payment transactions from the Stripe Dashboard once you have configured the API keys into the project.
+- ##### You can view your payment transactions from the Stripe Dashboard once you have configured the API keys into the project.
 
-- ##### Payment Structure
+    - ##### Payment Structure
 
-    A person who is _searching_ for a movie or reads reviews does **not** need to make any payments for our service
+        A person who is _searching_ for a movie or reads reviews does **not** need to make any payments for our service
 
     - ##### Users who wish to post a movie review have the following options:
         - Year long subscription for **$9.99** per year
@@ -344,9 +344,9 @@ class PayButton extends Component {
     To use The Movie Database as a developer, you need to enroll in an Account and receive an API_KEY. Instructions to apply for an API_KEY are provided [here](https://developers.themoviedb.org/3/getting-started/introduction). When API_Key is obtained, place it in the frontend `.env` file you have created.
 
 
-- ##### Passport-JS
+- ##### Authentication
 
-    * This application uses [Passport-JS](http://passportjs.org) to handle OAuth. Two strategies were used in this implementation:
+    * This application uses [Passport-JS](http://passportjs.org) to handle OAuth. One strategy was used in this implementation:
 
         - [Passport Google Strategy](http://www.passportjs.org/packages/passport-google-oauth20/)
 
