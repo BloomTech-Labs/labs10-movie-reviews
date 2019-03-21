@@ -67,7 +67,7 @@ export default class UserReview extends React.Component {
 
     return (
       <div className="container card mb-3 pt-2 bg-white">
-        <Row>
+        <Row className="mt-3 mb-3">
           <Col lg="3" sm="12" className="mt-1">
             {/* <div className="pt-0"> */}
             <div className="placeholder">
