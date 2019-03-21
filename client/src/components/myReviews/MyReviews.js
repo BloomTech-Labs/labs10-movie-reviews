@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { currentUser } from '../../services/userURLs';
 import { currentUserReviews } from '../../services/reviewURLs';
-import { placeholderUrl } from '../../services/resourceURLs';
 
 import ReviewsList from './MyReviewsList';
 import './MyReviews.css';
@@ -19,7 +18,7 @@ class MyReviews extends Component {
     rating: null,
     textBody: '',
     name: '',
-    premium: ''
+    premium: null
   };
 
   componentDidMount = async () => {
@@ -34,6 +33,13 @@ class MyReviews extends Component {
           userRes.data.photo.substr(0, userRes.data.photo.length - 11) + '.jpg';
       } else {
         newPhoto = userRes.data.photo;
+      }
+      if (userRes.data.stripeId) {
+        userRes.data.premium_user = 1;
+        this.setState({premium: userRes.data.premium_user})
+      } else {
+        userRes.data.premium_user = 0;
+        this.setState({premium: userRes.data.premium_user});
       }
       this.setState({
         photo: newPhoto,
@@ -92,6 +98,7 @@ class MyReviews extends Component {
                   <ReviewsList
                     getReleaseYear={this.props.getReleaseYear}
                     reviewslist={this.state.reviews}
+                    premium={this.state.premium}
                   />
                 </div>
               </div>
