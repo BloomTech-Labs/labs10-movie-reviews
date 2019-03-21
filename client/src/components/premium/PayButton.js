@@ -20,6 +20,10 @@ class PayButton extends Component {
 
   componentDidMount = async () => {};
 
+  onClosed = () => {
+    this.props.loading()
+  }
+
   onToken = async token => {
     const { id, name, email } = this.props.currentUser;
 
