@@ -96,6 +96,7 @@ class PayButton extends Component {
         stripeKey={this.state.publishableKey}
         // image="" //Pop-in header image
         billingAddress={false}
+        closed={this.onClosed}
       >
         <button type="button" className="btn btn-outline-dark my-2 pay-button">
           <span className="">{this.state.subType} Subscribe Monthly</span>
