@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { currentUser } from '../../services/userURLs';
 import { currentUserReviews } from '../../services/reviewURLs';
-import { placeholderUrl } from '../../services/resourceURLs';
 
 import ReviewsList from './MyReviewsList';
 import './MyReviews.css';
@@ -99,6 +98,7 @@ class MyReviews extends Component {
                   <ReviewsList
                     getReleaseYear={this.props.getReleaseYear}
                     reviewslist={this.state.reviews}
+                    premium={this.state.premium}
                   />
                 </div>
               </div>
