@@ -19,7 +19,7 @@ class MyReviews extends Component {
     rating: null,
     textBody: '',
     name: '',
-    premium: ''
+    premium: null
   };
 
   componentDidMount = async () => {
