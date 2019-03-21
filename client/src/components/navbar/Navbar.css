@@ -41,9 +41,8 @@
     border-radius: 20px 0px 0px 20px;
     width: 80%;
   }
-  nav div div button {
+  #nav-button button {
     margin: 0;
-    padding: 20px;
     border: 1px solid var(--border-color)  1px solid var(--border-color) 1px solid var(--border-color) none !important;
     border-radius: 0px 20px 20px 0px !important;
   }
@@ -82,10 +81,8 @@
     width: 50% !important;
     border-radius: 20px 0px 0px 20px 
   }
-  nav div div button {
+  nav div div #nav-button button {
     margin: 0;
-    padding: 20px;
-    width: 20%;
     border: 1px solid var(--border-color)  1px solid var(--border-color) 1px solid var(--border-color) none !important;
     border-radius: 0px 20px 20px 0px !important;
   }

@@ -24,13 +24,14 @@ const HeroSearch = (props) => {
                 placeholder={props.randomTitle}
                 id="hero-input"
             />
-            <div className="call-to-action-buttons">
+            <div>
+            <Link to={`/search/?q=${props.searchCriteria}`}>
               <Button className="button" id="hero-button" onClick={props.searchHandler}>
-                <Link to={`/search/?q=${props.searchCriteria}`}>{props.buttonLabel}</Link>
+                {props.buttonLabel}
               </Button>
-              {/* button end */}
+            </Link>
             </div>
-            </>
+          </>
     );
 };
 

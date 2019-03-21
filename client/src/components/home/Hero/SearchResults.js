@@ -3,6 +3,13 @@ import ResultCard from './ResultCard';
 import { Link } from 'react-router-dom';
 
 const SearchResults = props => {
+  if(!props.searchResults.length) {
+    return (
+      <div className="search-results-container-none" style={{marginTop:"20px", padding: "40px"}}>
+        <h4>Your search yielded no results. Please <Link style={{textDecoration:"underline", color: "darkblue"}}to="/">try again.</Link></h4>
+      </div>
+    )
+  }
     return (
       <div className="search-results-container">
         {props.searchResults.map(result => {
