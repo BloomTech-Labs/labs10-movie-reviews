@@ -81,7 +81,7 @@ export default class UserReview extends React.Component {
 
               <ul className="list-group list-group-flush text-left">
                 <li className="bg-white mr-1 mt-1 mb-1">
-                  <span className="small badge badge-light">Name: </span>
+                  {/* <span className="small badge badge-light">Name: </span> */}
                   <span className="badge badge-light">{this.state.name1}</span>
                 </li>
               </ul>
