@@ -35,6 +35,13 @@ class MyReviews extends Component {
       } else {
         newPhoto = userRes.data.photo;
       }
+      if (userRes.data.stripeId) {
+        userRes.data.premium_user = 1;
+        this.setState({premium: userRes.data.premium_user})
+      } else {
+        userRes.data.premium_user = 0;
+        this.setState({premium: userRes.data.premium_user});
+      }
       this.setState({
         photo: newPhoto,
         name: userRes.data.name,
