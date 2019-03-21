@@ -24,9 +24,9 @@ const HeroSearch = (props) => {
                 placeholder={props.randomTitle}
                 id="hero-input"
             />
-            <div>
+            <div id="hero-button" onClick={props.searchHandler}>
             <Link to={`/search/?q=${props.searchCriteria}`}>
-              <Button className="button" id="hero-button" onClick={props.searchHandler}>
+              <Button className="button" onClick={props.searchHandler}>
                 {props.buttonLabel}
               </Button>
             </Link>

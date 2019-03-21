@@ -80,6 +80,7 @@ class ProductionNavigation extends React.Component {
             />
             <Link 
               id="nav-button"
+              onClick={this.props.searchHandler}
               to={`/search/?q=${this.props.inputCriteria}`}>
               <Button
                 className="btn btn-outline-success"
