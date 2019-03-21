@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Spinner } from 'reactstrap';
 import './premium.css';
 import PremiumCard from './PremiumCard';
 import axios from 'axios';
@@ -19,60 +20,54 @@ class PremiumView extends Component {
       subType: '',
       loggedIn: false,
       paymentSuccess: false,
+      loading: false,
     };
   }
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     // check if user already logging in or not
     axios.get(currentUser, {
       withCredentials: true
     })
-    .then(userRes => {
-      console.log('userRes', userRes)
-      if (!userRes.data) {
-        console.log(userRes.error);
+    .then(currentUserRes => {
+      console.log('userRes', currentUserRes)
+      if (!currentUserRes.data) {
+        console.log("currentUserError",currentUserRes.error);
+        this.setState({
+          loggedIn: false
+        })
         return;
       }
-      // .axios.put(`${users}/${id}`, {
-      //   name,
-      //   email,
-      //   stripeId: paymentRes.data.stripeId
-      // });
-  
-      const { id, photo, email, name, stripeId } = userRes.data;
-      // console.log(userRes.data);
-      if (!stripeId) {
-        this.setState({ id, photo, email, name, loggedIn: true });
-      } else {
-        this.handleLoadSubType(stripeId, userRes.data, { loggedIn: true });
+
+      if (currentUserRes.data) {
+        const { id, photo, email, name } = currentUserRes.data;
+        axios
+          .get(`${users}/${currentUserRes.data.id}`)
+          .then(userRes => {
+            const stripeId = userRes.data.stripeId ? userRes.data.stripeId : '';
+
+            if (!stripeId) {
+              this.setState({ id, photo, email, name, loggedIn: true });
+              return;
+            } 
+    
+            if (stripeId) {
+              this.handleLoadSubType(stripeId, userRes.data, { loggedIn: true });
+              return;
+            }
+          })
       }
     })
     .catch(error => {
       console.log('error', error)
-      // console.log('history', this.props.history.push('/'));
-      // this.props.history.push('/');
       return;
     })
 
-    // if (!userRes.data) {
-    //   this.props.history.replace('/');
-    //   console.log(userRes.error);
-    //   return;
-    // }
-
-    // const { id, photo, email, name, stripeId } = userRes.data;
-    // console.log(userRes.data);
-    // if (!stripeId) {
-    //   console.log('I have not subscribed yet');
-    //   this.setState({ id, photo, email, name });
-    // } else {
-    //   this.handleLoadSubType(stripeId, userRes.data);
-    // }
   };
 
   handleCompleteSuccessfulPayment = stripeId => {
     const { id, photo, email, name } = this.state;
-    this.handleLoadSubType(stripeId, { id, photo, email, name }, {loggedIn: true, paymentSuccess: true });
+    this.handleLoadSubType(stripeId, { id, photo, email, name }, {loggedIn: true, paymentSuccess: true, loading: false});
   };
 
   handleLoadSubType = (stripeId, currentUser, options) => {
@@ -101,7 +96,7 @@ class PremiumView extends Component {
         });
       });
   };
-
+  
   handleCancel = async id => {
     const updateUserStripeIdRes = await axios.put(`${users}/${id}`, {
       stripeId: ''
@@ -124,6 +119,11 @@ class PremiumView extends Component {
       }
     }
   };
+
+  handleLoading = () => {
+    console.log('loading is true');
+    this.setState({ loading: true })
+  }
 
   render() {
     console.log('this state\n', this.state);
@@ -217,9 +217,12 @@ class PremiumView extends Component {
 
           <div className="col-md-8 mb-5">
             {this.state.paymentSuccess 
-              ? <h5 className="bg-white my-2 mx-2 py-3 px-3 text-success">Payment Successfully Processed</h5> 
-              : null
+              ? <h5 className="my-2 mx-2 py-3 pl-0 text-success text-left">Payment Successfully Processed</h5> 
+              : this.state.loading 
+                ? <h5 className="my-2 mx-2 py-3 pl-0 text-secondary text-left"><Spinner color="primary" /> Processing Payment</h5>
+                : null
             }
+            
             {!this.state.premium ? (
               <h4 className="font-weight-light">Premium Subscriptions</h4>
             ) : this.state.subType === 'Yearly' ? (
@@ -248,6 +251,7 @@ class PremiumView extends Component {
                       onCompleteSuccessfulPayment={
                         this.handleCompleteSuccessfulPayment
                       }
+                      loading={this.handleLoading}
                     />
                   </div>
 
@@ -264,6 +268,7 @@ class PremiumView extends Component {
                       onCompleteSuccessfulPayment={
                         this.handleCompleteSuccessfulPayment
                       }
+                      loading={this.handleLoading}
                     />
                   </div>
                 </>
@@ -284,6 +289,7 @@ class PremiumView extends Component {
                       onCompleteSuccessfulPayment={
                         this.handleCompleteSuccessfulPayment
                       }
+                      loading={this.handleLoading}
                     />
                   </div>
 
@@ -301,6 +307,7 @@ class PremiumView extends Component {
                       onCompleteSuccessfulPayment={
                         this.handleCompleteSuccessfulPayment
                       }
+                      loading={this.handleLoading}
                     />
                   </div>
                 </>
@@ -320,6 +327,7 @@ class PremiumView extends Component {
                       onCompleteSuccessfulPayment={
                         this.handleCompleteSuccessfulPayment
                       }
+                      loading={this.handleLoading}
                     />
                   </div>
 
@@ -338,6 +346,7 @@ class PremiumView extends Component {
                       onCompleteSuccessfulPayment={
                         this.handleCompleteSuccessfulPayment
                       }
+                      loading={this.handleLoading}
                     />
                   </div>
                 </>

@@ -20,6 +20,10 @@ class PayButton extends Component {
 
   componentDidMount = async () => {};
 
+  onClosed = () => {
+    this.props.loading()
+  }
+
   onToken = async token => {
     const { id, name, email } = this.props.currentUser;
 
@@ -75,6 +79,7 @@ class PayButton extends Component {
         stripeKey={this.state.publishableKey}
         // image="" //Pop-in header image
         billingAddress={false}
+        closed={this.onClosed}
       >
         <button type="button" className="btn btn-outline-dark my-2 pay-button">
           <span className="">{this.state.subType} Subscribe Yearly</span>
@@ -91,6 +96,7 @@ class PayButton extends Component {
         stripeKey={this.state.publishableKey}
         // image="" //Pop-in header image
         billingAddress={false}
+        closed={this.onClosed}
       >
         <button type="button" className="btn btn-outline-dark my-2 pay-button">
           <span className="">{this.state.subType} Subscribe Monthly</span>
