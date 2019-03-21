@@ -67,7 +67,7 @@ export default class UserReview extends React.Component {
 
     return (
       <div className="container card mb-3 pt-2 bg-white">
-        <Row>
+        <Row className="mt-3 mb-3">
           <Col lg="3" sm="12" className="mt-1">
             {/* <div className="pt-0"> */}
             <div className="placeholder">
@@ -81,7 +81,7 @@ export default class UserReview extends React.Component {
 
               <ul className="list-group list-group-flush text-left">
                 <li className="bg-white mr-1 mt-1 mb-1">
-                  <span className="small badge badge-light">Name: </span>
+                  {/* <span className="small badge badge-light">Name: </span> */}
                   <span className="badge badge-light">{this.state.name1}</span>
                 </li>
               </ul>
@@ -104,7 +104,7 @@ export default class UserReview extends React.Component {
                 Date: {this.getReviewDate(this.props.item.created_at)}
               </p>
             </div>
-            <p className="textbody mb-2 mt-1 mr-1">
+            <p className="textbody mb-2 mt-3 mr-1">
               {this.props.item.textBody}
             </p>
           </Col>
