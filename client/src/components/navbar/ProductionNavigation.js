@@ -78,15 +78,16 @@ class ProductionNavigation extends React.Component {
               onKeyUp={this.handleKeyUp}
               id="nav-input"
             />
-            <Button
+            <Link 
               id="nav-button"
-              className="btn btn-outline-success"
-              onClick={this.props.searchHandler}
-            >
-              <Link to={`/search/?q=${this.props.inputCriteria}`}>
-                {<i className="fas fa-search search-icon" />}
-              </Link>
-            </Button>
+              to={`/search/?q=${this.props.inputCriteria}`}>
+              <Button
+                className="btn btn-outline-success"
+                onClick={this.props.searchHandler}
+              >{<i className="fas fa-search search-icon" />}
+              </Button>
+            </Link>
+
           </div>
           <ul className="navbar-nav">
             <li className="nav-item active">
