@@ -30,9 +30,9 @@ class PremiumView extends Component {
       withCredentials: true
     })
     .then(currentUserRes => {
-      console.log('userRes', currentUserRes)
+      // console.log('userRes', currentUserRes)
       if (!currentUserRes.data) {
-        console.log("currentUserError",currentUserRes.error);
+        // console.log("currentUserError",currentUserRes.error);
         this.setState({
           loggedIn: false
         })
@@ -107,7 +107,7 @@ class PremiumView extends Component {
       const cancellationRes = await axios.post(customerDelete, {
         stripeid: this.state.stripeId
       });
-      console.log('cancellationRes', cancellationRes)
+      // console.log('cancellationRes', cancellationRes)
       if (cancellationRes.data.deleted) {
         this.setState({
           premium: false,
@@ -121,13 +121,13 @@ class PremiumView extends Component {
   };
 
   handleLoading = () => {
-    console.log('loading is true');
+    // console.log('loading is true');
     this.setState({ loading: true })
   }
 
   render() {
-    console.log('this state\n', this.state);
-    console.log('currentUser\n', currentUser);
+    // console.log('this state\n', this.state);
+    // console.log('currentUser\n', currentUser);
     return (
       <div className="container bg-custom top-padding">
         <div className="row">
