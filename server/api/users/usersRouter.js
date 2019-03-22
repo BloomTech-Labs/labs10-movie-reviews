@@ -9,12 +9,13 @@ const usersDb = require('./usersHelper.js');
 
 // A GET request that returns all users from the database
 router.get('/users', (req, res) => {
-  usersDb.getUsers().then(users =>
-    res
-      .status(200)
-      .send(users)
-      .catch(error => res.status(500).send(error))
-  );
+  usersDb.getUsers()
+    .then(users => {
+      res.status(200).send(users)
+    })
+    .catch(error => {
+      res.status(500).send(error)
+    });
 });
 
 // GET request that gets a user by id
