@@ -202,7 +202,7 @@ class Review extends Component {
                           }
                         }}
                       >
-                        Edit
+                        <button type="button"> Edit</button>
                       </Link>
                     </button>
                     <button
