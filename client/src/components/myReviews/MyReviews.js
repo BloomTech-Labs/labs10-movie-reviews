@@ -105,7 +105,7 @@ class MyReviews extends Component {
         <Row>
           <Col lg="3">
             <div className="placeholder">
-              <a href="">
+              <a href="/myreviews">
                 <img
                   className="myreviews-avatar img-responsive mb-3 "
                   src={this.state.photo}
