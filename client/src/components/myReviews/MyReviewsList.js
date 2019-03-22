@@ -7,9 +7,12 @@ function MyReviewsList(props) {
   if (props.reviewslist.length === 0 && props.premium === 1) {
     return <h4>No reviews found.</h4>;
   }
-  else if(props.premium === 0) {
-    return <h4>Become <Link to="/premium" style={{cursor:"pointer"}}>premium</Link> today to write reviews!</h4>
+
+  else if (props.premium === 0) {
+    return <h4>Become <Link to="/premium">premium</Link> to write a review today!</h4>
   }
+  
+  
   return (
     <div className="review-section">
       <div className="reviews-list-wrapper">

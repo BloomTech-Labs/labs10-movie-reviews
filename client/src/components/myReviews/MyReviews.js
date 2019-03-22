@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
-import { currentUser } from '../../services/userURLs';
+import { currentUser, users } from '../../services/userURLs';
 import { currentUserReviews } from '../../services/reviewURLs';
+import { customerPlan } from '../../services/paymentURLs';
+
 
 import ReviewsList from './MyReviewsList';
 import './MyReviews.css';
@@ -18,28 +20,58 @@ class MyReviews extends Component {
     rating: null,
     textBody: '',
     name: '',
-    premium: null
+    premium: 0,
+    stripeId: '',
+    currUserId: null
   };
 
   componentDidMount = async () => {
-    const userRes = await axios.get(currentUser, {
+    const currentUserRes = await axios.get(currentUser, {
       withCredentials: true
     });
+    let userRes;
+    if (currentUserRes.data) {
+      userRes = await axios.get(`${users}/${currentUserRes.data.id}`);
+    }
     if (userRes.data) {
+      // console.log('userRes.data', userRes.data);
+      const { photo, stripeId, twitterId } = userRes.data;
+
       let newPhoto;
-      if (userRes.data.twitterId) {
+      if (twitterId) {
         //this code takes the photo URL from twitter - which is low resolution and takes a substring of it and concats it with the jpg to give us a higher resolution photo for myReviews dashboard.
         newPhoto =
-          userRes.data.photo.substr(0, userRes.data.photo.length - 11) + '.jpg';
+          photo.substr(0, userRes.data.photo.length - 11) + '.jpg';
       } else {
-        newPhoto = userRes.data.photo;
+        newPhoto = photo;
       }
-      if (userRes.data.stripeId) {
-        userRes.data.premium_user = 1;
-        this.setState({premium: userRes.data.premium_user})
+      if (stripeId) {   
+        axios
+          .post(customerPlan, {
+            stripeId
+          })
+          .then(planRes => {
+            console.log(planRes);
+            if (planRes.data.premium) {
+              this.setState({
+                stripeId,
+                premium: 1,
+                currUserId: userRes.data.id
+              });
+            }
+            else {
+              
+            }
+          })
+          .catch(error => {
+            this.setState({
+              stripeId: '',
+              premium: 0, 
+              currUserId: userRes.data.id
+            });
+          });
       } else {
-        userRes.data.premium_user = 0;
-        this.setState({premium: userRes.data.premium_user});
+        this.setState({premium: 0});
       }
       this.setState({
         photo: newPhoto,
