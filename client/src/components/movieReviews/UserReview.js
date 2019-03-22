@@ -28,9 +28,9 @@ export default class UserReview extends React.Component {
     axios
       .get(users)
       .then(response => {
-        console.log('response auth - Users: ', response);
+        // console.log('response auth - Users: ', response);
         const user = response.data.filter(i => i.id === this.props.item.userId);
-        console.log('user: ', user[0]);
+        // console.log('user: ', user[0]);
         this.setState({
           photo1: user[0].photo,
           name1: user[0].name
@@ -45,24 +45,24 @@ export default class UserReview extends React.Component {
     let regex = /(18|19|20)\d{2}-(0|1)\d{1}-(0|1|2|3)\d{1}/g;
 
     let found = string.match(regex);
-    console.log(found);
+    // console.log(found);
     if (!found) {
       return '';
     } else {
       let split = found[0].split('');
-      console.log(split);
+      // console.log(split);
       let year = split.splice(0, 4).join('');
       let month = split.splice(1, 2).join('');
       let day = split.splice(2).join('');
-      console.log(year, month, day);
+      // console.log(year, month, day);
 
       return month + '-' + day + '-' + year;
     }
   };
 
   render() {
-    console.log('props in reviews: ', this.props);
-    console.log('this. props id: ', this.props.item.userId);
+    // console.log('props in reviews: ', this.props);
+    // console.log('this. props id: ', this.props.item.userId);
     const string = this.props.item.created_at;
 
     return (
