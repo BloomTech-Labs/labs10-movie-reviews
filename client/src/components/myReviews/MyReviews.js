@@ -51,7 +51,7 @@ class MyReviews extends Component {
             stripeId
           })
           .then(planRes => {
-            console.log(planRes);
+            // console.log(planRes);
             if (planRes.data.premium) {
               this.setState({
                 stripeId,
@@ -79,7 +79,7 @@ class MyReviews extends Component {
         email: userRes.data.email
       });
       this.fetchReviews(userRes.data.id);
-      console.log('userData', userRes.data);
+      // console.log('userData', userRes.data);
     } else {
       console.log('Unable to get current user information');
     }
@@ -98,7 +98,7 @@ class MyReviews extends Component {
   };
 
   render() {
-    console.log('MyReviews: ', this.state.reviews);
+    // console.log('MyReviews: ', this.state.reviews);
     return (
       <Container className="movieRevWrapper background-color">
         {/* start of Grid A */}
