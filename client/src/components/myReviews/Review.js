@@ -202,7 +202,7 @@ class Review extends Component {
                             rating: this.props.review.rating,
                             movieId: this.props.review.movieId,
                             genres: this.state.genres,
-                            year: this.state.releaseDate,
+                            releaseDate: this.state.releaseDate,
                             countries: this.state.countries
                           }
                         }}
