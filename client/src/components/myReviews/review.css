@@ -20,6 +20,10 @@
   }
 }
 
+#parentFlex {
+  display: flex;
+}
+
 .first-delete-btn {
   background-color: #760d17 !important;
   color: white;
