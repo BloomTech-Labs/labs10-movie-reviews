@@ -154,7 +154,7 @@ class ReviewForm extends Component {
                   <p>
                     <span className="bold">Release Date: </span>
                     <span className="movieInfo">
-                      {this.props.location.state.year}
+                      {this.props.location.state.releaseDate}
                     </span>
                   </p>
                   <p>
