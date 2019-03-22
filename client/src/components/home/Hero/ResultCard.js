@@ -9,7 +9,7 @@ const ResultCard = props => {
         className="poster-img"
         src={
           props.result.poster_path
-            ? `${tmdbUrl}//${props.result.poster_path}`
+            ? `${tmdbUrl}${props.result.poster_path}`
             : `${viaPlaceholderUrl}/300x450.png?text=Photo+Not+Available`
           // placeholder from : C/O ${viaPlaceholderUrl}/#How_To_Set_Custom_Text"
         }
