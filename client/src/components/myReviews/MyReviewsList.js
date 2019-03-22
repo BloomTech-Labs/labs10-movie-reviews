@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Review from './Review';
 
 function MyReviewsList(props) {
-  console.log('props in myrev list: ', props);
+  // console.log('props in myrev list: ', props);
   if (props.reviewslist.length === 0 && props.premium === 1) {
     return <h4>No reviews found.</h4>;
   }
