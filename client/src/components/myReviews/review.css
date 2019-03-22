@@ -20,6 +20,10 @@
   }
 }
 
+#parentFlex {
+  display: flex;
+}
+
 .first-delete-btn {
   background-color: #760d17 !important;
   color: white;
@@ -27,6 +31,9 @@
   border-style: none;
   font: Roboto;
   font-weight: 400;
+  /* width: 41%; */
+  height: 44px;
+  border-radius: 5px;
 }
 
 .goFlex {
@@ -53,4 +60,12 @@
 .errorM {
   color: red;
   margin-right: 2rem;
+}
+
+.edit-delete-btns button {
+  width: 100%;
+  height: 44px;
+  border-radius: 5px;
+  border-width: 0;
+  border-style: none;
 }

@@ -181,13 +181,8 @@ class Review extends Component {
                   this.state.title
                 } ${this.props.getReleaseYear(this.state.releaseDate)}`}</h5>
                 <div className="">
-                  <div className="my-4">
-                    <button
-                      type="button"
-                      className="edit-delete-btns"
-                      onClick={this.toggleEdit}
-                    >
-                      {' '}
+                  <div className="my-4" id="parentFlex">
+                    <div onClick={this.toggleEdit} className="edit-delete-btns">
                       <Link
                         to={{
                           pathname: `/reviewform/${this.id}`,
@@ -207,11 +202,11 @@ class Review extends Component {
                           }
                         }}
                       >
-                        Edit
+                        <button type="button"> Edit</button>
                       </Link>
-                    </button>
+                    </div>
                     <button
-                      className="first-delete-btn edit-delete-btns"
+                      className="first-delete-btn edit-delete-btns ml-1"
                       onClick={this.openModalHandler}
                     >
                       Delete
