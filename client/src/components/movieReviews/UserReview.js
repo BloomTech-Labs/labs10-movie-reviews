@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { currentUser } from '../../services/userURLs';
+// import { currentUser } from '../../services/userURLs';
 import { users } from '../../services/userURLs';
 import './UserReview.css';
 import StarRatingComponent from 'react-star-rating-component';
@@ -101,7 +101,7 @@ export default class UserReview extends React.Component {
               {/* </div> */}
               <p className="spaceU text-right">
                 {' '}
-                Date: {this.getReviewDate(this.props.item.created_at)}
+                Date: {this.getReviewDate(string)}
               </p>
             </div>
             <p className="textbody mb-2 mt-3 mr-1">
