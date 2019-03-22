@@ -15,7 +15,7 @@ router.post('/currentuserreviews', async (req, res) => {
   try {
     // get reviews of the current user
     const currentUserReviews = await reviewsDb.getReviewsByUserId(userId);
-    if(debugging) console.log('currentUserReviews: ', currentUserReviews);
+    // if(debugging) console.log('currentUserReviews: ', currentUserReviews);
 
     // respond with a 201 on success
     res.status(201).json(currentUserReviews);
@@ -37,7 +37,7 @@ router.post('/reviews', async (req, res) => {
     try {
       // get reviews of the current user
       const currentUserReviews = await reviewsDb.getReviewsByUserId(userId);
-      console.log('currentUserReviews: ', currentUserReviews);
+      // console.log('currentUserReviews: ', currentUserReviews);
 
       // respond with a 201 on success
       res.status(201).json(currentUserReviews);
@@ -82,7 +82,7 @@ router.put('/reviews/:id', async (req, res) => {
 //DELETE request that deletes a review
 router.delete('/reviews/:id', async (req, res) => {
   const { id } = req.params;
-  console.log('\n** DELETING ****', id);
+  // console.log('\n** DELETING ****', id);
   try {
     // this returns the count, not the review
     const count = await reviewsDb.remove(id);

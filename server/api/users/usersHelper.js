@@ -16,15 +16,15 @@ module.exports = {
     return db('users').insert(user);
   },
   update: function(id, user) {
-    if (debugging === true)
-      console.log('PUT Users Helper', '\nid:', id, 'user:', user);
+    // if (debugging)
+    //   console.log('PUT Users Helper', '\nid:', id, 'user:', user);
     return db('users')
       .where('id', id)
       .update(user);
   },
   // Delete User
   remove: function(id) {
-    if (debugging === true) console.log('DELETE User Helper', '\nid:', id);
+    // if (debugging) console.log('DELETE User Helper', '\nid:', id);
     return db('users')
       .where('id', id)
       .del();
