@@ -31,6 +31,9 @@
   border-style: none;
   font: Roboto;
   font-weight: 400;
+  /* width: 41%; */
+  height: 44px;
+  border-radius: 5px;
 }
 
 .goFlex {
