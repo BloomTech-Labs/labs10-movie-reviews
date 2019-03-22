@@ -13,7 +13,7 @@ const MappedItem = props => {
         style={{ textDecoration: 'none' }}
       >
         <img
-          src={`${tmdbUrl}/${props.item.backdrop_path}`}
+          src={`${tmdbUrl}${props.item.backdrop_path}`}
           className="card-img img-responsive popular-img"
           alt="movie poster"
         />
