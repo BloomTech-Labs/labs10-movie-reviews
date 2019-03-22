@@ -18,7 +18,7 @@ module.exports = {
   },
   //POST Review
   insert: review => {
-    console.log('insert: ', review);
+    // console.log('insert: ', review);
     return db('movieReviews')
       .insert(review)
       .then(([id]) => module.exports.getReviews(id))
@@ -37,7 +37,7 @@ module.exports = {
   },
   //DELETE Review
   remove: function(id) {
-    if (debugging === true) console.log('DELETE Reviews Helper', '\nid:', id);
+    // if (debugging === true) console.log('DELETE Reviews Helper', '\nid:', id);
     return db('movieReviews')
       .where('id', id)
       .del();
