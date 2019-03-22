@@ -132,7 +132,7 @@ export default class MovieRev extends React.Component {
         this.setState({
           reviews: result
         });
-        console.log('state reviews: ', this.state.reviews);
+        // console.log('state reviews: ', this.state.reviews);
         let total = 0;
         const totalRating = this.state.reviews.map(review => {
           total = total + review.rating;
@@ -143,7 +143,7 @@ export default class MovieRev extends React.Component {
         this.setState({
           newRating: newTotal1
         });
-        console.log('newRating: ', this.state.newRating);
+        // console.log('newRating: ', this.state.newRating);
         // console.log(
         //   'allRatings const: ',
         //   parseFloat(total / this.state.reviews.length)
@@ -154,7 +154,7 @@ export default class MovieRev extends React.Component {
       });
   }
   render() {
-    console.log('all props movie rev has: ', this.props);
+    // console.log('all props movie rev has: ', this.props);
     // console.log('this.state', this.state);
     const data = this.state.reviews;
     const genres = this.state.genres + ' ';
