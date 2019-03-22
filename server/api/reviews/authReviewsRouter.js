@@ -15,7 +15,7 @@ router.post('/currentuserreviews', async (req, res) => {
   try {
     // get reviews of the current user
     const currentUserReviews = await reviewsDb.getReviewsByUserId(userId);
-    console.log('currentUserReviews: ', currentUserReviews);
+    if(debugging) console.log('currentUserReviews: ', currentUserReviews);
 
     // respond with a 201 on success
     res.status(201).json(currentUserReviews);

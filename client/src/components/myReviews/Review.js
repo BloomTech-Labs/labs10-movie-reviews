@@ -31,7 +31,7 @@ class Review extends Component {
   componentDidMount() {
     const movie_id = this.props.review.movieId;
 
-    console.log('movieId', movie_id);
+    // console.log('movieId', movie_id);
     const promise = axios.get(
       `${theMovieDbUrl}/3/movie/${movie_id}?api_key=${
         process.env.REACT_APP_API
@@ -39,7 +39,7 @@ class Review extends Component {
     );
     promise
       .then(response => {
-        console.log('response in movie rev: ', response);
+        // console.log('response in movie rev: ', response);
         const genres = [];
         response.data.genres
           ? response.data.genres.filter(word => genres.push(word.name))
@@ -60,12 +60,12 @@ class Review extends Component {
           countries: countries,
           genres: genres
         });
-        console.log(
-          'movie info: ',
-          this.state.releaseDate,
-          this.state.countries,
-          this.state.genres
-        );
+        // console.log(
+        //   'movie info: ',
+        //   this.state.releaseDate,
+        //   this.state.countries,
+        //   this.state.genres
+        // );
       })
       .catch(err => {
         console.log(err);
@@ -93,11 +93,11 @@ class Review extends Component {
   // allows us to delete and update state
   handleDelete = e => {
     e.preventDefault();
-    console.log('RevId:', this.id);
+    // console.log('RevId:', this.id);
     axios
       .delete(reviewById(this.id))
       .then(response => {
-        console.log('response in delete rev: ', response);
+        // console.log('response in delete rev: ', response);
         window.location.reload();
       })
       .catch(error => {
@@ -121,16 +121,16 @@ class Review extends Component {
     let regex = /(18|19|20)\d{2}-(0|1)\d{1}-(0|1|2|3)\d{1}/g;
 
     let found = string.match(regex);
-    console.log(found);
+    // console.log(found);
     if (!found) {
       return '';
     } else {
       let split = found[0].split('');
-      console.log(split);
+      // console.log(split);
       let year = split.splice(0, 4).join('');
       let month = split.splice(1, 2).join('');
       let day = split.splice(2).join('');
-      console.log(year, month, day);
+      // console.log(year, month, day);
 
       return month + '-' + day + '-' + year;
     }
@@ -138,7 +138,7 @@ class Review extends Component {
 
   render() {
     const { rating, textBody, created_at } = this.props.review;
-    console.log('all props in review page: ', this.props);
+    // console.log('all props in review page: ', this.props);
 
     // if edit mode is toggled, it returns the edit form
     if (this.state.isEditing) {
@@ -184,7 +184,7 @@ class Review extends Component {
                   <div className="my-4">
                     <button
                       type="button"
-                      className="btn mr-1 py-1 edit-delete-btns"
+                      className="edit-delete-btns"
                       onClick={this.toggleEdit}
                     >
                       {' '}
@@ -202,7 +202,7 @@ class Review extends Component {
                             rating: this.props.review.rating,
                             movieId: this.props.review.movieId,
                             genres: this.state.genres,
-                            year: this.state.releaseDate,
+                            releaseDate: this.state.releaseDate,
                             countries: this.state.countries
                           }
                         }}
@@ -211,7 +211,7 @@ class Review extends Component {
                       </Link>
                     </button>
                     <button
-                      className="py-2.01 first-delete-btn edit-delete-btns"
+                      className="first-delete-btn edit-delete-btns"
                       onClick={this.openModalHandler}
                     >
                       Delete

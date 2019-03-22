@@ -22,12 +22,12 @@ class ReviewForm extends Component {
   };
 
   componentDidMount = async () => {
-    console.log('this token', this.props.location.state);
+    // console.log('this token', this.props.location.state);
     const res = await axios.get(currentUser, {
       withCredentials: true
     });
     if (res.data) {
-      console.log('RevForm res.data: ', res.data);
+      // console.log('RevForm res.data: ', res.data);
       this.setState({
         textBody: this.props.location.state.textBody,
         rating: this.props.location.state.rating
@@ -40,13 +40,13 @@ class ReviewForm extends Component {
         img: this.props.location.state.img
       });
     }
-    console.log('RevForm state in reviewForm: ', this.state);
+    // console.log('RevForm state in reviewForm: ', this.state);
   };
 
   onStarClick(nextValue, prevValue = 3, name) {
     this.setState({ rating: nextValue }, () => {
       this.setState({ rating: this.state.rating });
-      console.log('stars num: ', this.state.rating);
+      // console.log('stars num: ', this.state.rating);
     });
   }
   componentWillReceiveProps(nextProps) {
@@ -104,7 +104,7 @@ class ReviewForm extends Component {
       ? axios
           .post(reviews, review)
           .then(response => {
-            console.log('RevForm response: ', response);
+            // console.log('RevForm response: ', response);
             this.props.history.push({
               pathname: '/myreviews',
               state: { detail: response.data }
@@ -117,7 +117,7 @@ class ReviewForm extends Component {
             console.log(err);
           })
       : this.setState({ emptyBody: true });
-    console.log('empty field state: ', this.state.emptyBody);
+    // console.log('empty field state: ', this.state.emptyBody);
   };
 
   render() {
@@ -126,7 +126,7 @@ class ReviewForm extends Component {
     const newGenres = genres.split(',').join(`, `);
     const countries = this.props.location.state.countries + ' ';
     const newCountries = countries.split(',').join(`, `);
-    console.log('all props in Review form: ', this.props.location.state);
+    // console.log('all props in Review form: ', this.props.location.state);
 
     return (
       <Container className="movieRevWrapper">
@@ -154,7 +154,7 @@ class ReviewForm extends Component {
                   <p>
                     <span className="bold">Release Date: </span>
                     <span className="movieInfo">
-                      {this.props.location.state.year}
+                      {this.props.location.state.releaseDate}
                     </span>
                   </p>
                   <p>

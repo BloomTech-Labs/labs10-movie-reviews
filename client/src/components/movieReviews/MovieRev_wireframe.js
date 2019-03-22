@@ -16,7 +16,7 @@ export default class MovieRev extends React.Component {
   }
 
   render() {
-    console.log('all props movie rev has: ', this.props);
+    // console.log('all props movie rev has: ', this.props);
     return (
       <Container className="movieRevWrapper">
         {/* start of Grid A */}

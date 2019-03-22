@@ -46,7 +46,7 @@ const FeatureList = (props) => {
         <div className="feature-list-container">
             {cardObjArray.map(card => {
                 return (
-                    <div key={card} className="single-card-container">
+                    <div key={card.name + card.iconClassName} className="single-card-container">
                         <div className={`${card.iconClassName} font-awesome`}/>
                         <h5>{card.name}</h5>
                         <p>{card.description}</p>

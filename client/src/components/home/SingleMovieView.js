@@ -26,13 +26,13 @@ class SingleMovieView extends Component {
   };
   handleDelete = () => {
     const id = this.props.match.params.id;
-    console.log(' id : ', id);
+    // console.log(' id : ', id);
     this.props.deletingNote(id);
     this.props.history.push('/');
   };
 
   render() {
-    console.log(' any props in single view mode?: ', this.props);
+    // console.log(' any props in single view mode?: ', this.props);
     return (
       <div>
         <div className="editDeleteLinks">
@@ -58,7 +58,7 @@ class SingleMovieView extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('state in single movie view: ', state);
+  // console.log('state in single movie view: ', state);
   const id = ownProps.match.params.id;
   //   console.log('movie in single: ', state.movies);
   //   return {
