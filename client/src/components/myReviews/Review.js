@@ -206,7 +206,7 @@ class Review extends Component {
                       </Link>
                     </button>
                     <button
-                      className="first-delete-btn edit-delete-btns"
+                      className="first-delete-btn edit-delete-btns ml-1"
                       onClick={this.openModalHandler}
                     >
                       Delete
