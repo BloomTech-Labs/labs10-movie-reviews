@@ -22,14 +22,14 @@ class Auth extends React.Component {
     axios
       .get(users)
       .then(response => {
-        console.log('response auth - Users: ', response);
+        // console.log('response auth - Users: ', response);
         this.setState({
           users: response.data
         });
         return axios.get(reviews);
       })
       .then(response => {
-        console.log('response auth - Reviews: ', response);
+        // console.log('response auth - Reviews: ', response);
         this.setState({
           reviews: response.data
         });
