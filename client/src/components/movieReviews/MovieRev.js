@@ -134,7 +134,7 @@ export default class MovieRev extends React.Component {
         });
         // console.log('state reviews: ', this.state.reviews);
         let total = 0;
-        const totalRating = this.state.reviews.map(review => {
+        this.state.reviews.map(review => {
           total = total + review.rating;
           return total;
         });
@@ -162,7 +162,7 @@ export default class MovieRev extends React.Component {
     const countries = this.state.countries + ' ';
     const newCountries = countries.split(',').join(`, `);
     // console.log('current user id: ', this.state.currUserId);
-    const findIfWrote = data.filter(i => i.userId == this.state.currUserId);
+    const findIfWrote = data.filter(i => i.userId === this.state.currUserId);
     // console.log('find if wrote: ', findIfWrote);
 
     return (
