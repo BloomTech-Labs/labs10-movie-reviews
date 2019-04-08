@@ -140,8 +140,13 @@ export default class MovieRev extends React.Component {
         });
         const newTotal = parseFloat(total / this.state.reviews.length);
         const newTotal1 = newTotal.toFixed(1);
+
+        // if it is not a number then return 0
+        // otherwise, return newTotal1
+        const newTotal2 = isNaN(newTotal1) ? 0 : newTotal1;
+
         this.setState({
-          newRating: newTotal1
+          newRating: newTotal2
         });
         // console.log('newRating: ', this.state.newRating);
         // console.log(
@@ -181,7 +186,8 @@ export default class MovieRev extends React.Component {
                 <br />
                 <h5 className="card-title">{this.state.title}</h5>
                 <p className="mb-1">
-                  Rating: <span className="averageRating">{this.state.newRating}</span>
+                  Rating:{' '}
+                  <span className="averageRating">{this.state.newRating}</span>
                 </p>
                 <a
                   href={`https://www.youtube.com/embed/${
